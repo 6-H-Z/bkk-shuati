@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 2.2 机电工程起重技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;padding:14px 14px 96px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+       background:#f5f6f8;color:#1a1a1a;max-width:640px;margin:0 auto}
+  .top{display:flex;align-items:center;gap:8px;margin:2px 0 4px}
+  h1{font-size:18px;margin:0;flex:1}
+  #gateBtn{min-height:36px;padding:0 14px;font-size:14px;font-weight:600;border-radius:9px;
+           border:1px solid #0b6bcb;background:#0b6bcb;color:#fff}
+  #gateBtn.passed{background:#1e7b4f;border-color:#1e7b4f}
+  .sub{font-size:12px;color:#666;margin:0 0 10px}
+  .badge{display:inline-block;font-size:12px;color:#1e7b4f;background:#e6f5ec;border-radius:6px;padding:2px 8px;margin-left:6px}
+  .bar{display:flex;gap:6px;font-size:12px;color:#444;margin-bottom:10px}
+  .bar span{background:#fff;border:1px solid #e3e6ea;border-radius:8px;padding:5px 6px;flex:1;text-align:center}
+  .bar b{font-size:15px;display:block;margin-top:1px}
+  .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06);
+        min-height:200px;display:flex;flex-direction:column;cursor:pointer}
+  .card:active{background:#fafbfc}
+  .tag{font-size:12px;color:#0b6bcb;background:#e8f2ff;border-radius:6px;padding:3px 8px;align-self:flex-start;margin-bottom:10px}
+  .q{font-size:18px;line-height:1.6;font-weight:600;white-space:pre-wrap}
+  .a{margin-top:14px;padding-top:14px;border-top:1px dashed #dde1e6;font-size:16px;line-height:1.7;color:#0f4c81;white-space:pre-wrap}
+  .kk{margin-top:12px;padding:9px 11px;background:#fff8e6;border-left:3px solid #f0b429;border-radius:6px;
+      font-size:15px;line-height:1.6;color:#7a5b00}
+  .hint{margin-top:12px;font-size:12px;color:#9aa0a8}
+  .src{margin-top:auto;padding-top:10px;font-size:12px;color:#8a8f98}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e3e6ea;
+        padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:16px;border-radius:10px;border:1px solid #d8dde3;
+               background:#fff;color:#222;font-weight:600}
+  #flip{background:#0b6bcb;color:#fff;border-color:#0b6bcb;flex:1.3}
+  #bad{color:#c0392b;border-color:#f0c4bd}
+  #good{color:#1e7b4f;border-color:#bfe3ce}
+  .tools{display:flex;gap:8px;margin-top:10px;font-size:13px;flex-wrap:wrap}
+  .tools button{min-height:34px;font-size:13px;font-weight:400;color:#555;background:#fff;
+                border:1px solid #d8dde3;border-radius:8px;padding:0 12px}
+  .tools button.on{background:#e8f2ff;border-color:#0b6bcb;color:#0b6bcb;font-weight:600}
+  .tools .nav{margin-left:auto}
+  footer{margin-top:14px;font-size:12px;color:#8a8f98;line-height:1.6}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:8px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:12px 14px;font-size:15px;
+       line-height:1.5;border:1px solid #d8dde3;border-radius:10px;background:#fff;color:#222}
+  .opt.ok{background:#e6f5ec;border-color:#1e7b4f;color:#14532d;font-weight:600}
+  .opt.no{background:#fdecea;border-color:#c0392b;color:#7f1d1d}
+  #exInput{width:100%;margin-top:12px;padding:12px;font-size:15px;line-height:1.6;
+           border:1px solid #d8dde3;border-radius:10px;font-family:inherit;background:#fff;resize:vertical}
+  #exInput:focus{outline:none;border-color:#0b6bcb}
+  .why{margin-top:10px;font-size:14px;line-height:1.7;color:#444;background:#f7f8fa;border-radius:8px;padding:10px 12px;white-space:pre-wrap}
+  .exDock{display:flex;gap:8px;margin-top:14px}
+  .exDock button{flex:1;min-height:46px;font-size:15px;border-radius:10px;border:1px solid #d8dde3;background:#fff;font-weight:600}
+  .exDock button.primary{background:#0b6bcb;color:#fff;border-color:#0b6bcb}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>2.2 机电工程起重技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P26–37 · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+    <footer>
+    内容出处：2027 版《机电工程管理与实务》P26–37（2.2 从 P26 下部开始）。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"起重机械分类", q:"起重机械按功能和结构特点分为哪五类？其中轻小型起重设备和千斤顶各分哪几种？", a:"起重机械按其功能和结构特点分为轻小型起重设备、起重机、升降机、工作平台、机械式停车设备五类。轻小型起重设备可分为：千斤顶、滑车、起重葫芦和卷扬机四种。千斤顶按结构可分为机械千斤顶、油压千斤顶、车库油压千斤顶和分离式油压千斤顶四类。", k:"轻小型、起重机、升降机、工作平台、停车设备", s:"P26"},
+  {id:2, g:"起重机械分类", q:"起重机分为哪三类？桥架型起重机又分为哪五种？", a:"起重机可分为桥架型起重机、臂架型起重机和缆索起重机三种。桥架型起重机分为：梁式起重机、桥式起重机、门式起重机、半门式起重机和装卸桥五种。", k:"梁、桥、门、半门、装卸桥", s:"P26"},
+  {id:3, g:"起重机械分类", q:"臂架型起重机包括哪些？流动式起重机按底盘结构又分哪几种？", a:"臂架型起重机分为：固定式起重机、台架型起重机、门座起重机、半门座起重机、塔式起重机、铁路起重机、流动式起重机、浮式起重机、甲板起重机、桅杆起重机、悬臂起重机。流动式起重机按底盘结构又可分为：履带起重机、汽车起重机、轮胎起重机、全地面起重机、随车起重机。", k:"", s:"P26"},
+  {id:4, g:"起重机械分类", q:"升降机、工作平台和机械式停车设备分别包括哪些？", a:"升降机可分为：升船机、启闭机、施工升降机、举升机。工作平台可分为：桅杆爬升式升降工作平台、移动式升降工作平台。机械式停车设备按构造可分为：升降横移类、垂直循环类、水平循环类、多层循环类、平面移动类、巷道堆垛类、垂直升降类、简易升降类机械式停车设备及汽车专用升降机。", k:"", s:"P27"},
+  {id:5, g:"吊索具分类", q:"吊具与吊索的定义有什么区别？", a:"吊具：在起重作业中，用于连接吊钩或承载设施和设备与吊索的刚性元件。吊索：用于连接设备和吊钩、承载设施等起吊装置的柔性元件。", k:"吊具＝刚性元件，吊索＝柔性元件", s:"P27"},
+  {id:6, g:"吊索具分类", q:"吊具按连接方式、取物方式、吊梁截面如何分类？吊索有哪些类型？", a:"吊具按与起重机械的连接方式分为可拆分吊具和固定吊具；按取物方式分为夹持类、吊挂类、托叉类、吸附类、抓斗及上述种类的组合；按吊梁截面分为箱式截面吊具、单腹板截面吊具和圆环截面吊具。吊索如合成纤维吊带、钢丝绳吊索、吊链或其他连接件等；钢丝绳索环按结构形式可分为钢丝绳索环和缆式索环；编织吊索按结构形式可分为扁平吊装带和圆形吊装带。", k:"", s:"P27"},
+  {id:7, g:"轻小型设备", q:"千斤顶的使用要求有哪些？", a:"千斤顶必须放置在稳固、平整、坚实的基础，通常在底座下垫木板或钢板，以加大承压面积，防止下陷或歪斜。顶升前应确定被顶物重心，合理选择顶升着力点；千斤顶头部与被顶物之间可垫以薄木板、铝板等软性材料，使其头部与被顶物全面接触，用以增加摩擦，防止受力后滑脱。使用时应在其旁边设置保险垫块，随着工件的升降及时调整高度；千斤顶应在允许的顶升高度内工作，当顶出至红色警示线时，应停止顶升操作。当数台千斤顶同时并用时，操作中应保持同步，使每台千斤顶所承受的载荷均衡，且不得超过额定载荷的 80%。", k:"同步、均衡、不超额定载荷 80%", s:"P27"},
+  {id:8, g:"轻小型设备", q:"起重滑车的使用要求有哪些？", a:"滑车应按出厂铭牌和产品使用说明书使用，不得超负荷使用。多轮滑车仅使用其部分滑轮时，滑车的起重能力应按使用的轮数与滑车全部轮数的比例进行折减。滑车组动、静滑车的最小距离不得小于 1.5m；跑绳进入滑轮的偏角不宜大于 5°。", k:"动静滑车 1.5m，偏角 5°", s:"P27"},
+  {id:9, g:"轻小型设备", q:"滑轮组穿绕方法如何选择？", a:"常用的穿绕方法有：顺穿（单头顺穿、双跑头顺穿）、花穿（小花穿、大花穿）。当滑车的门数超过 5 时，跑绳应采用双抽头方式；若采用花穿的方式，应适当加大上、下滑轮之间的净距。一般 3 门及以下宜采用顺穿；4~6 门宜采用花穿；7 门及以上宜采用双跑头顺穿。", k:"3 门顺穿、4~6 门花穿、7 门以上双跑头顺穿", s:"P27"},
+  {id:10, g:"轻小型设备", q:"卷扬机的选用、安装与固定有什么要求？", a:"起重吊装中一般采用电动慢速卷扬机；选用卷扬机的主要参数有额定载荷、容绳量和额定速度；严禁超负荷使用，在重大的吊装作业中，在牵引绳上应装设测力计。卷扬机应安装在平坦、开阔、前方无障碍且离吊装中心稍远一些的地方，使操作人员能直视吊装过程，同时又能接受指挥信号；桅杆吊装时，卷扬机与桅杆的距离必须大于桅杆的长度。卷扬机的固定应牢靠，可用地锚、建筑物基础和重物施压等为锚固点；绑缚卷扬机底座的固定绳索应从两侧引出，以防底座受力后移动；固定后应按其使用负荷进行预拉。", k:"", s:"P28"},
+  {id:11, g:"轻小型设备", q:"卷扬机卷筒与导向滑车、钢丝绳的布置有什么要求？", a:"由卷筒到第一个导向滑车的水平直线距离应不小于卷筒长度的 25 倍，且不得少于 15m；该导向滑车应设在卷筒的中垂线上，以保证卷筒的入绳角小于 2°。卷扬机上的钢丝绳应从卷筒底部水平放出，余留在卷筒上的钢丝绳不应少于 5 圈；当在卷筒上缠绕多层钢丝绳时，应使钢丝绳始终顺序地逐层紧缠在卷筒上，最外一层钢丝绳应低于卷筒两端凸缘一个绳径的高度。", k:"25 倍且不少于 15m、入绳角小于 2°、余留不少于 5 圈", s:"P28"},
+  {id:12, g:"轻小型设备", q:"手拉葫芦的使用要求有哪些？", a:"使用前须检查起升结构的完好性、运转部分的灵活性及润滑是否良好，拉链应灵活自如，不许有跑链、掉链和卡滞现象，且制动有效。使用时应将链条摆顺，逐渐拉紧，两吊钩受力在一条轴线上，经检查确认无问题后再进行起重作业。手拉葫芦吊挂点承载能力不得低于 1.05 倍的手拉葫芦额定载荷；当采用多台葫芦起重同一工件时，操作应同步，单台葫芦的最大载荷不应超过其额定载荷的 70%。手拉葫芦的施力方向应在链轮平面上且尽量与葫芦受力方向一致，以防卡链或掉链；放松时起重链条不得放尽，且不得少于 3 个扣环。", k:"吊点 1.05 倍、单台不超 70%、留 3 个扣环", s:"P28"},
+  {id:13, g:"流动式起重机", q:"流动式起重机选用的基本参数有哪些？吊装载荷指什么？", a:"吊装载荷（起升载荷）、额定起重量、最大幅度、最大起升高度等，这些参数是制定吊装技术方案的重要依据。流动式起重机的吊装载荷，是指被起升的设备（工件）、吊钩组件、吊索、吊具及其他附件等质量的总和，包括：固定吊具质量、可分吊具（或无此类吊具）质量和吊挂在吊具上起升的重物质量之和。", k:"吊装载荷、额定起重量、最大幅度、最大起升高度", s:"P28"},
+  {id:14, g:"流动式起重机", q:"吊装计算载荷如何计算？单台与双机抬吊、动载荷系数与不均衡载荷系数分别怎么取？", a:"吊装计算载荷（简称计算载荷）为吊装器具所承受的载荷与载荷系数的乘积，Qj=k1×k2×Q（k1 为动载荷系数，k2 为不均衡载荷系数，Q 为分配到一台起重机的吊装载荷）。采用单台起重机吊装设备时，因起重机设计时已考虑动载荷对起重机性能的影响，故计算载荷不再考虑动载荷系数，其数值直接等于吊装载荷。采用双机抬吊设备时，计算每台起重机承受的载荷不需要考虑动载荷影响，但应考虑双机受力不平衡的影响，计算载荷需要计入不均衡载荷系数。一般取动载荷系数 k1=1.1；一般取不均衡载荷系数 k2=1.1~1.25。", k:"Qj=k1×k2×Q；k1=1.1，k2=1.1~1.25", s:"P28–29"},
+  {id:15, g:"流动式起重机", q:"额定起重量如何确定？多台起重机抬吊有什么规定？", a:"额定起重量是指在正常工作条件下，对于给定的起重机类型和载荷位置，起重机设计能起升的最大净起重量。对于汽车起重机，额定起重量为挂在起升钢丝绳或起升链条下端起升的重物质量（即吊钩及以下起升重物的质量）；对于履带起重机，额定起重量为臂杆杆头滑车下起升重物的质量，包括缠绕在吊钩及臂头上的钢丝绳、吊钩、吊具及起吊重物的质量；对于其他起重机，额定起重量为吊挂在固定吊具上起升重物的质量。采用多台起重机抬吊时，多台起重机抬吊所受合力不应超过各台起重机单独操作的额定载荷；一般双主吊抬吊时，每台起重机的负载率不得超过其额定起重量的 80%。", k:"双主吊每台负载率不超过 80%", s:"P29"},
+  {id:16, g:"流动式起重机", q:"起重机的幅度和起升高度分别指什么？最小起升高度应满足什么条件？", a:"幅度是指起重机回转中心至吊钩或取物装置之间的水平距离。设备吊装所需最小起升高度应满足：Hm ＞ H1＋H2＋H3＋H4。其中 Hm 为设备吊装所需最小起升高度；H1 为设备基础或地脚螺栓高度；H2 为设备腾空高度（就位时设备底部高出地脚螺栓或基础的距离）；H3 为吊点至设备底部的距离；H4 为吊点至起重机吊钩的垂直距离；b 为吊钩与起重机臂头滑轮组间的安全距离。", k:"Hm＞H1＋H2＋H3＋H4", s:"P29"},
+  {id:17, g:"流动式起重机", q:"汽车起重机与履带起重机的使用特点有什么不同？", a:"汽车起重机吊装时靠支腿将起重机支撑在地面上，具有较大的机动性，行走速度快，可达到 60km/h，不会破坏公路路面；但不可在 360° 范围内进行吊装作业，其吊装区域受到限制，对基础要求也更高。履带起重机对基础的要求相对较低，并可在一定程度上带载行走，但其行走速度较慢，履带会破坏公路路面；转移场地需要用平板拖车运输，较大的履带起重机转移场地时需进行拆卸、运输、组装，带载行走必须符合起重机技术文件的规定。", k:"汽车 60km/h 不能 360°；履带可带载行走但破坏路面", s:"P30"},
+  {id:18, g:"流动式起重机", q:"流动式起重机的特性曲线是什么？选用步骤是什么？", a:"反映流动式起重机的起重能力、最大起升高度随臂长、幅度的变化而变化的曲线分别称为起重量特性曲线和起升高度特性曲线，量化成表格形式称为特性曲线表；特性曲线（表）是选用流动式起重机的依据，一般随机附带。选用步骤：（1）根据被吊装设备（构件）的就位平面位置、现场情况确定起重机的站车位置，站车位置一旦确定，起重机的幅度也就确定了；（2）根据就位高度、设备尺寸、吊索高度等确定设备吊装的最小起升高度，再由起重机的起升高度曲线确定起重机臂长；（3）通过起重机的起重量性能表，查阅起重机在同一幅度时不同臂长的额定起重量；（4）如果起重机的额定起重量大于计算载荷，则起重机选择合格，否则重新选择；（5）计算吊臂与设备、吊臂与附近构筑物、设备与构筑物等之间的安全距离，若计算结果符合规范要求，则选择合格，否则应重选。", k:"站车定幅度→起升高度定臂长→查表→比计算载荷→算安全距离", s:"P30"},
+  {id:19, g:"流动式起重机", q:"流动式起重机的地基如何处理？压重法地耐力测试怎么做？", a:"设备吊装作业地面应参考项目所在地地质资料，依据吊装区域地面实际地耐力检测结果，当地耐力不能满足时应采取地基处理措施。设备吊装中常用的地基处理方法有碾压法、换填法、强夯法（强夯置换法）、桩基法。处理后的地基应做耐压力测试，常用压重法或请第三方测试机构进行测试。压重法：压重块对地压强应满足 f=nG/S＞2fc（S 为压重块接地面积，G 为每块压重质量，fc 为路基箱对地压强，n 为每个测试点压重块的数量）；选择起重机吊装作业时对地压强最大的位置叠放压重块，在压重块上均布找出 4 个位置作为测量点并做标志；压重块静置 24h，测量记录 4 个位置的沉降量，若 4 个点最大沉降量不大于 50mm，则证明处理的地基合格。", k:"碾压、换填、强夯、桩基；静置 24h，沉降不大于 50mm", s:"P31"},
+  {id:20, g:"桅杆起重机", q:"桅杆起重机由哪些部分组成？各系统包括什么？缆风绳与地面的夹角是多少？", a:"桅杆起重机由桅杆本体、动力-起升系统、稳定系统组成。桅杆本体包括桅杆、基座及其附件，桅杆由多个节（或段）连接而成，是桅杆的主体受力结构；大型桅杆多采用格构式截面，中小型桅杆也有采用钢管截面的。动力-起升系统主要由卷扬机、钢丝绳（跑绳）、起重滑车组、导向滑车组等组成；近年来桅杆常用于液压提升（顶升）系统的塔架。稳定系统主要包括缆风绳、地锚等，缆风绳与地面的夹角应为 30°~45°，且应与供电线路、建筑物、树木保持安全距离。", k:"桅杆本体＋动力-起升系统＋稳定系统", s:"P31"},
+  {id:21, g:"桅杆起重机", q:"桅杆起重机的质量和安全合格文件有哪些？使用说明书规定性能范围的三项指标是什么？组装要求有哪些？", a:"质量和安全合格文件：制造质量证明书；制造图、使用说明书；载荷试验报告；安全检验合格证书。桅杆应严格按照使用说明书的规定使用，若不在规定的性能范围内（包括桅杆使用长度、倾斜角度和主吊滑车张角角度三项指标中的任何一项）使用，则应根据使用条件对桅杆进行全面核算。组装：须使用设计指定的螺栓，安装前应检查合格；应对螺栓螺纹部分涂抹抗咬合剂或润滑脂；连接螺栓拧紧后，螺杆应露出螺母 3~5 个螺距；拧紧螺栓时应对称逐次交叉进行；桅杆组装的直线度偏差不应大于长度的 1/1000，总长偏差不应大于 20mm；组装后应履行验收程序，并有相关人员签字确认。", k:"长度、倾斜角度、主吊滑车张角角度；露出 3~5 个螺距", s:"P31–32"},
+  {id:22, g:"索吊具使用", q:"钢丝绳吊索的安全系数如何取值？钢丝绳环索（吊装带）在哪些情况下不得使用？", a:"钢丝绳安全系数为标准规定的钢丝绳在使用中允许承受拉力的储备拉力，即钢丝绳在使用中破断的安全裕度。取值：作拖拉绳时应大于或等于 3.5；作卷扬机走绳时应大于或等于 5；作捆绑绳扣使用时应大于或等于 6；作系挂绳扣时应大于或等于 5；作载人吊篮时应大于或等于 14。钢丝绳环索（吊装带）存在下列情况之一时不得使用：禁吊标志处绳端露出且无法修复；绳股产生松弛或分离且无法修复；钢丝绳出现断丝、断股、钢丝挤出、单层股钢丝绳绳芯挤出、钢丝绳直径局部减小、绳股挤出或扭曲、扭结等缺陷；无标牌。", k:"拖拉绳 3.5、卷扬机走绳 5、捆绑绳扣 6、系挂绳扣 5、载人吊篮 14", s:"P32"},
+  {id:23, g:"索吊具使用", q:"合成纤维吊装带的使用要求有哪些？", a:"不允许交叉或扭转使用吊装带，使用过程中不得打结、打拧；吊装带目测损坏时不得使用；在移动吊装带和货物时不得拖曳；当物品有尖角、棱边时应有保护措施，宜采用护套或护角来保护吊装带；起吊时不得使吊装带本体挂碰其他物体，以免损坏。吊装带的使用环境温度为 -40~100℃，当采用丙纶吊装带时环境温度宜为 -40~80℃，不得在超高温环境中使用。", k:"-40~100℃（丙纶 -40~80℃）", s:"P32"},
+  {id:24, g:"索吊具使用", q:"吊耳与卸扣的使用要求有哪些？", a:"吊耳：设备出厂前应按设计要求做吊耳检测，并出具检测报告，设备到场后应对吊耳外观质量进行检查，必要时进行无损检测；现场焊接的吊耳，其与设备连接的焊接部位应做表面渗透检测；设备到场后，技术人员要对吊耳焊接位置及尺寸进行复测。卸扣：应按额定负荷标记选用，不得超载使用，无标记的卸扣不得使用；卸扣表面应光滑，不得有毛刺、裂纹、尖角、夹层等缺陷，不得利用焊接的方法修补卸扣的缺陷；有永久变形或裂纹时应报废；卸扣应只承受纵向拉力。", k:"", s:"P32"},
+  {id:25, g:"吊装方法", q:"流动式起重机有哪四种吊装工艺方法？各自适用于什么设备？", a:"（1）直接提升法：采用单主吊车或双主吊车直接吊装到货设备上部或兜底设备底部，适用于换热器、卧罐、汽包、模块等卧式设备，火炬塔架及风电机组中混凝土塔架、机舱、轮毂（叶轮）、单叶片等设备的吊装。（2）单主机扳转法：适用于现场吊车资源有限、设备长度相对不是太长的设备吊装。（3）单主机抬吊递送法：适用于塔类设备、容器、反应器、火炬塔架、风电机组塔架等设备吊装。（4）双主机抬吊递送法：适用于现场超高、超大型设备，且现场单台主吊车吊装能力不能满足的情况下的设备吊装。", k:"直接提升、单主机扳转、单主机抬吊递送、双主机抬吊递送", s:"P33"},
+  {id:26, g:"吊装方法", q:"钢结构吊装有哪些要求？网架提升或顶升验算时的动载荷系数怎么取？", a:"单层钢结构厂房架吊装前，应根据绑扎点进行稳定性验算，进行临时加固；多层钢结构柱吊装前，应在钢柱上将登高扶梯和操作挂篮或平台等临时固定好，框架钢梁吊装应安装好扶手杆和扶手安全绳；采用高空组装法吊装塔架时，其爬行桅杆必须经过设计确定；大跨度屋盖整体提升前，应矫正所有吊索铅直线垂直度，进行载重调试，各吊点水平高差不超过 2mm，进行试提升。网架采用提升或顶升时，验算载荷应包括吊装阶段结构自重和各种施工载荷，并乘以动载荷系数 1.1；如采用拔杆，动载荷系数取 1.2；采用履带起重机或汽车起重机，动载荷系数取 1.3。", k:"网架 1.1、拔杆 1.2、履带／汽车 1.3", s:"P33"},
+  {id:27, g:"吊装方法", q:"设备吊装有哪些安全与工艺要求？", a:"用流动式起重机进行吊装时，吊物下及起重机的回转范围内禁止人员停留；用滚杠装卸时，滚杠粗细应一致，滚道的搭设应平整、坚实、接头错开；用拔杆吊装时，各吊点的受力应均匀；卧式设备吊装时，吊点间距宜大于设备长度的 1/3，宜使用吊梁吊装；采用兜捆方式吊装时，应对索具与设备的边缘棱角接触部位进行保护，并对设备进行保护。", k:"", s:"P34"},
+  {id:28, g:"吊装稳定性", q:"起重吊装作业的稳定性包括哪三类？起重机械失稳的主要原因与预防措施是什么？", a:"稳定性包括：起重机械的稳定性（起重机在额定工作参数情况下的稳定或桅杆自身结构的稳定，是起重机抵抗由起升载荷、风载荷及其他因素引起的抗倾覆力矩的能力）；吊装系统的稳定性（多机吊装的同步协调、大型设备多吊点多机种的吊装指挥协调、桅杆吊装系统缆风绳和地锚的稳定性）；被吊设备或构件的稳定性（整体稳定性、吊装部件或单元的稳定性、吊点部位的局部稳定性）。起重机械失稳的主要原因：超载、支腿不稳定、机械故障、起重臂杆仰角超限等。预防措施：严禁超载；起重机站位地耐力符合要求（含行走区域）；严格进行机械检查；起重臂杆仰角最大不超过 78°，最小不低于 45°。", k:"仰角 78°／45°", s:"P34"},
+  {id:29, g:"吊装稳定性", q:"吊装系统失稳、被吊设备或构件失稳的主要原因与预防措施是什么？", a:"吊装系统失稳的主要原因：多机吊装的不同步；不同起重能力的多机吊装载荷分配不均；多动作、多岗位指挥协调失误，桅杆系统缆风绳、地锚失稳。预防措施：多机吊装时尽量采用同机型、吊装能力相同或相近的吊车，并通过主副指挥来实现多机吊装的同步；通过计算机控制来实现多吊点的同步；制定周密指挥和操作程序并进行演练；桅杆缆风绳和地锚严格按吊装方案和工艺计算设置，设置完成后进行预拉检查并做好记录。被吊设备或构件失稳的主要原因：设计与吊装时受力不一致，设备或构件的刚度偏小。预防措施：对于细长、大面积设备或构件采用多吊点吊装；对薄壁设备进行加固加强；对型钢结构、网架结构的薄弱部位或杆件进行加固或加大截面，提高其刚度。", k:"系统失稳：不同步、载荷不均、指挥失误；构件失稳：受力不一致、刚度偏小", s:"P34"},
+  {id:30, g:"吊装稳定性", q:"桅杆的稳定性对缆风绳有哪些要求？", a:"直立单桅杆顶部缆风绳的设置宜为 6~8 根，对倾斜吊装的桅杆应加设后背主缆风绳，后背主缆风绳的设置数量不应少于 2 根。缆风绳与地面的夹角宜为 30°，最大不得超过 45°；直立单桅杆各相邻缆风绳之间的水平夹角不得大于 60°。缆风绳应设置防止滑车受力后产生扭转的设施。需要移动的桅杆应设置备用缆风绳。", k:"6~8 根；夹角宜 30°、最大 45°；相邻水平夹角不大于 60°", s:"P34"},
+  {id:31, g:"地锚", q:"地锚有哪几种？各自特点是什么？埋入式地锚的设置要求有哪些？", a:"（1）全埋式地锚（埋入式地锚）：将横梁埋入坑底，钢丝绳拴接在横梁上，从坑前端的槽中引出，回土夯实；可以承受较大的拉力，适用于重型设备吊装。（2）活动式地锚：在钢质托排上压放块状重物（如钢锭、条石）等组成，钢丝绳拴接于托排上；一般承受的力不大，重复利用率高。（3）利用已有建筑物作为地锚：必须获得建筑物设计单位的书面认可，使用时应予基础、柱子的棱角进行保护。设置要求：地锚结构形式应根据受力条件和施工地区的地质条件设计和选用，制作和设置应按吊装专项施工方案的规定计算校核；埋入式地锚应用净土分层夯实，回填的高度应高于基坑周围地面 400mm 以上；地锚设置完成后，受力绳扣应进行预拉紧，并做好隐蔽工程记录。", k:"全埋式承受大拉力；回填高于地面 400mm 以上", s:"P35"},
+  {id:32, g:"吊装方案", q:"吊装方案编制的基本原则是什么？方案主要内容包括哪些？", a:"基本原则：（1）以吊装安全为前提，吊装的安全性应贯穿于方案的始终；（2）以技术可靠、工艺成熟为基础，科学合理地选用吊装工艺；（3）进行技术经济比较，降低成本，缩短工期。主要内容：（1）工程概况；（2）编制依据；（3）施工计划；（4）吊装工艺技术；（5）施工安全保证措施；（6）施工管理及作业人员配备和分工；（7）验收要求；（8）应急处置措施；（9）计算书及相关施工图纸。", k:"概况、依据、计划、工艺、安全、人员、验收、应急、计算书", s:"P35"},
+  {id:33, g:"吊装方案", q:"起重吊装专项方案有哪些严重缺陷？存在严重缺陷时如何处理？", a:"严重缺陷清单：采用流动式起重机，未明确站车位置和行走路线，未对支撑面、行走路线的平整度、承载能力进行验算；借用既有建筑结构的，未对既有建筑的承载能力进行验算；未进行起重机械的选择计算、未明确吊装工艺（至少应包含施工工艺、吊装参数表、机具、吊点及加固、工艺图）；起重机械作业安全距离不满足规范要求，覆盖人员密集场所无有效措施；多机联合起重工程，未对荷载分配和起重能力进行校核，无多机协调作业的安全技术措施；对构件翻身、空中姿态控制、夺吊、递吊等关键环节要求较高的操作技能和配合协调指挥，无工艺描述；未对刚性较差的被吊物吊装工况进行力学验算；吊具、索具无安全使用说明或无起重能力的验算。处置：在专项施工方案审核、审查、专家论证等环节，方案存在严重缺陷的，其审核、审查和专家论证应不予通过；在专项施工方案实施环节，方案存在严重缺陷的，应判定为重大事故隐患。", k:"", s:"P36"},
+  {id:34, g:"方案实施", q:"吊装方案变更有什么要求？方案交底有什么要求？", a:"审批后的方案应具有执行的严肃性和技术的权威性，如需更改亦应履行必要的手续。对方案中的重大变化，如吊装方法的改变、吊装机械种类的改变以及主要机索具和材料的代用等，方案实施单位（或方案编制人）应出具书面变更申请，并附有必要的计算和说明，上报原方案批准单位和人员，待批准后，方可按变更后的内容实施。交底：吊装方案经批准后应下发给有关单位和人员，在施工准备阶段进行技术交底；由吊装技术负责人或方案编制人向项目负责人、吊装指挥、起重班组全部工人、配合工种的班长或骨干、质量安全人员、设备管理人员等交底；以吊装方案的内容和设计图纸为依据，重点讲解工程特点、吊装程序、工艺方法、技术关键和安全措施；方案交底常以讲解方式为主，并辅以书面方式，技术交底后要认真做好交底记录，经有关部门签证后保存、归档、备查。", k:"", s:"P36–37"},
+  {id:35, g:"方案实施", q:"吊装过程检查、试验和试吊有什么要求？吊装就位和收尾有什么要求？", a:"从吊装准备工作开始到吊装结束，重要的施工作业均应在检查人员的监督下进行；检查工作贯穿吊装全过程，隐蔽工程如埋置式地锚的施工、吊装场地的地基处理、夯实、加固等，应在检查人员的监督下实施，并填写隐蔽工程记录；吊装机械和机索具应在对其进行检查并确认合格后方可进入安装位置。在重大设备吊装前，应对新设计制作的桅杆等吊装机械、自制的吊梁、吊具等机具进行起重能力试验，如埋置式地锚的拉力试验、基础的承压试验、卷扬机的运转和制动试验等。试吊既能检验所使用机索具的安全性和设置的正确性，又能对吊装组织工作进行全面考核，还可验证信号和指挥系统的灵活可靠性；试吊的时间不宜过长，一般控制在 10min 左右；试吊时设备离开地面的距离不应超过 100mm；试吊后要对各吊装机索具进行一次全面检查。 对于重大的设备吊装工程应在得到吊装指令后方可进行正式吊装；在开始吊装前还应对有关的供电部门提出保证供电的要求，必要时应采取保险措施，以防突然停电而引发事故；在吊装现场进行吊装作业过程中有触电危险时，如架空线等应联系停电，并派人监护；对需要中断的道路应在路口处按规定设置警示牌、警示灯，并派专人看守；还要在吊装现场设置警戒区域，发放吊装工作证，禁止无关人员进入。设备就位后，应立即进行找正定位及地脚螺栓的紧固；在拆除吊装机具时，如大型桅杆系统的拆除等，仍应按吊装方案的工艺方法进行，以保证收尾阶段的安全。", k:"试吊约 10min，离地不超过 100mm", s:"P37"}
+];
+
+const EXAM = [
+  { type:"正向",
+    cardIds:[18],
+    q:"流动式起重机的选用步骤是什么？",
+    answer:"（1）根据被吊装设备（构件）的就位平面位置、现场情况确定起重机的站车位置，站车位置一旦确定，起重机的幅度也就确定了；（2）根据被吊装设备（构件）的就位高度、设备尺寸、吊索高度等确定设备吊装的最小起升高度，再由起重机的起升高度曲线确定起重机臂长；（3）通过起重机的起重量性能表，查阅起重机在同一幅度时不同臂长的额定起重量；（4）如果起重机的额定起重量大于计算载荷，则起重机选择合格，否则重新选择；（5）计算吊臂与设备、吊臂与附近构筑物、设备与构筑物等之间的安全距离，若计算结果符合规范要求，则选择合格，否则应重选。",
+    keys:["站车位置", "幅度", "起升高度", "臂长", "性能表", "计算载荷", "安全距离"],
+    need:5 },
+  { type:"正向",
+    cardIds:[22],
+    q:"钢丝绳作拖拉绳、作捆绑绳扣、作载人吊篮时，安全系数分别应大于或等于多少？",
+    answer:"作拖拉绳时应大于或等于 3.5；作捆绑绳扣使用时应大于或等于 6；作载人吊篮时应大于或等于 14。",
+    keys:["3.5", "6", "14"],
+    need:3 },
+  { type:"选择",
+    cardIds:[7, 8, 12],
+    q:"关于轻小型起重设备的使用要求，下列说法错误的是：",
+    options:["数台千斤顶同时并用时，操作中应保持同步，且每台不得超过额定载荷的 80%", "滑车组动、静滑车的最小距离不得小于 1.5m，跑绳进入滑轮的偏角不宜大于 5°", "采用多台手拉葫芦起重同一工件时，单台葫芦的最大载荷不应超过其额定载荷的 80%", "手拉葫芦放松时，起重链条不得放尽，且不得少于 3 个扣环"],
+    correct:2,
+    why:"教材：采用多台葫芦起重同一工件时，单台葫芦的最大载荷不应超过其额定载荷的 70%，不是 80%；80% 是数台千斤顶同时并用时的限额。C 把两个百分数记混了。" },
+  { type:"选择",
+    cardIds:[14],
+    q:"关于吊装计算载荷，下列说法正确的是：",
+    options:["采用单台起重机吊装设备时，计算载荷还要再乘动载荷系数 1.1", "采用双机抬吊设备时，计算每台起重机承受的载荷不需要考虑动载荷影响，但应考虑双机受力不平衡的影响，计入不均衡载荷系数", "动载荷系数 k1 一般取 1.25", "不均衡载荷系数 k2 一般取 1.05"],
+    correct:1,
+    why:"教材：采用单台起重机吊装设备时，因起重机设计时已考虑动载荷的影响，计算载荷不再考虑动载荷系数，数值直接等于吊装载荷；采用双机抬吊时不需要考虑动载荷影响，但应考虑双机受力不平衡，计入不均衡载荷系数。k1 一般取 1.1，k2 一般取 1.1~1.25，C、D 均错。" },
+  { type:"反向",
+    cardIds:[8, 11, 28, 19],
+    q:"说出这些数字对应的起重技术要求：\n1.5m ／ 5° ／ 78° ／ 24h ／ 50mm",
+    answer:"1.5m —— 滑车组动、静滑车的最小距离；\n5° —— 跑绳进入滑轮的偏角不宜大于的值；\n78° —— 起重机起重臂杆仰角的最大值（最大不超过 78°，最小不低于 45°）；\n24h —— 压重法地耐力测试时压重块静置的时间；\n50mm —— 压重块 4 个位置的最大沉降量不大于该值，即证明处理的地基合格。",
+    keys:["滑车", "偏角", "仰角", "24", "沉降"],
+    need:4 },
+  { type:"场景",
+    cardIds:[33, 28, 27],
+    q:"某工地用 1 台 50t 汽车起重机吊装卧式换热器。吊装专项方案中未明确站车位置和行走路线，也未对支撑面、行走路线的承载能力进行验算；吊装时起重臂杆仰角调到 82°，并安排人员在吊物下方观察指挥。请指出问题并写出正确要求。",
+    answer:"（1）方案存在严重缺陷：采用流动式起重机，未明确站车位置和行走路线，未对支撑面、行走路线的平整度、承载能力进行验算。教材：专项施工方案在审核、审查、专家论证等环节存在严重缺陷的，应不予通过；在实施环节存在严重缺陷的，应判定为重大事故隐患。\n（2）起重臂杆仰角 82° 超限：起重臂杆仰角最大不超过 78°，最小不低于 45°。\n（3）吊物下方安排人员错误：用流动式起重机进行吊装时，吊物下及起重机的回转范围内禁止人员停留。",
+    keys:["站车位置", "行走路线", "承载", "78", "45", "禁止"],
+    need:4 }
+];
+
+const KEY_STATUS = "erjian_sw_2_2_status";
+const KEY_PASS = "erjian_sw_2_2_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

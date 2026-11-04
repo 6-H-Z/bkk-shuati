@@ -16,8 +16,10 @@
 
 **不要手动拖文件、也不要用 GitHub Desktop 推了**，统一用脚本：
 
+- 双击 `04_工具\网站发布\发布网站.bat`（最省事）；或者命令行：
+
 ```powershell
-pwsh -File E:\Users\31202\Desktop\deeh\04_工具\网站发布\publish.ps1
+powershell -NoProfile -ExecutionPolicy Bypass -File E:\Users\31202\Desktop\deeh\04_工具\网站发布\publish.ps1
 ```
 
 脚本走 GitHub Git Data API，一个 commit 发完默认清单（分区首页、2 区、1 区、README），

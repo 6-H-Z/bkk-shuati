@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 3.4 智能化系统工程施工技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;padding:14px 14px 96px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+       background:#f5f6f8;color:#1a1a1a;max-width:640px;margin:0 auto}
+  .top{display:flex;align-items:center;gap:8px;margin:2px 0 4px}
+  h1{font-size:18px;margin:0;flex:1}
+  #gateBtn{min-height:36px;padding:0 14px;font-size:14px;font-weight:600;border-radius:9px;
+           border:1px solid #0b6bcb;background:#0b6bcb;color:#fff}
+  #gateBtn.passed{background:#1e7b4f;border-color:#1e7b4f}
+  .sub{font-size:12px;color:#666;margin:0 0 10px}
+  .badge{display:inline-block;font-size:12px;color:#1e7b4f;background:#e6f5ec;border-radius:6px;padding:2px 8px;margin-left:6px}
+  .bar{display:flex;gap:6px;font-size:12px;color:#444;margin-bottom:10px}
+  .bar span{background:#fff;border:1px solid #e3e6ea;border-radius:8px;padding:5px 6px;flex:1;text-align:center}
+  .bar b{font-size:15px;display:block;margin-top:1px}
+  .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06);
+        min-height:200px;display:flex;flex-direction:column;cursor:pointer}
+  .card:active{background:#fafbfc}
+  .tag{font-size:12px;color:#0b6bcb;background:#e8f2ff;border-radius:6px;padding:3px 8px;align-self:flex-start;margin-bottom:10px}
+  .q{font-size:18px;line-height:1.6;font-weight:600;white-space:pre-wrap}
+  .a{margin-top:14px;padding-top:14px;border-top:1px dashed #dde1e6;font-size:16px;line-height:1.7;color:#0f4c81;white-space:pre-wrap}
+  .kk{margin-top:12px;padding:9px 11px;background:#fff8e6;border-left:3px solid #f0b429;border-radius:6px;
+      font-size:15px;line-height:1.6;color:#7a5b00}
+  .hint{margin-top:12px;font-size:12px;color:#9aa0a8}
+  .src{margin-top:auto;padding-top:10px;font-size:12px;color:#8a8f98}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e3e6ea;
+        padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:16px;border-radius:10px;border:1px solid #d8dde3;
+               background:#fff;color:#222;font-weight:600}
+  #flip{background:#0b6bcb;color:#fff;border-color:#0b6bcb;flex:1.3}
+  #bad{color:#c0392b;border-color:#f0c4bd}
+  #good{color:#1e7b4f;border-color:#bfe3ce}
+  .tools{display:flex;gap:8px;margin-top:10px;font-size:13px;flex-wrap:wrap}
+  .tools button{min-height:34px;font-size:13px;font-weight:400;color:#555;background:#fff;
+                border:1px solid #d8dde3;border-radius:8px;padding:0 12px}
+  .tools button.on{background:#e8f2ff;border-color:#0b6bcb;color:#0b6bcb;font-weight:600}
+  .tools .nav{margin-left:auto}
+  footer{margin-top:14px;font-size:12px;color:#8a8f98;line-height:1.6}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:8px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:12px 14px;font-size:15px;
+       line-height:1.5;border:1px solid #d8dde3;border-radius:10px;background:#fff;color:#222}
+  .opt.ok{background:#e6f5ec;border-color:#1e7b4f;color:#14532d;font-weight:600}
+  .opt.no{background:#fdecea;border-color:#c0392b;color:#7f1d1d}
+  #exInput{width:100%;margin-top:12px;padding:12px;font-size:15px;line-height:1.6;
+           border:1px solid #d8dde3;border-radius:10px;font-family:inherit;background:#fff;resize:vertical}
+  #exInput:focus{outline:none;border-color:#0b6bcb}
+  .why{margin-top:10px;font-size:14px;line-height:1.7;color:#444;background:#f7f8fa;border-radius:8px;padding:10px 12px;white-space:pre-wrap}
+  .exDock{display:flex;gap:8px;margin-top:14px}
+  .exDock button{flex:1;min-height:46px;font-size:15px;border-radius:10px;border:1px solid #d8dde3;background:#fff;font-weight:600}
+  .exDock button.primary{background:#0b6bcb;color:#fff;border-color:#0b6bcb}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>3.4 智能化系统工程施工技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P77–85（本页 P77–85） · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P77–85。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [{"id":1,"g":"分部分项","q":"建筑智能化系统分部工程包括哪些子分部工程？","a":"用户电话交换系统、信息网络系统、综合布线系统、有线电视系统、公共广播系统、建筑设备监控系统、火灾自动报警系统、安全技术防范系统、机房工程。","k":"电话·网络·布线·电视·广播·监控·报警·安防·机房","s":"P77"},{"id":2,"g":"分部分项","q":"综合布线系统、建筑设备监控系统、机房工程的分项工程分别有哪些？","a":"综合布线系统：槽盒和导管安装，线缆敷设，机柜、机架、配线架的安装，信息插座安装，链路或信道测试，软件安装，系统调试，试运行。\n建筑设备监控系统：槽盒和导管安装，线缆敷设，传感器安装，执行器安装，控制器、箱安装，管理和操作设备安装，软件安装，系统调试，试运行。\n机房工程：供配电系统，防雷与接地系统，综合布线系统，监控与安全防范系统，电磁屏蔽，系统调试，试运行。","k":"","s":"P77"},{"id":3,"g":"施工程序","q":"建筑智能化系统的一般施工程序是什么？","a":"施工图深化→设备、材料采购→管线敷设→设备、元件安装→系统调试→系统试运行→系统检测→系统验收。","k":"深化采购，管线设备，调试试运行，检测验收","s":"P77"},{"id":4,"g":"施工程序","q":"用户电话交换系统、综合布线系统、有线电视系统的施工程序分别是什么？","a":"用户电话交换系统：管路敷设→线缆敷设→设备安装→线缆接线→系统调试→试运行→系统验收。\n综合布线系统：导管、槽盒安装→机柜、机架、配线架的安装→线缆敷设→链路或信道测试→信息插座安装→软件安装→系统调试→试运行→系统验收。\n有线电视系统：线管安装→线缆敷设→放大器安装→终端插座、分配器及分支器安装→系统调试→试运行→系统验收。","k":"","s":"P77–78"},{"id":5,"g":"施工程序","q":"公共广播系统、建筑设备监控系统、火灾自动报警系统、安全技术防范系统的施工程序分别是什么？","a":"公共广播系统：导管、槽盒安装→线缆敷设→扬声器安装→设备接线→中心设备安装→系统调试→试运行→系统验收。\n建筑设备监控系统：导管、槽盒安装→监控箱安装→线缆敷设→监控设备安装接线→监控设备通电调试→系统试运行→系统验收。\n火灾自动报警系统：材料、设备检验→导管、槽盒安装→线缆敷设→设备安装→软件安装→系统调试→试运行→系统验收。\n安全技术防范系统：导管、槽盒安装→线缆敷设→设备安装→系统调试→试运行→系统检测→系统验收。","k":"","s":"P78"},{"id":6,"g":"深化验收","q":"建筑智能化系统施工深化设计有哪些要求？","a":"（1）深化设计时应根据建筑设备监控管理特点、监控要求以及监控分布等，确定监控系统整体结构，进行设备产品选择。\n（2）监控设备的型号、规格应符合设计要求和国家标准，并考虑产品的品牌、产地、应用实践、供货渠道和供货周期，产品支持的系统规模及监控距离，产品的网络性能及标准化程度等信息，各系统的设备接口必须相匹配。\n（3）了解建筑的结构情况、机电设备及管线位置、控制方式和技术要求等；做好智能化系统与建筑结构、建筑装饰、建筑给水排水、建筑电气、通风空调与供暖、电梯和消防等工程的工序交接和接口确认工作。\n（4）明确智能化系统监控设备和被监控设备的安装范围，避免施工过程中出现施工范围不明确、责任划分不清的情况。\n（5）确定监控系统涉及的机电设备及管路的安装位置，监控系统的管线敷设、穿线和接线的工作，设备调试及相互的配合方式。","k":"","s":"P78"},{"id":7,"g":"深化验收","q":"智能化设备、材料进场验收有什么要求？","a":"设备、材料的型号、规格及主要技术参数和性能等应符合设计要求，应有产品合格证，检测报告，安装、使用及维护说明书等；进口设备还应提供原产地证明、商检证明、中文版的安装使用及维护说明书。检查外表无损伤，填写进场验收记录，并封存相关器件和线缆样品。\n设备、材料的检测重点应包括安全性、可靠性及电磁兼容性等项目。对不具备现场检测条件的设备材料，可要求第三方检测并出具检测报告。线缆应抽检电气性能指标；光缆应抽检光纤性能指标；并做好记录。","k":"合格证、检测报告、说明书；进口加原产地、商检","s":"P78"},{"id":8,"g":"深化验收","q":"接口技术文件、接口测试文件各应包括哪些内容？监控系统与建筑设备的接口通信有什么要求？","a":"接口技术文件应符合合同要求，应包括接口概述、接口框图、接口位置、接口类型与数量、接口通信协议、数据流向和接口责任边界等内容。\n接口测试文件应符合设计要求，应包括测试链路搭建、测试用仪器仪表、测试方法、测试内容和测试结果评判等内容。\n监控系统与建筑设备实现接口方式的通信，必须约定通信协议。例如，变配电设备、发电机组、电梯设备等应提供设备的通信接口、通信协议和接口软件，以通信方式与监控系统相连。建筑设备还可以通过干接点信号发送设备的运行状态，与监控系统进行通信。","k":"协议必约定","s":"P78–79"},{"id":9,"g":"线缆施工","q":"弱电线缆敷设有哪几条一般规定？","a":"弱电线缆和电力电缆平行敷设时，其间距不得小于0.3m；弱电线缆与电力电缆交叉敷设时，宜成直角；多芯线缆的最小弯曲半径应大于其外径的6倍。\n弱电线缆应单独穿管敷设；当低电压供电时，弱电线缆可与电源线同管敷设。\n明敷的弱电线缆与具有强磁场、强电场的电气设备之间的净距离宜大于1.5m；当采用屏蔽线缆或穿金属保护管或在金属封闭线槽内敷设时，宜大于0.8m。\n在沟内敷设时，应敷设在支架上或线槽内。弱电线缆在沟内支架上敷设时，弱电线缆应敷设在最下层支架。","k":"平行零点三，交叉成直角，多芯六倍，明敷一点五/零点八","s":"P79"},{"id":10,"g":"线缆施工","q":"双绞线敷设及终接预留有什么要求？","a":"双绞线敷设不得产生扭绞、打圈等现象，不应受外力挤压；线缆敷设路由中不得接头。屏蔽双绞线的屏蔽层端到端应保持完好的导通性，不应受到拉力。\n敷设时应有余量以适应成端、终接、检测和变更。双绞线在终接处预留长度：工作区信息插座底盒内宜为30~60mm，电信间宜为0.5~2m，设备间宜为3~5m。\n非屏蔽和屏蔽4对双绞线缆的弯曲半径不应小于线缆外径的4倍。\n布线系统信道水平线缆长度不大于90m。","k":"底盒三五十毫米，电信间半到两米，设备间三到五米；信道九十米","s":"P79"},{"id":11,"g":"线缆施工","q":"同轴线缆敷设及规格选用有什么要求？","a":"同轴线缆的衰减、屏蔽、防潮等性能应满足设计要求，并符合相应产品标准要求。同轴电缆应一线到位，中间无接头；同轴电缆的最小弯曲半径应大于其外径的15倍。\n室外线路宜选用外导体内径为9mm的同轴电缆；室内线路宜选用外导体内径为5mm或7mm的同轴电缆；机房设备间的连接线宜选用外导体内径为3mm或5mm的同轴电缆。电梯轿厢的视频同轴电缆应选用电梯专用电缆。","k":"外九，内五七，机房三五，十五倍","s":"P79"},{"id":12,"g":"线缆施工","q":"光缆敷设的预留长度、弯曲半径、牵引要求是什么？","a":"光缆敷设路由宜盘留，预留长度宜为3~5m。光缆在大楼配线柜处预留长度应为3~5m，在楼层配线箱处预留光纤长度应为1.0~1.5m，房间配线箱终接时预留长度应不小于0.5m。\n光缆长距离传输时宜采用单模光纤，距离较短时宜采用多模光纤。\n光缆敷设前，应对光纤进行检查：光纤应无断点，其衰耗值应符合设计要求；核对光缆长度，并应根据施工图的敷设长度来选配光缆。\n敷设光缆时，其最小动态弯曲半径应大于光缆外径的20倍。光缆的牵引端头应做好技术处理，可采用自动控制牵引力的牵引机进行牵引；牵引力应加在加强芯上，其牵引力不应超过光缆允许张力的80%；牵引速度宜为10m/min；一次牵引的直线长度不宜超过1km，光纤接头的预留长度不应小于8m。\n光缆敷设后，应检查光纤有无损伤，并对光缆敷设损耗进行抽测；确认没有损伤后，再进行接续。光缆敷设完毕后，宜测量通道的总损耗，并用光时域反射计观察光纤通道全程波导衰减特性曲线。","k":"二十倍、八十、十米、一千米、八米","s":"P79–80"},{"id":13,"g":"监控设备","q":"中央监控设备安装有什么要求？","a":"中央监控设备应在控制室装饰工程完工后进行安装。外观检查应无损伤，设备型号、规格和接口符合设计要求，设备安装平稳牢固，操作方便，接地可靠。\n设备之间的连接电缆型号和连接应正确整齐，并做好标识。\n承重大于600kg/m²的设备应单独制作设备基座，不应直接安装在抗静电地板上，底座大小与控制台（柜）相同，用角钢制作，高度与防静电地板上标高一致。","k":"装饰完工后，六百做基座","s":"P80"},{"id":14,"g":"监控设备","q":"现场控制器、现场控制箱的安装有什么要求？","a":"现场控制器处于监控系统的中间层，向上连接中央监控设备，向下连接各监控点的传感器和执行器。\n现场控制器一般安装在现场控制箱内，控制箱一般设置在弱电竖井、冷冻机房、配电间等需监控的机电设备附近。\n现场控制箱安装包括箱体、控制器本体及扩展模块、空开保险及变压器、继电器、箱内线槽及接线端子等。\n现场控制箱内二次线路的线间和线对地间绝缘电阻值必须大于1MΩ。二次回路连线应绑扎成束，不同电压等级、交流、直流线路及计算机控制线路应分别绑扎且标识清楚。接线应制作编号且清晰、工整、不易脱色。","k":"中间层；绝缘大于一兆欧","s":"P80"},{"id":15,"g":"监控设备","q":"传感器（主要输入设备）安装有哪些要求？","a":"各类传感器应装在能正确反映其检测性能的位置，并远离有强磁场或剧烈振动的场所，而且便于调试和维护。\n风管型传感器安装应在风管保温层完成后进行。\n水管型传感器开孔与焊接工作，必须在管道的压力试验、清洗、防腐和保温前进行。\n传感器至现场控制器之间的连接应符合设计要求。镍温度传感器的接线电阻应小于3Ω，铂温度传感器的接线电阻应小于1Ω，并在现场控制器侧接地。\n电磁流量计应安装在流量调节阀的上游，流量计的上游应有10倍管径长度的直管段，下游应有4~5倍管径长度的直管段。\n涡轮式流量传感器应水平安装，流体的流动方向必须与传感器壳体上所示的流向标志一致。\n空气质量传感器的安装位置，应选择能正确反映空气质量状况的地方。","k":"风管保温后，水管试压前；镍三铂一；上游十倍、下游四五倍管径","s":"P80"},{"id":16,"g":"监控设备","q":"电磁阀、电动调节阀、电动风阀控制器的安装有什么要求？","a":"电磁阀、电动调节阀安装前，应按说明书规定检查线圈与阀体间的电阻，进行模拟动作试验和压力试验。阀门外壳上的箭头指向应与水流方向一致。\n电动风阀控制器安装前，应检查线圈和阀体间的电阻、供电电压、输入信号等是否符合要求，宜进行模拟动作检查。","k":"先查电阻，再模拟动作","s":"P80"},{"id":17,"g":"安防设备","q":"入侵报警设备（探测器、报警主机）安装有哪些要求？","a":"探测器应安装牢固，探测范围内应无障碍物。\n被动红外探测器安装时应注意探测背景的红外辐射情况，应避免有运动的物体，不能对着发热体的灯具光源、火炉、冰箱散热器、空调器的出风口，且不能安装在容易振动的物体上，宜安装在墙面或墙角，安装高度通常为2.2~2.7m。\n主动红外线探测器安装在室外时，要注意警戒范围内的树叶、纸张等干扰物；应安装在固定的物体上，接收端应避开太阳直射光，避免其他大功率灯光直射，应顺光方向安装。\n超声波移动探测器安装时：防范区域要求密封，不随外界因素而晃动，室内不应有流动空气；墙应有较好的隔声性能；固定安装探测器时应有防盗防拆措施。\n振动探测器安装位置应远离电机、水泵和水箱等振动源；安装位置的墙体应为混凝土墙体，如果是二次结构墙，应增加墙体钢板后再安装。\n报警主机通常安装于监控中心机房内，可壁挂于墙面或摆放于机柜内，24h均有人值班；控制器的操作、显示面板应避开阳光直射，确保机房内无高温、高湿、尘土、腐蚀气体，不受振动、冲击等影响；主机机箱应具有防拆、防短路、短路报警等功能。","k":"被动红外二点二到二点七米","s":"P81"},{"id":18,"g":"安防设备","q":"视频监控设备安装有哪些要求？","a":"安装前应通电检测，工作应正常。在满足监视目标视场范围要求下，室内安装高度距地不宜低于2.5m，室外安装高度距地不宜低于3.5m，应考虑防雷、防雨措施。\n摄像机及其配套装置（镜头、防护罩、支架等）安装应牢固，运转应灵活。\n视频线、控制线和电源线外露部分应用软管保护，并不影响云台的转动。\n云台的安装应牢固，转动时无晃动，云台的转动角度范围应满足要求。","k":"室内二点五，室外三点五","s":"P81"},{"id":19,"g":"安防设备","q":"出入口控制、对讲、电子巡查设备的安装高度有什么要求？","a":"出入口控制设备：各类识读装置的安装高度离地均不宜高于1.5m；感应式读卡机安装时应注意可感应范围，安装位置不得靠近高频、强磁场、潮湿、有腐蚀性等恶劣环境；电控锁安装应符合产品技术要求，安装应牢固，启闭应灵活。\n对讲设备：对讲主机（门口机）可安装在单元防护门上或墙体主机预埋盒内，操作面板的安装高度离地不宜高于1.5m，操作面板应面向访客；对讲分机（用户机）安装位置宜选择在住户室内墙上，其高度离地1.4~1.6m；联网型对讲系统的管理机宜安装在监控中心或小区出入口的值班室内。\n电子巡查设备：在线巡查或离线巡查的信息采集点（巡查点）的数目应符合设计与使用要求，其安装高度离地1.3~1.5m。","k":"读卡/主机一点五，分机一点四到一点六，巡查一点三到一点五","s":"P81–82"},{"id":20,"g":"安防设备","q":"停车库（场）管理设备安装有什么要求？","a":"读卡机与挡车器安装应平整、牢固，读卡机与挡车器的中心间距应符合设计要求或产品使用要求；应考虑防水及防撞措施。\n感应线圈埋设位置与埋设深度应符合设计要求或产品使用要求；感应线圈至机箱处的线缆应采用金属管保护。\n信号指示器安装：车位状况信号指示器应安装在车道出入口的明显位置；车位引导显示器应安装在车道中央上方，便于识别与引导。","k":"","s":"P82"},{"id":21,"g":"综合布线","q":"综合布线系统机柜和信息插座的安装有什么要求？","a":"机柜数量规划应计算配线设备、网络设备、电源设备及理线等设施的占用空间，并考虑设备安装空间冗余和散热需要。机柜单排安装时，前面净空不应小于1000mm，后面及机列侧面净空不应小于800mm；多排安装时，列间距不应小于1200mm。\n暗装在地面上的信息插座盒应满足防水和抗压要求，工业环境中的信息插座可带有保护壳体。暗装或明装在墙体或柱子上的信息插座距地高为0.3m，安装在工作台侧隔板面及临近墙面上的信息插座距地宜为1.0m。","k":"前一千，后八百，列距一千二；墙柱零点三，工作台一米","s":"P82"},{"id":22,"g":"调试检测","q":"建筑智能化系统调试检测的一般技术要求是什么？","a":"已编制完成调试方案、设备平面布置图、线路图以及其他技术文件。系统调试检测应在系统试运行合格后进行。系统检测不合格时，应限期对不合格项进行整改，并重新检测，直至检测合格；重新检测时抽检应扩大范围。\n智能化集成系统调试检测应在被集成系统调试检测完成后进行；调试检测应在服务器和客户端分别进行，检测点应包括每个被集成系统。\n检测报警监视及处理功能时，应模拟报警信号，报警信息显示应正确，信息显示响应时间应符合设计要求。\n检测控制和调节功能时，应在服务器和客户端分别输入设置参数，调节和控制效果应符合设计要求；各被集成系统应全部检测，全部符合设计要求的应为检测合格。\n检测联动配置及管理功能时，应逐项模拟触发信号，所有被集成系统的联动动作均应安全、正确、及时和无冲突。","k":"试运行合格后；不合格整改重检并扩大范围","s":"P82"},{"id":23,"g":"调试检测","q":"系统调试检测的管理要求和检测记录有什么规定？","a":"依据工程技术文件和规范规定的检测项目、检测数量及检测方法编制系统检测方案，检测方案经建设单位或项目监理批准后实施。\n系统检测程序：分项工程→子分部工程→分部工程。\n系统检测合格后，填写分项工程检测记录、子分部工程检测记录和分部工程检测汇总记录。\n上述记录由检测小组填写，检测负责人做出检测结论，监理（建设）单位的监理工程师（项目专业技术负责人）签字确认。","k":"分项→子分部→分部","s":"P82–83"},{"id":24,"g":"调试检测","q":"有线电视系统、公共广播系统检测有什么要求？","a":"有线电视系统：器材进场验收时，应检查国家相关的管理部门或有资质的检测机构颁发的有效认证标识；主观评价和客观测试的测试点数量应符合规范规定。\n公共广播系统：检测时应打开广播分区的全部广播扬声器，测量点宜均匀布置；紧急广播中包括火灾应急广播功能时，还应检测紧急广播具有最高级别的优先权、紧急广播向相关广播区域播放警示信号/警报语声或实时指挥语声的响应时间、音量自动调节功能；检测公共广播系统的声场不均匀度、漏出声衰减及系统设备信噪比符合设计要求；检查扬声器位置，应分布合理，符合设计要求。","k":"全开扬声器，紧急广播最高优先权","s":"P83"},{"id":25,"g":"调试检测","q":"安全防范系统调试检测中，综合管理系统和报警系统的检测内容有哪些？","a":"列入国家强制性认证产品目录的安全防范产品，应检查产品的认证证书或检测报告。\n安全防范综合管理系统的功能检测内容：①监控图像、报警信息及其他信息记录的质量和保存时间；②与火灾自动报警系统和应急响应系统的联动、报警信号的输出接口；③安全技术防范系统中的各子系统对监控中心控制命令的响应准确性和实时性。\n报警系统调试检测：①检查及调试系统所采用探测器的探测范围、灵敏度、误报警、漏报警、报警状态后的恢复、防拆保护等功能与指标，应符合设计要求；②检查控制器的本地及异地报警、防破坏报警、布撤防、报警优先、自检及显示等功能，应符合设计要求；③检查紧急报警时系统的响应时间，应基本符合设计要求。","k":"先查认证证书","s":"P83"},{"id":26,"g":"调试检测","q":"视频监控系统调试检测有哪些内容？","a":"①检查及调试摄像机的监控范围、聚焦、环境照度与抗逆光效果等，使图像清晰度、灰度等级达到系统设计要求。\n②检查并调整对云台、镜头等的遥控功能，排除遥控延迟和机械冲击等不良现象，使监视范围达到设计要求。\n③检查并调整视频切换控制主机的操作程序、图像切换、字符叠加等功能，保证工作正常，满足设计要求。\n④检查与调试监视图像与回放图像的质量，在正常工作照明环境条件下，监视图像质量不应低于国家现行标准规定或能辨别人的面部特征。\n⑤当系统具有报警联动功能时，应检查与调试自动开启摄像机电源、自动切换音视频到指定监视器、自动实时录像等功能。\n⑥系统应叠加摄像时间、摄像机位置（含电梯、楼层显示）的标识符，并显示稳定。","k":"","s":"P83–84"},{"id":27,"g":"调试检测","q":"出入口控制、对讲、电子巡查、停车库（场）管理系统调试检测各检测什么？","a":"出入口控制系统：①对读卡机在使用不同类型的卡时，调试其开门、关门、提示、记忆等判别与处理功能；②调试出入口控制系统与报警、电子巡查等系统间的联动与集成功能；③对采用各种生物识别技术装置（如指纹、视网膜、声控等）的出入口控制系统的调试，应按系统设计文件及产品说明书进行。\n对讲系统：检查与调试系统的选呼、通话、电控开锁、紧急呼叫等功能；对具有报警功能的复合型对讲系统，还应检查与调试安装的探测器、各种前端设备的警戒功能，并检查布防、撤防及报警信号畅通等功能。\n电子巡查系统：①检查在线式信息采集点的可靠性、实时巡查与预置巡查的一致性，并查看记录、存储信息以及在发生不到位时的即时报警功能；②检查离线式电子巡查系统，确保信息钮的信息正确以及数据的采集、统计、打印等功能正常。\n停车库（场）管理系统：检查与调试系统车位显示、行车指示、入口处出票与出口处验票、计费与收费显示、车牌或车型识别以及意外情况发生时向外报警等功能。","k":"","s":"P83"},{"id":28,"g":"调试检测","q":"安全防范系统集成方式的调试、建筑设备监控系统调试检测各有什么内容？","a":"系统集成方式的调试：安全技术防范系统的各子系统应先独立调试检测、运行；然后再将监控中心设备与各子系统设备联网，进行系统总调，并模拟实施监控中心对整个系统进行管理和控制、显示与记录各子系统的运行状况及处理报警信息数据等功能。\n建筑设备监控系统调试检测：\n（1）变配电系统：①电源及主供电回路电流值显示、电压值显示、功率因数测量、电能计量等；②变压器和高、低压开关运行状况及故障（超温）报警；③应急发电机组供电电流、电压及频率和储油罐液位监视，故障报警；④不间断电源工作状态、蓄电池组及充电设备工作状态检测。\n（2）锅炉机组：锅炉出口热水温度、压力、流量、热源系统功能检测，热交换系统功能检测。","k":"","s":"P83–84"},{"id":29,"g":"调试检测","q":"建筑设备监控系统调试检测中，冷冻冷却水、通风空调、公共照明、给排水、电梯监测、能耗监测各检测什么？","a":"冷冻和冷却水系统调试检测：冷水机组、冷却水泵、冷冻水泵、电动阀门和冷却塔功能检测。\n通风空调系统调试检测：①通过风阀的自动调节来控制空调系统的新风量以及送风风量的大小；②通过水阀的自动调节来控制送风温度（回风温度）达到设定值；③通过加湿阀的自动调节来控制送风相对湿度（回风相对湿度）达到设定值；④通过过滤网的压差开关报警信号来判断是否需要清洗或更换过滤网；⑤监控风机故障报警及相应的安全联锁控制、电气联锁以及防冻联锁控制等。\n公共照明控制系统调试检测：①不同区域的照明设备分别进行开、关控制，利用计算机对公共照明开、关进行监视，满足必要的照明要求；②以光照度、时间等为控制依据对公共照明设备（场景照明、景观照明、走廊照明）进行监控检测。\n给水系统、排水系统和中水系统：调试检测液位、压力参数及水泵运行状态；自动调节水泵转速；水泵投运切换；故障报警及保护。\n电梯和自动扶梯监测系统：检测启停、上下行、位置、故障等运行状态显示功能。\n能耗监测系统：检测能耗数据的显示、记录、统计、汇总及趋势分析等功能。","k":"","s":"P85"}];
+
+const EXAM = [{"type":"正向","cardIds":[9],"q":"弱电线缆敷设的一般要求有哪些？","answer":"弱电线缆和电力电缆平行敷设时，其间距不得小于0.3m；弱电线缆与电力电缆交叉敷设时，宜成直角；多芯线缆的最小弯曲半径应大于其外径的6倍。\n弱电线缆应单独穿管敷设；当低电压供电时，弱电线缆可与电源线同管敷设。\n明敷的弱电线缆与具有强磁场、强电场的电气设备之间的净距离宜大于1.5m；当采用屏蔽线缆或穿金属保护管或在金属封闭线槽内敷设时，宜大于0.8m。\n在沟内敷设时，应敷设在支架上或线槽内；弱电线缆在沟内支架上敷设时，应敷设在最下层支架。","keys":["0.3","1.5","0.8","直角","最下层"],"need":3},{"type":"正向","cardIds":[15],"q":"传感器（主要输入设备）的安装有哪些要求？","answer":"各类传感器应装在能正确反映其检测性能的位置，并远离有强磁场或剧烈振动的场所，而且便于调试和维护。\n风管型传感器安装应在风管保温层完成后进行。\n水管型传感器开孔与焊接工作，必须在管道的压力试验、清洗、防腐和保温前进行。\n镍温度传感器的接线电阻应小于3Ω，铂温度传感器的接线电阻应小于1Ω，并在现场控制器侧接地。\n电磁流量计应安装在流量调节阀的上游，流量计的上游应有10倍管径长度的直管段，下游应有4~5倍管径长度的直管段。\n涡轮式流量传感器应水平安装，流体的流动方向必须与传感器壳体上所示的流向标志一致。","keys":["强磁场","风管保温层","压力试验","3Ω","1Ω","10倍"],"need":4},{"type":"选择","cardIds":[10],"q":"综合布线系统信道水平线缆的敷设长度不应大于（　）。","options":["90m","80m","100m","120m"],"correct":0,"why":"教材 P79：布线系统信道水平线缆长度不大于 90m。另注意双绞线在终接处的预留长度：工作区信息插座底盒内 30~60mm、电信间 0.5~2m、设备间 3~5m，不要与信道长度混淆。"},{"type":"选择","cardIds":[13,17,18],"q":"关于建筑智能化设备安装，下列说法错误的是：","options":["中央监控设备应在控制室装饰工程完工后进行安装","承重大于 600kg/m² 的中央监控设备应单独制作设备基座，不应直接安装在抗静电地板上","视频监控摄像机室内安装高度距地不宜低于 2.5m，室外不宜低于 3.5m","被动红外探测器安装高度通常为 1.2~1.5m"],"correct":3,"why":"教材 P81：被动红外探测器宜安装在墙面或墙角，安装高度通常为 2.2~2.7m，不是 1.2~1.5m。A、B 见 P80，C 见 P81，均为教材原文。"},{"type":"反向","cardIds":[9,10,11,12],"q":"说出这些数字对应的要求：\n0.3m　／　6 倍　／　90m　／　20 倍","answer":"0.3m —— 弱电线缆与电力电缆平行敷设时的最小间距；\n6 倍 —— 多芯线缆的最小弯曲半径应大于其外径的 6 倍；\n90m —— 布线系统信道水平线缆长度上限（不大于 90m）；\n20 倍 —— 光缆敷设时的最小动态弯曲半径应大于光缆外径的 20 倍。","keys":["0.3","6倍","90","20倍"],"need":3},{"type":"场景","cardIds":[10,12,21],"q":"某办公楼综合布线施工：机柜单排安装；双绞线水平线缆长度 95m；光缆一次牵引直线长度 1.2km，牵引速度 12m/min。请指出不妥之处，并写出教材要求。","answer":"①双绞线水平线缆 95m 不妥——教材：布线系统信道水平线缆长度不大于 90m（教材原文）。\n②光缆一次牵引直线长度 1.2km 不妥——教材：一次牵引的直线长度不宜超过 1km（教材原文）。\n③牵引速度 12m/min 偏快——教材：牵引速度宜为 10m/min（教材原文）。\n补充教材要求：光缆牵引力应加在加强芯上，其牵引力不应超过光缆允许张力的 80%；光缆最小动态弯曲半径应大于光缆外径的 20 倍；光纤接头的预留长度不应小于 8m。以上判断均按教材原文数值对照得出（对照判断属常识推断）。","keys":["90","1km","10m/min"],"need":2}];
+
+const KEY_STATUS = "erjian_sw_3_4_status";
+const KEY_PASS = "erjian_sw_3_4_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

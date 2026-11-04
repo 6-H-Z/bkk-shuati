@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 3.6 消防工程施工技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;padding:14px 14px 96px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+       background:#f5f6f8;color:#1a1a1a;max-width:640px;margin:0 auto}
+  .top{display:flex;align-items:center;gap:8px;margin:2px 0 4px}
+  h1{font-size:18px;margin:0;flex:1}
+  #gateBtn{min-height:36px;padding:0 14px;font-size:14px;font-weight:600;border-radius:9px;
+           border:1px solid #0b6bcb;background:#0b6bcb;color:#fff}
+  #gateBtn.passed{background:#1e7b4f;border-color:#1e7b4f}
+  .sub{font-size:12px;color:#666;margin:0 0 10px}
+  .badge{display:inline-block;font-size:12px;color:#1e7b4f;background:#e6f5ec;border-radius:6px;padding:2px 8px;margin-left:6px}
+  .bar{display:flex;gap:6px;font-size:12px;color:#444;margin-bottom:10px}
+  .bar span{background:#fff;border:1px solid #e3e6ea;border-radius:8px;padding:5px 6px;flex:1;text-align:center}
+  .bar b{font-size:15px;display:block;margin-top:1px}
+  .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06);
+        min-height:200px;display:flex;flex-direction:column;cursor:pointer}
+  .card:active{background:#fafbfc}
+  .tag{font-size:12px;color:#0b6bcb;background:#e8f2ff;border-radius:6px;padding:3px 8px;align-self:flex-start;margin-bottom:10px}
+  .q{font-size:18px;line-height:1.6;font-weight:600;white-space:pre-wrap}
+  .a{margin-top:14px;padding-top:14px;border-top:1px dashed #dde1e6;font-size:16px;line-height:1.7;color:#0f4c81;white-space:pre-wrap}
+  .kk{margin-top:12px;padding:9px 11px;background:#fff8e6;border-left:3px solid #f0b429;border-radius:6px;
+      font-size:15px;line-height:1.6;color:#7a5b00}
+  .hint{margin-top:12px;font-size:12px;color:#9aa0a8}
+  .src{margin-top:auto;padding-top:10px;font-size:12px;color:#8a8f98}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e3e6ea;
+        padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:16px;border-radius:10px;border:1px solid #d8dde3;
+               background:#fff;color:#222;font-weight:600}
+  #flip{background:#0b6bcb;color:#fff;border-color:#0b6bcb;flex:1.3}
+  #bad{color:#c0392b;border-color:#f0c4bd}
+  #good{color:#1e7b4f;border-color:#bfe3ce}
+  .tools{display:flex;gap:8px;margin-top:10px;font-size:13px;flex-wrap:wrap}
+  .tools button{min-height:34px;font-size:13px;font-weight:400;color:#555;background:#fff;
+                border:1px solid #d8dde3;border-radius:8px;padding:0 12px}
+  .tools button.on{background:#e8f2ff;border-color:#0b6bcb;color:#0b6bcb;font-weight:600}
+  .tools .nav{margin-left:auto}
+  footer{margin-top:14px;font-size:12px;color:#8a8f98;line-height:1.6}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:8px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:12px 14px;font-size:15px;
+       line-height:1.5;border:1px solid #d8dde3;border-radius:10px;background:#fff;color:#222}
+  .opt.ok{background:#e6f5ec;border-color:#1e7b4f;color:#14532d;font-weight:600}
+  .opt.no{background:#fdecea;border-color:#c0392b;color:#7f1d1d}
+  #exInput{width:100%;margin-top:12px;padding:12px;font-size:15px;line-height:1.6;
+           border:1px solid #d8dde3;border-radius:10px;font-family:inherit;background:#fff;resize:vertical}
+  #exInput:focus{outline:none;border-color:#0b6bcb}
+  .why{margin-top:10px;font-size:14px;line-height:1.7;color:#444;background:#f7f8fa;border-radius:8px;padding:10px 12px;white-space:pre-wrap}
+  .exDock{display:flex;gap:8px;margin-top:14px}
+  .exDock button{flex:1;min-height:46px;font-size:15px;border-radius:10px;border:1px solid #d8dde3;background:#fff;font-weight:600}
+  .exDock button.primary{background:#0b6bcb;color:#fff;border-color:#0b6bcb}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>3.6 消防工程施工技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P94–102（本页 P94–101）· 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P94–101。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"分部分项", q:"消防工程包含哪些子分部/分项系统？（列出主要类别）", a:"消防给水及消火栓系统、自动喷水灭火系统、水喷雾灭火系统、细水雾灭火系统、固定消防炮灭火系统、自动跟踪定位射流灭火系统、气体灭火系统、泡沫灭火系统、干粉灭火系统、防烟排烟系统、火灾自动报警及消防联动控制系统。", k:"水·喷·炮·气·泡·粉·烟·报", s:"P94–95"},
+  {id:2, g:"程序", q:"消火栓系统施工程序？", a:"干管安装→立管安装→支管安装→箱体稳固→附件安装→强度和严密性试验→冲洗→系统调试。", k:"干立支箱附，试冲调", s:"P95"},
+  {id:3, g:"程序", q:"自动喷水灭火系统施工程序？", a:"干管→报警阀→立管→分层干、支管→喷头支管→管道试压→管道冲洗→减压装置→报警阀配件及其他组件→喷头安装→系统通水调试。", k:"干报立分支，试冲减组喷", s:"P95"},
+  {id:4, g:"程序", q:"水喷雾灭火系统施工程序？", a:"支吊架制作安装→管道安装→管道冲洗→管道试压→吹扫→喷头安装→控制阀组部件安装→系统调试。", s:"P95"},
+  {id:5, g:"程序", q:"细水雾灭火系统施工程序？", a:"储水储气瓶组的安装→泵组及控制柜安装→管道安装→管道试压、冲洗、吹扫→细水雾喷头安装→系统调试。", s:"P95"},
+  {id:6, g:"程序", q:"气体、泡沫、干粉灭火系统施工程序？", a:"设备和组件安装→管道安装→管道试压→吹扫→系统调试。", k:"设备管道，试吹调", s:"P96"},
+  {id:7, g:"程序", q:"防排烟系统施工程序？", a:"支吊架制作安装→风管制作安装→风管严密性试验→风机及阀部件安装→防排烟风口安装→单机试运行→系统调试。", k:"支风严，机阀口，单机调", s:"P96"},
+  {id:8, g:"程序", q:"火灾自动报警及联动控制系统施工程序？", a:"线管敷设→线缆敷设→线缆连接→绝缘测试→设备安装→单机调试→系统调试→系统检测、验收。", k:"管线连绝，设单调检收", s:"P96"},
+  {id:9, g:"给水消火栓", q:"消防水池、水箱的进出水管有什么要求？", a:"钢筋混凝土消防水池和消防水箱的进水管、出水管应加设防水套管；钢板等制作的消防水池和消防水箱的进出水管宜采用法兰连接；对有振动的管道应加设柔性接头。", s:"P96"},
+  {id:10, g:"给水消火栓", q:"消防水泵出水管上应安装什么？系统总出水管呢？", a:"消防水泵出水管上应安装止回阀、控制阀和压力表；系统的总出水管上还应安装压力表和压力开关；安装压力表时应加设缓冲装置。", s:"P96"},
+  {id:11, g:"给水消火栓", q:"消防水泵接合器的安装顺序？", a:"按接口、本体、连接管、止回阀、安全阀、放空管、控制阀的顺序进行；止回阀的安装方向应使消防用水能从消防水泵接合器进入系统。", k:"接本连止安放控", s:"P96"},
+  {id:12, g:"给水消火栓", q:"地下式消火栓的安装要求？", a:"顶部进水口或顶部出水口应正对井口；顶部进水口或顶部出水口与消防井盖底面的距离不应大于 0.4m。", s:"P96"},
+  {id:13, g:"给水消火栓", q:"室内消火栓栓口的安装要求？", a:"不应安装在门轴侧；栓口中心距地面应为 1.1m；允许偏差为 ±20mm。", k:"不门轴，一米一，正负二十", s:"P96"},
+  {id:14, g:"给水消火栓", q:"室内消火栓安装完成后，试射试验怎么做？", a:"取屋顶层（或水箱间内）试验消火栓和首层取两处消火栓做试射试验，达到设计要求为合格。", s:"P96"},
+  {id:15, g:"给水消火栓", q:"消火栓系统调试包括哪些内容？", a:"水源调试和测试；消防水泵调试；稳压泵或稳压设施调试；减压阀调试；消火栓调试；自动控制探测器调试；干式消火栓系统的报警阀等快速启闭装置调试；报警阀附件电动阀或电磁阀等阀门调试；排水设施调试；联锁控制试验。", s:"P96"},
+  {id:16, g:"自动喷水", q:"自动喷水灭火系统管道横向安装的坡度要求？", a:"宜设 2‰~5‰ 的坡度，且应坡向排水管；当局部区域难以利用排水管将水排净时，应采取相应的排水措施。", k:"千分之二到五，坡向排水", s:"P96"},
+  {id:17, g:"自动喷水", q:"洒水喷头与顶板距离多少？安装前提和工具限制？", a:"直立型、下垂型洒水喷头与顶板的距离应为 75~150mm；闭式喷头安装前应进行密封性能试验；喷头安装必须在系统试压、冲洗合格后进行；应使用专用扳手，严禁利用喷头的框架施拧。", k:"七五到一五零", s:"P96"},
+  {id:18, g:"自动喷水", q:"报警阀组什么时候安装？安装顺序？", a:"应在供水管网试压、冲洗合格后进行；安装时应先安装水源控制阀、报警阀，然后进行报警阀辅助管道的连接。", s:"P96"},
+  {id:19, g:"自动喷水", q:"水流指示器的安装要求？", a:"应使电器元件部位竖直安装在水平管道上侧，其动作方向应和水流方向一致。", s:"P97"},
+  {id:20, g:"自动喷水", q:"自动喷水灭火系统调试包括哪些？", a:"水源测试；消防水泵调试；稳压泵调试；报警阀调试；排水设施调试；联动试验。", s:"P97"},
+  {id:21, g:"水喷雾", q:"水喷雾系统雨淋报警阀组的安装要求？", a:"应在供水管网试压、冲洗合格后进行；安装时应先安装水源控制阀、雨淋报警阀，再进行辅助管道连接；水源控制阀、雨淋报警阀与配水干管的连接应使水流方向一致。", s:"P97"},
+  {id:22, g:"细水雾", q:"细水雾喷头与管道连接有什么禁忌？", a:"宜采用端面密封或 O 型圈密封；不应采用聚四氟乙烯、麻丝、胶粘剂等密封材料。", s:"P97"},
+  {id:23, g:"消防炮", q:"固定消防炮系统的进场检查与调试要求？", a:"泡沫液（干粉）进场应由建设单位、监理工程师和供货方现场组织检查，并共同取样留存；消防炮安装应在供水管线系统试压、冲洗合格后进行；系统施工完毕后应做喷射功能调试。", s:"P97"},
+  {id:24, g:"气体灭火", q:"气体灭火系统的关键要求有哪些？", a:"灭火剂储存装置安装后，泄压装置的泄压方向不应朝向操作面；低压二氧化碳灭火系统的安全阀应通过专用泄压管接到室外；输送管道安装后应进行强度试验和气压严密性试验；吊顶下不带装饰罩的喷嘴连接管端螺纹不应露出吊顶，带装饰罩的喷嘴装饰罩应紧贴吊顶；调试包括模拟启动、模拟喷气、模拟切换。", s:"P97"},
+  {id:25, g:"泡沫灭火", q:"泡沫灭火系统的试压与消火栓安装要求？", a:"常压钢质泡沫液储罐应做盛水试验，试验压力为储罐装满水后的静压力，试验时间不应小于 1h，目测无渗漏；管道水压试验压力为设计压力的 1.5 倍，试验前应将泡沫产生装置、泡沫比例混合器（装置）隔离；地上式泡沫消火栓应垂直安装，其大口径出液口应朝向消防车道。", k:"一点五倍，隔离混合器", s:"P98"},
+  {id:26, g:"干粉灭火", q:"干粉灭火装置在不同场所的安装位置？", a:"电缆隧道装在顶部，喷口朝下或通过带角度调整功能的支架朝向电缆桥架；货架式仓库装在每层货架顶部，使喷口朝向货架各层；机电设备间装在设备间顶部，喷口朝向设备各表面；联动控制组件应做模拟启动试验，包括自动和手动。", s:"P98"},
+  {id:27, g:"防排烟", q:"防排烟风管的材料要求？排烟防火阀的安装要求？", a:"风管的本体、框架、固定材料、密封材料必须为不燃材料，耐火等级符合设计；排烟防火阀安装方向、位置应正确，阀门应顺气流方向关闭；防火分区隔墙两侧的防火阀距墙表面不应大于 200mm；排烟防火阀应设独立支吊架。", s:"P98"},
+  {id:28, g:"防排烟", q:"防排烟风机的基础与减振要求？", a:"应设在混凝土或钢架基础上，且不应设置减振装置；若排烟系统与通风空调系统共用且需要减振时，不应使用橡胶减振装置。", s:"P98"},
+  {id:29, g:"火灾报警", q:"火灾自动报警系统的布线要求？", a:"各类管路暗敷时应敷设在不燃结构内，且保护层厚度不应小于 30mm；火灾自动报警线应单独布线，穿入金属管内或金属线槽内；控制与显示类设备应与消防电源、备用电源直接连接，不应使用电源插头。", s:"P98"},
+  {id:30, g:"火灾报警", q:"点型感烟（感温）探测器与墙、风口的最小距离？", a:"探测器至墙壁、梁边的水平距离不应小于 0.5m；探测器周围 0.5m 内不应有遮挡物；至空调送风口边的水平距离不应小于 1.5m；至多孔送风口的水平距离不应小于 0.5m。", k:"墙梁半米，风口一米五，多孔半米", s:"P98–99"},
+  {id:31, g:"验收", q:"哪些工程属于「特殊建设工程」，需申请消防设计审查和消防验收？", a:"依据《消防法》和住建部令第 58 号，按建筑面积/类型判定：体育馆、会堂、公共展览馆、博物馆展示厅 >20000㎡；机场航站楼、车站候车室、码头候船厅 >15000㎡；宾馆、饭店、商场、市场 >10000㎡；影剧院、图书馆阅览室、室内健身休闲场馆、医院门诊楼、大学教学楼图书馆食堂、劳动密集生产加工车间 >2500㎡；托幼儿童用房、儿童游乐厅、养老院、福利院、病房楼、中小学教学楼图书馆食堂、学校集体宿舍、劳动密集员工宿舍 >1000㎡；歌舞厅、放映厅、夜总会、游艺厅、桑拿浴室、网吧、酒吧、有娱乐功能的餐馆茶馆咖啡厅 >500㎡；一类高层住宅；城市轨道交通、隧道、大型发电与变配电；易燃易爆工厂仓库车站码头、充装站供应站调压站；国家机关办公楼、电力调度楼、电信楼、邮政楼、防灾指挥调度楼、广播电视楼、档案楼；单体 >40000㎡ 或高度 >50m 的公共建筑。", k:"两万、万五、一万、两千五、一千、五百", s:"P100"},
+  {id:32, g:"验收", q:"特殊建设工程消防验收的条件？", a:"完成工程消防设计和合同约定的消防各项内容；有完整的工程消防技术档案和施工管理资料（含涉及消防的建筑材料、构配件和设备的进场试验报告）；建设单位对涉及消防的各分部分项工程验收合格，施工、设计、工程监理、技术服务等单位确认消防质量符合标准；消防设施性能、系统功能联调联试等内容检测合格。", s:"P100–101"},
+  {id:33, g:"验收", q:"特殊建设工程消防验收需提交哪些资料？", a:"消防验收申请表；工程竣工验收报告；涉及消防的建设工程竣工图纸。", s:"P101"},
+  {id:34, g:"验收", q:"消防验收的程序和时限？", a:"程序：验收受理→现场评定→出具消防验收意见；主管部门自受理消防验收申请之日起 15 日内组织消防验收，现场评定合格后签发《建筑工程消防验收意见书》。", k:"受评出，十五日", s:"P101"}
+];
+
+const EXAM = [
+  { type:"正向", cardIds:[13],
+    q:"室内消火栓栓口的安装有哪些要求？",
+    answer:"不应安装在门轴侧；栓口中心距地面应为 1.1m；允许偏差为 ±20mm。",
+    keys:["门轴","1.1","20"], need:3 },
+  { type:"选择", cardIds:[17],
+    q:"自动喷水灭火系统中，洒水喷头的安装应在（　）之后进行。",
+    options:["系统试压、冲洗合格","报警阀调试完成","系统通水调试完成","吊顶装修完成"],
+    correct:0,
+    why:"教材：喷头安装必须在系统试压、冲洗合格后进行；闭式喷头安装前还应做密封性能试验，安装时用专用扳手，严禁利用框架施拧。" },
+  { type:"选择", cardIds:[27,28],
+    q:"关于防排烟系统，下列说法错误的是：",
+    options:["风管的本体、框架、密封材料必须为不燃材料","排烟防火阀应设独立支吊架","排烟风机应设在混凝土或钢架基础上，并应设置减振装置","防火分区隔墙两侧的防火阀距墙表面不应大于 200mm"],
+    correct:2,
+    why:"教材：防排烟风机应设在混凝土或钢架基础上，且「不应设置减振装置」；与通风空调共用需要减振时，也不应使用橡胶减振装置。C 把「不应」写成了「应」。" },
+  { type:"反向", cardIds:[16,17,27,34],
+    q:"说出这些数字对应的要求：\n2‰~5‰　／　75~150mm　／　200mm　／　15 日",
+    answer:"2‰~5‰ —— 自动喷水灭火系统管道横向安装坡度，坡向排水管；\n75~150mm —— 直立型、下垂型洒水喷头与顶板的距离；\n200mm —— 防火分区隔墙两侧防火阀距墙表面的最大距离；\n15 日 —— 主管部门自受理消防验收申请之日起组织验收并签发意见书的时限。",
+    keys:["坡度","喷头","防火阀","15"], need:3 },
+  { type:"反向", cardIds:[2],
+    q:"口诀「干立支箱附，试冲调」说的是哪套系统的施工程序？把它展开。",
+    answer:"消火栓系统：干管安装→立管安装→支管安装→箱体稳固→附件安装→强度和严密性试验→冲洗→系统调试。",
+    keys:["消火栓","干管","立管","支管","箱体","附件"], need:4 },
+  { type:"场景", cardIds:[31,32],
+    q:"某商场建筑面积 12000㎡，是否属于特殊建设工程？需要办哪些消防手续？",
+    answer:"属于 —— 教材：宾馆、饭店、商场、市场建筑面积大于 10000㎡ 的，属于特殊建设工程。\n手续：应向本行政区域内住建主管部门申请消防设计审查，并在工程竣工后申请消防验收（验收需满足相应条件并提交申请表、竣工验收报告、竣工图纸）。",
+    keys:["12000","特殊","消防设计审查","验收","10000"], need:3 }
+];
+
+const KEY_STATUS = "erjian_sw_3_6_status";
+const KEY_PASS = "erjian_sw_3_6_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

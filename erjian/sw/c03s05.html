@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 3.5 电梯工程安装技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;padding:14px 14px 96px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+       background:#f5f6f8;color:#1a1a1a;max-width:640px;margin:0 auto}
+  .top{display:flex;align-items:center;gap:8px;margin:2px 0 4px}
+  h1{font-size:18px;margin:0;flex:1}
+  #gateBtn{min-height:36px;padding:0 14px;font-size:14px;font-weight:600;border-radius:9px;
+           border:1px solid #0b6bcb;background:#0b6bcb;color:#fff}
+  #gateBtn.passed{background:#1e7b4f;border-color:#1e7b4f}
+  .sub{font-size:12px;color:#666;margin:0 0 10px}
+  .badge{display:inline-block;font-size:12px;color:#1e7b4f;background:#e6f5ec;border-radius:6px;padding:2px 8px;margin-left:6px}
+  .bar{display:flex;gap:6px;font-size:12px;color:#444;margin-bottom:10px}
+  .bar span{background:#fff;border:1px solid #e3e6ea;border-radius:8px;padding:5px 6px;flex:1;text-align:center}
+  .bar b{font-size:15px;display:block;margin-top:1px}
+  .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06);
+        min-height:200px;display:flex;flex-direction:column;cursor:pointer}
+  .card:active{background:#fafbfc}
+  .tag{font-size:12px;color:#0b6bcb;background:#e8f2ff;border-radius:6px;padding:3px 8px;align-self:flex-start;margin-bottom:10px}
+  .q{font-size:18px;line-height:1.6;font-weight:600;white-space:pre-wrap}
+  .a{margin-top:14px;padding-top:14px;border-top:1px dashed #dde1e6;font-size:16px;line-height:1.7;color:#0f4c81;white-space:pre-wrap}
+  .kk{margin-top:12px;padding:9px 11px;background:#fff8e6;border-left:3px solid #f0b429;border-radius:6px;
+      font-size:15px;line-height:1.6;color:#7a5b00}
+  .hint{margin-top:12px;font-size:12px;color:#9aa0a8}
+  .src{margin-top:auto;padding-top:10px;font-size:12px;color:#8a8f98}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e3e6ea;
+        padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:16px;border-radius:10px;border:1px solid #d8dde3;
+               background:#fff;color:#222;font-weight:600}
+  #flip{background:#0b6bcb;color:#fff;border-color:#0b6bcb;flex:1.3}
+  #bad{color:#c0392b;border-color:#f0c4bd}
+  #good{color:#1e7b4f;border-color:#bfe3ce}
+  .tools{display:flex;gap:8px;margin-top:10px;font-size:13px;flex-wrap:wrap}
+  .tools button{min-height:34px;font-size:13px;font-weight:400;color:#555;background:#fff;
+                border:1px solid #d8dde3;border-radius:8px;padding:0 12px}
+  .tools button.on{background:#e8f2ff;border-color:#0b6bcb;color:#0b6bcb;font-weight:600}
+  .tools .nav{margin-left:auto}
+  footer{margin-top:14px;font-size:12px;color:#8a8f98;line-height:1.6}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:8px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:12px 14px;font-size:15px;
+       line-height:1.5;border:1px solid #d8dde3;border-radius:10px;background:#fff;color:#222}
+  .opt.ok{background:#e6f5ec;border-color:#1e7b4f;color:#14532d;font-weight:600}
+  .opt.no{background:#fdecea;border-color:#c0392b;color:#7f1d1d}
+  #exInput{width:100%;margin-top:12px;padding:12px;font-size:15px;line-height:1.6;
+           border:1px solid #d8dde3;border-radius:10px;font-family:inherit;background:#fff;resize:vertical}
+  #exInput:focus{outline:none;border-color:#0b6bcb}
+  .why{margin-top:10px;font-size:14px;line-height:1.7;color:#444;background:#f7f8fa;border-radius:8px;padding:10px 12px;white-space:pre-wrap}
+  .exDock{display:flex;gap:8px;margin-top:14px}
+  .exDock button{flex:1;min-height:46px;font-size:15px;border-radius:10px;border:1px solid #d8dde3;background:#fff;font-weight:600}
+  .exDock button.primary{background:#0b6bcb;color:#fff;border-color:#0b6bcb}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>3.5 电梯工程安装技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P85–94（本页 P85–94） · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P85–94。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [{"id":1,"g":"分部分项","q":"电梯工程的分部分项工程分别有哪些？","a":"曳引式、强制式电梯：设备进场验收，土建交接检验，驱动主机，导轨，门系统，轿厢，对重，安全部件，悬挂装置，随行电缆，补偿装置，电气装置，整机安装验收。\n液压电梯：设备进场验收，土建交接检验，液压系统，导轨，门系统，轿厢，安全部件，随行电缆，电气装置，整机安装验收。\n自动扶梯、自动人行道：设备进场验收，土建交接检验，整机安装验收。","k":"曳引13项、液压10项、扶梯3项","s":"P85"},{"id":2,"g":"分类组成","q":"电梯按用途、机械驱动方式、运行速度分别如何分类？","a":"按用途分类：可分为乘客电梯、载货电梯、客货电梯、病床电梯、住宅电梯、消防电梯、观光电梯和施工电梯等。\n按机械驱动方式分类：可分为曳引式电梯、强制式电梯、液压电梯和齿轮齿条电梯。\n按运行速度分类：可分为低速电梯（v≤1.0m/s）、中速电梯（1.0m/s<v≤2.5m/s）、高速电梯（2.5m/s<v≤6.0m/s）和超高速电梯（v>6.0m/s）。","k":"低1.0、中2.5、高6.0","s":"P85–86"},{"id":3,"g":"分类组成","q":"曳引式电梯由哪几部分组成？","a":"由机房、井道、轿厢、层站四大部分组成。从系统功能划分来看，由曳引系统、导向系统、轿厢系统、门系统、重量平衡系统、驱动系统、控制系统和安全保护系统等组成。","k":"四大部分：机房、井道、轿厢、层站","s":"P86"},{"id":4,"g":"分类组成","q":"液压电梯、齿轮齿条电梯分别由哪些部分组成？","a":"液压电梯：由液压系统、导向系统、轿厢系统、门系统、电气控制系统、安全保护系统等组成。\n齿轮齿条电梯：由轿厢、驱动机构、标准节、附墙、底盘、围栏、电气系统等组成。","k":"","s":"P86"},{"id":5,"g":"分类组成","q":"自动扶梯如何分类？由哪些主要部件组成？","a":"按驱动梯级的元件分类：链条式（指驱动梯级的元件为链条的自动扶梯，一般均采用链条驱动式结构）、齿条式（指驱动梯级的元件为齿条的自动扶梯）。\n自动扶梯主要部件有梯级、牵引链条及链轮、导轨系统、主传动系统（包括电动机、减速装置、制动器及中间传动环节等）、驱动主轴、张紧装置、扶手系统、上下盖板、梳齿板、扶梯骨架、安全装置和电气系统等。","k":"","s":"P86"},{"id":6,"g":"技术资料","q":"电梯制造厂应提供哪些资料？","a":"（1）制造许可证明文件，其范围能够覆盖所提供电梯的相应参数。\n（2）电梯整机型式检验合格证书或报告书，其内容能够覆盖所提供电梯的相应参数。\n（3）产品质量证明文件，注有制造许可证明文件编号、该电梯的产品出厂编号、主要技术参数、门锁装置、限速器、安全钳、缓冲器、含有电子元件的安全电路、轿厢上行超速保护装置、驱动主机、控制柜等安全保护装置和主要部件的型号和编号等内容，并且有电梯整机制造单位的公章或检验合格章以及出厂日期。\n（4）门锁装置、限速器、安全钳、缓冲器、含有电子元件的安全电路、轿厢上行超速保护装置、驱动主机、控制柜等安全保护装置和主要部件的型式检验合格证，以及限速器和渐进安全钳的调试证书。\n（5）机房或井道布置图，其顶层高度、底坑深度、楼层间距、井道内防护、安全距离、井道下方人可以进入空间等应满足安全要求。\n（6）电气原理图，包括动力电路、电气控制与安全装置电路。\n（7）安装使用维护说明书，包括安装、使用、日常维护保养和应急救援等方面操作说明的内容。","k":"","s":"P86–87"},{"id":7,"g":"技术资料","q":"电梯安装单位应提供哪些资料？资料为复印件时怎么办？","a":"安装单位提供的资料：（1）安装许可证和安装告知书，许可证范围能够覆盖所施工电梯的相应参数；（2）审批手续齐全的施工方案；（3）施工现场作业人员持有的特种设备作业证。\n上述文件如为复印件时，必须经电梯整机制造单位加盖公章或者检验合格章；对于进口电梯，则应当加盖国内代理商的公章。","k":"安装许可证、告知书、施工方案、特种设备作业证","s":"P87"},{"id":8,"g":"技术资料","q":"电梯的准用程序是什么？","a":"电梯安装单位自检试运行结束后，由制造单位负责进行校验和调试。电梯检验和调试符合要求，并经监督检验合格后，方可交付使用。获得准用许可后，按规定办理交工验收手续。","k":"自检→制造单位校验调试→监督检验→准用许可→交工验收","s":"P87"},{"id":9,"g":"安装程序","q":"曳引式电梯的安装程序是什么？","a":"设备进场验收→土建交接检验→井道照明安装→井道测量放线→导轨安装→曳引机（驱动主机）安装→限速器安装→机房电气安装→轿厢、安全钳及导靴安装→轿厢电气安装→缓冲器安装→对重安装→曳引钢丝绳、悬挂装置及补偿装置安装→开门机、轿门和层门安装→层站电气安装→调试检验→试运行验收。","k":"","s":"P87"},{"id":10,"g":"安装程序","q":"液压电梯、自动扶梯（自动人行道）的安装程序分别是什么？","a":"液压电梯：设备进场验收→土建交接检验→样板架安装、放线→导轨安装→千斤顶安装→液压配管→配件安装→轿厢组装→井道部件安装→调试检验→试运行验收。\n自动扶梯（自动人行道）：设备进场验收→土建交接检验→桁架吊装就位→轨道安装→扶手带等构配件安装→安全装置安装→机械调整→电气安装→调试检验→试运行验收。","k":"","s":"P87"},{"id":11,"g":"土建交接","q":"电梯土建交接验收对机房、底坑和预留孔有什么要求？","a":"（1）建设单位、监理单位、土建施工单位、电梯安装单位应共同参与对电梯井道和机房的检查，对电梯土建工程进行交接验收。每层楼面应有最终完成的地面基准标识，多台并列电梯应提供厅门口装饰基准线标识。\n（2）对电梯机房、井道、底坑土建工程进行检测鉴定；电梯机房工作区域净高不应小于2m。设备吊钩位置及承载能力应符合电梯厂家要求；吊钩安装后，应在承重梁或吊钩上标明最大允许吊装载荷。测量底坑深度及承载力是否符合图纸要求，轿厢缓冲器支座下的底坑地面应能承受满载轿厢静载4倍的作用力。\n（3）机房通向井道的预留孔设置临时盖板；厅门预留孔必须设有高度不小于1200mm的安全保护围封（安全防护门），采用左右开启方式，不能上下开启，应有足够的强度，保护围封下部应有高度不小于100mm的踢脚板。","k":"净高2m，底坑4倍，围封1200，踢脚100","s":"P87"},{"id":12,"g":"土建交接","q":"电梯机房和井道的照明有什么要求？","a":"电梯机房应安装永久电气照明，其地面上的照度不应小于200lx，开关设于靠近入口位置，照明电源应与电梯驱动主机电源分开，在周围设置一个或多个插座用于维修。机房内排风及空调等设备不宜安装在电梯驱动主机、控制柜上方。\n井道内照明电压宜采用36V安全电压，井道内照度不得小于50lx，在井道最高点和最低点0.5m各装一盏灯，中间灯间距不超过7m，并分别在机房和底坑设置控制开关。","k":"机房200lx，井道36V/50lx","s":"P87–88"},{"id":13,"g":"设备安装","q":"电梯设备进场验收检查什么？","a":"（1）检查设备、部件等与装箱单相符，设备外观不存在明显的损坏。\n（2）检查设备随机文件，包括土建布置图，产品出厂合格证，门锁装置、限速器、安全钳及缓冲器等保证电梯安全部件的型式检验证书复印件，设备装箱单，安装、使用维护说明书，动力电路、控制电路与安全电路的电气原理图。例如：电梯进场验收时，发现没有限速器的型式检验证书复印件，应在设备验收记录上记录清楚，并要求电梯供应商提供。","k":"","s":"P88"},{"id":14,"g":"设备安装","q":"电梯驱动主机安装有什么要求？","a":"（1）驱动主机承重梁应采用钢板制作，钢板厚度不应小于20mm，承重梁埋入建筑结构承重墙内的长度宜超过墙中心20mm，且不应小于75mm。承重梁安装完毕后应自检，然后上报监理单位组织验收，验收合格后承重梁两端支撑处用混凝土浇筑固定。\n（2）驱动主机吊装时，不应磕碰主机外壳，避免造成内部及外观损坏。主机安装完毕后，所有旋转部件外侧均应涂成黄色，并标明电梯运行方向的箭头及文字说明。\n（3）驱动主机减速箱内的油量应在油标所限定的范围内。驱动主机制动器动作应灵活，间隙调整符合设计要求，手动释放制动器的操作部件应涂成红色。\n（4）电梯空载或满载时，曳引轮安装后的垂直度误差应在2mm以内。\n（5）紧急操作装置动作必须正常。可拆卸的装置必须置于驱动主机附近易接近处，紧急救援操作说明必须贴于紧急操作时易见处。","k":"承重梁20/75，垂直度2mm","s":"P88"},{"id":15,"g":"导轨","q":"电梯导轨支架安装有什么要求？","a":"（1）井道测量应依据电梯厂家提供的井道布置图进行，制作样板架进行井道测量放线，测量用的线坠一般为5kg，超高层的电梯井道，可相应增加线坠的重量。\n（2）导轨支架安装，每根导轨不应少于2个支架，支架间距不宜大于2.5m。支架在井道壁上的安装应牢固。在混凝土结构上可采用膨胀螺栓固定，混凝土结构强度应符合土建布置图要求，其连接强度与承受振动力应满足电梯设计要求，导轨下端应安装在井道地面的导轨座上。\n（3）导轨采用压导板固定在支架上，支架与导轨背面之间的垫片厚度不宜超过3mm，垫片不宜超过3片；当导轨支架与导轨背面之间的垫片厚度大于3mm、小于7mm时，垫片之间要点焊；若超过7mm时，应先用与导轨宽度相同的钢板垫入，再用垫片进行调整，调整完毕后逐个拧紧压导板和导轨连接板螺栓。","k":"2个支架2.5m，垫片3mm/3片/7mm","s":"P88"},{"id":16,"g":"导轨","q":"电梯导轨安装的允许偏差和接头要求是什么？","a":"每列导轨的工作面（包括侧面和顶面）与安装基准线的允许偏差：轿厢导轨和设有安全钳的对重导轨不应大于0.6mm/5m；不设安全钳的对重导轨不应大于1.0mm/5m。两列轿厢导轨顶面间的距离允许偏差为0～+2mm，两列对重导轨顶面间的距离允许偏差为0～+3mm。\n轿厢导轨和设有安全钳的对重导轨工作面接头处不应有连续缝隙，导轨接头处台阶不应大于0.05mm。不设安全钳的对重导轨接头处缝隙不应大于1.0mm，导轨工作面接头处台阶不应大于0.15mm。可用钢板尺靠在导轨工作面上，用塞尺检查。导轨接头处修平长度应大于200mm，当电梯额定速度≥2.5m/s时，其导轨接头处修平长度应大于300mm。","k":"0.6/1.0每5米；修平200，快梯300","s":"P88–89"},{"id":17,"g":"轿厢对重","q":"电梯轿厢安装有什么要求？","a":"（1）电梯轿厢应依据制造厂图纸进行安装；安装内容：轿厢底梁、立柱、上梁、轿厢底盘、轿厢壁、轿厢顶、轿厢门机构及电气装置等。\n（2）当距轿底在1.1m以下使用玻璃轿壁时，必须在距轿底面0.9~1m的高度安装扶手，且扶手必须独立地固定，不得与玻璃相关。\n（3）电梯轿顶安装紧急停止开关时，应保证开关位置不应大于入口1m的易接近位置，并标以“停止”字样加以识别。\n（4）电梯额定速度小于或等于0.63m/s时，轿厢可采用瞬时式安全钳；速度大于0.63m/s时，轿厢应采用渐进式安全钳。轿厢装设有数套安全钳时，则应全部采用渐进式。","k":"一点一米玻璃壁，扶手零点九到一；零点六三安全钳","s":"P89"},{"id":18,"g":"轿厢对重","q":"电梯对重安装和平衡系数有什么要求？","a":"（1）对重应依据制造厂图纸依次安装对重架、对重导靴、对重块等。对重架吊装就位后，将对重块逐步加至所需重量，并用压板将对重块稳固。\n（2）电梯轿厢和对重底部补偿链安装调节时，应保证悬空部分距底坑地平面不应小于100mm，并在两端附加二次保护装置。\n（3）电梯平衡系数值应控制在40%~50%。","k":"补偿链悬空100，平衡系数40~50","s":"P89"},{"id":19,"g":"悬挂装置","q":"电梯悬挂装置钢丝绳安装有什么要求？","a":"（1）悬挂装置钢丝绳安装前，应检查有无外伤、锈蚀、断丝和变形等现象。\n（2）悬挂装置采用金属充填曳引绳头组合时，首先要清洗绳瓶锥套及折弯的钢丝绳绳头，浇注要一次性完成，浇注完成面应高出锥套10~15mm，冷却前不可移动。悬挂装置采用绳夹固定绳头时，须注意绳夹规格与钢丝绳公称直径的配合，U形螺栓夹紧方向应正确。\n（3）钢丝绳头制作安装完成后，应调节钢丝绳的张力，其张力与平均值偏差不应大于5%。悬挂装置绳端的锁紧螺母均应锁紧，并安装有锁紧销。","k":"浇注高出锥套10~15，张力偏差5%","s":"P89"},{"id":20,"g":"悬挂装置","q":"电梯随行电缆安装有什么要求？","a":"（1）扁平型随行电缆可重叠安装，重叠根数不宜超过3根，每两根之间应保持30~50mm的间距。随行电缆固定在井道壁处时，可采用电缆架或楔块形式固定。\n（2）随行电缆严禁有打结和波浪扭曲现象，随行电缆在运行中应避免与井道内其他部件碰撞。当轿厢完全压在缓冲器上时，随行电缆不得与底坑地面接触。","k":"重叠3根，间距30~50","s":"P89"},{"id":21,"g":"安全部件","q":"电梯限速器安装有什么要求？","a":"①限速器外观清洁无油污，动作速度整定封记完好，且无拆动痕迹。\n②限速器上应标有与电梯运行方向相同的上、下方向箭头及文字说明。\n③限速器安装完毕后要进行联动试验，带动轿厢安全钳动作后，曳引钢丝绳在曳引轮上应出现打滑现象。\n④绳轮的轮缘端面相对水平面的垂直度不应大于2/1000。","k":"联动试验看打滑；垂直度2/1000","s":"P89"},{"id":22,"g":"安全部件","q":"电梯安全钳、涨紧轮安装有什么要求？","a":"安全钳安装：安全钳的整定封记应完好，且无拆动痕迹。安全钳与导轨的间隙应符合电梯设计要求。\n涨紧轮安装：①底坑涨紧轮安装位置应保证当限速器绳断裂或过分伸长时，其电气安全开关能够断开使电动机停止运转；②应定期检查限速器绳是否伸长，并做相应收绳调整，保证张紧绳轮的平行度。","k":"封记完好，间隙符合设计","s":"P90"},{"id":23,"g":"安全部件","q":"电梯缓冲器安装和动作试验有什么要求？","a":"①缓冲器应无锈蚀、油路通畅，并按说明书要求注满缓冲器油。液压缓冲器柱塞铅垂度不应大于0.5%。\n②轿厢、对重的缓冲器撞板中心与缓冲器中心的偏差不应大于20mm。\n③当轿厢或对重底部使用多个缓冲器时，各缓冲器顶面与轿厢或对重之间的距离偏差不应大于2mm。缓冲器缓冲距离应依据电梯设计要求进行调整，并在井道壁上做出尺寸标记。\n④缓冲器动作试验时，其柱体从完全压缩到完全复位，时间不能大于120s，缓冲器在未恢复到正常位置前，电气开关不能复位，电梯不能启动。","k":"铅垂0.5%，偏差20，间距2，复位120s","s":"P90"},{"id":24,"g":"门系统","q":"电梯门系统安装有什么要求？","a":"（1）层门应无变形，门滑轮转动灵活。层门地坎要高出最终装饰地平面2~5mm。层门关闭后，层门下端与地坎的间隙，乘客电梯不应大于6mm，载货电梯不应大于8mm。\n（2）层门与轿厢门地坎之间水平距离偏差为0~+3mm，最大距离不应超过35mm。层门门锁锁紧后，锁紧元件啮合深度不应小于7mm。\n（3）层门的强迫关门装置必须动作正常。层门强迫关门装置安装应保证层门无论因何种原因开启，其强迫关门装置都能使层门自动关闭。例如：某电梯在门系统验收中，检查人员将层门打开到1/3行程、1/2行程或全行程时，取消外力后，层门均应自行关闭，且在门开关过程中无异常情况发生，说明该层门强迫关门装置动作正常。\n（4）开关门过程中不应有振动或撞击声响，由动力操纵的水平滑动门，在关门1/3行程之后，阻止关门的力严禁超过150N。","k":"地坎2~5，间隙6/8，啮合7，关门力150N","s":"P90"},{"id":25,"g":"电气装置","q":"电梯电气装置安装有什么要求？","a":"（1）机房和井道内应按设计要求配线，电缆可明敷于井道或机房。\n（2）电气设备、导管及线槽的外露可导电部分应当与保护线（PE）连接，接地支线应分别直接接至接地干线上，不得互相连接后再接地。\n（3）动力、控制和电气安全装置的导体之间和导体对地的绝缘电阻值不得小于0.5MΩ。","k":"绝缘不小于0.5MΩ","s":"P90"},{"id":26,"g":"整机验收","q":"电梯整机验收对保护装置、限速器、极限开关有什么要求？","a":"（1）动力电路、控制电路、安全电路必须有与负载匹配的短路保护装置；动力电路必须有过载保护装置。三相电源应有断相、错相保护功能，使电梯不发生危险故障。\n（2）限速器、安全钳、缓冲器、门锁装置必须与其型式试验证书相符。\n（3）限速器上的轿厢（或对重）下行标志必须与轿厢（或对重）的实际下行方向相符。限速器铭牌上的额定速度、动作速度必须与被检电梯相符。限速器绳张紧开关、液压缓冲器复位开关等必须动作可靠。限速器与安全钳电气开关在联动试验中必须动作可靠，且应使驱动主机立即制动。\n（4）上、下极限开关必须是安全触点，在端站位置进行动作试验时必须动作正常。在轿厢（或对重）接触缓冲器之前必须动作，且缓冲器安全压缩时，保持动作状态。上、下极限开关是限位开关不动作后的第二层保护，一旦动作将切断主电源，需要复位才能重启。其位置在井道顶层和底层，一般安装在导轨端，动作距离为50~100mm。","k":"极限开关50~100mm","s":"P90–91"},{"id":27,"g":"整机验收","q":"电梯整机验收对安全钳载荷、门锁、曳引能力和运行试验有什么要求？","a":"（5）对瞬时式安全钳，轿厢应载有均匀分布的额定载重量；对渐进式安全钳，轿厢应载有均匀分布的125%额定载重量。\n（6）层门与轿门试验时，每层层门必须能够用三角钥匙正常开启，当一个层门或轿门非正常打开时，电梯严禁启动或继续运行。\n（7）曳引式电梯的曳引能力试验时，轿厢在行程上部范围空载上行及行程下部范围载有125%额定载重量下行，分别停层3次以上，轿厢必须可靠地制停（空载上行工况应平层）。轿厢载有125%额定载重量以正常运行速度下行时，切断电动机与制动器供电，电梯必须可靠制动。当对重完全压在缓冲器上，且驱动主机按轿厢上行方向连续运转时，空载轿厢严禁向上提升。\n（8）电梯安装后应进行运行试验，轿厢分别在空载、额定载荷工况下，按电梯设计规定的每小时启动次数和负载持续率各运行1000次（每天不少于8h），电梯应运行平稳、制动可靠、连续运行无故障。","k":"渐进125%，运行1000次/8h","s":"P91"},{"id":28,"g":"液压电梯","q":"液压泵站安装有什么要求？","a":"（1）液压泵站应根据出口管路走向及图纸来确定安装位置。安装时，底座用防振橡皮垫块垫起；无底座、无减振胶皮设计的泵站可按制造厂规定直接安装在地面上，泵站距墙应不小于300mm，以便维修与操作。\n（2）泵站油箱加油前，内部应保持干燥，并清洗油箱出口及泵站出口。液压油经过滤后注入油箱，并注意观察油尺的最大和最小油位标记，当油缸的柱塞杆将轿厢提升到最高层站时，油箱内的油位应不低于油尺最小油位标记。\n（3）液压泵站应设有过载保护，安全阀的调定压力不应超过额定工作载荷时压力的120%。当液压油超过产品设计工作温度时，温升保护装置必须动作，使液压电梯停止运行。\n（4）液压泵站应设有在紧急情况下使轿厢下降的手动下降阀装置，最大下降速度不应超过0.3m/s，该装置应加以保护，避免发生误动作。","k":"距墙300，安全阀120%，手动下降0.3m/s","s":"P91"},{"id":29,"g":"液压电梯","q":"液压油缸安装有什么要求？","a":"（1）检查液压油缸出厂试验记录、合格证和技术文件应齐全，外观不应有明显损坏，部件应活动灵活，功能可靠。\n（2）依据液压电梯井道布置图及导轨中心线确定液压缸架位置，起吊缸筒时应防止缸筒发生碰撞，将缸筒放在液压缸座上，安装缸筒固定架及抱箍，缸筒进出油口处应朝向机房入口处，减少油管距离。\n（3）在连接油缸到单向阀之间的管路上应设置安全溢流阀，安全溢流阀的调定工作压力应设定在系统压力为满载压力的140%~170%时动作。\n（4）液压顶升机构应安装牢固，油缸中心位移偏差应不大于2mm，缸体垂直度严禁大于0.4‰；油缸校正后，用油缸固定架及抱箍将油缸固定，并安装导靴及油杯。","k":"溢流阀140~170%，中心2mm，垂直0.4‰","s":"P92"},{"id":30,"g":"液压电梯","q":"液压系统验收有什么要求？","a":"（1）载有额定载重量的轿厢停靠在最高层站时，停梯10min，沉降量不应大于10mm。\n（2）轿厢停靠在最高层站，在液压顶升机构和截止阀之间施加200%的满载压力，持续5min后，液压系统应完好无损。\n（3）采用多个液压油缸并行工作的直顶式液压电梯，在运行时应保证轿厢地板的倾斜角度不应超过正常位置的5%。","k":"停梯10分钟沉降10mm；200%满载5分钟","s":"P92"},{"id":31,"g":"自动扶梯","q":"自动扶梯设备进场验收、土建交接验收和桁架吊装有什么要求？","a":"设备进场验收：设备技术资料必须提供梯级、踏板的型式检验报告复印件，扶手带、胶带的断裂强度证明文件复印件；随机文件应该有土建布置图，产品出厂合格证，装箱单，安装、使用维护说明书，以及动力电路和安全电路的电气原理图；设备零部件应与装箱单内容相符，设备外观不应存在明显的损坏。\n土建交接验收：建设单位、监理单位、土建单位、安装单位共同参与土建工程的验收并办理交接手续；确认现场的水平基准线标记和中心线标记，按设计图纸（土建图）的要求检查支撑端之间的距离、底坑的长宽高、提升高度和对角线长度，上、下支撑面预埋钢板应符合设计要求；井道周围必须设有保证安全的栏杆或屏障，其高度严禁小于1.2m。\n桁架吊装：吊装前应检查支撑端之间的距离、底坑的长宽高、提升高度和对角线长度，提升高度允许偏差应为-15~+15mm，跨度允许偏差应为0~+15mm；桁架采用分段安装的，分段间的连接必须用高强度螺栓，严格控制螺母的拧紧力矩；桁架放到支撑端后，桁架支撑大角钢搭接支撑端的部分必须大于大角钢宽度的2/3；把水平仪放在前沿板前整块露出的第一块梯级上，检查上、下驱动的水平度不大于1/1000，可通过加减垫片调整其水平度。","k":"栏杆1.2m；提升±15，跨度0~+15；大角钢2/3；水平1/1000","s":"P92"},{"id":32,"g":"自动扶梯","q":"自动扶梯围裙板、内外盖板、梯级、梳齿板安装有什么要求？","a":"围裙板安装：围裙板在梯级、踏板或胶带的两侧，任何一侧的水平间隙不应大于4mm，且两侧对称位置处的间隙总和不应大于7mm；围裙板应当垂直、平滑，板与板之间的接缝应是对接缝；对于长距离的自动人行道，在其跨越建筑伸缩缝部位的围裙板的接缝可采取其他特殊连接方法来替代对接缝，其间隙不应大于0.5mm。\n内外盖板安装：外盖板安装在护壁板外侧，与护壁板成直角；内盖板安装在护壁板内侧，与围裙板连接；内盖板与外盖板的接缝对齐，内外盖板的间隙不应大于0.5mm。\n梯级安装：梯级的安装、拆卸只能在下部驱动的回转部；安装前在梯级轴上面均匀涂抹润滑油脂，由下部驱动回转处开始安装梯级。\n梳齿板安装：调整前沿板支撑处，达到梳齿板梳齿与踏板面齿槽的啮合深度至少为4mm，间隙不应超过4mm的要求。","k":"围裙4/7，伸缩缝0.5，盖板0.5，梳齿啮合4间隙4","s":"P93"},{"id":33,"g":"自动扶梯","q":"自动扶梯整机外观验收有哪些要求？","a":"（1）梯级、踏板、胶带的楞齿及梳齿板应完整、光滑；内盖板、外盖板、围裙板、扶手支架、扶手导轨、护壁板接缝应平整；接缝处的凸台不应大于0.5mm。\n（2）自动扶梯梯级、自动人行道踏板或胶带上方，垂直净高度不应小于2.3m。该净高度应延续到扶手转向端端部。扶手带顶面距梯级前缘、踏板表面或胶带表面之间的垂直距离应在0.9~1.1m。\n（3）在与楼板交叉处及各交叉设置的自动扶梯、自动人行道之间，应在扶手带上方设置一个无锐利边缘的垂直防护挡板，其高度不应小于0.3m，且至少延伸至扶手带下缘25mm处。\n（4）在危险区域，由建筑结构形成的固定护栏应至少增加到高出扶手带100mm，并且位于扶手带外缘80~120mm处。\n（5）墙壁或其他障碍物与扶手带外缘之间的水平距离在任何情况下均不得小于80mm，与扶手带下缘的垂直距离均不得小于25mm。\n（6）自动扶梯、自动人行道与墙相邻，且外盖板的宽度大于125mm时，在上、下端部应安装阻挡装置防止人员进入外盖板区域。当自动扶梯、自动人行道为相邻平行布置，且共用外盖板的宽度大于125mm时，也应安装这种阻挡装置。该装置应延伸到距离扶手带下沿25~150mm处。","k":"净高2.3，扶手0.9~1.1；挡板0.3；护栏高100、外80~120","s":"P93–94"},{"id":34,"g":"自动扶梯","q":"自动扶梯设备绝缘检查和安全保护验收有什么要求？","a":"设备绝缘检查：导线之间和导线对地之间的绝缘电阻值应大于1000Ω/V，动力电路和电气安全装置电路的绝缘电阻值不得小于0.5MΩ，其他电路（控制、照明、信号等）的绝缘电阻值不得小于0.25MΩ。\n安全保护验收：（1）自动扶梯（自动人行道）无控制电压或电路接地故障及过载时必须自动停止运行。\n（2）发生下列情况时，必须通过安全触点或安全电路使开关断开并停止运行：①梯级、踏板下陷，或胶带进入梳齿板处有异物夹住，且损坏梯级、踏板或胶带支撑结构；②直接驱动梯级、踏板或胶带的部件（如链条或齿条）断裂或过分伸长；③控制装置在超速和运行方向非操纵逆转下动作；④无中间出口的连续安装的多台自动扶梯（自动人行道）中的一台停止运行；⑤附加制动器动作；⑥驱动装置与转向装置之间的距离（无意义）缩短；⑦扶手带入口保护装置动作。","k":"1000Ω/V，0.5MΩ，0.25MΩ","s":"P94"},{"id":35,"g":"自动扶梯","q":"自动扶梯设备性能验收有什么要求？","a":"（1）自动扶梯（自动人行道）的性能试验，在额定频率和额定电压下，梯级、踏板或胶带沿运行方向空载时的速度与额定速度之间的允许偏差为±5%；扶手带的运行速度相对梯级、踏板或胶带的速度允许偏差为0~+2%。\n（2）自动扶梯（自动人行道）应进行空载制动试验，制停距离应符合规范要求。\n（3）自动扶梯（自动人行道）应进行载有制动载荷的下行制停距离试验，制动载荷和制停距离应符合规范要求。\n（4）通电空载试运行合格后进行负载试运行，并检测各安全装置动作是否准确。","k":"速度±5%，扶手0~+2%","s":"P94"}];
+
+const EXAM = [{"type":"正向","cardIds":[24],"q":"电梯门系统安装有哪些要求？","answer":"层门应无变形，门滑轮转动灵活。层门地坎要高出最终装饰地平面2~5mm。层门关闭后，层门下端与地坎的间隙，乘客电梯不应大于6mm，载货电梯不应大于8mm。\n层门与轿厢门地坎之间水平距离偏差为0~+3mm，最大距离不应超过35mm。层门门锁锁紧后，锁紧元件啮合深度不应小于7mm。\n层门的强迫关门装置必须动作正常。开关门过程中不应有振动或撞击声响，由动力操纵的水平滑动门，在关门1/3行程之后，阻止关门的力严禁超过150N。","keys":["2~5","6mm","8mm","7mm","150N"],"need":3},{"type":"正向","cardIds":[11],"q":"电梯土建交接验收对机房、底坑和预留孔有什么要求？","answer":"对电梯机房、井道、底坑土建工程进行检测鉴定；电梯机房工作区域净高不应小于2m；设备吊钩位置及承载能力应符合电梯厂家要求，吊钩安装后应在承重梁或吊钩上标明最大允许吊装载荷；轿厢缓冲器支座下的底坑地面应能承受满载轿厢静载4倍的作用力。\n机房通向井道的预留孔设置临时盖板；厅门预留孔必须设有高度不小于1200mm的安全保护围封（安全防护门），采用左右开启方式，不能上下开启，应有足够的强度，保护围封下部应有高度不小于100mm的踢脚板。","keys":["2m","4倍","1200","100","左右"],"need":4},{"type":"选择","cardIds":[18],"q":"电梯的平衡系数值应控制在（　）。","options":["40%~50%","45%~55%","50%~60%","30%~40%"],"correct":0,"why":"教材 P89：电梯平衡系数值应控制在 40%~50%。另注意对重底部补偿链悬空部分距底坑地平面不应小于 100mm，不要与平衡系数混淆。"},{"type":"选择","cardIds":[16,21,23],"q":"关于电梯导轨、限速器和缓冲器安装，下列说法错误的是：","options":["每根导轨不应少于 2 个支架，支架间距不宜大于 2.5m","轿厢导轨和设有安全钳的对重导轨工作面与安装基准线的允许偏差不应大于 0.6mm/5m","液压缓冲器柱塞铅垂度不应大于 0.5%","缓冲器动作试验时，其柱体从完全压缩到完全复位的时间不能大于 60s"],"correct":3,"why":"教材 P90：缓冲器动作试验时，其柱体从完全压缩到完全复位，时间不能大于 120s，不是 60s。A 见 P88，B 见 P88–89，C 见 P90，均为教材原文。"},{"type":"反向","cardIds":[11,14,23,24],"q":"说出这些数字对应的要求：\n1200mm　／　2mm　／　120s　／　150N","answer":"1200mm —— 厅门预留孔处安全保护围封（安全防护门）的最小高度；\n2mm —— 电梯空载或满载时曳引轮安装后的垂直度误差限值（另：多个缓冲器顶面与轿厢或对重间距离偏差、液压油缸中心位移偏差也为 2mm）；\n120s —— 缓冲器动作试验时，柱体从完全压缩到完全复位的最长时间；\n150N —— 由动力操纵的水平滑动门，在关门 1/3 行程之后阻止关门的力的上限。","keys":["1200","2mm","120s","150N"],"need":3},{"type":"场景","cardIds":[33,34,35],"q":"某商场自动扶梯安装完毕验收，测得：梯级上方垂直净高度 2.2m；扶手带顶面距梯级前缘的垂直距离 0.85m；扶手带运行速度相对梯级速度偏差 -3%；动力电路绝缘电阻 0.4MΩ。请指出不符合教材要求之处，并写出正确要求。","answer":"①净高度 2.2m 不符 —— 教材：自动扶梯梯级、自动人行道踏板或胶带上方垂直净高度不应小于 2.3m（教材原文）。\n②0.85m 不符 —— 教材：扶手带顶面距梯级前缘、踏板表面或胶带表面之间的垂直距离应在 0.9~1.1m（教材原文）。\n③-3% 不符 —— 教材：扶手带的运行速度相对梯级、踏板或胶带的速度允许偏差为 0~+2%（教材原文）。\n④0.4MΩ 不符 —— 教材：动力电路和电气安全装置电路的绝缘电阻值不得小于 0.5MΩ（教材原文）。\n以上为按教材原文数值逐条对照的推断（判断本身属常识推断，限值均出自教材 P93–94）。","keys":["2.3","0.9","2%","0.5MΩ"],"need":3}];
+
+const KEY_STATUS = "erjian_sw_3_5_status";
+const KEY_PASS = "erjian_sw_3_5_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

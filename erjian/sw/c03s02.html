@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 3.2 建筑电气工程施工技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;padding:14px 14px 96px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+       background:#f5f6f8;color:#1a1a1a;max-width:640px;margin:0 auto}
+  .top{display:flex;align-items:center;gap:8px;margin:2px 0 4px}
+  h1{font-size:18px;margin:0;flex:1}
+  #gateBtn{min-height:36px;padding:0 14px;font-size:14px;font-weight:600;border-radius:9px;
+           border:1px solid #0b6bcb;background:#0b6bcb;color:#fff}
+  #gateBtn.passed{background:#1e7b4f;border-color:#1e7b4f}
+  .sub{font-size:12px;color:#666;margin:0 0 10px}
+  .badge{display:inline-block;font-size:12px;color:#1e7b4f;background:#e6f5ec;border-radius:6px;padding:2px 8px;margin-left:6px}
+  .bar{display:flex;gap:6px;font-size:12px;color:#444;margin-bottom:10px}
+  .bar span{background:#fff;border:1px solid #e3e6ea;border-radius:8px;padding:5px 6px;flex:1;text-align:center}
+  .bar b{font-size:15px;display:block;margin-top:1px}
+  .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06);
+        min-height:200px;display:flex;flex-direction:column;cursor:pointer}
+  .card:active{background:#fafbfc}
+  .tag{font-size:12px;color:#0b6bcb;background:#e8f2ff;border-radius:6px;padding:3px 8px;align-self:flex-start;margin-bottom:10px}
+  .q{font-size:18px;line-height:1.6;font-weight:600;white-space:pre-wrap}
+  .a{margin-top:14px;padding-top:14px;border-top:1px dashed #dde1e6;font-size:16px;line-height:1.7;color:#0f4c81;white-space:pre-wrap}
+  .kk{margin-top:12px;padding:9px 11px;background:#fff8e6;border-left:3px solid #f0b429;border-radius:6px;
+      font-size:15px;line-height:1.6;color:#7a5b00}
+  .hint{margin-top:12px;font-size:12px;color:#9aa0a8}
+  .src{margin-top:auto;padding-top:10px;font-size:12px;color:#8a8f98}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e3e6ea;
+        padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:16px;border-radius:10px;border:1px solid #d8dde3;
+               background:#fff;color:#222;font-weight:600}
+  #flip{background:#0b6bcb;color:#fff;border-color:#0b6bcb;flex:1.3}
+  #bad{color:#c0392b;border-color:#f0c4bd}
+  #good{color:#1e7b4f;border-color:#bfe3ce}
+  .tools{display:flex;gap:8px;margin-top:10px;font-size:13px;flex-wrap:wrap}
+  .tools button{min-height:34px;font-size:13px;font-weight:400;color:#555;background:#fff;
+                border:1px solid #d8dde3;border-radius:8px;padding:0 12px}
+  .tools button.on{background:#e8f2ff;border-color:#0b6bcb;color:#0b6bcb;font-weight:600}
+  .tools .nav{margin-left:auto}
+  footer{margin-top:14px;font-size:12px;color:#8a8f98;line-height:1.6}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:8px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:12px 14px;font-size:15px;
+       line-height:1.5;border:1px solid #d8dde3;border-radius:10px;background:#fff;color:#222}
+  .opt.ok{background:#e6f5ec;border-color:#1e7b4f;color:#14532d;font-weight:600}
+  .opt.no{background:#fdecea;border-color:#c0392b;color:#7f1d1d}
+  #exInput{width:100%;margin-top:12px;padding:12px;font-size:15px;line-height:1.6;
+           border:1px solid #d8dde3;border-radius:10px;font-family:inherit;background:#fff;resize:vertical}
+  #exInput:focus{outline:none;border-color:#0b6bcb}
+  .why{margin-top:10px;font-size:14px;line-height:1.7;color:#444;background:#f7f8fa;border-radius:8px;padding:10px 12px;white-space:pre-wrap}
+  .exDock{display:flex;gap:8px;margin-top:14px}
+  .exDock button{flex:1;min-height:46px;font-size:15px;border-radius:10px;border:1px solid #d8dde3;background:#fff;font-weight:600}
+  .exDock button.primary{background:#0b6bcb;color:#fff;border-color:#0b6bcb}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>3.2 建筑电气工程施工技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P56–67（分部分项见 P56–57 续表）· 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P56–67（P56 上半页为 3.1 节末段）。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"分部分项", q:"建筑电气分部工程包含哪些子分部工程？", a:"室外电气、变配电室、供电干线、电气动力、电气照明、自备电源、防雷及接地装置，共 7 个子分部。\n各子分部的分项工程包括：变压器、箱式变电所安装，成套配电柜、控制柜（台、箱）和配电箱（盘）安装，母线槽安装，梯架、托盘和槽盒安装，导管敷设，电缆敷设，管内穿线和槽盒内敷线，电缆头制作、导线连接和线路绝缘测试，普通灯具安装，专用灯具安装，开关、插座、风扇安装，建筑照明通电试运行，接地装置安装，接地干线敷设，柴油发电机组安装，UPS 及 EPS 安装，防雷引下线及接闪器安装，建筑物等电位联结等。", k:"室外·变配电·干线·动力·照明·自备电源·防雷接地", s:"P56–57"},
+  {id:2, g:"施工程序", q:"配电柜（开关柜）和干式变压器的施工程序分别是什么？", a:"配电柜（开关柜）安装程序：开箱检查→二次搬运→基础框架制作安装→柜体固定→母线连接→二次线路连接→试验调整→送电运行验收。\n干式变压器施工程序：开箱检查→二次搬运→本体安装→附件安装→交接试验→送电前检查→送电运行验收。", k:"柜：开·搬·架·固·母·二线·调·送", s:"P57"},
+  {id:3, g:"施工程序", q:"供电干线的四个施工程序分别是什么？", a:"①母线槽施工程序：开箱检查→支架安装→单节母线槽绝缘测试→母线槽安装→通电前绝缘测试→送电验收。\n②梯架（托盘、槽盒）施工程序：测量定位→支架安装→梯架（托盘、槽盒）安装连接→接地线跨接。\n③梯架（托盘）内电缆施工程序：电缆检查→电缆搬运→电缆敷设→电缆绝缘测试→挂标志→验收。\n④槽盒内导线敷设程序：选择导线→敷设导线→导线连接→导线绝缘测试。", k:"母线先测后装；梯架先接后跨；电缆先测后挂", s:"P57"},
+  {id:4, g:"施工程序", q:"电气照明的四个施工程序分别是什么？", a:"①暗装照明配电箱施工程序：开箱检查→配电箱固定→导线与箱内电器连接→送电前检查→送电运行。\n②钢导管施工程序：测量定位→支架安装（明敷）→导管预制→导管连接→接地线跨接。\n③塑料管穿线施工程序：选择导线→穿引线→导线与引线绑扎→穿导线→导线连接→线路绝缘测试。\n④照明灯具施工程序：开箱检查→灯具组装→安装接线→送电前检查→送电运行。", k:"箱·管·线·灯", s:"P57"},
+  {id:5, g:"施工程序", q:"电气动力的施工程序是什么？", a:"①明装动力配电箱施工程序：基础框架制作安装→配电箱安装固定→导线连接→送电前检查→送电运行。\n②电动机（风机、水泵）施工程序：电动机绝缘测试→电机干燥（受潮时）→电动机接线→送电前检查→送电运行。", k:"电动机：测·干·接·查·送", s:"P57"},
+  {id:6, g:"施工程序", q:"建筑防雷与接地的施工程序是什么？", a:"接地体施工→接地干线施工→引下线敷设→均压环施工→接闪带（接闪杆、接闪网）施工。", k:"体·干·引·均·闪", s:"P57"},
+  {id:7, g:"变配电", q:"干式变压器开箱检查有哪些内容？安装时与保护导体怎么连接？", a:"开箱检查：①变压器型号、规格应符合设计要求，并有出厂合格证和技术文件；外观无损伤，分接开关、冷却风机、温度计等附件齐全。②变压器铭牌上应注明制造厂名称，额定容量，一次、二次额定电压、电流，阻抗电压，接线组别等技术数据。\n安装：①变压器安装位置应正确牢固，分接开关、冷却风机、温度计等附件安装符合设计和规范要求。②变压器箱体、支架、基础型钢及外壳应分别单独与保护导体可靠连接，紧固件及防松零件齐全。", k:"铭牌五数据：容量·电压·电流·阻抗·组别", s:"P58"},
+  {id:8, g:"变配电", q:"10/0.4kV 变压器一般采用什么接线组别？含义是什么？", a:"10/0.4kV 电压等级的变压器一般采用 D,yn11（Δ/Y₀-11）接线组别，表示一次绕组 Δ 接、二次绕组 Y 接，有中性点引出，二次绕组线电压超前一次绕组线电压 30° 电角。\n变压器不同的接线组别能改变二次绕组线电压与一次绕组线电压的相位差。", k:"D,yn11：Δ接·Y接·中性点·超前30°", s:"P58"},
+  {id:9, g:"变配电", q:"干式变压器交接试验中，测量绕组直流电阻和检查电压比各有什么合格标准？有载调压切换装置怎么试验？", a:"①直流电阻：1600kVA 及以下三相变压器，各相绕组相互间的差别不应大于 4%；无中性点引出的绕组，线间各绕组相互间差别不应大于 2%；1600kVA 以上变压器，各相绕组相互间差别不应大于 2%；无中性点引出的绕组，线间相互间差别不应大于 1%。变压器的直流电阻与同温下产品出厂实测数值比较，相应变化不应大于 2%；不同温度下电阻值按 R₂=R₁(T+t₂)/(T+t₁) 计算，T 计算用常数，铜导线取 235，铝导线取 225。\n②电压比：与制造厂铭牌数据相比，电压等级在 35kV 以下、电压比小于 3 的变压器，电压比允许偏差应为 ±1%；其他所有变压器额定分接下电压比允许偏差不应超过 ±0.5%；其他分接的电压比应在变压器阻抗电压值（%）的 1/10 以内，且允许偏差应为 ±1%。\n③有载调压切换装置：在变压器无电压下，有载分接开关的手动操作不应少于 2 个循环、电动操作不应少于 5 个循环，其中电动操作时电源电压应为额定电压的 85% 及以上；在变压器带电条件下进行有载调压开关电动操作，动作应正常。", k:"四与二、二与一；电压比正负一、零点五", s:"P58"},
+  {id:10, g:"变配电", q:"干式变压器绕组绝缘电阻和交流耐压试验有什么要求？", a:"测量绕组连同套管的绝缘电阻：绝缘电阻值不应低于产品出厂试验值的 70% 或不低于 10000MΩ（20℃）。\n绕组连同套管的交流耐压试验：额定电压在 35kV 及以下的干式电力变压器，线端试验应按表 3.2-2 进行交流耐压试验。系统标称电压 ≤1kV、设备最高电压 ≤1.1kV 时，交流耐受电压 2kV；3kV/3.6kV→8kV；6kV/7.2kV→16kV；10kV/12kV→28kV；15kV/17.5kV→30kV；20kV/24kV→40kV；35kV/40.5kV→56kV。", k:"绝缘七成或一万兆欧；耐压按表：十千伏二十八", s:"P58–59"},
+  {id:11, g:"变配电", q:"干式变压器的额定电压冲击合闸试验有什么要求？", a:"①在额定电压下对变压器的冲击合闸试验，应进行 5 次，每次间隔时间宜为 5min，应无异常现象。\n②冲击合闸宜在变压器高压侧进行，对中性点接地的电力系统试验时变压器中性点应接地。\n③发电机、变压器组中间连接无操作断开点的变压器，可不进行冲击合闸试验。\n④无电流差动保护的干式变压器可冲击 3 次。", k:"五次、五分钟、高压侧；无差动三次", s:"P59"},
+  {id:12, g:"变配电", q:"箱式变电所安装和交接试验有什么要求？", a:"安装：①箱式变电所的基础应高于室外地坪；用地脚螺栓固定的螺帽应齐全，拧紧牢固；金属箱式变电所的箱体应与保护导体可靠连接，且有标识。②箱式变电所的高压和低压配电柜内部接线应完整、低压输出回路标记应清晰，回路名称应准确。\n交接试验：①变压器、电器设备以及继电保护系统在投入运行前应交接试验合格。②由高压成套开关柜、低压成套开关柜和变压器三个独立单元组合成的箱式变电所高压电气设备部分，应按规范的规定完成交接试验且合格。③对于高压开关、熔断器等与变压器组合在同一个密闭油箱内的箱式变电所，交接试验应按产品提供的技术文件要求执行。", k:"基础高于地坪；三单元组合按规范，密闭油箱按产品", s:"P59"},
+  {id:13, g:"变配电", q:"柴油发电机组的安装、接线、接地和交接试验各有什么要求？", a:"安装：机组安装前基础应验收合格；安放后采取地脚螺栓固定的机组应初平，螺栓孔灌浆、精平、紧固地脚螺栓、二次灌浆等合格；安放式的机组底部应垫平、垫实。\n接线：随机配电柜、控制柜接线应正确，紧固件紧固状态良好，无遗漏脱落；开关、保护装置的型号、规格正确，验证出厂试验的锁定标记应无位移；柴油发电机馈电线路连接后，两端的相序应与原供电系统的相序一致。\n接地：发电机的中性点接地连接方式及接地电阻值应符合设计要求，接地螺栓防松零件齐全且有标识；发电机本体和机械部分的外露可导电部分应分别与保护导体可靠连接并有标识；燃油系统的设备及管道的防静电接地应符合设计要求。\n交接试验：发电机组至配电柜馈电线路的相间、相对地间的绝缘电阻值，低压馈电线路不应小于 0.5MΩ，高压馈电线路不应小于 1MΩ/kV；当柴油发电机并列运行时，应保证其电压、频率和相位一致。", k:"相序一致；低压零点五兆欧，高压一兆欧每千伏", s:"P59–60"},
+  {id:14, g:"变配电", q:"配电柜基础型钢框架有什么要求？柜体安装有什么要求？", a:"基础型钢框架：①基础框架一般采用 10 号槽钢（型钢）制作；型钢框架安装后的水平度、不平行度允许偏差应符合规范要求。②每组型钢框架的两端应采用不小于 100mm² 镀锌扁钢与接地干线电焊连接，且不少于两处接地。\n柜体安装：①配电柜相互间及与基础框架间应用镀锌螺栓连接固定，且防松零件齐全；安装后的柜体垂直度、柜间缝隙及相邻两柜面的允许偏差应符合规范要求。②手车式配电柜和抽屉式配电柜的机械闭锁、电气闭锁应动作准确可靠，触头接触应紧密；抽屉单元和手车单元应能轻便灵活拉出和推进，无卡阻碰撞现象。", k:"十号槽钢，一百平方扁钢，两处接地", s:"P60"},
+  {id:15, g:"变配电", q:"柜（台、箱）内配线和柜体接地有什么要求？", a:"内配线：①配电柜相互间的连接母线应由厂家配套制作、现场安装；柜内线缆的弯曲半径不应小于线缆允许弯曲半径，导线连接不应损伤线芯。②除电子元件回路或类似回路外，二次回路的绝缘导线额定电压不应低于 450/750V；铜芯绝缘导线的导体截面积，电流回路不应小于 2.5mm²，其他回路不应小于 1.5mm²。③电流（电压）互感器安装就位后，各接地引出端子接地良好；暂时不使用的电流互感器二次线圈应短路后再接地。④二次回路连线应成束绑扎，不同电压等级、交流、直流线路及计算机控制线路应分别绑扎且有标识；固定后不应妨碍手车开关或抽出式部件的拉出或推入。\n柜体接地：①柜（台、箱）的金属框架及基础型钢应与保护导体可靠连接；对于装有电器的可开启门，门和金属框架的接地端子间应选用截面积不小于 4mm² 的黄绿色绝缘铜芯软导线连接，并应有标识。②配电装置应有可靠的防电击保护；装置内保护接地导体（PE）排应有裸露的连接外部保护接地导体的端子，并应可靠连接。", k:"二次线 450/750V；电流回路 2.5，其他 1.5；门接地 4 平方黄绿", s:"P60–61"},
+  {id:16, g:"变配电", q:"配电柜安装后检查和交接试验有哪些要求？", a:"安装后检查：①开关及保护装置的规格、型号应符合设计要求；闭锁装置动作应准确、可靠；主开关的辅助开关切换动作应与主开关动作一致；应标明被控设备编号及名称或操作位置，接线端子应有编号且清晰。②开关操作检查应先手动操作后电动操作，开关操作机构应工作平稳，无卡阻和冲击等异常现象，分、合闸指示正确，开关与接插件动作闭锁可靠。③手车、抽屉式成套配电柜推拉应灵活，无卡阻碰撞现象；动触头与静触头的中心线应一致，触头接触应紧密；投入时接地触头应先于主触头接触，退出时接地触头应后于主触头脱开；手车单元接地触头可靠接地。\n交接试验：①高压成套配电柜应按规范规定进行交接试验，新型高压电气设备和继电保护装置按产品技术文件要求进行；回路中的电子元件不应参加交流工频耐压试验，50V 及以下回路可不做交流工频耐压试验。②低压成套配电柜（箱）、控制柜（台、箱）间线路的线间和线对地间绝缘电阻值，馈电线路不应小于 0.5MΩ，二次回路不应小于 1MΩ；测量绝缘电阻应根据电压等级选择兆欧表等级（表 3.2-3：设备 <100V 用 250V 兆欧表、量程 50MΩ；<500V 用 500V、100MΩ；<3000V 用 1000V、2000MΩ；<10000V 用 2500V、10000MΩ；≥10000V 用 2500V 或 5000V、10000MΩ）；用于极化指数测量时，兆欧表短路电流不应低于 2mA。③二次回路的耐压试验电压应为 1000V，当回路绝缘电阻值大于 10MΩ 时，应采用 2500V 兆欧表代替，试验持续时间应为 1min 或符合产品技术文件要求；48V 及以下电压等级回路可不做交流耐压试验；回路中有电子元器件设备的，试验时应将插件拔出或将其两端短接。", k:"接地触头先接后脱；二次耐压一千伏一分钟", s:"P61–62"},
+  {id:17, g:"变配电", q:"配电柜（箱）内剩余电流动作保护器（RCD）和电涌保护器（SPD）的试验与安装有什么要求？", a:"RCD：应在施加额定剩余动作电流（IΔn）的情况下测试动作时间，测试值应符合设计要求；干线回路 RCD 的测试宜在 RCD 出口处进行，其他回路 RCD 的测试应在回路末端进行，插座回路 RCD 的测试应通过末端插座来进行。\nSPD：型号、规格、安装布置及接线形式应符合设计要求；接地导线的位置不宜靠近出线位置；SPD 的连接导线应平直、足够短，且不宜大于 0.5m。", k:"RCD 干线出口、其他末端；SPD 连线不超零点五米", s:"P62"},
+  {id:18, g:"配电线路", q:"母线槽安装前检查、支吊架安装各有什么要求？", a:"安装前检查：①检查型号、规格是否与设计图纸一致，检查出厂试验报告和合格证；外观无损伤、变形；母线搭接面应平整、镀层（镀银）完整干净；端头封罩、插接单元等部件应齐全、标识清楚。②母线槽连接用部件的防护等级与母线槽本体防护等级一致，标识完整；防火型母线槽应有防火等级和燃烧报告、由国家认可的检验机构出具的试验报告。③安装前应做电气试验，用 1000V 兆欧表测量每节母线槽的绝缘电阻值不得小于 20MΩ；高压母线槽必须做交流耐压试验，测试结果符合产品技术文件要求。\n支吊架：①每节母线槽应不少于一个支吊架，距转弯 0.4~0.6m 处应设置支吊架；支吊架不应设置在母线槽的连接处或分接单元处，垂直安装时应设置弹簧支架；支吊架的锚固螺栓应采用金属胀管固定在结构承重墙上或顶板上。②室内配电母线槽的圆钢吊架直径不得小于 8mm，室内照明母线槽的圆钢吊架直径不得小于 6mm；重力不小于 150N/m 的母线槽应设置抗震支架。", k:"一千伏兆欧、二十兆欧；吊架 8 与 6", s:"P62"},
+  {id:19, g:"配电线路", q:"母线槽的连接、接地和通电各有什么要求？", a:"连接：①母线槽的连接可采用搭接或插接；连接紧固应用力矩扳手，螺栓紧固力矩应符合产品技术文件要求。在通过建筑变形缝（伸缩缝、沉降缝、后浇带等）时，应设置伸缩节；直线段超过 80m 时，应在 50~60m 处设置伸缩节。②母线槽需经电气试验合格后，再与设备端子连接；母线槽与设备连接可采用搭接或伸缩节连接。低压母线槽绝缘电阻测试不得低于 0.5MΩ；高压母线槽绝缘电阻测试不得低于 20MΩ，交流耐压试验按支柱绝缘子的交接试验标准执行。\n接地：母线槽金属外壳应与保护接地导体连接可靠；全长保护接地不少于 2 处，分支母线槽的末端需保护接地；在可靠接地前，不得进行通电试运行。\n通电：母线槽通电前，绝缘电阻测试和交流工频耐压试验应合格。", k:"超八十米设伸缩节（五十到六十米处）；低压零点五、高压二十", s:"P62–63"},
+  {id:20, g:"配电线路", q:"梯架（托盘、槽盒）安装有什么要求？", a:"①水平段时每 1.5~3m 设置一个支吊架；垂直段时每 1~1.5m 设置一个支架；在分支处或端部 0.3~0.5m 处应有固定支吊架。金属吊架的圆钢直径不得小于 8mm，并应有防晃支架。\n②水平敷设时距地高度一般不宜低于 2.5m；垂直敷设时，距地面 1.8m 以下部分应加金属盖板保护，但敷设在配电室、电气竖井等处除外。\n③直线段钢制梯架长度超过 30m、铝合金梯架长度超过 15m 应设置伸缩节；梯架跨越建筑物变形缝处，应设置补偿装置。\n④非镀锌梯架之间的连接处应跨接保护联结导体；镀锌梯架之间的连接处可不跨接保护联结导体，但连接板每端有防松螺帽或防松垫圈的螺栓不应少于 2 个。梯架经过建筑物的伸缩缝时，应断开 100~150mm 间距，间距两端应进行接地跨接。\n⑤金属梯架（托盘、槽盒）的连接应牢固可靠：全长不大于 30m 时，不应少于 2 处与保护接地导体连接；全长大于 30m 时，每隔 20~30m 应增加一个连接点，起始端和终点端均应接地。", k:"水平一点五到三，垂直一到一点五；钢三十、铝十五设伸缩节", s:"P63"},
+  {id:21, g:"配电线路", q:"导管弯曲半径有什么规定？钢导管的连接有哪些禁止做法和抽查要求？", a:"弯曲半径：明配导管的弯曲半径不宜小于管外径的 6 倍；当两个接线盒间只有一个弯曲时，其弯曲半径不宜小于管外径的 4 倍。暗配导管的弯曲半径不应小于管外径的 6 倍；当线路埋设于地下或混凝土内时，其弯曲半径不应小于管外径的 10 倍。\n连接：钢导管不得采用对口熔焊连接；镀锌钢导管或壁厚小于或等于 2mm 的钢导管，不得采用套管熔焊连接。按每个检验批的导管连接头总数的 20% 进行抽查，且不得少于 1 处。", k:"明六、单弯四、暗六、埋地十", s:"P63"},
+  {id:22, g:"配电线路", q:"导管保护联结导体和柔性导管有什么要求？", a:"保护联结导体：①非镀锌钢导管采用螺纹连接时，连接处的两端应熔焊焊接保护联结导体；保护联结导体宜为圆钢，直径不应小于 6mm，其搭接长度应为圆钢直径的 6 倍。②镀锌钢导管（可弯曲金属导管、金属柔性导管）连接处的两端宜用专用接地卡固定保护联结导体；保护联结导体应为铜芯软导线，截面积不应小于 4mm²。按每个检验批的导管连接头总数的 10% 进行抽查，且不得少于 1 处。\n柔性导管：刚性导管经柔性导管与设备、器具连接时，柔性导管的长度在动力工程中不宜大于 0.8m，在照明工程中不宜大于 1.2m；金属柔性导管不应做保护导体的接续导体。\n导管明敷应采用支吊架安装固定，支架圆钢直径不得小于 8mm，支吊架间距应符合规范要求，并应设置防晃支架。", k:"圆钢 6mm×6 倍；铜芯软线 4 平方；动力 0.8、照明 1.2", s:"P63"},
+  {id:23, g:"配电线路", q:"管内导线和槽盒内导线敷设各有什么要求？", a:"管内导线：①绝缘导线穿入金属导管时，管口在穿线前应装设护线口。②绝缘导线接头不得设置在导管和槽盒内，应设置在专用接线盒或器具内，接线盒的设置位置应便于检修。③同一交流回路的绝缘导线不应穿于不同金属导管内。④不同回路、不同电压等级和交流与直流线路的绝缘导线不应穿于同一导管内。⑤导线敷设后，应用 500V 兆欧表测试绝缘电阻，线路绝缘电阻不应小于 0.5MΩ。\n槽盒内导线：①同一交流回路的绝缘导线不应敷设于不同的金属槽盒内。②同一槽盒内不宜同时敷设绝缘导线和电缆。③同一路径无抗干扰要求的线路，可敷设于同一槽盒内。④槽盒内的绝缘导线总截面积（包括外护套）不应超过槽盒内截面积的 40%。", k:"五百伏兆欧、零点五兆欧；槽盒四成", s:"P63–64"},
+  {id:24, g:"配电线路", q:"梯架内电缆的固定部位和标记设置有什么要求？", a:"固定部位：垂直敷设时，电缆的上端及每隔 1.5~2m 处；水平敷设时，电缆的首、尾两端，转弯及每隔 5~10m 处。\n标记：梯架内电缆应在首端、尾端、转弯及每隔 50m 处，设有编号、型号及起、止点标记。", k:"垂直一点五到二米，水平五到十米；标记五十米", s:"P64"},
+  {id:25, g:"照明动力", q:"照明配电箱安装有什么要求？", a:"①箱体及内部绝缘隔板应采用不燃材料制作；箱内宜分别设置中性导体（N）和保护接地导体（PE）汇流排；N 或 PE 汇流排的同一端子上不应连接不同回路的 N 或 PE。\n②照明配电箱安装牢固，安装高度应符合设计要求，垂直度允许偏差不应大于 1.5‰；箱体开孔应与导管管径适配，暗装配电箱箱盖应紧贴墙面。\n③照明配电箱配线应整齐、无绞接现象；同一电器的接线端子上的导线连接不应多于 2 根，且防松垫圈等零件应齐全；回路编号应齐全，标识应正确清晰。", k:"不燃材料、1.5‰、同端子不超 2 根", s:"P64"},
+  {id:26, g:"照明动力", q:"灯具进场检查有什么要求？", a:"①灯具内部导线应为铜芯绝缘导线，导线截面应与灯具功率相匹配，且截面积不应小于 0.5mm²；灯具内导线的绝缘层厚度不应小于 0.6mm。\n②Ⅰ类灯具的外露可导电部分应具有专用的 PE 端子，并有接地标识。\n③灯具的绝缘性能应进行现场抽样检测，灯具的绝缘电阻值不应小于 2MΩ。\n④消防应急灯具应获得消防产品型式试验合格评定，且具有认证标志。\n⑤水下灯及防水灯具的防护等级应符合设计要求，当对其密闭和绝缘性能有异议时，应按批抽样送有资质的检测机构进行检测。", k:"导线 0.5 平方、绝缘 0.6mm、绝缘电阻 2MΩ", s:"P64"},
+  {id:27, g:"照明动力", q:"灯具安装固定有什么要求？", a:"①吸顶或墙面上安装的灯具，其固定螺栓或螺钉不应少于 2 个，灯具应紧贴饰面；灯具固定应牢固可靠，在砌体和混凝土结构上严禁使用木榫、尼龙塞或塑料塞固定；检查时按每检验批的不同安装形式各抽查 5%，且各不得少于 1 套。\n②采用钢管作灯具吊杆时，其内径不应小于 10mm，壁厚不应小于 1.5mm；灯具与固定装置及灯具连接件之间采用螺纹连接的螺纹啮合扣数不应少于 5 扣。\n③质量大于 3kg 的悬吊灯具，固定在螺栓或预埋吊钩上，螺栓或预埋吊钩的直径不应小于灯具挂销直径，且不应小于 6mm。\n④质量大于 10kg 的灯具，固定装置及悬吊装置应按灯具重量的 5 倍恒定均布载荷做强度试验，且持续时间不得少于 15min；施工或强度试验时观察检查，查阅载荷强度试验记录，应全数检查。", k:"2 个螺栓、钢管 10mm、5 扣、3kg 与 6mm、10kg 五倍十五分", s:"P64–65"},
+  {id:28, g:"照明动力", q:"灯具接线和接地有什么要求？Ⅰ、Ⅱ、Ⅲ类灯具各怎么处理？", a:"接线：①引向单个灯具的绝缘导线截面应与灯具功率相匹配，绝缘铜芯导线的线芯截面积不应小于 1mm²。②由接线盒引至嵌入式灯具或槽灯的绝缘导线应采用柔性导管保护，柔性导管与灯具壳体应采用专用接头连接。\n接地：①Ⅰ类灯具的外露可导电部分必须采用铜芯软导线与保护导体可靠连接，连接处应设置接地标识；铜芯软导线（接地线）的截面应与进入灯具的电源线截面相同，导线间的连接应采用导线连接器或缠绕搪锡连接。②Ⅱ类灯具的防触电保护不仅依靠基本绝缘，还具有双重绝缘或加强绝缘，因此Ⅱ类灯具外壳不需要与保护导体连接。③Ⅲ类灯具的防触电保护依靠安全特低电压，电源电压不超过交流 50V，采用隔离变压器供电，因此Ⅲ类灯具的外壳不许与保护导体连接。\n露天灯具：应有泄水孔，且泄水孔应设置在灯具腔体的底部；灯具及其附件、紧固件和相连的导管、接线盒等应有防水和防腐蚀措施，接线盒应采用防护等级不小于 IPX5 的防水接线盒。", k:"Ⅰ类必须接，Ⅱ类不接，Ⅲ类不许接（50V 隔离变）", s:"P65"},
+  {id:29, g:"照明动力", q:"开关安装和照明系统测试、通电试运行有什么要求？", a:"开关安装：①安装在同一建筑物内的开关，应采用同一系列的产品，开关通断位置应一致。②开关边缘距门框的距离宜为 0.15~0.2m，开关距地面高度宜为 1.3m；相同型号并列安装高度宜一致，且控制有序并且不错位。③开关应控制灯具的相线（L），不得控制中性线（N），防止开关断开时灯具带电。\n测试和通电试运行：①导线绝缘电阻测试应在导线与设备连接前完成，导线绝缘电阻应大于 0.5MΩ。②备用照明电源应先进行空载自动投切试验，后进行有载自动投切试验。", k:"距门零点一五到零点二，距地一点三；开关控相线", s:"P65"},
+  {id:30, g:"照明动力", q:"插座安装的高度和接线有什么要求？", a:"①插座距地面高度一般为 0.3m；小学（幼儿园、托儿所）的插座距地面高度不宜小于 1.8m；同一场所安装的插座高度应一致；在潮湿房间应装设防水插座。\n②当交流、直流或不同电压等级的插座安装在同一场所时，应有明显的区别，插座不得互换；不间断电源插座及应急电源插座应设置标识。\n③单相两孔插座，面对插座面板，右孔（或上孔）与相线（L）连接，左孔（或下孔）与中性线（N）连接。单相三孔插座，面对插座面板，右孔与相线（L）连接，左孔与中性线（N）连接，上孔与保护接地线（PE）连接。\n④三相四孔插座的上孔应接保护接地线（PE）；插座的保护接地线（PE）端子不得与中性线端子连接；同一场所的三相插座，其接线的相序应一致。\n⑤相线（L）与中性线（N）不应利用插座本体的接线端子转接供电；保护接地线（PE）在插座之间不得串联连接。", k:"左零右火上接地；PE 不串联", s:"P65–66"},
+  {id:31, g:"照明动力", q:"动力配电箱和电动机安装、接线有什么要求？", a:"动力配电（控制）箱：安装高度应操作方便，箱前操作通道宽度不宜小于 1m；室外安装的配电（控制）箱应有防雨、防水措施。\n电动机：①电动机安装随设备（如风机、水泵等）的安装进行。②电动机外露可导电部分必须与保护接地导体可靠连接；1kV 以下电动机的绝缘电阻值不应小于 0.5MΩ，抽查的数量为 50%。③电动机的接线入口及接线盒应做密封处理；电动机进线电缆应有滴水弯。④电动机接线应牢固可靠，接线方式应与供电电压相符：如线路电压为 380V，电动机额定电压为 380V 时应 Δ 接，电动机额定电压为 220V 时应 Y 接。⑤电动机试运行随设备（如风机、水泵等）的试运行实施。", k:"通道 1m；380 伏 Δ 接、220 伏 Y 接", s:"P66"},
+  {id:32, g:"防雷接地", q:"建筑防雷与接地的材料有什么要求？搭接焊接的长度、面数怎么规定？", a:"材料：建筑防雷与接地的材料可采用镀锌角钢、镀锌钢管、镀锌扁钢、镀锌圆钢等；镀锌钢材应为热镀锌，镀层厚度应不小于 65μm，镀层宜光滑、连贯、无斑点。\n连接：应采用搭接焊接。焊接处焊缝应饱满并有足够的机械强度，不得有夹渣、咬肉、裂纹、虚焊、气孔等缺陷，焊接处刷防锈漆和银粉漆或喷锌做防腐处理。\n①扁钢（铜排）之间搭接为扁钢（铜排）宽度的 2 倍，不少于三面施焊；\n②圆钢（铜杆）之间搭接为圆钢（铜杆）直径的 6 倍，双面施焊；\n③圆钢（铜杆）与扁钢（铜排）搭接为圆钢（铜杆）直径的 6 倍，双面施焊；\n④扁钢（铜排）与钢管（铜管）之间，紧贴 3/4 管外径表面，上下两侧施焊；\n⑤扁钢与角钢焊接，紧贴角钢外侧两面，上下两侧施焊。", k:"热镀锌 65μm；扁钢 2 倍三面，圆钢 6 倍双面", s:"P66"},
+  {id:33, g:"防雷接地", q:"接闪杆和接闪带安装有什么要求？", a:"接闪杆：①一般由不锈钢（或热镀锌）圆钢或不锈钢管（或热镀锌钢管）制成。②建筑物上的接闪杆应和接闪网连接成一个整体；接闪杆设置独立的接地装置时，其接地装置与其他接地网的地中距离不应小于 3m。③对装有接闪杆的金属筒体，当金属筒体的厚度不小于 4mm 时，可作接闪杆的引下线，筒体底部应有两处与接地体连接。\n接闪带：①一般使用 40mm×4mm 的镀锌扁钢或直径为 12mm 的镀锌圆钢制作。②接闪带固定支架高度不宜小于 150mm；采用镀锌扁钢支架的间距为 0.5m，采用镀锌圆钢支架的间距为 1m；每个固定支架应能承受 49N 的垂直拉力。③接闪带在过建筑物变形缝处的跨接应采取补偿措施。④建筑物屋顶上的金属物应与接闪网连接成一体，如铁栏杆、钢爬梯、金属旗杆、透气管、金属柱灯、冷却塔等。", k:"独立接地 3m、筒体 4mm；扁钢 40×4、圆钢 12", s:"P66–67"},
+  {id:34, g:"防雷接地", q:"引下线和接地体施工各有什么要求？接地电阻限值是多少？", a:"引下线：明敷的引下线采用热镀锌圆钢时，圆钢与圆钢的连接可采用焊接或卡夹（接）器；采用热镀锌扁钢时，可采用焊接或螺栓连接；在离地 1.5m 处做断接卡。利用建筑物外立面混凝土柱内的主钢筋作防雷引下线时，应在离地 0.5m 处做接地测试点，接地测试点通常不少于 2 个，并有明显标识。\n人工接地体：①垂直接地体采用镀锌钢管的壁厚应不小于 2.5mm，镀锌角钢的厚度应不小于 4mm，镀锌圆钢的直径不小于 14mm；垂直接地体的长度一般为 2.5m；埋设后垂直接地体的顶部距地面不小于 0.6m，垂直接地体的水平间距应不小于 5m。②水平接地体：镀锌扁钢的厚度应不小于 4mm、截面积应不小于 100mm²；镀锌圆钢的截面积应不小于 100mm²；水平接地体距地面至少为 0.6m；接地体施工完成后应填土夯实，以减少接地电阻。\n自然接地体：工程桩钢筋做垂直接地体时，桩内钢筋（不少于 2 根）搭接焊接，再与底板主钢筋（不少于 2 根）焊接牢固，用色漆做标记并及时做好隐蔽工程验收记录；利用建筑底板钢筋做水平接地体时，底板内主钢筋（不少于 2 根）搭接焊接，用色漆做好标记，自然接地体应在不同的两点及以上与接地干线或接地网相连接。\n接地电阻：独立接地体的接地电阻应小于 4Ω，共用接地体的接地电阻应小于 1Ω。", k:"断接卡 1.5m、测试点 0.5m；独立 4Ω、共用 1Ω", s:"P67"},
+  {id:35, g:"防雷接地", q:"接地干线施工有什么要求？利用钢结构作接地线时怎么连接？", a:"室内接地干线多为明敷，一般敷设在电气井或电缆沟内；接地干线也可利用建筑中的钢管、金属框架、金属构架，但要在钢管、金属框架、金属构架连接处做接地跨接。\n利用钢结构作为接地线时，与接地干线的连接应采用电焊连接。当不允许在钢结构上电焊时，可采用柱焊或钻孔、攻丝，然后用螺栓和接地线跨接。跨接线一般采用扁钢或两端有铜接头的导线，跨接线应有 150mm 的伸缩量。", k:"钢结构电焊优先，跨接线留 150mm 伸缩", s:"P67"}
+];
+
+const EXAM = [
+  {type:"正向", cardIds:[9,10,11], q:"干式变压器的交接试验包括哪些项目？（至少写出 5 项）", answer:"①测量绕组连同套管的直流电阻；②检查所有分接的电压比；③有载调压切换装置试验；④测量绕组连同套管的绝缘电阻；⑤绕组连同套管的交流耐压试验；⑥额定电压下的冲击合闸试验。", keys:["直流电阻","电压比","有载调压","绝缘电阻","交流耐压","冲击合闸"], need:4},
+  {type:"正向", cardIds:[6], q:"写出建筑防雷与接地工程的施工程序。", answer:"接地体施工→接地干线施工→引下线敷设→均压环施工→接闪带（接闪杆、接闪网）施工。", keys:["接地体","接地干线","引下线","均压环","接闪带"], need:4},
+  {type:"选择", cardIds:[24], q:"梯架内电缆垂直敷设时，电缆的固定部位为：上端及每隔（　）处。", options:["1.5~2m","5~10m","50m","20~30m"], correct:0, why:"教材 P64：垂直敷设时，电缆的上端及每隔 1.5~2m 处；水平敷设时，电缆的首、尾两端、转弯及每隔 5~10m 处；标记在首端、尾端、转弯及每隔 50m 处；金属梯架大于 30m 时每隔 20~30m 增加一个接地连接点。B、C、D 都各自对应别的项目，是真实干扰项。"},
+  {type:"选择", cardIds:[28], q:"关于灯具接地要求，下列说法错误的是：", options:["Ⅰ类灯具的外露可导电部分必须采用铜芯软导线与保护导体可靠连接","Ⅱ类灯具具有双重绝缘或加强绝缘，外壳不需要与保护导体连接","Ⅲ类灯具依靠安全特低电压，电源电压不超过交流 50V，采用隔离变压器供电","Ⅲ类灯具的外壳必须与保护导体连接"], correct:3, why:"教材 P65：Ⅲ类灯具的外壳「不许」与保护导体连接；Ⅰ类必须可靠连接，Ⅱ类外壳不需要连接。D 把「不许」写成了「必须」。"},
+  {type:"反向", cardIds:[18,32,33,34], q:"说出这些数字对应的要求：\n65μm　／　20MΩ（1000V 兆欧表）　／　49N　／　1.5m", answer:"65μm —— 镀锌钢材（热镀锌）镀层厚度的最小值；\n20MΩ —— 用 1000V 兆欧表测量每节母线槽的绝缘电阻值不得小于的数值；\n49N —— 接闪带每个固定支架应能承受的垂直拉力；\n1.5m —— 明敷引下线离地做断接卡的距离。", keys:["镀锌","母线槽","接闪带","断接卡","固定支架"], need:3},
+  {type:"场景", cardIds:[32,33,34], q:"某建筑屋顶防雷施工：接闪带用 25mm×3mm 镀锌扁钢制作，支架间距 1.2m；明敷引下线在离地 1.2m 处做断接卡；垂直接地体用直径 12mm 的镀锌圆钢，长度 2.5m。请逐项指出不符合教材要求之处并改正。", answer:"①接闪带材料不符合（教材 P67）：一般使用 40mm×4mm 的镀锌扁钢或直径 12mm 的镀锌圆钢制作，25mm×3mm 偏小；\n②支架间距不符合（教材 P67）：采用镀锌扁钢支架的间距为 0.5m（圆钢支架为 1m），1.2m 超过规定；\n③断接卡位置不符合（教材 P67）：明敷引下线应在离地 1.5m 处做断接卡，1.2m 不对；\n④垂直接地体材料不符合（教材 P67）：镀锌圆钢的直径不小于 14mm，12mm 偏小（长度 2.5m 符合要求）。\n常识推断：施工前应按设计文件和规范核对材料规格，替换后重新做隐蔽验收与接地电阻测试（教材 P67 要求接地体施工结束后及时测量接地电阻，独立接地体应小于 4Ω、共用接地体应小于 1Ω）。", keys:["40mm×4mm","0.5m","1.5m","14mm","12mm"], need:3}
+];
+
+const KEY_STATUS = "erjian_sw_3_2_status";
+const KEY_PASS = "erjian_sw_3_2_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

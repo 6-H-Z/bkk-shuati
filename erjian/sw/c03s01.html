@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 3.1 建筑给水排水与供暖工程施工技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;padding:14px 14px 96px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+       background:#f5f6f8;color:#1a1a1a;max-width:640px;margin:0 auto}
+  .top{display:flex;align-items:center;gap:8px;margin:2px 0 4px}
+  h1{font-size:18px;margin:0;flex:1}
+  #gateBtn{min-height:36px;padding:0 14px;font-size:14px;font-weight:600;border-radius:9px;
+           border:1px solid #0b6bcb;background:#0b6bcb;color:#fff}
+  #gateBtn.passed{background:#1e7b4f;border-color:#1e7b4f}
+  .sub{font-size:12px;color:#666;margin:0 0 10px}
+  .badge{display:inline-block;font-size:12px;color:#1e7b4f;background:#e6f5ec;border-radius:6px;padding:2px 8px;margin-left:6px}
+  .bar{display:flex;gap:6px;font-size:12px;color:#444;margin-bottom:10px}
+  .bar span{background:#fff;border:1px solid #e3e6ea;border-radius:8px;padding:5px 6px;flex:1;text-align:center}
+  .bar b{font-size:15px;display:block;margin-top:1px}
+  .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06);
+        min-height:200px;display:flex;flex-direction:column;cursor:pointer}
+  .card:active{background:#fafbfc}
+  .tag{font-size:12px;color:#0b6bcb;background:#e8f2ff;border-radius:6px;padding:3px 8px;align-self:flex-start;margin-bottom:10px}
+  .q{font-size:18px;line-height:1.6;font-weight:600;white-space:pre-wrap}
+  .a{margin-top:14px;padding-top:14px;border-top:1px dashed #dde1e6;font-size:16px;line-height:1.7;color:#0f4c81;white-space:pre-wrap}
+  .kk{margin-top:12px;padding:9px 11px;background:#fff8e6;border-left:3px solid #f0b429;border-radius:6px;
+      font-size:15px;line-height:1.6;color:#7a5b00}
+  .hint{margin-top:12px;font-size:12px;color:#9aa0a8}
+  .src{margin-top:auto;padding-top:10px;font-size:12px;color:#8a8f98}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e3e6ea;
+        padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:16px;border-radius:10px;border:1px solid #d8dde3;
+               background:#fff;color:#222;font-weight:600}
+  #flip{background:#0b6bcb;color:#fff;border-color:#0b6bcb;flex:1.3}
+  #bad{color:#c0392b;border-color:#f0c4bd}
+  #good{color:#1e7b4f;border-color:#bfe3ce}
+  .tools{display:flex;gap:8px;margin-top:10px;font-size:13px;flex-wrap:wrap}
+  .tools button{min-height:34px;font-size:13px;font-weight:400;color:#555;background:#fff;
+                border:1px solid #d8dde3;border-radius:8px;padding:0 12px}
+  .tools button.on{background:#e8f2ff;border-color:#0b6bcb;color:#0b6bcb;font-weight:600}
+  .tools .nav{margin-left:auto}
+  footer{margin-top:14px;font-size:12px;color:#8a8f98;line-height:1.6}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:8px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:12px 14px;font-size:15px;
+       line-height:1.5;border:1px solid #d8dde3;border-radius:10px;background:#fff;color:#222}
+  .opt.ok{background:#e6f5ec;border-color:#1e7b4f;color:#14532d;font-weight:600}
+  .opt.no{background:#fdecea;border-color:#c0392b;color:#7f1d1d}
+  #exInput{width:100%;margin-top:12px;padding:12px;font-size:15px;line-height:1.6;
+           border:1px solid #d8dde3;border-radius:10px;font-family:inherit;background:#fff;resize:vertical}
+  #exInput:focus{outline:none;border-color:#0b6bcb}
+  .why{margin-top:10px;font-size:14px;line-height:1.7;color:#444;background:#f7f8fa;border-radius:8px;padding:10px 12px;white-space:pre-wrap}
+  .exDock{display:flex;gap:8px;margin-top:14px}
+  .exDock button{flex:1;min-height:46px;font-size:15px;border-radius:10px;border:1px solid #d8dde3;background:#fff;font-weight:600}
+  .exDock button.primary{background:#0b6bcb;color:#fff;border-color:#0b6bcb}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>3.1 建筑给水排水与供暖工程施工技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P48–56（本节末段在 P56）· 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P48–56（3.1 节末段与 3.2 节起始同在 P56）。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"分部分项", q:"建筑给水排水与供暖分部工程包含哪些子分部工程？（列出主要类别）", a:"室内给水系统、室内排水系统、室内热水系统、卫生器具、室内供暖系统、室外给水管网、室外排水管网、室外供热管网、建筑饮用水供应系统、建筑中水系统及雨水利用系统、游泳池及公共浴池水系统、水景喷泉系统、热源及辅助设备、监测与控制仪表。", k:"给·排·热·卫·暖，外网三套，饮·中·泳·景，热源·监测", s:"P48"},
+  {id:2, g:"施工程序", q:"水泵和不锈钢水箱的施工程序分别是什么？", a:"水泵施工程序：开箱检查→基础验收→减振装置安装→水泵就位→找正找平→配管及附件安装→检查验收。\n不锈钢水箱施工程序：基础验收→吊装就位→找平找正→配管及附件安装→压力试验（满水试验）→检查验收。", k:"泵：开·基·减·位·正·管·验", s:"P48"},
+  {id:3, g:"施工程序", q:"室内和室外给水管道的施工程序分别是什么？", a:"室内给水管道施工程序：材料验收→测绘放线→支架制作→管道预制→支架安装→管道安装→压力试验→防腐绝热→通水试验→冲洗、消毒→取样检验。\n室外给水管道施工程序：材料验收→测绘放线→沟槽开挖→管道预制→管道安装→压力试验→防腐绝热→通水试验→冲洗、消毒→管沟回填。", k:"室内先支后装，室外先沟后装；冲洗消毒取样", s:"P48–49"},
+  {id:4, g:"施工程序", q:"室内和室外排水管道的施工程序分别是什么？", a:"室内排水管道施工程序：材料验收→测绘放线→支架制作→管道预制→支架安装→管道安装→灌水试验→通水、通球试验。\n室外排水管道施工程序：材料验收→测绘放线→沟槽开挖→管道预制→管道安装→窨井施工→闭水试验→防腐→清洗→通水试验→管道沟槽回填。", k:"室内灌水，室外闭水", s:"P49"},
+  {id:5, g:"施工程序", q:"室内热水管道和室内供暖系统的施工程序分别是什么？", a:"室内热水管道施工程序：材料验收→测绘放线→支架制作→管道预制→支架安装→管道安装→压力试验→防腐绝热→通水试验→冲洗→试运行。\n室内供暖系统施工程序：材料验收→测绘放线→支架制作→管道预制→支架安装→供暖设备安装→管道及配件安装→散热器及附件安装→系统压力试验→防腐绝热→通水试验→冲洗→试运行。", k:"热水先压后绝，供暖设备先上", s:"P49"},
+  {id:6, g:"施工程序", q:"室外供热管网和卫生器具的施工程序分别是什么？", a:"室外供热管网施工程序：材料验收→测绘放线→沟槽施工→支架制作安装→管道预制→管道及配件安装→压力试验→防腐绝热→冲洗→试运行和调试→管沟、槽回填。\n卫生器具施工程序：开箱检查→卫生器具安装→给水配件安装→排水管道安装→灌水、通水试验→试运行。", k:"器具：开·器·给·排·灌通·试", s:"P49"},
+  {id:7, g:"管道连接", q:"螺纹连接和法兰连接分别适用于什么管径、什么场合？", a:"螺纹连接：管径小于或等于 100mm 的镀锌钢管宜采用螺纹连接，多用于明装管道；钢塑复合管一般也采用螺纹连接。镀锌钢管套丝时破坏的镀锌层表面及外露螺纹部分应做防腐处理。\n法兰连接：直径较大的管道宜采用法兰连接。一般用在主干道连接阀门、水表、水泵等处，以及需要经常拆卸、检修的管段上。镀锌管与法兰焊接处应进行二次镀锌或防腐。", k:"小管螺纹，大管法兰；二次镀锌", s:"P49"},
+  {id:8, g:"管道连接", q:"焊接连接适用于哪些管道？铜管和不锈钢管的焊接连接有什么具体要求？", a:"焊接适用于非镀锌钢管，多用于暗装管道和直径较大的管道，并在高层建筑中应用较多。\n铜管连接可采用专用接头或焊接：当管径小于 22mm 时宜采用承插或套管焊接，承口应迎介质流向安装；当管径大于或等于 22mm 时宜采用对口焊接。不锈钢管可采用承插焊接。", k:"铜管二十二为界，承口迎流", s:"P49"},
+  {id:9, g:"管道连接", q:"沟槽连接（卡箍连接）适用于哪些管道？有什么特点？", a:"沟槽式连接可用于空调冷热水、给水、雨水等系统直径大于或等于 100mm 的镀锌钢管或钢塑复合管，也可用于直径大于 50mm 的消火栓架空管道。\n沟槽连接具有操作简单、不影响管道的原有特性、施工安全、系统稳定性好、维修方便、省工省时等特点。", k:"给水一百，消火栓五十", s:"P49–50"},
+  {id:10, g:"管道连接", q:"卡套式连接和卡压连接分别用于什么管材？各有什么特点？", a:"卡套式连接：铝塑复合管一般采用螺纹卡套压接。将配件螺母套在管道端头，再把配件内芯套入端头内，用扳手把紧配件与螺母即可；铜管的连接也可采用螺纹卡套压接。\n卡压连接：薄壁不锈钢给水管道一般采用卡压连接。卡压连接是将带有特种密封圈的承口管件与管道连接，用专用工具压紧管口而起密封和紧固作用，具有安装便捷、连接可靠及经济合理等优点。", k:"铝塑卡套，薄壁不锈钢卡压", s:"P50"},
+  {id:11, g:"管道连接", q:"热熔、承插、粘接、电熔连接分别用于什么管材？承插连接有哪两类密封方式？", a:"热熔连接：使用专用热熔器将管材接口加热熔化后连接，操作方便、气密性好、接口强度高，常用于无规共聚聚丙烯（PPR）和聚乙烯（PE）等塑料管道施工。\n承插连接：用于给水及排水铸铁管及管件的连接，有柔性连接和刚性连接两类，柔性连接采用橡胶圈密封，刚性连接采用石棉水泥或膨胀性填料密封，重要场合可用铅密封。\n粘接连接：用胶粘剂将管材连接部位粘接成整体，常用于硬聚氯乙烯（PVC-U）管道的连接，胶粘剂应由管材生产企业配套供给。\n电熔连接：常用于聚乙烯（PE）和高密度聚乙烯（HDPE）管道的连接，通过电熔焊机控制内埋于管件中的电阻丝的电压、电流及通电时间达到熔接目的。", k:"PPR热熔，PVC-U粘接，PE/HDPE电熔", s:"P50"},
+  {id:12, g:"施工技术", q:"给水管材和排水管材可分别采用哪些管材？进场验收有什么要求？", a:"给水管材可采用合格的给水铸铁管、镀锌钢管、给水塑料管、复合管、铜管、不锈钢管；生活给水所涉及的材料必须达到饮用水卫生标准。排水管材可采用合格的硬聚氯乙烯（PVC-U）管、聚丙烯静音排水管及高密度聚乙烯（HDPE）双壁波纹管等。\n材料进场时应对品种、规格、外观等进行检查验收：包装应完好，表面无划痕及外力冲击破损，并经监理工程师核查确认；型号、规格及性能检测报告应符合国家技术标准和设计要求；生活给水系统所涉及的材料设备应满足卫生安全标准。", k:"", s:"P50"},
+  {id:13, g:"施工技术", q:"阀门安装前应做哪些试验？抽查比例是多少？试验压力如何确定？", a:"阀门安装前，应按国家现行相关标准的要求进行强度和严密性试验，试验应在每批（同牌号、同型号、同规格）数量中抽查 10%，且不少于 1 个。\n安装在主干管上起切断作用的阀门，应逐个做强度试验和严密性试验。\n阀门的强度试验压力为公称压力的 1.5 倍，严密性试验压力为公称压力的 1.1 倍。", k:"抽查一成不少于一个；强度一点五，严密一点一", s:"P50"},
+  {id:14, g:"施工技术", q:"散热器和绝热材料进场时应复验哪些性能？复验有什么规定？", a:"散热器进场时，应对其单位散热量、金属热强度等性能进行复验。\n绝热材料进场时，应对其导热系数或热阻、密度、吸水率等性能进行复验；复验应为见证取样检验。同厂家、同材质的绝热材料，复验次数不得少于 2 次。", k:"散热器：散热量·金属热强度；绝热：导热·密度·吸水率", s:"P50"},
+  {id:15, g:"施工技术", q:"测绘放线有哪些要求？", a:"①测量前应与土建总承包单位进行测量基准的交接，使用的测量仪器应经检定或校准合格并在有效期内，且符合测量精度要求；\n②管道施工前应进行仔细审图，有条件的可利用 BIM 软件建立三维模型，提前发现问题，避免管道之间出现碰撞现象；\n③管道施工前，应根据施工图纸进行现场实地测量放线，以确定管道及其支吊架的标高和位置，防止因累积误差而出现超标。例如：管井内垂直管道配管前，应进行实地测量，避免累积误差造成各层标高误差超标。", k:"基准交接·审图建摸·实地放线", s:"P51"},
+  {id:16, g:"施工技术", q:"管道穿过地下室、楼板、墙壁时，套管设置有什么要求？", a:"①地下室或地下构筑物外墙有管道穿过的，应采取防水措施；对有严格防水要求的建筑物，应采用柔性防水套管。\n②管道穿过楼板时应设置金属或塑料套管：安装在楼板内的套管，其顶部应高出装饰地面 20mm；安装在卫生间及厨房内的套管，其顶部应高出装饰地面 50mm；底部应与楼板底面相平；套管与管道之间缝隙宜用阻燃密实材料和防水油膏填实，且端面应光滑。\n③管道穿过墙壁时应设置金属或塑料套管：套管两端应与饰面相平，套管与管道之间缝隙宜用阻燃密实材料填实，且端面应光滑。", k:"楼板二十，卫厨五十，墙套与饰面平", s:"P51"},
+  {id:17, g:"施工技术", q:"管道支架形式有哪些？室内给水金属立管支架和沟槽式连接水平钢管的支吊架设置有什么要求？", a:"管道支架、吊架、托架应选用合适的构造形式，如：固定支架、导向支架、滑动支架、弹簧吊架、抗震支架等。\n①室内给水金属立管管道支架：楼层高度小于或等于 5m，每层必须设置不少于 1 个；楼层高度大于 5m，每层设置不少于 2 个。安装位置匀称，管道支架高度距地面为 1.5~1.8m，同一区域内管架设置高度应一致。\n②沟槽式连接水平钢管支、吊架应设置在管接头（刚性接头、挠性接头、支管接头）两侧和三通、四通、弯头、异径管等管件上下游连接接头的两侧，支、吊架与接头的净间距不宜小于 150mm，且不宜大于 300mm。", k:"立管五米一分界；沟槽支架一五零到三百", s:"P51"},
+  {id:18, g:"施工技术", q:"管道预制应遵循什么原则？有哪些要求？", a:"管道预制应根据设计图纸画出管道分路、管道转弯、管道变径、预留管口、阀门位置等施工草图，通过现场测绘放线确定准确尺寸，并在施工草图上做好记录。\n预制前应对管段进行分组编号，本着先安装先预制的原则进行预制加工；非安装现场预制的管道应考虑方便运输；管道预制加工时应同时进行管道质量检验和底漆涂刷工作。管道预制时应尽量采用先进的自动化机械，以实现管道加工的高品质和工艺标准化。", k:"先装先预制", s:"P51–52"},
+  {id:19, g:"施工技术", q:"管道安装的一般原则是什么？不同材质管道、压力管线与重力流管线怎么处理？", a:"管道安装一般应按先主管后支管、先上部后下部、先里后外的原则进行安装。\n对于不同材质的管道应先安装钢质管道，后安装塑料管道，但压力管线宜避让重力流管线。", k:"主·上·里；钢先塑后，压力让重力", s:"P52"},
+  {id:20, g:"施工技术", q:"冷、热水管道平行和垂直安装时，位置如何确定？", a:"冷、热水管道上下平行安装时，热水管道应在冷水管道上方；垂直安装时，热水管道应在冷水管道左侧。", k:"上热下冷，左热右冷", s:"P52"},
+  {id:21, g:"施工技术", q:"供暖管道安装坡度有什么规定？", a:"供暖管道安装坡度应符合设计及规范的规定，其坡向应利于管道的排气和泄水。例如：\n汽、水同向流动的热水供暖管道和汽、水同向流动的蒸汽管道及凝结水管道，坡度应为 3‰，不得小于 2‰；\n汽、水逆向流动的热水供暖管道和汽、水逆向流动的蒸汽管道，坡度不应小于 5‰；\n散热器支管的坡度应为 1%。", k:"同向三千分之三（不小于二），逆向千分之五，支管百分之一", s:"P52"},
+  {id:22, g:"施工技术", q:"排水塑料管伸缩节间距、阻火圈（防火套管）和阻水圈各有什么要求？", a:"排水塑料管必须按设计要求及位置装设伸缩节。如设计无要求时，伸缩节间距不得大于 4m。\n明敷排水塑料管道应按设计要求设置阻火圈或防火套管：当立管管径≥110mm 时，在楼板贯穿部位应设置阻火圈或长度≥500mm 的防火套管，在管道周围应筑成厚度≥20mm、宽度≥30mm 的阻水圈；横干管穿越防火分区隔墙时，管道穿越墙体的两侧应设置防火圈或长度≥500mm 的防火套管。", k:"伸缩四米，阻火圈五百，阻水二十乘三十", s:"P52"},
+  {id:23, g:"施工技术", q:"排水通气管的安装有哪些要求？", a:"排水通气管不得与风道或烟道连接。通气管应高出屋面 300mm，且必须大于最大积雪厚度；在通气管出口 4m 以内有门、窗时，通气管应高出门、窗顶 600mm 或引向无门、窗一侧；在经常有人停留的平屋顶上，通气管应高出屋面 2m，并应根据防雷要求设置防雷装置；屋顶有隔热层应从隔热层板面算起。", k:"三百起步，四米门窗六百，上人屋面两米", s:"P52"},
+  {id:24, g:"施工技术", q:"室内排水管道各管段连接时，对三通、四通、弯头有什么要求？", a:"用于室内排水的水平管道与水平管道、水平管道与立管的连接要求：应采用 45° 三通或 45° 四通和 90° 斜三通或 90° 斜四通。\n立管与排出管端部的连接，应采用两个 45° 弯头或曲率半径不小于 4 倍管径的 90° 弯头。", k:"四五三通，九十斜，四倍弯", s:"P52–53"},
+  {id:25, g:"施工技术", q:"生活饮用水水箱（池）、中水箱（池）、雨水清水池的泄水管、溢流管有什么要求？", a:"生活饮用水水箱（池）、中水箱（池）、雨水清水池的泄水管、溢流管，不得与污水管道直接连接，采用间接排水，并应留出不小于 100mm 的隔断空间。", k:"间接排水，隔断一百", s:"P53"},
+  {id:26, g:"施工技术", q:"高层和超高层建筑雨水系统如何选择管材？", a:"高层建筑的雨水系统要考虑管材的承压能力，一般采用承压管材。例如：高层建筑的雨水系统采用镀锌焊接钢管，超高层建筑的雨水系统采用镀锌无缝钢管，高层和超高层建筑的重力流雨水管道系统采用球墨铸铁管等。", k:"高层镀锌焊接，超高层镀锌无缝", s:"P53"},
+  {id:27, g:"施工技术", q:"建筑管道防腐和绝热施工各有什么要求？", a:"防腐：管道防腐方法主要有涂层、衬里和阴极保护等；手工油漆涂刷时，漆层要厚薄均匀一致，多遍涂刷时必须在上一遍涂膜干燥后才可涂刷第二遍；管道在防腐蚀衬里和外表面涂层施工前应进行基体表面处理。\n绝热：绝热结构应由绝热层、防潮层（用于保冷结构）、外保护层组成；管道绝热按热流方向可分为保温、保冷两种类型。采用橡塑保温材料进行保温时，应先把保温管用小刀划开，在划口处涂上专用胶水，然后套在管子上，将两边的划口对接。水平管道金属保护层的环向接缝应顺水搭接，纵向接缝应位于管道的侧下方；立管金属保护层的环向接缝必须上搭下。", k:"保温=绝热层+外护层，保冷再加防潮层", s:"P53"},
+  {id:28, g:"设备安装", q:"设备与基础验收有什么要求？锅炉安装前基础放线允许偏差是多少？", a:"设备进场时应对品种、规格、外观等进行验收，包装应完好，表面无划痕及外力冲击破损；主要器具和设备必须有完整的安装使用说明书。设备安装前应进行开箱检查验收，并形成书面的验收记录；设备就位前应对其基础进行验收，合格后再安装。\n锅炉安装前，应划定纵向、横向安装基准线和标高基准点。锅炉基础放线应符合：纵向和横向中心线应互相垂直；相应两立柱定位中心线的间距允许偏差应为 ±2mm；各组对称 4 根立柱定位中心点的两对角线长度之差不应大于 5mm。", k:"立柱间距正负二，对角线差五", s:"P53"},
+  {id:29, g:"设备安装", q:"水泵安装水平偏差和散热器与墙面的安装距离各有什么要求？", a:"整体安装的泵的安装水平，应在泵的进、出口法兰面或其他水平面上进行检测，纵向安装水平偏差不应大于 0.10/1000，横向安装水平偏差不应大于 0.20/1000；解体安装的泵的安装水平，应在水平中分面、轴的外露部分、底座的水平加工面上纵、横向放置水平仪进行检测，其偏差均不应大于 0.05/1000。\n散热器背面与装饰后的墙内表面安装距离，应符合设计或产品说明书要求；如设计未注明，应为 30mm。", k:"整体纵零点一、横零点二；解体零点零五；散热器三十", s:"P54"},
+  {id:30, g:"试验调试", q:"散热器、供暖分汽缸、敞口水箱、密闭水箱安装前的试验各有什么要求？", a:"①散热器组对后，以及整组出厂的散热器在安装之前应做水压试验。试验压力如设计无要求时应为工作压力的 1.5 倍，但不小于 0.6MPa；试验时间为 2~3min，压力不降且不渗不漏。\n②供暖分汽缸（分水器、集水器）安装前应进行水压试验，试验压力为工作压力的 1.5 倍，但不得小于 0.6MPa。\n③敞口水箱安装前应做满水试验，静置 24h 观察，应不渗不漏；密闭水箱（罐）安装前应以工作压力的 1.5 倍做水压试验，试验压力下 10min 应压力不降、不渗不漏。", k:"散热器两三分钟，敞口水箱二十四小时", s:"P54"},
+  {id:31, g:"试验调试", q:"给水管道系统的水压试验压力和合格标准是什么？", a:"室内给水系统、室外管网系统管道安装完毕应进行水压试验。水压强度试验压力必须符合设计要求，当设计未注明时，各种材质的给水管道系统强度试验压力均为工作压力的 1.5 倍，但不得小于 0.6MPa。\n检验方法：钢管及复合管道在系统试验压力下 10min 内压力降不大于 0.02MPa，然后降至工作压力检查，压力应不降，不渗不漏；塑料管道系统在试验压力下稳压 1h 压力降不超过 0.05MPa，然后在工作压力 1.15 倍状态下稳压 2h，压力降不超过 0.03MPa，连接处不得渗漏。\n室外给水钢管、铸铁管在系统试验压力下 10min 内压力降不大于 0.05MPa，然后降至工作压力检查，压力应保持不变，不渗不漏；塑料管道系统在试验压力下稳压 1h 压力降不超过 0.05MPa，然后降至工作压力进行检查，压力应保持不变，不渗不漏。", k:"工作压力一点五倍且不低于零点六", s:"P55"},
+  {id:32, g:"试验调试", q:"热水供应系统和供暖系统的水压试验压力如何确定？", a:"热水供应系统、供暖系统安装完毕，管道保温之前应进行水压试验。强度试验压力应符合设计要求，当设计未注明时：\n①热水供应系统和蒸汽供暖系统、热水供暖系统，应以系统顶点的工作压力加 0.1MPa，同时在系统顶点的试验压力不小于 0.3MPa；\n②高温热水供暖系统，应以系统最高点工作压力加 0.4MPa；\n③塑料管及铝塑复合管热水供暖系统，应以系统最高点工作压力加 0.2MPa，同时在系统最高点的试验压力不小于 0.4MPa。", k:"常规加零点一，高温加零点四，塑料复合加零点二", s:"P55"},
+  {id:33, g:"试验调试", q:"灌水试验分别对室内排水管道、室内雨水管、室外排水管网有什么要求？", a:"①室内隐蔽或埋地的排水管道在隐蔽前必须做灌水试验。灌水高度应不低于底层卫生器具的上边缘或底层地面高度；检验方法为满水 15min 水面下降后，再灌满观察 5min，液面不降，管道及接口无渗漏为合格。\n②室内雨水管应根据管材和建筑物高度选择整段方式或分段方式进行灌水试验。整段试验的灌水高度应达到立管上部的雨水斗；灌水达到稳定水面后观察 1h，管道无渗漏为合格。\n③室外排水管网按排水检查井分段试验。试验水头应以试验段上游管顶加 1m，时间不少于 30min，逐段观察，管接口无渗漏为合格。", k:"室内十五加五，雨水一小时，室外上游加一米、三十分钟", s:"P55"},
+  {id:34, g:"试验调试", q:"通水试验和通球试验分别有什么要求？", a:"通水试验：给水系统交付使用前，开启阀门及水嘴等配水点进行放水试验，要求各配水点水量稳定正常，满足使用要求；排水系统安装完毕，排水管道、雨水管道应分系统进行通水试验，以流水通畅、不渗不漏为合格。\n通球试验：排水主立管及水平干管管道均应做通球试验，通球球径不小于排水管道管径的 2/3，通球率必须达到 100%。", k:"通球三分之二，通球率百分百", s:"P55–56"},
+  {id:35, g:"试验调试", q:"管道系统冲洗有什么要求？", a:"生活给水、热水系统及游泳池循环给水系统的管道和设备在交付使用前必须进行冲洗和消毒，生活饮用水系统的水质应进行见证取样检验，水质符合《生活饮用水卫生标准》GB 5749—2022 方可使用。\n供暖管道系统试验合格后，应对系统进行冲洗并清扫过滤器及除污器，直至排出水不含泥沙、铁屑等杂质，且水色不浑浊为合格。供暖管道系统冲洗完毕后应充水、加热，进行试运行和调试，观察、测量室温，满足设计要求为合格。", k:"生活给水冲消+见证取样；供暖冲至水清", s:"P56"}
+];
+
+const EXAM = [
+  {type:"正向", cardIds:[3], q:"写出室内给水管道的施工程序。", answer:"材料验收→测绘放线→支架制作→管道预制→支架安装→管道安装→压力试验→防腐绝热→通水试验→冲洗、消毒→取样检验。", keys:["材料验收","测绘放线","支架","管道预制","压力试验","防腐绝热","通水","冲洗","消毒","取样检验"], need:5},
+  {type:"正向", cardIds:[23], q:"排水通气管的安装有哪些要求？", answer:"排水通气管不得与风道或烟道连接。通气管应高出屋面 300mm，且必须大于最大积雪厚度；在通气管出口 4m 以内有门、窗时，通气管应高出门、窗顶 600mm 或引向无门、窗一侧；在经常有人停留的平屋顶上，通气管应高出屋面 2m，并应根据防雷要求设置防雷装置；屋顶有隔热层应从隔热层板面算起。", keys:["300mm","4m","600mm","2m","防雷","隔热层"], need:4},
+  {type:"选择", cardIds:[13], q:"阀门安装前应做强度和严密性试验，试验应在每批（同牌号、同型号、同规格）数量中抽查（　），且不少于 1 个。", options:["5%","10%","20%","50%"], correct:1, why:"教材 P50：试验应在每批（同牌号、同型号、同规格）数量中抽查 10%，且不少于 1 个；安装在主干管上起切断作用的阀门应逐个做强度试验和严密性试验。强度试验压力为公称压力的 1.5 倍，严密性试验压力为公称压力的 1.1 倍。"},
+  {type:"选择", cardIds:[21,22], q:"关于室内供暖及排水管道安装，下列说法错误的是：", options:["汽、水同向流动的热水供暖管道坡度应为 3‰，不得小于 2‰","汽、水逆向流动的热水供暖管道坡度不应小于 5‰","散热器支管的坡度应为 1%","低温热水辐射供暖系统埋地敷设的盘管可以有接头"], correct:3, why:"教材 P52：低温热水辐射供暖系统埋地敷设的盘管「不应有接头」。A、B、C 均与教材一致（同向 3‰ 且不小于 2‰、逆向不小于 5‰、散热器支管 1%）。"},
+  {type:"反向", cardIds:[16,22,34], q:"说出这些数字对应的要求：\n20mm 与 50mm　／　4m　／　2/3（100%）", answer:"20mm —— 管道穿过楼板时，安装在楼板内的套管顶部应高出装饰地面的距离；\n50mm —— 安装在卫生间及厨房内的套管，其顶部应高出装饰地面的距离；\n4m —— 排水塑料管设计无要求时，伸缩节间距不得大于的距离；\n2/3（100%）—— 排水通球试验的通球球径不小于排水管道管径的比例，且通球率必须达到 100%。", keys:["套管","楼板","卫生间","伸缩节","通球","管径"], need:3},
+  {type:"场景", cardIds:[31], q:"某住宅楼室内给水系统（钢管）安装完毕，设计未注明水压试验压力，系统工作压力为 0.4MPa。试验压力应取多少？合格标准是什么？", answer:"试验压力（教材 P55 原文）：设计未注明时，各种材质的给水管道系统强度试验压力均为工作压力的 1.5 倍，但不得小于 0.6MPa。1.5×0.4=0.6MPa，与下限 0.6MPa 相等，故试验压力取 0.6MPa。\n合格标准（教材 P55 原文）：钢管及复合管道在系统试验压力下 10min 内压力降不大于 0.02MPa，然后降至工作压力检查，压力应不降、不渗不漏。\n常识推断：试验前应编制专项施工方案并经批准；高层建筑管道应先按分区、分段试验，合格后再按系统整体试验（该做法同样出自教材 P55）。", keys:["0.6","1.5","10","0.02","0.4"], need:3}
+];
+
+const KEY_STATUS = "erjian_sw_3_1_status";
+const KEY_PASS = "erjian_sw_3_1_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

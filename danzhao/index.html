@@ -249,6 +249,10 @@
   .rev-card:active{transform:scale(.995)}
   .rev-q{font-size:21px;line-height:1.45;font-weight:600;letter-spacing:-.3px;white-space:pre-wrap;word-break:break-word}
   @keyframes flipIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @keyframes cardInL{from{opacity:.35;transform:translateX(26px)}to{opacity:1;transform:none}}
+  @keyframes cardInR{from{opacity:.35;transform:translateX(-26px)}to{opacity:1;transform:none}}
+  .rev-card.anim-l{animation:cardInL .26s var(--spring)}
+  .rev-card.anim-r{animation:cardInR .26s var(--spring)}
   .rev-a{
     margin-top:20px;padding-top:18px;border-top:.5px solid var(--sep);
     font-size:18px;line-height:1.5;color:var(--blue);white-space:pre-wrap;word-break:break-word;text-align:left;
@@ -379,7 +383,7 @@
     <button class="again" id="revAgain"></button>
     <button class="know" id="revKnow"></button>
   </div>
-  <div class="multi">点卡片翻面 · 记不住的下一轮还会出现</div>
+  <div class="multi" id="recHint">左右滑动切卡 · 点卡片翻面 · 记不住的下一轮还会出现</div>
 </section>
 
 <div id="mask" class="mask hide"></div>
@@ -781,8 +785,8 @@
   function recKey(k, ui, ii) { return k + "|" + ui + "|" + ii; }
   function recIsKnown(k, ui, ii) { return state.rec[recKey(k, ui, ii)] === 1; }
 
-  function showRecite(k) { R = { key: k, unit: 0, pos: 0, reveal: false }; show("recite"); renderRecite(); }
-  function renderRecite() {
+  function showRecite(k) { R = { key: k, unit: 0, pos: 0, reveal: false, lastSwipe: 0 }; show("recite"); renderRecite(); }
+  function renderRecite(dir) {
     var units = reciteUnits(R.key);
     var s = subjOf(R.key);
     $("#recSubjSub").textContent = s.name + " · 先看提示，想一遍再翻答案";
@@ -792,7 +796,7 @@
     });
     $("#revTabs").innerHTML = tabs;
     each(document.querySelectorAll("#revTabs button"), function (b) {
-      b.onclick = function () { R = { key: b.getAttribute("data-rk"), unit: 0, pos: 0, reveal: false }; renderRecite(); };
+      b.onclick = function () { R = { key: b.getAttribute("data-rk"), unit: 0, pos: 0, reveal: false, lastSwipe: 0 }; renderRecite(); };
     });
 
     if (!units.length) {
@@ -812,7 +816,6 @@
     each(document.querySelectorAll("#revUnits .rev-unit"), function (b) {
       b.onclick = function () { R.unit = Number(b.getAttribute("data-ru")); R.pos = 0; R.reveal = false; renderRecite(); };
     });
-
     var u = units[R.unit];
     if (R.pos >= u.items.length) R.pos = 0;
     var item = u.items[R.pos] || { q: "", a: "" };
@@ -821,11 +824,29 @@
     $("#revProg").textContent = "第 " + (R.pos + 1) + " / " + u.items.length + " 条 · 已记 " + knownN;
     var h = '<div class="rev-q">' + esc(item.q) + '</div>';
     if (R.reveal) h += '<div class="rev-a">' + esc(item.a) + '</div>';
-    else h += '<div class="rev-hint"><span class="dot"></span>点一下卡片看答案</div>';
+    else h += '<div class="rev-hint"><span class="dot"></span>点一下卡片看答案 · 左右滑动切卡</div>';
     $("#revCard").innerHTML = h;
-    $("#revCard").onclick = function () { R.reveal = !R.reveal; renderRecite(); };
+    var cardEl = $("#revCard");
+    cardEl.onclick = function () {
+      if (Date.now() - (R.lastSwipe || 0) < 400) return;   // 刚滑过就别翻面
+      R.reveal = !R.reveal; renderRecite();
+    };
+    cardEl.classList.remove("anim-l", "anim-r");
+    void cardEl.offsetWidth;
+    if (dir === 1) cardEl.classList.add("anim-l");
+    else if (dir === -1) cardEl.classList.add("anim-r");
     $("#revAgain").innerHTML = ic("refresh") + "还没记住";
     $("#revKnow").innerHTML = ic("check") + "记住了";
+  }
+  function recStep(d) {
+    if (!R) return;
+    var units = reciteUnits(R.key), u = units[R.unit];
+    if (!u) return;
+    var np = R.pos + d;
+    if (np < 0) { toast("已经是第一条了"); return; }
+    if (np >= u.items.length) { toast("最后一条了 · 点「记住了 / 还没记住」结束本单元"); return; }
+    R.pos = np; R.reveal = false; R.lastSwipe = Date.now();
+    renderRecite(d);
   }
   function recMark(known) {
     var units = reciteUnits(R.key), u = units[R.unit];
@@ -974,6 +995,26 @@
       var dx = e.changedTouches[0].clientX - tx, dy = e.changedTouches[0].clientY - ty;
       if (Math.abs(dx) > 55 && Math.abs(dy) < 45) { if (dx < 0) next(); else prev(); }
     }, { passive: true });
+
+    // 背诵：左右滑切卡（整页可滑，但避开底部按钮/分段控件/单元横滑条）
+    var rx = 0, ry = 0, rSkip = false;
+    $("#recite").addEventListener("touchstart", function (e) {
+      rSkip = !!(e.target.closest(".rev-foot,.seg,.rev-units,.rev-meta,#revTabs,#revReset"));
+      if (e.touches.length) { rx = e.touches[0].clientX; ry = e.touches[0].clientY; }
+    }, { passive: true });
+    $("#recite").addEventListener("touchend", function (e) {
+      if (rSkip || !e.changedTouches.length) return;
+      var dx = e.changedTouches[0].clientX - rx, dy = e.changedTouches[0].clientY - ry;
+      if (Math.abs(dx) > 50 && Math.abs(dy) < 60) { R.lastSwipe = Date.now(); recStep(dx < 0 ? 1 : -1); }
+    }, { passive: true });
+
+    // 背诵：键盘方向键翻卡 / 空格翻面
+    document.addEventListener("keydown", function (e) {
+      if ($("#recite").classList.contains("hide")) return;
+      if (e.key === "ArrowRight") { e.preventDefault(); recStep(1); }
+      else if (e.key === "ArrowLeft") { e.preventDefault(); recStep(-1); }
+      else if (e.key === " " || e.key === "Enter") { e.preventDefault(); if (R) { R.reveal = !R.reveal; renderRecite(); } }
+    });
   }
 
   document.addEventListener("dblclick", function (e) { e.preventDefault(); }, { passive: false });

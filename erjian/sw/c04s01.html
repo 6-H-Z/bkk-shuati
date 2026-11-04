@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 4.1 机械设备安装技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  :root{
+    --ink:#12263A; --ink-2:#3C5A75; --paper:#FAFAF7; --line:#E2E0D6;
+    --accent:#F2B01E; --accent-bg:#FFF6DF; --ok:#1F7A4C; --no:#B03A2E;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0 auto;padding:14px 14px 104px;max-width:640px;background:var(--paper);color:var(--ink);
+       font:16px/1.6 -apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  a{color:var(--ink)}
+  .top{display:flex;align-items:baseline;gap:10px;margin:2px 0 6px;
+       border-bottom:1px solid var(--line);padding-bottom:10px}
+  h1{font-size:19px;margin:0;flex:1;font-weight:650;letter-spacing:.01em}
+  #gateBtn{min-height:32px;padding:0 12px;font-size:13px;font-weight:600;border-radius:2px;
+           border:1px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer}
+  #gateBtn.passed{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .sub{font-size:11.5px;color:var(--ink-2);margin:0 0 12px;font-family:var(--mono);letter-spacing:.02em}
+  .badge{color:var(--ok);border:1px solid currentColor;padding:1px 6px;border-radius:2px;margin-left:6px}
+  .bar{display:flex;margin:0 0 12px;border:1px solid var(--line);background:#fff}
+  .bar span{flex:1;padding:8px 10px;font-size:10.5px;color:var(--ink-2);letter-spacing:.08em;
+            border-right:1px solid var(--line);font-family:var(--mono)}
+  .bar span:last-child{border-right:0}
+  .bar b{display:block;font-size:18px;color:var(--ink);letter-spacing:0;margin-top:2px}
+  .card{background:#fff;border:1px solid var(--line);border-left:3px solid var(--ink);
+        border-radius:2px;padding:18px 18px 16px;min-height:220px;display:flex;flex-direction:column;cursor:pointer}
+  .card:active{background:#FCFCF9}
+  .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--ink-2);margin-bottom:14px}
+  .tag::before{content:"▍";color:var(--accent);margin-right:6px}
+  .q{font-size:19px;line-height:1.62;font-weight:600;letter-spacing:.01em;white-space:pre-wrap}
+  .a{margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:15.5px;
+     line-height:1.85;color:#1B3A57;white-space:pre-wrap}
+  .kk{margin-top:14px;padding:10px 12px;background:var(--accent-bg);border-left:3px solid var(--accent);
+      font-size:14.5px;line-height:1.65;color:#6B4A00}
+  .hint{margin-top:12px;font-size:11px;color:#9A9789;font-family:var(--mono)}
+  .src{margin-top:auto;padding-top:12px;font-size:11px;color:#9A9789;font-family:var(--mono);letter-spacing:.02em}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--line);
+        padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:48px;font-size:15px;border-radius:2px;border:1px solid var(--line);
+               background:#fff;color:var(--ink);font-weight:600;cursor:pointer}
+  .dock button:active{transform:translateY(1px)}
+  #flip{background:var(--ink);color:#fff;border-color:var(--ink);flex:1.25}
+  #bad{color:var(--no);border-color:#E7C6C0}
+  #good{color:var(--ok);border-color:#BFDCCB}
+  .tools{display:flex;gap:6px;margin-top:12px;font-size:12px;flex-wrap:wrap}
+  .tools button{min-height:32px;font-size:12.5px;font-weight:400;color:var(--ink-2);background:#fff;
+                border:1px solid var(--line);border-radius:2px;padding:0 10px;font-family:var(--mono);cursor:pointer}
+  .tools button.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  .tools .nav{margin-left:auto}
+  footer{margin-top:14px;font-size:11px;color:#9A9789;line-height:1.7;font-family:var(--mono)}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink-2);
+         margin-bottom:8px;font-family:var(--mono);letter-spacing:.04em}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:12px 14px;font-size:15px;
+       line-height:1.55;border:1px solid var(--line);border-radius:2px;background:#fff;color:var(--ink);cursor:pointer}
+  .opt.ok{background:#EDF7F1;border-color:var(--ok);color:#14532D;font-weight:600}
+  .opt.no{background:#FBEEEC;border-color:var(--no);color:#7F1D1D}
+  #exInput{width:100%;margin-top:12px;padding:12px;font-size:15px;line-height:1.7;color:var(--ink);
+           border:1px solid var(--line);border-radius:2px;font-family:inherit;background:#fff;resize:vertical}
+  #exInput:focus{outline:2px solid var(--ink);outline-offset:1px}
+  .why{margin-top:12px;font-size:14px;line-height:1.8;color:#2B3F52;background:#F5F4EE;
+       border-left:3px solid var(--line);padding:10px 12px;white-space:pre-wrap}
+  .exDock{display:flex;gap:8px;margin-top:14px}
+  .exDock button{flex:1;min-height:46px;font-size:15px;border-radius:2px;border:1px solid var(--line);
+                 background:#fff;font-weight:600;color:var(--ink);cursor:pointer}
+  .exDock button.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>4.1 机械设备安装技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P103–113 · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P103–113。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"安装程序", q:"机械设备安装的一般程序是什么？", a:"开箱检查→基础验收→测量放线→垫铁设置→吊装就位→安装调整→设备固定与灌浆→零部件清洗与装配→润滑与加油→设备试运行→工程验收。", k:"开基测垫吊，调固零润试", s:"P103"},
+  {id:2, g:"开箱与基础验收", q:"设备开箱检查要检查和记录哪些内容？", a:"箱号、箱数以及包装情况；设备名称、规格和型号，重要零部件需按标准进行检查验收；随机技术文件（如使用说明书、合格证明书和装箱清单等）及专用工具；有无缺损件，表面有无损坏和锈蚀；其他需要记录的事项。", k:"箱、名、文、损、他", s:"P103"},
+  {id:3, g:"开箱与基础验收", q:"设备进场有什么要求？基础混凝土强度怎么验收？", a:"设备进场：机械设备及材料必须符合设计和产品标准的规定，并应有合格证明；进场时发现存在问题或缺陷，应视为不合格产品，不得进行安装。\n基础混凝土强度：由基础施工单位或监理单位提供设备基础质量合格证明文件，包括基础养护时间及混凝土强度是否符合安装要求；若对基础强度有怀疑时，可请有检测资质的工程检测单位对基础的强度进行复测；有预压和沉降观测要求的，应经预压合格，并有预压和沉降观测详细记录（如汽轮发电机组、透平压缩机组、大型储罐的基础等）。", k:"先要证，疑复测，预压留记录", s:"P108"},
+  {id:4, g:"开箱与基础验收", q:"设备基础的位置、标高、几何尺寸检查包括哪些内容？外观质量有什么要求？", a:"基础验收应根据混凝土结构工程施工规范及设备安装规范进行检查验收，应有验收资料或记录；安装前按规范允许偏差复检。\n检查内容：基础的坐标位置，不同平面的标高，平面外形尺寸，凸台上平面外形尺寸和凹穴尺寸，平面的水平度，基础立面的铅垂度，预留孔洞的中心位置、深度和孔壁铅垂度，预埋板或其他预埋件的位置、标高等。检查基础坐标、中心线位置时，应沿纵、横两个方向测量，并取其中的最大值。\n外观：基础外表面应无裂纹、空洞、掉角、露筋；基础表面和预留孔应干净，预留孔洞内无露筋、凹凸等缺陷；放置垫铁的基础表面应平整，中心标板和基准点埋设牢固、标记清晰、编号准确。", k:"四无：裂、空、掉、露；面净、垫平、标板牢", s:"P103、P108"},
+  {id:5, g:"开箱与基础验收", q:"预埋地脚螺栓检查验收有哪些要求？", a:"中心距、标高及露出基础长度应符合设计或规范要求，中心距应在其根部和顶部沿纵、横两个方向测量，标高应在其顶部测量；螺母应和垫圈配套，螺纹和螺母保护完好；活动地脚螺栓锚板的中心位置、标高、带槽或带螺纹锚板的水平度应符合要求；T形头地脚螺栓与基础板应按规格配套使用，埋设T形头地脚螺栓基础板应牢固、平正，地脚螺栓光杆部分和基础板刷防锈漆；安装胀锚地脚螺栓的基础混凝土强度不得小于10MPa，基础混凝土或钢筋混凝土有裂缝的部位不得使用胀锚地脚螺栓。", k:"中心距根顶量，标高顶上量；胀锚十兆帕，裂缝不能用", s:"P108–109"},
+  {id:6, g:"测量放线与垫铁", q:"测量放线时，安装基准线和基准点如何设定？设定原则是什么？", a:"设定依据：根据土建施工单位移交的测量网点及重要的主轴线设定安装基准线及基准点。\n设定原则：安装检测，使用方便；有利于保持而不被毁损；标记清晰，容易辨识。", k:"检用、耐存、标记清", s:"P103"},
+  {id:7, g:"测量放线与垫铁", q:"垫铁设置的作用是什么？", a:"通过调整垫铁高度来找正调平设备的标高和水平；通过垫铁组把设备的重量、工作载荷和固定设备的地脚螺栓预紧力，均匀传递给基础；按设计图、设备技术文件、规范的规定设置。", k:"调高低，传三力（重量、工作载荷、预紧力）", s:"P103"},
+  {id:8, g:"测量放线与垫铁", q:"垫铁有哪些种类？施工方法是什么？什么情况下采用无垫铁安装？", a:"种类：平垫铁、斜垫铁、开孔垫铁、开口垫铁、钩头成对斜垫铁、调整垫铁等。施工方法：坐浆法和压浆法。\n大部分机械设备采用垫铁调整和承载的安装方法；设备无垫铁安装只限于设计文件有要求的情况下采用，由二次灌浆层起承重作用。", k:"平斜双开钩头调，坐浆压浆两法浇", s:"P108"},
+  {id:9, g:"测量放线与垫铁", q:"垫铁设置有哪些要求？（组数、块数、厚度、露出、焊接）", a:"①每组垫铁的面积应符合要求；②垫铁与设备基础之间应接触良好，每组垫铁应放置整齐平稳、接触良好；③每个地脚螺栓旁边至少应有一组垫铁，并应设置在靠近地脚螺栓和底座主要受力部位的下方；④设备底座有接缝处的两侧应各设置一组垫铁，每组垫铁的块数不宜超过5块；⑤放置平垫铁时，厚的宜放在下面，薄的宜放在中间，垫铁的厚度不宜小于2mm，设备调平后每组垫铁均应压紧；⑥垫铁端面应露出设备底面外缘，平垫铁宜露出10~30mm，斜垫铁宜露出10~50mm，垫铁组伸入设备底座底面的长度应超过设备地脚螺栓的中心；⑦除铸铁垫铁外，设备调整完毕后各垫铁相互间应用定位焊焊牢。", k:"五块封顶，两毫米打底；平露十到三十，斜露十到五十；伸过螺栓心，铸铁不焊", s:"P109"},
+  {id:10, g:"测量放线与垫铁", q:"设备无垫铁安装有哪些要求？（数字）", a:"采用无收缩灌浆料或环氧树脂做二次灌浆的机器设备宜采用无垫铁安装；根据设备重量、底座结构，确定临时支撑件或调整螺钉的位置和数量；设备底座上设有安装用调整螺钉时，其调整螺钉支承板上表面水平度允许偏差不大于1/1000，且与基础接触面积不小于50%，相邻支承板的顶面标高偏差宜小于±2mm；采用无收缩混凝土或自密实灌浆料，应捣实灌浆层，达到设计强度75%以上时，应撤出调整工具，并再次紧固地脚螺栓，复查设备精度，将临时支撑件的空隙用灌浆料填实；二次灌浆前，需对调整螺钉和临时垫铁采取保护措施，防止被二次灌浆料污染。", k:"千一平、一半面、正负二、七五撤", s:"P109"},
+  {id:11, g:"测量放线与垫铁", q:"设备基础二次灌浆有哪些技术要求？", a:"灌浆一般宜采用细碎石混凝土或水泥浆，其强度等级比基础或地坪的混凝土等级高一级；灌浆时应捣实，不得影响设备的安装精度。当灌浆层与设备底座面接触要求较高时，宜采用无收缩混凝土或水泥砂浆。灌浆层厚度不应小于25mm；如仅用于固定垫铁或防止油、水进入的灌浆层，当灌浆无困难时，其厚度可小于25mm。灌浆前应敷设外模板，外模板至设备底座面外缘的距离不宜小于60mm，模板拆除后表面应进行抹面处理；当设备底座下不需要全部灌浆，且灌浆层需承受设备负荷时，应敷设内模板。灌浆工作一定要一次灌完，安装精度要求高的设备二次灌浆，应在精平后24h内进行，否则应对安装精度重新检查测量。", k:"一级高、二五厚、六零模、二四灌（一次灌完）", s:"P109–110"},
+  {id:12, g:"吊装就位", q:"设备运输吊装和设备就位各有什么要求？", a:"运输吊装：设备的运输吊装应符合有关起重运输规范的要求；特殊作业场所、大型或超大型构件和设备运输吊装应编制专项施工方案。\n设备就位：设备基础尺寸偏差应符合要求，混凝土基础强度应达到设备安装要求；设备底面的泥土、油污、与混凝土（含二次灌浆）接触部位油漆应清除干净；二次灌浆部位的设备基础表面凿成麻面，无油污、杂物；混凝土基础表面浮浆、地脚螺栓预留孔内泥土杂物和积水应清除干净；按要求放置垫铁和地脚螺栓。", k:"清泥油漆、凿麻面、除净浮浆积水、垫铁螺栓到位", s:"P103"},
+  {id:13, g:"找正找平找标高", q:"设备找平和找标高的方法是什么？", a:"设备找平：通过调整垫铁高度将设备调整到设计或规范规定的水平状态；通常在设备精加工面上选择测点，用水平仪进行测量；有立柱加工面或垂直加工面的设备，设备水平度要求是以垂直度来保证的。\n设备找标高：通过调整垫铁组高度，使设备的安装高度符合设计或规范要求；基本方法是利用精密水准仪，通过基准点进行测量控制。", k:"找平水平仪，找高水准仪", s:"P103–104"},
+  {id:14, g:"找正找平找标高", q:"设备找正有什么要求？常用检测方法及精度是多少？", a:"找正：安装中通过移动设备的方法，使设备以其指定的基线对准设定的基准线，包含对基准线的平行度、垂直度和同轴度的要求，使设备的平面坐标位置沿水平纵横方向符合设计或规范要求。\n检测方法：钢丝挂线法，检测精度为1mm；放大镜观察接触法，检测精度为0.05mm；导电接触讯号法，检测精度为0.05mm；高精度经纬仪、精密全站仪测量法可达到更精确的检测精度。", k:"挂线一毫，放大导电五丝；经纬全站更精密", s:"P103–104"},
+  {id:15, g:"找正找平找标高", q:"设备找平、找正、找标高的测点一般选择在哪些部位？", a:"一般选择在设计或设备技术文件指定的部位，如设备的主要工作面，部件上加工精度较高的表面，零部件间的主要结合面，支承滑动部件的导向面，轴承座剖分面、轴颈表面、滚动轴承外圈，设备上应为水平或铅垂的主要轮廓面。", k:"主面精面结合面，导向剖分轴颈圈，水平铅垂轮廓面", s:"P104"},
+  {id:16, g:"灌浆与固定", q:"一次灌浆和二次灌浆分别在什么时候进行？常用灌浆料有哪些？", a:"一次灌浆：设备粗找正后，对地脚螺栓孔进行灌浆，也称一次灌浆。\n二次灌浆：设备精找平找正、紧固地脚螺栓、检测项目合格后，对设备底座和基础间进行灌浆，也称二次灌浆。\n常用的设备灌浆料：细石混凝土、无收缩混凝土、微膨胀混凝土和其他灌浆料（如CGM高效无收缩灌浆料、RG早强微膨胀灌浆料）等。对于解体设备应先将底座就位固定后，再进行上部设备部件的组装。", k:"粗找正灌孔，精平固栓灌底；细石、无收缩、微膨胀", s:"P104"},
+  {id:17, g:"灌浆与固定", q:"地脚螺栓分为哪几类？各适用什么设备？", a:"固定地脚螺栓（短地脚螺栓）：与基础浇灌在一起，用来固定没有强烈振动和冲击的设备，如直钩螺栓、弯钩螺栓、弯折螺栓、U形螺栓、爪式螺栓、锚板螺栓等。\n活动地脚螺栓（长地脚螺栓）：一种可拆卸的地脚螺栓，用于固定工作时有强烈振动和冲击的重型机械设备，如T形头螺栓、拧入式螺栓、对拧式螺栓等。\n胀锚地脚螺栓：部分静置的简单设备或辅助设备有时采用。\n粘接地脚螺栓：方法和要求与胀锚地脚螺栓基本相同；粘接时应把孔内杂物吹净，并不得受潮。", k:"短固长活，胀锚静简，粘接吹净不受潮", s:"P107–108"},
+  {id:18, g:"零部件装配", q:"机械设备典型零部件的装配顺序是什么？包括哪些内容？过盈配合件怎么装配？", a:"装配顺序：按照由小到大、从简单到复杂的顺序进行装配；先零件再组件到部件；先主机后辅机，由部件进行总装配。\n典型零部件装配主要包括螺纹连接件装配、过盈配合件装配、齿轮装配、联轴器装配、轴承装配等。\n过盈配合件装配一般采用压入装配、低温冷装配和加热装配法，在安装现场主要采用加热装配法。", k:"小大简繁，零组部，主先辅后；螺盈齿联轴", s:"P104–106"},
+  {id:19, g:"零部件装配", q:"螺纹连接装配的技术要求有哪些？", a:"①保证一定的拧紧力矩：要求螺纹牙齿间有一定的摩擦力矩，螺纹连接装配时应有相应的测力装置，使螺纹牙齿之间产生足够的预紧力。②有可靠的防松装置：螺纹连接在静载荷下一般不会松脱，但在振动、冲击和交变载荷下会使螺纹连接松动，应设可靠的防松装置。③保证螺纹连接的配合精度：螺纹配合精度由螺纹公差和旋合长度两因素决定，分为精密、中等、粗糙三种。", k:"拧得紧、松不掉、配得准（精、中、粗三档）", s:"P105"},
+  {id:20, g:"零部件装配", q:"成组螺纹连接怎么拧紧？三次紧固力矩各是多少？长条形、对称、多孔零件的紧固顺序怎么定？", a:"要按正确的紧固顺序逐次（一般两三次）拧紧螺母；一般第一次紧固力矩为25%，第二次为50%，第三次为100%。\n长条形零件：从中间开始向两边对称紧固，防止零件变形。\n对称零件（如方形、圆形零件）：从对角开始紧固。\n多孔零件：从中心开始紧固。", k:"两三次，二五、五十、一百；长条中、对称角、多孔心", s:"P105–106"},
+  {id:21, g:"零部件装配", q:"有预紧力矩要求的螺纹连接有哪些装配方法？哪些方法误差较大？", a:"①定扭矩法：用扭力扳手或扭矩扳手控制，方法简单，但误差较大，扭矩扳手在使用前和使用过程中应注意校核。②扭角法（转角法）：将螺母拧紧至消除间隙后，再将螺母拧转一定的角度来控制预紧力，不需要专业工具，操作简单，但误差较大。③扭断螺母法：将螺母上切一定深度的环形槽，扳手套在环形槽上部，由环形槽处扭断螺母来控制预紧力，误差较小，操作方便，但螺母制造和修理重装时不方便。④液力拉伸法：用液力拉伸器使螺栓达到需要的伸长量以控制预紧力，螺栓不受附加力矩，误差较小。⑤加热法：用加热法（一般小于400℃）使螺栓伸长，然后用一定厚度的垫片或热紧法控制螺栓的伸长量，借以控制预紧力，误差较小。", k:"定、转、断、拉、热；定扭矩和转角误差较大", s:"P106"},
+  {id:22, g:"零部件装配", q:"齿轮装配有哪些要求？压铅法和着色法如何检查？", a:"装配要求：齿轮基准面端面与轴肩或定位套端面应靠紧贴合，且用0.05mm塞尺检查不应塞入；基准端面与轴线的垂直度应符合传动要求。\n压铅法检查齿轮啮合间隙：铅丝直径不宜超过间隙的3倍；铅丝的长度不应小于5个齿距；沿齿宽方向应均匀放置至少2根铅丝。\n着色法检查传动齿轮啮合的接触斑点：将着色材料涂在小齿轮齿侧，并用小齿轮驱动大齿轮，使大齿轮转动3~4转。圆柱齿轮和蜗轮、蜗杆的接触斑点，应趋于齿侧面中部；圆锥齿轮的接触斑点，应趋于齿侧面的中部并接近小端；齿顶和齿端棱边不应有接触。可逆转的齿轮副，齿的两面均应检查。", k:"五丝塞尺塞不进；三倍径、五齿距、两根铅；涂小驱大三四转，柱中锥中近小端", s:"P106"},
+  {id:23, g:"零部件装配", q:"机械式联轴器分为哪两类？装配时测量什么、怎么测？", a:"机械式联轴器可分为刚性和挠性两类：刚性联轴器包括凸缘、夹壳两种；挠性联轴器包括滑块、齿式、滚子链、十字轴万向、轮胎式、梅花形、弹性柱销、膜片、弹性套柱销、蛇形弹簧、V带轮钢砂式安全联轴器等常用类型。\n联轴器装配时，两轴心径向位移、两轴线倾斜和端面间隙的测量：将两个半联轴器暂时互相连接，在圆周上画出对准线或装设专用工具，可采用塞尺直接测量、塞尺和专用工具测量或百分表和专用工具测量；将两个半联轴器一起转动，应每转90°测量一次，并记录5个位置的径向位移测量值和位于同一直径两端测点的轴向测量值；测量端面间隙时，应将两轴的轴向相对施加适当的推力，消除轴向窜动的间隙后，再测量其端面间隙值。", k:"刚性只两样：凸缘、夹壳；转九十、记五位、同径两端、端隙先推", s:"P106–107"},
+  {id:24, g:"零部件装配", q:"对开式滑动轴承装配包括哪些内容？顶、侧、轴向间隙怎么测？", a:"装配内容：轴承清洗、检查、刮研、装配、间隙和压紧力的调整。\n轴瓦刮研：厚壁轴瓦一般先刮下瓦，后刮上瓦；刮研应在设备精平后进行，刮研时应将轴上所有零件装上，轴瓦与轴颈的接触点数不低于规范的要求。安装轴承座时，必须把轴瓦装在轴承座上，再按轴瓦的中心进行调整，在同一传动轴上的所有轴承的中心应在同一轴线上。\n间隙：顶间隙用压铅法检查，铅丝直径不宜大于顶间隙的3倍；侧间隙用塞尺测量，单侧间隙应为顶间隙的1/2~2/3；轴向间隙：对受轴向负荷的轴承需检查，检查时将轴推至极限位置，用塞尺或千分表测量。", k:"洗检刮装调；先下瓦后上瓦、精平再刮；顶三倍、侧半到三分二、轴向推到底", s:"P107"},
+  {id:25, g:"零部件装配", q:"滚动轴承的装配方法和温度要求是什么？润滑脂加注有什么规定？", a:"装配方法有压力装配法和温差法两种。采用压力装配法装配时，压入力应通过专用工具或在固定圈上垫以软金属棒、金属套传递，不得通过轴承的滚动体和保持架传递压入力；采用温差法装配时，应均匀地改变轴承的温度，轴承的加热温度不应高于120℃，冷却温度不应低于-80℃。\n轴承装配后应转动灵活。采用润滑脂的轴承，应在轴承1/2空腔内加注规定的润滑脂；采用稀油润滑的轴承，不应加注润滑脂。", k:"压不走滚珠，热不超百二，冷不低负八十；脂一半，稀油不加", s:"P107"},
+  {id:26, g:"润滑加油", q:"分散润滑和集中润滑各有什么要求？", a:"分散润滑：采用人工方式加注润滑剂，设备试运行前对各润滑点进行仔细检查清洗，以保证润滑部位洁净，按要求加注润滑剂，加注量要适当。\n集中润滑：由润滑站、管路及附件组成润滑系统，通过管道输送定量的有压力的润滑剂到各润滑点；集中润滑系统安装后必须油循环合格，否则不得进行设备试运行。", k:"分散人工加，集中油循环（不合格不试车）", s:"P104"},
+  {id:27, g:"安装方法", q:"机械设备安装方法分为哪几类？各自适用范围和关键点是什么？", a:"一般分为整体安装、解体安装和模块化安装。\n整体安装：适用于体积和重量不大，可以将其整体运输到安装现场并直接安装到指定位置的设备；关键在于保证设备的定位位置精度和各设备间相互位置精度。\n解体安装：适用于以部件运输、进场，在安装现场重新按制造要求进行装配和安装的大型设备；不仅要保证设备的定位位置精度和各设备间相互位置精度，还必须再现制造、装配的精度，达到制造厂的标准要求。\n模块化安装：利用模块化制造原理，将大型复杂的设备分解成为多种系统功能的大型模块，进行“工厂化”的建造、现场安装；不仅能保证制造、组装精度，还能保证安装精度，从而达到制造厂的标准要求。", k:"整体定位，解体再现，模块工厂化", s:"P104–105"},
+  {id:28, g:"试运行", q:"设备试运行前应完成哪些工作？", a:"①机器及附属设备、管道等安装工作全部完成，施工记录及资料应齐全；②与试运行有关的工艺管道及设备吹扫、清洗、气密完成；③有碍试运行检查部位除外的保温、保冷及防腐等工作基本完成；④与试运行有关的土建、水、气、汽等公用工程及电气、仪表控制系统施工结束；⑤参加试运行的人员，熟知设备的构造、性能、设备技术文件、试运行工艺，掌握操作规程。", k:"装、吹、保、公、人", s:"P111"},
+  {id:29, g:"试运行", q:"单机试运行的目的是什么？时间、介质和启动前条件有什么要求？", a:"设备试运行应按单机试运行、联动试运行和负荷试运行的步骤进行。\n单机试运行的目的：检验设备装配和安装的准确度，以及能否在运转的情况下保持稳定性；主要检查设备的传动、操纵、控制、润滑、液压、监测系统是否能正常发挥其功能，试运行中可以发现并消除某些隐蔽性的缺陷。\n时间：应符合产品技术文件规定或设计文件的要求，机器设备的单机试运行时间宜为2h；若机器设备带有变速箱或液力耦合器，按产品技术文件规定步骤和要求单独进行试运行和考核。\n介质：根据设计文件及实际条件决定，若无特殊规定，宜以水、空气或氮气为介质。\n启动前：水、气、汽、油等系统内包含的附属设备单机试运行合格并完成系统调试；排气或排污完毕；有压力油系统供油的机器，各注油点的油量、油温、油压应达到设计文件要求。在高温或低温条件下工作的机器设备，启动前应按技术文件要求进行预热或预冷；与机器设备连接的高温或低温管道的螺栓要进行热紧或冷紧。\n验收：设备安装试运行合格后，经工程验收合格，符合合同约定、设计及验收规范要求，方可办理工程验收。", k:"两小时、水空气氮；预热预冷、热紧冷紧", s:"P104、P111–112"},
+  {id:30, g:"试运行", q:"试运行过程中要检查哪些内容？", a:"①检查各主要部位温度和各系统压力等参数在规定范围内；②振动振幅值或振动烈度值应符合产品技术文件或设计文件的规定；③齿轮副、链条与链轮啮合应平稳，无异常噪声、声响和磨损；④传动皮带不应打滑，平皮带跑偏量不应超过规定值；⑤轴承温度应符合产品技术文件或设计文件的规定；⑥润滑、密封、液压、气（汽）动、冷却等各辅助系统的工作正常，无渗漏现象；⑦检查驱动电机的电压、电流及温升等不超过规定值；⑧各种仪表工作正常。", k:"温压振，齿链带轴；辅电仪表", s:"P112"},
+  {id:31, g:"试运行", q:"单机试运行结束后应及时完成哪些工作？", a:"①切断电源和其他动力源；②卸掉各系统中的压力及负荷，进行排气、排水或排污，对蓄势器和蓄势腔及机械设备内剩余压力卸压；③检查各紧固部件，拆除临时管道及设备（或设施），将正式管道进行复位安装；④检查机器设备单机试运行系统各阀门开关在规定状态；⑤对润滑剂的清洁度进行检查，清洗过滤器，必要时更换新的润滑剂；⑥拆除试运行中的临时装置和恢复拆卸的设备部件及附属装置，对设备几何精度进行必要的复查，对各紧固部件进行复紧；⑦清理和清扫现场，将机械设备盖上防护罩；⑧整理试运行的各项记录，试运行合格后由参加单位在规定的表格上共同签字确认。", k:"断卸紧阀油，拆清记签", s:"P112"},
+  {id:32, g:"试运行", q:"风机试运行的温度、振动等指标要求是什么？", a:"离心式通风机：对于具有滑动轴承的大型风机，试运行2h后应停机检查轴承，轴承应无异常现象；试运行中，轴承表面测得的温度不得高于环境温度40℃；轴承振动速度有效值不得超过6.3mm/s。\n轴流式通风机：一般轴流式通风机在轴承表面测得的温度不得高于环境温度40℃；滚动轴承的正常工作温度不应超过70℃，瞬时最高温度不应超过95℃，温升不应超过60℃；滑动轴承的正常工作温度不应超过75℃。风机的安全和联锁报警与停机控制系统应经模拟试验，其动作应灵敏、正确、可靠，并应记录实测数值备查。", k:"滚七零、瞬九五、升六十、滑七五；40℃温差，6.3振速", s:"P112–113"},
+  {id:33, g:"试运行", q:"螺杆式压缩机和离心式压缩机的试运行要求分别是什么？", a:"螺杆式压缩机：单独启动驱动机，其旋转方向应与压缩机相符；驱动机与压缩机连接后，盘车应灵活、无阻滞。启动压缩机并运行2~3min，无异常现象后再连续运行，连续运行时间不应少于30min；停机时，润滑油泵应在压缩机停转15min后再停止运行；停泵后，应清洗各进油口的过滤网。\n离心式压缩机：试运行的压缩介质应采用空气，当压缩介质不是空气时，应符合随机技术文件的规定。在试运行的开始阶段，主机的排气应缓慢升压，每5min升压不得大于0.1MPa，逐步达到工况；轴承润滑油温度和轴承振动稳定后，应连续运行4~8h。\n补充：压缩机空气带负荷单机试运行后，需检查曲轴箱时，应在停机15min后再打开曲轴箱。", k:"螺杆：二三起、三十续、油泵十五停；离心：五分零点一、稳后四到八", s:"P112–113"},
+  {id:34, g:"试运行", q:"泵试运行有哪些要求？额定工况下连续试运行时间如何规定？", a:"①吸入管路应充满输送液体，并应排尽空气，不得在无液体情况下启动；②试运行介质宜采用清水，当泵输送介质不是清水时，应按介质的密度、相对密度折算为清水进行试运行，流量不应小于额定值的20%，电流不得超过电动机的额定电流；③轴承、轴承箱和油池润滑油的温升不应超过环境温度40℃，滑动轴承的温度不应大于70℃，滚动轴承的温度不应大于80℃；④各固定连接部位不应有松动，各运动部件运行应正常，无异常声响和摩擦，附属系统运行正常，管道连接牢固、无渗漏；⑤额定工况下连续试运行时间不应少于表4.1-1的规定：泵的轴功率≤50kW→30min，>50~100kW→60min，>100~400kW→90min，>400kW→120min；⑥输送易结晶、凝固、沉淀等介质的泵，停泵后应防止堵塞，并及时用清水或其他介质冲洗泵和管道。\n试运行后：应关闭泵的入口阀门，待泵冷却后再依次关闭附属系统的阀门。", k:"无水不启，流量两成；滑七滚八；三十、六十、九十、一百二", s:"P112–113"},
+  {id:35, g:"试运行", q:"输送设备试运行的程序是什么？", a:"应由部件至组件，由组件至单机，由单机至全输送线；且应先手动后机动，由低速至高速，由空负荷逐渐增加带负荷至额定带负荷按步骤进行。", k:"件组机线，手低空", s:"P113"},
+  {id:36, g:"精度控制", q:"影响设备安装精度的因素有哪些？各因素主要影响什么？", a:"①设备基础——主要是强度和沉降；②地脚螺栓——主要是紧固力和垂直度；③垫铁埋设——主要是承载面积和接触情况；④设备灌浆——主要是强度和密实度；⑤测量误差——主要是仪器精度、基准精度、技能水平和责任心；⑥设备制造与装配——主要是设备制造精度和装配精度；⑦环境因素——主要是设备基础温度变形、设备温度变形和恶劣环境场所。\n环境因素补充：气温升高时，上部温度比下部高，设备基础中间上拱；气温下降时，上部温度比下部低，设备基础中间下陷。设备运行时各零部件受热产生热变形（如汽轮机转子几个支承件因受热条件不同，导致转子中心位置改变）。恶劣环境场所（生产与安装同时进行）会影响作业人员视线、听力、注意力，可能造成安装质量偏差。", k:"基栓铁浆，测造环；升上拱、降下陷", s:"P110–111"},
+  {id:37, g:"精度控制", q:"设备制造与装配精度包括哪些内容？各影响什么？", a:"装配精度包括各运动部件之间的相对运动精度、配合面之间的配合精度和接触质量。\n①各运动部件之间的相对运动精度：现场组装大型设备各运动部件之间的相对运动精度包括直线运动精度、圆周运动精度、传动精度等，主要影响产生运行误差（如大型滚齿机传动链末端的蜗轮副因安装精度超差，会影响加工齿轮的加工精度）。\n②配合面之间的配合精度和接触质量：配合精度是指配合表面之间达到规定的配合间隙或过盈的接近程度；接触质量是指配合表面之间的接触面积的大小和分布情况；主要影响相配零件之间接触变形的大小，从而影响配合性质的稳定性和寿命（如齿轮啮合）。\n③设备基准件的安装精度：包括标高差、水平度、铅垂度、直线度、平行度等，影响设备各部件间的相互位置精度和相对运动精度（如龙门刨床床身导轨直线度和导轨平行度将影响工作台的直线运动精度）。", k:"相对运动→运行误差；配合接触→稳定寿命；基准件→位置精度", s:"P110–111"},
+  {id:38, g:"精度控制", q:"设备安装精度的控制方法有哪些？", a:"①选择合理的施工工艺，配备必要的施工机械和满足精度等级的计量检测设备，在适宜的环境下操作，提高安装精度；②为抵消过大的装配或安装累积误差，利用补偿件进行调节或修配；③设备安装精度的偏差控制要求：有利于抵消设备附属件安装后重量的影响；有利于抵消设备运转时产生的作用力的影响；有利于抵消零部件磨损的影响；有利于抵消摩擦面间油膜的影响。", k:"补偿件消累积；四抵消：重、力、磨、油", s:"P111"}
+];
+
+const EXAM = [
+  { type:"正向", cardIds:[11],
+    q:"设备基础二次灌浆有哪些技术要求？（灌浆料、强度等级、厚度、模板、时间）",
+    answer:"灌浆一般宜采用细碎石混凝土或水泥浆，其强度等级比基础或地坪的混凝土等级高一级；灌浆时应捣实，不得影响设备的安装精度。\n当灌浆层与设备底座面接触要求较高时，宜采用无收缩混凝土或水泥砂浆；灌浆层厚度不应小于25mm（仅用于固定垫铁或防止油、水进入的灌浆层，当灌浆无困难时，厚度可小于25mm）。\n灌浆前应敷设外模板，外模板至设备底座面外缘的距离不宜小于60mm；当设备底座下不需要全部灌浆且灌浆层需承受设备负荷时，应敷设内模板。\n灌浆工作一定要一次灌完；安装精度要求高的设备二次灌浆，应在精平后24h内进行，否则应对安装精度重新检查测量。",
+    keys:["高一级", "25", "60", "24", "一次灌完"], need:3 },
+  { type:"正向", cardIds:[20],
+    q:"成组螺纹连接怎么拧紧？三次紧固力矩各是多少？长条形、对称、多孔零件的紧固顺序怎么定？",
+    answer:"要按正确的紧固顺序逐次（一般两三次）拧紧螺母；一般第一次紧固力矩为25%，第二次为50%，第三次为100%。\n长条形零件：从中间开始向两边对称紧固（防止零件变形）；\n对称零件（方形、圆形）：从对角开始紧固；\n多孔零件：从中心开始紧固。",
+    keys:["25", "50", "100", "中间", "对角", "中心"], need:3 },
+  { type:"选择", cardIds:[9],
+    q:"关于垫铁设置，下列说法错误的是：",
+    options:["每个地脚螺栓旁边至少应有一组垫铁", "设备底座有接缝处的两侧，应各设置一组垫铁", "每组垫铁的块数不宜超过3块", "除铸铁垫铁外，设备调整完毕后各垫铁相互间应用定位焊焊牢"],
+    correct:2,
+    why:"教材：每组垫铁的块数不宜超过「5块」，C 写成了 3 块。其余三项均与教材一致（另有：垫铁厚度不宜小于2mm；平垫铁宜露出10~30mm，斜垫铁宜露出10~50mm；垫铁组伸入设备底座底面的长度应超过设备地脚螺栓的中心）。" },
+  { type:"选择", cardIds:[34],
+    q:"关于泵试运行，下列说法正确的是：",
+    options:["泵吸入管路不必排尽空气，可直接启动", "输送介质不是清水时，按密度、相对密度折算为清水试运行，流量不应小于额定值的20%", "泵的滚动轴承温度不应大于70℃", "泵在额定工况下的连续试运行时间一律为30min"],
+    correct:1,
+    why:"教材：吸入管路应充满输送液体并排尽空气，「不得在无液体情况下启动」（A 错）；滑动轴承温度不应大于70℃、滚动轴承不应大于80℃（C 把滚动轴承写成70℃，错）；连续试运行时间按泵的轴功率分档：≤50kW 为30min，>50~100kW 为60min，>100~400kW 为90min，>400kW 为120min（D 错）。" },
+  { type:"反向", cardIds:[1],
+    q:"口诀「开基测垫吊，调固零润试」说的是什么程序？请完整展开。",
+    answer:"机械设备安装的一般程序：开箱检查→基础验收→测量放线→垫铁设置→吊装就位→安装调整→设备固定与灌浆→零部件清洗与装配→润滑与加油→设备试运行→工程验收。\n（口诀对应：开箱、基础、测量、垫铁、吊装／调整、固定灌浆、零部件、润滑、试运行与验收。）",
+    keys:["开箱", "基础", "测量", "垫铁", "吊装", "调整", "灌浆", "零部件", "润滑", "试运行"], need:5 },
+  { type:"场景", cardIds:[11,16,9],
+    q:"某工地安装一台大型压缩机：①设备粗找正后，工长就安排对设备底座与基础之间进行二次灌浆；②精找平前检查垫铁，发现每组放了6块，其中1块厚1mm的垫铁放在中间；③设备精平找正后26h才做二次灌浆；④灌浆采用细石混凝土，强度等级与基础混凝土相同。请逐条指出不妥之处并说明正确做法。",
+    answer:"①不妥。粗找正后应先进行「一次灌浆」——灌地脚螺栓孔；「二次灌浆」应在设备精找平找正、紧固地脚螺栓、检测项目合格后，对设备底座和基础间进行（教材原文，P104）。\n②不妥。每组垫铁的块数不宜超过5块；垫铁厚度不宜小于2mm（教材原文，P109）。\n③不妥。安装精度要求高的设备二次灌浆，应在精平后24h内进行，否则应对安装精度重新检查测量（教材原文，P109–110）。\n④不妥。灌浆宜采用细碎石混凝土或水泥浆，其强度等级应比基础或地坪的混凝土等级高一级（教材原文，P109）。\n（本题四条均直接对应教材原文，无常识推断成分。）",
+    keys:["一次灌浆", "5块", "2mm", "24", "高一级"], need:3 }
+];
+
+const KEY_STATUS = "erjian_sw_4_1_status";
+const KEY_PASS = "erjian_sw_4_1_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

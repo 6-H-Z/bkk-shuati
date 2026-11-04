@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 2.1 机电工程测量技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;padding:14px 14px 96px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+       background:#f5f6f8;color:#1a1a1a;max-width:640px;margin:0 auto}
+  .top{display:flex;align-items:center;gap:8px;margin:2px 0 4px}
+  h1{font-size:18px;margin:0;flex:1}
+  #gateBtn{min-height:36px;padding:0 14px;font-size:14px;font-weight:600;border-radius:9px;
+           border:1px solid #0b6bcb;background:#0b6bcb;color:#fff}
+  #gateBtn.passed{background:#1e7b4f;border-color:#1e7b4f}
+  .sub{font-size:12px;color:#666;margin:0 0 10px}
+  .badge{display:inline-block;font-size:12px;color:#1e7b4f;background:#e6f5ec;border-radius:6px;padding:2px 8px;margin-left:6px}
+  .bar{display:flex;gap:6px;font-size:12px;color:#444;margin-bottom:10px}
+  .bar span{background:#fff;border:1px solid #e3e6ea;border-radius:8px;padding:5px 6px;flex:1;text-align:center}
+  .bar b{font-size:15px;display:block;margin-top:1px}
+  .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06);
+        min-height:200px;display:flex;flex-direction:column;cursor:pointer}
+  .card:active{background:#fafbfc}
+  .tag{font-size:12px;color:#0b6bcb;background:#e8f2ff;border-radius:6px;padding:3px 8px;align-self:flex-start;margin-bottom:10px}
+  .q{font-size:18px;line-height:1.6;font-weight:600;white-space:pre-wrap}
+  .a{margin-top:14px;padding-top:14px;border-top:1px dashed #dde1e6;font-size:16px;line-height:1.7;color:#0f4c81;white-space:pre-wrap}
+  .kk{margin-top:12px;padding:9px 11px;background:#fff8e6;border-left:3px solid #f0b429;border-radius:6px;
+      font-size:15px;line-height:1.6;color:#7a5b00}
+  .hint{margin-top:12px;font-size:12px;color:#9aa0a8}
+  .src{margin-top:auto;padding-top:10px;font-size:12px;color:#8a8f98}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e3e6ea;
+        padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:16px;border-radius:10px;border:1px solid #d8dde3;
+               background:#fff;color:#222;font-weight:600}
+  #flip{background:#0b6bcb;color:#fff;border-color:#0b6bcb;flex:1.3}
+  #bad{color:#c0392b;border-color:#f0c4bd}
+  #good{color:#1e7b4f;border-color:#bfe3ce}
+  .tools{display:flex;gap:8px;margin-top:10px;font-size:13px;flex-wrap:wrap}
+  .tools button{min-height:34px;font-size:13px;font-weight:400;color:#555;background:#fff;
+                border:1px solid #d8dde3;border-radius:8px;padding:0 12px}
+  .tools button.on{background:#e8f2ff;border-color:#0b6bcb;color:#0b6bcb;font-weight:600}
+  .tools .nav{margin-left:auto}
+  footer{margin-top:14px;font-size:12px;color:#8a8f98;line-height:1.6}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:8px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:12px 14px;font-size:15px;
+       line-height:1.5;border:1px solid #d8dde3;border-radius:10px;background:#fff;color:#222}
+  .opt.ok{background:#e6f5ec;border-color:#1e7b4f;color:#14532d;font-weight:600}
+  .opt.no{background:#fdecea;border-color:#c0392b;color:#7f1d1d}
+  #exInput{width:100%;margin-top:12px;padding:12px;font-size:15px;line-height:1.6;
+           border:1px solid #d8dde3;border-radius:10px;font-family:inherit;background:#fff;resize:vertical}
+  #exInput:focus{outline:none;border-color:#0b6bcb}
+  .why{margin-top:10px;font-size:14px;line-height:1.7;color:#444;background:#f7f8fa;border-radius:8px;padding:10px 12px;white-space:pre-wrap}
+  .exDock{display:flex;gap:8px;margin-top:14px}
+  .exDock button{flex:1;min-height:46px;font-size:15px;border-radius:10px;border:1px solid #d8dde3;background:#fff;font-weight:600}
+  .exDock button.primary{background:#0b6bcb;color:#fff;border-color:#0b6bcb}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>2.1 机电工程测量技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P19–26 · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+    <footer>
+    内容出处：2027 版《机电工程管理与实务》P19–26（2.1.2 末尾在 P26 上部，2.2 从 P26 下部开始）。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"测量内容与原则", q:"机电工程测量主要包括哪些内容？", a:"工程设备安装施工放样测量、设备基础沉降测量、设备安装变形监测、工程竣工验收测量等。", k:"", s:"P19"},
+  {id:2, g:"测量内容与原则", q:"工程测量的原则是什么？具体怎么理解？", a:"工程测量应遵循“由整体到局部，先控制后细部”的原则，即先以建设单位提供的永久基准点、线为基准，然后测设出各个部位设备的准确位置。", k:"由整体到局部，先控制后细部", s:"P19"},
+  {id:3, g:"测量内容与原则", q:"工程测量的要求有哪些？检核分为哪五类？", a:"（1）以工程为对象，做好控制点布测，保证将设计的建（构）筑物位置正确地测设到地面上，作为施工的依据。（2）保证测设精度，减少误差累积，满足设计要求，免除因建筑物众多而引起测设工作的紊乱。（3）检核是测量工作的灵魂，必须加强外业和内业的检核工作，保证实测数据与工程测量竣工图绘制的正确性。检核分为：仪器检核、资料检核、计算检核、放样检核和验收检核。", k:"仪、资、计、放、验", s:"P19"},
+  {id:4, g:"测量原理", q:"水准测量的原理是什么？测定待测点高程有哪两种方法？", a:"水准测量原理是利用水准仪提供的水平视线，并借助水准尺来测定地面上两点间的高差，然后推算高程。测定待测点高程的方法有高差法和仪高法两种。", k:"", s:"P19"},
+  {id:5, g:"测量原理", q:"高差法与仪高法有什么区别？工程测量中常用哪一种？", a:"高差法：采用水准仪和水准尺测定待测点与已知点之间的高差，通过计算得到待测点高程。仪高法：采用水准仪和水准尺，只需计算一次水准仪的高程，就可以简便地测算出几个前视点的高程；当安置一次仪器同时需要测出数个前视点的高程时，使用仪高法比较方便，所以在工程测量中仪高法被广泛应用。", k:"", s:"P19"},
+  {id:6, g:"测量原理", q:"基准线测量的原理是什么？测定待测点位有哪两种方法？", a:"基准线测量原理是经纬仪和检定钢尺，根据两点成一直线原理测定基准线。测定待测点位的方法有水平角测量和竖直角测量。每两个点位都可连成一条直线（或基准线）。", k:"", s:"P19"},
+  {id:7, g:"基准线与基准点", q:"安装基准线如何设置？", a:"安装基准线一般为直线，只要定出两个基准中心点，就可构成一条基准线。平面安装基准线不少于纵、横两条。", k:"", s:"P19"},
+  {id:8, g:"基准线与基准点", q:"安装标高基准点如何设置？相邻安装基准点高差限制是多少？", a:"根据设备基础附近水准点，用水准仪测出标高具体数值。相邻安装基准点高差应在 0.5mm 以内。", k:"相邻基准点高差 0.5mm 以内", s:"P20"},
+  {id:9, g:"基准线与基准点", q:"沉降观测点如何设置？采用什么测量方法？", a:"沉降观测采用二等水准测量方法。每隔适当距离选定一个基准点与起算基准点组成水准环线。例如：对于埋设在基础上的基准点，在埋设后就开始第一次观测，随后的观测在设备安装期间连续进行。", k:"二等水准", s:"P20"},
+  {id:10, g:"测量程序", q:"工程测量的基本程序是什么？", a:"设置纵横中心线→设置标高基准点→设置沉降观测点→安装过程测量控制→实测记录等。", k:"中心线→标高→沉降→过程控制→记录", s:"P20"},
+  {id:11, g:"高程控制", q:"高程控制点布设的原则有哪三条？常用哪种高程测量方法？", a:"（1）测区的高程系统宜采用国家高程基准；在已有高程控制网的地区进行测量时，可沿用原高程系统；当小测区联测有困难时，亦可采用假定高程系统。（2）高程测量方法有水准测量法、电磁波测距法、三角高程测量法，常用的是水准测量法。（3）高程控制测量等级依次划分为二、三、四、五等，各等级视需要均可作为测区的首级高程控制。", k:"二三四五等", s:"P20"},
+  {id:12, g:"高程控制", q:"水准测量法的技术要求有哪些？设备安装过程中的高程测量应注意什么？", a:"各等级的水准点应埋设水准标石；水准点应选在土质坚硬、便于长期保存和使用方便的地点，墙面水准点应选设于稳定的建筑物上，点位应便于寻找、保存和引测。一个测区及其周围至少应有 3 个水准点。水准观测应在标石埋设稳定后进行；两次观测高差较大且超限时应重测，将重测结果与原测结果分别比较，当其较差均不超过限值时，应取三次结果的平均数。设备安装过程中的测量应注意：最好使用一个水准点作为高程起算点；当厂房较大时，可以增设水准点，但其观测精度应提高。仪器精度要求：水准仪视准轴与水准管轴的夹角应符合规定；水准尺上的米间隔平均长与名义长之差应符合规定。", k:"一测区至少 3 个水准点", s:"P20"},
+  {id:13, g:"单体设备测量", q:"单体设备的基础划线与高程测量分别怎么做？", a:"基础划线：根据建筑结构的主要柱基中心线，按设计提供的坐标位置，测量出设备基础中心线，并将纵横中心线固定在中心标板上或用墨线画在基础上，作为安装基准中心线。高程测量：安装单位接收由土建移交的标高基准点，将标高基准点引测到设备基础附近方便测量的地方，作为下一步设备安装时标高测量的基准点并埋设标高基准点。", k:"", s:"P20"},
+  {id:14, g:"单体设备测量", q:"什么是中心标板？埋设要求有哪些？", a:"中心标板是在设备两端基础表面中心线上埋设的两块一定长度的型钢，并标上中心线点，作为安装放线时找正设备位置用的一种标定点。埋设要求：应埋设在中心线的两端，并且标板的中心要在中心线上；中心标板露出基础表面的高度为 4~6mm；将测出的中心线点投在中心标板上，投点（冲眼）的直径为 1~2mm，并在投点的周围用红油漆画一个圆圈，作为明显的标记。", k:"露出 4~6mm，冲眼 1~2mm", s:"P20–21"},
+  {id:15, g:"单体设备测量", q:"什么是基准点？如何埋设？", a:"在设备基础上埋设坚固的金属件（50~60mm 长铆钉），并根据厂房的标准零点测出其标高，作为安装设备时测量标高的依据，称为基准点。", k:"50~60mm 长铆钉", s:"P21"},
+  {id:16, g:"精度控制", q:"放线测量对计量设备和人员有什么要求？单体设备定位的允许偏差是多少？", a:"放线测量用的计量检测设备在使用前要校准合格；测量放线要尽量使用同一台设备，并且由同一人进行测量。机械设备定位基准的面、线或点与安装基准线的平面位置和标高的允许偏差，对于单体设备来讲，平面位置允许偏差为 10mm，标高偏差为 -10~+20mm。", k:"平面 10mm，标高 -10~+20mm", s:"P21"},
+  {id:17, g:"精度控制", q:"设备基础中心线复测、中心标板引测、临时标高控制点的精度要求分别是多少？", a:"设备基础中心线必须进行复测，两次测量的误差不应大于 5mm。埋设有中心标板的重要设备基础，其中心线应由中心标板引测，同一中心标点的偏差不应超过 1mm；纵横中心线应进行正交度检查，并调整横向中心线；同一设备基准中心线的平行偏差或同一生产系统的中心线的直线度应在 1mm 以内。每组设备基础均应设立临时标高控制点：对于一般的设备基础，其标高偏差应在 2mm 以内；对于与传动装置有联系的设备基础，其相邻两标高控制点的标高偏差应在 1mm 以内。", k:"复测 5mm、中心标点 1mm、临时标高 2mm／1mm", s:"P21"},
+  {id:18, g:"连续生产设备", q:"连续生产设备安装基准线如何测设？", a:"中心标板应在浇灌基础时配合土建埋设，也可待基础养护期满后再埋设。放线就是根据施工图，按建筑物的定位轴线来测定机械设备的纵、横中心线并标注在中心标板上，以作为设备安装的基准线。设备安装平面线不少于纵、横两条。", k:"", s:"P21"},
+  {id:19, g:"连续生产设备", q:"连续生产设备的标高基准点如何测设？简单标高基准点与预埋标高基准点各用于什么？共用要求是什么？", a:"标高基准点一般埋设在基础边缘且便于观测的位置，一般有简单标高基准点和预埋标高基准点。采用钢制标高基准点的，应埋设在靠近设备基础边缘便于测量处，不允许埋设在设备底板下面的基础面上。简单的标高基准点一般作为独立设备安装的基准点；预埋标高基准点主要用于连续生产线上的设备在安装时使用。连续生产设备只能共用一条纵向基准线和一个预埋标高基准点。", k:"一条纵向基准线＋一个预埋标高基准点", s:"P21"},
+  {id:20, g:"管道测量", q:"管道工程测量包括哪些内容？管道中线测量的任务和工作内容是什么？", a:"管道工程测量主要包括中线测量，纵、横断面测量及施工测量。管道中线测量的任务是将设计的管道中线位置测设于实地并标记出来；其主要工作内容是测设管道的主点（起点、终点和转折点）、标定里程桩和加桩等。中线定好后，应将中线展绘到现状地形图上。", k:"中线、纵横断面、施工测量", s:"P21–22"},
+  {id:21, g:"管道测量", q:"管线主点有哪两种测设方法？", a:"（1）根据控制点测设管线主点：当管道规划图上已给出管线起点、转折点和终点的设计坐标与附近控制点的坐标时，可先计算出测设数据，再用极坐标法或交会法进行测设。（2）根据地面上已有建筑物测设管线主点：管线一般与道路中心线或永久建筑物的轴线平行或垂直，主点测设数据可由设计时给定坐标计算，然后用直角坐标法进行测设。", k:"控制点→极坐标／交会；已有建筑物→直角坐标", s:"P22"},
+  {id:22, g:"管道测量", q:"里程桩和加桩如何设置？不同管道的里程桩号以什么为起点？", a:"测定管线长度和测绘纵、横断面图，沿管道中心线自起点每 50m 钉一里程桩。在 50m 之间地势变化处要钉加桩，在新建管线与旧管线、道路、桥梁、房屋等交叉处也要钉加桩。里程桩和加桩的里程桩号由该桩到管线起点的中线距离来确定：给水管道以水源作为起点；排水管道以下游出水口作为起点；煤气、热力管道以供气方向作为起点。", k:"每 50m 一桩；给水水源、排水下游出水口、煤气热力供气方向", s:"P22"},
+  {id:23, g:"管道测量", q:"管道纵断面测量与横断面测量的内容、作用分别是什么？", a:"纵断面测量：根据管道中心线所测的桩点高程和桩号绘制纵断面图，纵断面图反映了沿管道中心线的地面高低起伏和坡度陡缓情况，是设计管道埋深、坡度和土方量计算的依据。横断面测量：测量中线两侧一定范围内的地形变化点至管道中线的水平距离和高差，以中线上的里程桩或加桩为坐标原点，以水平距离为横坐标、高差为纵坐标，按 1∶100 比例尺绘制横断面图。", k:"纵断面定埋深坡度土方；横断面 1∶100", s:"P22"},
+  {id:24, g:"管道施工测量", q:"地下管道放线测设包括哪几步？槽口放线怎么做？", a:"（1）恢复中线：施工前根据设计的定线条件进行复核，将丢失和碰动的桩重新恢复，一般均将管道附属构筑物、涵洞、检查井的位置同时测出。（2）测设施工控制桩：分为中线控制桩和附属构筑物控制桩两种。（3）测设中线方向控制桩：在各段中线的延长线上钉设控制桩；若管道直线段较长，也可在中线一侧的管槽边线外测设一条与中线平行的轴线桩，各桩间距以 20m 为宜。（4）测设附属构筑物控制桩：在垂直于中线的方向上钉两个控制桩。槽口放线：根据管径大小、埋设深度和土质情况决定管槽开挖宽度，并在地面上钉设边桩，沿边桩拉线撤出灰线，作为开挖的边界线。", k:"复中线、施工控制桩、方向控制桩、附属构筑物桩；间距 20m", s:"P22"},
+  {id:25, g:"输电线路测量", q:"长距离输电线路钢塔架（铁塔）施工测量有哪些要求？", a:"长距离输电线路定位后，可根据起、止点和转折点及沿途障碍物的实际情况，测设钢塔架基础中心桩，其直线投点允许偏差和基础之间的距离丈量允许偏差应符合规定。中心桩测定后，一般采用十字线法或平行基线法进行控制，控制桩应根据中心桩测定。架空输电线路钢塔之间的弧垂综合误差不应超过确定的裕度值；对于一段架空输电线路，其测量视距长度不宜超过 400m。在大跨越档距之间，通常采用电磁波测距法或解析法测量。", k:"视距不超 400m，大跨越用电磁波测距或解析法", s:"P23"},
+  {id:26, g:"综合管廊测量", q:"综合管廊控制测量与本体测量有哪些要求？", a:"综合管廊施工平面控制网的精度不应低于一级，高程控制网的精度不应低于四等。管廊内坐标、方位角及高程可利用管廊两端的地面控制点按导线和水准测量的方式分别进行传递。综合管廊本体测量宜在建造阶段进行，需分别测量干线综合管廊、支线综合管廊、缆线管廊和结构厚度及附属设施的空间特征；测量综合管廊两端、坡度或走向变化处的内壁角点坐标和高程、横断面形状与尺寸、底部中线位置及高程，底部中线点位置及高程测量的间隔不宜大于 30m。", k:"平面一级、高程四等；底部中线间隔不大于 30m", s:"P23"},
+  {id:27, g:"仪器·水准仪", q:"水准仪由哪些部件组成？如何分类？主要应用有哪些？", a:"水准仪由望远镜、水准器（或补偿器）和基座等部件组成，是测量两点间高差的仪器，广泛用于控制、地形和施工放样等测量工作。分类：定镜水准仪、转镜水准仪、微倾水准仪、自动安平水准仪，当附有专用配件时可组成激光水准仪。应用：用于工程测量控制网标高基准点的测设及厂房、大型设备基础沉降观察的测量；在设备安装工程项目施工中用于连续生产线设备测量控制网标高基准点的测设及安装过程中对设备安装标高的控制测量。", k:"望远镜、水准器（补偿器）、基座", s:"P24"},
+  {id:28, g:"仪器·水准仪", q:"绝对标高与相对标高分别指什么？", a:"绝对标高是指所测标高基准点、建（构）筑物及设备的标高相对于国家规定的 ±0.000 标高基准点的高程。相对标高是指建（构）筑物之间及设备之间的相对高程或相对于该区域设定的 ±0.000 标高基准点的高程。", k:"", s:"P24"},
+  {id:29, g:"仪器·经纬仪", q:"经纬仪由哪些部件组成？如何分类？主要功能和应用是什么？", a:"经纬仪由望远镜、水平度盘、垂直度盘和基座等部件组成，广泛应用于控制、地形和施工放样等测量；当经纬仪上附有专用配件时，可组成激光经纬仪、坡面经纬仪等。分类：按读数设备分为游标经纬仪、光学经纬仪和电子（自动显示）经纬仪。应用：主要应用于机电工程建（构）筑物建立平面控制网的测量以及厂房（车间）柱安装垂直度的控制测量；经纬仪的主要功能是测量水平角和竖直角；在机电安装工程中，用于测量纵向、横向中心线，建立安装测量控制网并对安装全过程进行测量控制。", k:"水平角、竖直角", s:"P24"},
+  {id:30, g:"仪器·全站仪", q:"红外线数字全站仪有哪些用途？测距模式有哪三种？", a:"红外线数字全站仪是一种采用红外线自动数字显示距离的测量仪器，具有角度测量、距离（斜距、平距、高差）测量、三维坐标测量、交会定点测量和放样测量等多种用途。全站仪的测距模式有精测模式、跟踪模式、粗测模式三种。", k:"精测、跟踪、粗测", s:"P24–25"},
+  {id:31, g:"仪器·全站仪", q:"测量机器人（全自动电子全站仪）是什么？三类机器人各适用于什么？", a:"测量机器人是能进行自动搜索、跟踪、辨识和精确照准目标并获取角度、距离、三维坐标以及影像等信息的智能型全自动电子全站仪，是在全站仪基础上集成步进电机、影像传感器构成的视频成像系统，并配置智能化的控制及应用软件发展而成的。海底管道水下检测机器人具有作业深度深、范围大、作业时间长等优点；BIM 放样机器人适用于机电系统众多、管线错综复杂、空间结构繁复多变等环境下施工；工业管道检测机器人广泛应用于供水管道、排水管道、工业管道、燃气管道和石油管道等的施工监测、管网检查、新管验收、管道检修、养护检测等。", k:"", s:"P25"},
+  {id:32, g:"其他仪器", q:"电磁波测距仪如何分类？测程怎么划分？", a:"按所采用的载波可分为：用微波段的无线电波作为载波的微波测距仪；用激光作为载波的激光测距仪；用红外光作为载波的红外测距仪，后两者又统称为光电测距仪。测程在 5~20km 的称为中程测距仪，测程在 5km 之内的称为短程测距仪。", k:"5~20km 中程，5km 之内短程", s:"P25"},
+  {id:33, g:"其他仪器", q:"激光测量仪器有哪些？激光准直（铅直）仪由哪几部分组成、用于什么？", a:"常见的激光测量仪器有：激光准直仪和激光指向仪、激光准直（铅直）仪、激光经纬仪、激光水准仪、激光平面仪。激光准直（铅直）仪是将激光束置于铅直方向以进行竖向准直的仪器，主要由发射、接收、附件三大部分组成，主要应用于大直径、长距离、回转型设备同心度的找正测量以及高塔体、高塔架安装过程中同心度的测量控制，如高层建筑、烟囱、电梯等施工过程中的垂直定位及以后的倾斜观测。", k:"发射、接收、附件", s:"P25–26"},
+  {id:34, g:"其他仪器", q:"激光平面仪的原理与适用场合是什么？GPS 有什么特点和应用？", a:"激光平面仪是一种建筑施工用的多功能激光测量仪器，其铅直光束通过五棱镜转为水平光束；微电机带动五棱镜旋转，通过水平光束扫描给出激光水平面。适用于提升施工的滑模平台、网形屋架的水平控制和大面积混凝土楼板支模、灌注及抄平工作。GPS 具有全天候、高精度、自动化、高效率等显著特点，在大地测量、城市和矿山控制测量、建（构）筑物变形测量及水下地形测量等方面已得到广泛应用。", k:"", s:"P26"}
+];
+
+const EXAM = [
+  { type:"正向",
+    cardIds:[10],
+    q:"工程测量的基本程序是什么？",
+    answer:"设置纵横中心线→设置标高基准点→设置沉降观测点→安装过程测量控制→实测记录等。",
+    keys:["纵横中心线", "标高基准点", "沉降观测点", "测量控制", "实测记录"],
+    need:4 },
+  { type:"正向",
+    cardIds:[14],
+    q:"中心标板的埋设要求有哪些？",
+    answer:"中心标板应埋设在中心线的两端，并且标板的中心要在中心线上；中心标板露出基础表面的高度为 4~6mm；将测出的中心线点投在中心标板上，投点（冲眼）的直径为 1~2mm，并在投点的周围用红油漆画一个圆圈，作为明显的标记。",
+    keys:["两端", "中心线", "4~6", "1~2", "红油漆"],
+    need:4 },
+  { type:"选择",
+    cardIds:[12],
+    q:"关于工程测量，下列说法错误的是：",
+    options:["工程测量应遵循“由整体到局部，先控制后细部”的原则", "一个测区及其周围至少应有 2 个水准点", "沉降观测采用二等水准测量方法", "相邻安装基准点高差应在 0.5mm 以内"],
+    correct:1,
+    why:"教材：一个测区及其周围至少应有 3 个水准点，不是 2 个。其余三项与教材一致。" },
+  { type:"选择",
+    cardIds:[27, 29, 30],
+    q:"关于测量仪器，下列说法正确的是：",
+    options:["水准仪的主要功能是测量水平角和竖直角", "经纬仪由望远镜、水准器（或补偿器）和基座等部件组成", "全站仪的测距模式有精测模式、跟踪模式、粗测模式三种", "电磁波测距仪的测程在 5~20km 的称为中程测距仪，测程在 20km 以上的称为短程测距仪"],
+    correct:2,
+    why:"教材：水准仪是测量两点间高差的仪器，测水平角和竖直角是经纬仪的主要功能；经纬仪由望远镜、水平度盘、垂直度盘和基座组成，水准器是水准仪的部件；电磁波测距仪测程 5~20km 为中程、5km 之内为短程，不是 20km 以上为短程。只有 C 与教材一致。" },
+  { type:"反向",
+    cardIds:[8, 12, 14, 22, 25],
+    q:"说出这些数字对应的测量要求：\n0.5mm ／ 3 个 ／ 4~6mm ／ 50m ／ 400m",
+    answer:"0.5mm —— 相邻安装基准点的高差应在此以内；\n3 个 —— 一个测区及其周围至少应有的水准点数量；\n4~6mm —— 中心标板露出基础表面的高度；\n50m —— 管道中线测量中，沿管道中心线自起点钉里程桩的间距；\n400m —— 一段架空输电线路测量视距长度不宜超过的值。",
+    keys:["基准点", "水准点", "中心标板", "里程桩", "视距"],
+    need:4 },
+  { type:"场景",
+    cardIds:[12, 17],
+    q:"某厂房设备安装：土建移交标高基准点后，班组把水准点设在临时围挡上；在设备基础附近只引测了 1 个临时水准点；设备基础中心线定位后没有复测就进入安装。请指出不符合教材要求之处，并写出正确做法。",
+    answer:"（1）水准点设在临时围挡上不符合：教材要求水准点应选在土质坚硬、便于长期保存和使用方便的地点，墙面水准点应选设于稳定的建筑物上。（临时围挡易变形、沉降，不能保证点位稳定——此句为常识推断，非教材原文）\n（2）只引测 1 个水准点不符合：一个测区及其周围至少应有 3 个水准点。\n（3）设备基础中心线未复测不符合：设备基础中心线必须进行复测，两次测量的误差不应大于 5mm。",
+    keys:["土质坚硬", "稳定", "3 个", "复测", "5mm"],
+    need:3 }
+];
+
+const KEY_STATUS = "erjian_sw_2_1_status";
+const KEY_PASS = "erjian_sw_2_1_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

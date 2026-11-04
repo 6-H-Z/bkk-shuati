@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 1.2 机电工程常用设备 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;padding:14px 14px 96px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+       background:#f5f6f8;color:#1a1a1a;max-width:640px;margin:0 auto}
+  .top{display:flex;align-items:center;gap:8px;margin:2px 0 4px}
+  h1{font-size:18px;margin:0;flex:1}
+  #gateBtn{min-height:36px;padding:0 14px;font-size:14px;font-weight:600;border-radius:9px;
+           border:1px solid #0b6bcb;background:#0b6bcb;color:#fff}
+  #gateBtn.passed{background:#1e7b4f;border-color:#1e7b4f}
+  .sub{font-size:12px;color:#666;margin:0 0 10px}
+  .badge{display:inline-block;font-size:12px;color:#1e7b4f;background:#e6f5ec;border-radius:6px;padding:2px 8px;margin-left:6px}
+  .bar{display:flex;gap:6px;font-size:12px;color:#444;margin-bottom:10px}
+  .bar span{background:#fff;border:1px solid #e3e6ea;border-radius:8px;padding:5px 6px;flex:1;text-align:center}
+  .bar b{font-size:15px;display:block;margin-top:1px}
+  .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06);
+        min-height:200px;display:flex;flex-direction:column;cursor:pointer}
+  .card:active{background:#fafbfc}
+  .tag{font-size:12px;color:#0b6bcb;background:#e8f2ff;border-radius:6px;padding:3px 8px;align-self:flex-start;margin-bottom:10px}
+  .q{font-size:18px;line-height:1.6;font-weight:600;white-space:pre-wrap}
+  .a{margin-top:14px;padding-top:14px;border-top:1px dashed #dde1e6;font-size:16px;line-height:1.7;color:#0f4c81;white-space:pre-wrap}
+  .kk{margin-top:12px;padding:9px 11px;background:#fff8e6;border-left:3px solid #f0b429;border-radius:6px;
+      font-size:15px;line-height:1.6;color:#7a5b00}
+  .hint{margin-top:12px;font-size:12px;color:#9aa0a8}
+  .src{margin-top:auto;padding-top:10px;font-size:12px;color:#8a8f98}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e3e6ea;
+        padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:16px;border-radius:10px;border:1px solid #d8dde3;
+               background:#fff;color:#222;font-weight:600}
+  #flip{background:#0b6bcb;color:#fff;border-color:#0b6bcb;flex:1.3}
+  #bad{color:#c0392b;border-color:#f0c4bd}
+  #good{color:#1e7b4f;border-color:#bfe3ce}
+  .tools{display:flex;gap:8px;margin-top:10px;font-size:13px;flex-wrap:wrap}
+  .tools button{min-height:34px;font-size:13px;font-weight:400;color:#555;background:#fff;
+                border:1px solid #d8dde3;border-radius:8px;padding:0 12px}
+  .tools button.on{background:#e8f2ff;border-color:#0b6bcb;color:#0b6bcb;font-weight:600}
+  .tools .nav{margin-left:auto}
+  footer{margin-top:14px;font-size:12px;color:#8a8f98;line-height:1.6}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:8px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:12px 14px;font-size:15px;
+       line-height:1.5;border:1px solid #d8dde3;border-radius:10px;background:#fff;color:#222}
+  .opt.ok{background:#e6f5ec;border-color:#1e7b4f;color:#14532d;font-weight:600}
+  .opt.no{background:#fdecea;border-color:#c0392b;color:#7f1d1d}
+  #exInput{width:100%;margin-top:12px;padding:12px;font-size:15px;line-height:1.6;
+           border:1px solid #d8dde3;border-radius:10px;font-family:inherit;background:#fff;resize:vertical}
+  #exInput:focus{outline:none;border-color:#0b6bcb}
+  .why{margin-top:10px;font-size:14px;line-height:1.7;color:#444;background:#f7f8fa;border-radius:8px;padding:10px 12px;white-space:pre-wrap}
+  .exDock{display:flex;gap:8px;margin-top:14px}
+  .exDock button{flex:1;min-height:46px;font-size:15px;border-radius:10px;border:1px solid #d8dde3;background:#fff;font-weight:600}
+  .exDock button.primary{background:#0b6bcb;color:#fff;border-color:#0b6bcb}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>1.2 机电工程常用设备</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P13–18 · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+    <footer>
+    内容出处：2027 版《机电工程管理与实务》P13–18。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"通用设备·泵", q:"机电工程通用设备通常指哪几类？", a:"通用性强、用途较广泛的机械设备，常用的有：泵、风机、压缩机、连续输送设备等。", k:"泵、风机、压缩机、连续输送", s:"P13"},
+  {id:2, g:"通用设备·泵", q:"泵按工作原理和结构形式分为哪两大类？各自又包括哪些？", a:"① 容积式泵：按运动部件运动方式的不同分为往复泵（有活塞泵、柱塞泵等）和回转泵（有齿轮泵、螺杆泵和叶片泵等）。② 叶轮式泵：按泵的叶轮和流道结构特点的不同，分为离心泵、轴流泵和旋涡泵等。", k:"容积式＝往复＋回转；叶轮式＝离心、轴流、旋涡", s:"P13"},
+  {id:3, g:"通用设备·泵", q:"泵按输送介质、吸入方式、叶轮数目分别怎么分类？", a:"按输送介质：清水泵、杂质泵、耐腐蚀泵等；按吸入方式：单吸泵、双吸泵；按叶轮数目：单级泵、多级泵。", k:"", s:"P13"},
+  {id:4, g:"通用设备·泵", q:"常用的泵有哪些？其中哪种效率高、结构简单、适用范围最广？", a:"常用的泵有：离心式泵、旋涡泵、电动往复泵、柱塞泵、蒸汽往复泵、计量泵、螺杆泵、齿轮油泵、真空泵等。其中离心式泵效率高、结构简单、适用范围最广。", k:"", s:"P13"},
+  {id:5, g:"通用设备·泵", q:"泵的性能参数主要有哪些？教材用什么例子说明扬程？", a:"流量、扬程、功率、效率、转速和汽蚀余量等。例如：一幢 30 层（98m 高）的高层建筑，其消防水泵的扬程应在 130m 以上。", k:"流量、扬程、功率、效率、转速、汽蚀余量", s:"P13"},
+  {id:6, g:"通用设备·风机", q:"风机按气体在旋转叶轮内部流动方向、按工作原理分别怎么分类？", a:"按气体在旋转叶轮内部流动方向：离心式风机、轴流式风机、混流式风机。按工作原理：速度式（包括轴流式风机、离心式风机、混流式风机）和容积式（包括回转式风机、往复式风机）。", k:"", s:"P13"},
+  {id:7, g:"通用设备·风机", q:"风机按结构形式、按排气压强如何分类？常用的风机有哪些？", a:"按结构形式：单级风机、多级风机。按排气压强：通风机、鼓风机、压风机。常用风机：离心式通风机、离心式引风机、轴流式通风机、离心式鼓风机、罗茨式鼓风机。", k:"", s:"P13"},
+  {id:8, g:"通用设备·风机", q:"风机性能是在什么“标准进气状态”下定义的？主要性能参数有哪些？", a:"标准进气状态即风机进口处空气压力为一个标准大气压，温度为 20℃，相对湿度为 50% 的气体状态。主要性能参数：流量（风量）、全风压、动压、静压、功率、效率、转速、比转速等。", k:"一大气压、20℃、50%", s:"P13"},
+  {id:9, g:"通用设备·压缩机", q:"压缩机按压缩气体方式分为哪两大类？动力式又分哪三种？", a:"容积式压缩机和动力式压缩机两大类。容积式按结构形式和工作原理可分为往复式压缩机和回转式压缩机；动力式压缩机可分为轴流式压缩机、离心式压缩机和混流式压缩机。", k:"", s:"P14"},
+  {id:10, g:"通用设备·压缩机", q:"压缩机按压缩次数、汽缸布置方式、最终排气压力分别怎么分类？", a:"按压缩次数：单级、两级、多级压缩机。按汽缸布置方式：立式、卧式、L 型、V 型、W 型、扇形、M 型、H 型压缩机。按最终排气压力：低压、中压、高压和超高压压缩机。", k:"L、V、W、扇、M、H", s:"P14"},
+  {id:11, g:"通用设备·压缩机", q:"压缩机还可以按哪些方式划分？常用压缩机与性能参数有哪些？", a:"还可按压缩机排气量的大小、润滑方式、冷却方式、传动方式进行划分。常用压缩机：活塞式压缩机、回转式螺杆压缩机、离心式压缩机等。性能参数：容积、流量、排气压力、比功率、排气温度、压缩比等。", k:"", s:"P14"},
+  {id:12, g:"通用设备·输送", q:"机电工程中常用的连续输送设备有哪些？", a:"斗式提升机、刮板输送机、板（裙）式输送机、悬挂输送机、固定式胶带输送机、气力输送设备、螺旋输送机、卸矿车和皮带秤。", k:"", s:"P14"},
+  {id:13, g:"通用设备·输送", q:"连续输送设备按有无牵引件如何分类？各包括哪些？", a:"具有挠性牵引件的输送设备：带式输送机、板式输送机、刮板式输送机、提升机、架空索道等；无挠性牵引件的输送设备：螺旋输送机、辊子输送机、振动输送机、气力输送机等。", k:"有牵引件：带、板、刮、提、索道；无牵引件：螺旋、辊子、振动、气力", s:"P14"},
+  {id:14, g:"通用设备·输送", q:"连续输送设备有哪些性能特点？", a:"只能沿着一定路线向一个方向连续输送物料，可进行水平、倾斜和垂直输送，也可组成空间输送线路。输送能力大、运距长、设备简单、操作简便、生产率高；除进行物料输送外，还可与生产过程中的工艺过程相配合，形成流水作业线，在输送过程中同时完成若干工艺操作。", k:"", s:"P14"},
+  {id:15, g:"专用设备", q:"什么是专用设备？包括哪几类？其性能有什么特点？", a:"专门针对某一种或一类对象或产品，实现一项或几项功能的设备。例如：电力设备、石油化工设备、冶金设备、建材设备等。性能针对性强，往往只完成某一种或有限的几种零件或产品的特定工序或几个工序的加工或生产，效率特别高，适合于单品种大批量加工或连续生产。", k:"", s:"P14–16"},
+  {id:16, g:"专用设备·电力", q:"火力发电设备与核电设备各由哪些部分组成？常规岛设备包括什么？", a:"火力发电设备主要由锅炉、汽轮机、发电机、辅助系统设备和控制系统设备等组成。核电设备包括核岛设备、常规岛设备、辅助系统设备；常规岛设备包括：汽轮机、发电机、凝汽器、汽水分离再热器、给水加热器、除氧器、阀门、水泵、起吊设备、高压电动机。", k:"", s:"P14"},
+  {id:17, g:"专用设备·电力", q:"风力发电设备主要有哪些部件？按驱动方式分哪两种机组？", a:"风力发电设备主要包括：塔架、机舱、发电机、轮毂、叶片和电气设备等。按驱动方式分为：直驱风电机组和双馈式风电机组。", k:"塔架、机舱、发电机、轮毂、叶片、电气设备", s:"P14"},
+  {id:18, g:"专用设备·电力", q:"太阳能发电设备分哪两类？光伏发电设备包括哪些？", a:"太阳能发电设备包括光伏发电设备、光热发电设备（包括塔式光热发电设备和槽式光热发电设备）。光伏发电设备包括：光伏支架、光伏组件、汇流箱、逆变器等。", k:"", s:"P15"},
+  {id:19, g:"专用设备·电力", q:"塔式光热发电设备与槽式光热发电设备各包括哪些？", a:"塔式光热发电设备包括：镜场设备（包括反射镜和跟踪设备）、集热塔（吸热塔）、热储存设备、热交换设备和发电常规岛设备。槽式光热发电设备包括：集热器支架、集热器系统设备、换热器系统设备和发电常规岛设备。", k:"", s:"P15"},
+  {id:20, g:"专用设备·石化", q:"石油化工设备包括哪些？反应、换热、分离过滤、储存设备各举几例？", a:"石油化工设备包括：容器、反应设备、塔设备、换热设备、储罐、混合设备、分离过滤设备、储存设备、成型设备等。反应设备如反应器、反应釜、分解锅、聚合釜等；换热设备如管壳式余热锅炉、热交换器、冷却器、冷凝器、蒸发器等；分离过滤设备如分离器、过滤器、集油器、缓冲器、洗涤器等；储存设备如各种形式的储槽、储罐等。", k:"", s:"P15"},
+  {id:21, g:"专用设备·冶金", q:"冶金设备包括哪些？选矿、炼铁、炼钢、轧钢设备各举几例？", a:"冶金设备包括：选矿设备、焦化设备、烧结设备、炼铁设备、炼钢设备、轧钢设备、冶金液压（润滑、气动）设备、冶金电气设备、环保设备等。选矿设备：破碎设备、筛分设备、磨矿设备、选别设备；炼铁设备：高炉设备、冷却设备、炉顶装料设备、矿槽设备、焦槽设备、鼓风设备、热风炉设备、煤气除尘器设备；炼钢设备：转炉、电弧炉、钢包精炼炉、钢包真空精炼炉、真空吹氧脱碳炉、连续铸钢机械设备；轧钢设备：开坯轧机、板材轧机、线材轧机、无缝钢管轧机、型材轧机、矫直机、剪切机、卷取机。", k:"", s:"P15"},
+  {id:22, g:"专用设备·建材", q:"建材设备包括哪些？“一窑三磨”和浮法玻璃生产线的关键设备是什么？", a:"建材设备包括：水泥生产设备、玻璃生产设备、陶瓷生产设备、耐火材料设备、新型建筑材料设备、无机非金属材料及制品设备等。水泥生产设备主要是“一窑三磨”，包括回转窑、生料磨、煤磨、水泥磨；浮法玻璃生产线主要工艺设备包括玻璃熔窑、锡槽、退火窑及冷端的切装系统。", k:"一窑三磨：回转窑、生料磨、煤磨、水泥磨", s:"P15"},
+  {id:23, g:"电气设备·总述", q:"机电工程常用的电气设备有哪五类？发电设备指什么？建筑机电常用什么作应急电源？", a:"机电工程常用的电气设备有发电设备、变电设备、配电设备、控制设备和电力电子设备等，是用于电力传输、分配、控制和保护的各种电气设备。发电设备是指将机械能转化为电能的设备。建筑机电工程中常用柴油发电机组作为应急或备用电源，相比前述电力设备，柴油发电机组是一种小型的发电设备。", k:"发电、变电、配电、控制、电力电子", s:"P16"},
+  {id:24, g:"电气设备·发电", q:"柴油发电机组的性能参数有哪些？", a:"功率、电压、频率、电流、冷却量及冷却方式、燃烧空气量、排风量、允许排气背压等。", k:"功率、电压、频率、电流、冷却、燃烧空气量、排风量、排气背压", s:"P16"},
+  {id:25, g:"电气设备·变电", q:"什么是变电设备？变压器按冷却介质、相数、每相绕组数、用途如何分类？", a:"变电设备是将高、低压电能转换为低、高压电能或将交流电能转换为直流电能的设备，如变压器、整流器、逆变器等。变压器：按冷却介质分油浸式变压器、干式变压器、充气式变压器等；按相数分单相变压器、三相变压器；按每相绕组数分双绕组变压器、三绕组变压器和自耦变压器等；按用途分电力变压器、电炉变压器、整流变压器、电焊变压器、船用变压器、测量变压器等。", k:"", s:"P16"},
+  {id:26, g:"电气设备·变电", q:"变压器的主要技术参数有哪些？", a:"额定容量、额定电压、额定电流、绝缘等级、冷却方式、温升限值、调压方式、空载电流、空载损耗、阻抗、负载损耗、短路损耗、效率、短路阻抗、连接组别等。", k:"", s:"P16"},
+  {id:27, g:"电气设备·配电", q:"配电设备的功能是什么？开关柜按电压、按开关设备布置形式、按断路器和其他元件安装方式如何分类？", a:"配电设备的功能是将电能分配到各个用电设备，常见的有开关柜、配电柜、配电箱等。开关柜：按配电电压不同分为高压开关柜和低压开关柜；按开关设备的布置形式不同分为金属铠装式开关柜、间隔式开关柜和箱式开关柜等；按断路器和其他元件的安装方式不同分为固定式、中置式和手车式开关柜。", k:"", s:"P16"},
+  {id:28, g:"电气设备·配电", q:"开关柜、配电柜、配电箱的主要技术参数和分类？", a:"开关柜主要技术参数：额定电压、额定电流、额定频率、工频耐受电压、雷电冲击耐受电压等。配电柜按配电电压不同分为高压配电柜和低压配电柜，按设备的结构特征分为固定式、抽屉式和组合式等；配电箱按配电用途不同分为动力配电箱、照明配电箱、计量配电箱和应急配电箱等。配电柜主要技术参数包括额定电流、额定电压、短路承受能力、防护等级等。", k:"", s:"P16–17"},
+  {id:29, g:"电气设备·控制", q:"控制设备包括哪五种？断路器、隔离开关、负荷开关的作用有何区别？", a:"控制设备包括断路器、隔离开关、负荷开关、接触器、继电器。断路器：能带负荷连接或断开电路，使设备正常工作，在过载或短路时能自动跳闸，保护设备和人身安全。隔离开关：在电路中隔离电源或设备，倒闸作业；不能带负荷分合电路，分闸时有明显断开点，确保维修人员的安全。负荷开关：能带负荷分合电路，但在过载及短路时不会自动跳闸，一般需要和熔断器配合使用，保护线路和设备安全运行。", k:"断路器能跳闸，隔离开关不能带负荷，负荷开关靠熔断器", s:"P17"},
+  {id:30, g:"电气设备·控制", q:"断路器、隔离开关、负荷开关的类型与参数各有哪些？", a:"断路器按结构分为微型断路器、模壳式断路器、框架式断路器；按灭弧介质分为空气断路器、真空断路器、SF6 断路器、油断路器等；参数有额定电流、额定电压、脱扣器整定电流、最大短路电流、操作特性等。隔离开关按绝缘支柱分为单柱式、双柱式和多柱式；按运行方式分为水平旋转式、垂直旋转式和插入式等；参数有额定电压、额定电流等。负荷开关分低压负荷开关和高压负荷开关等；参数有额定电压、额定电流、操作方式等。", k:"", s:"P17"},
+  {id:31, g:"电气设备·控制", q:"接触器、继电器的作用、类型与参数？", a:"接触器：可频繁地通、断电路，以小电流控制大电流；与热继电器配合使用，能对负载设备进行过载保护；类型有交流接触器、直流接触器等；参数包括主触点、辅助触点额定电压和额定电流，线圈额定电压和额定电流。继电器：用于控制电路的开关动作，实现远程控制和保护功能；类型有电压继电器、电流继电器、时间继电器、速度继电器、压力继电器、热继电器等；参数包括控制特性、动作时间、接点负载能力、响应速度等。", k:"", s:"P17"},
+  {id:32, g:"电气设备·电力电子", q:"电力电子设备包括哪些？变频器主要由哪四部分组成？", a:"电力电子设备是指用于电力系统中电能的调节、变换和控制的设备，可提高电力系统的效率和稳定性，包括变频器、整流器、逆变器、软启动器、功率放大器等。变频器主要由整流单元、滤波单元、逆变单元、控制单元四部分组成。", k:"整流、滤波、逆变、控制", s:"P17–18"},
+  {id:33, g:"电气设备·电力电子", q:"变频器的工作原理是什么？四个单元各起什么作用？", a:"变频器是一种改变交流电源频率的电器。其原理是基于电子器件对电源电压进行高频率开关控制，通过脉宽调制技术（PWM）将直流电压转换成可变频率的交流电源，通过改变电源的电压和频率调整电动机的运行速度，实现无级调速。整流单元：将输入的交流电源转换为直流电源；滤波单元：对整流后的直流电进行滤波，去除杂散的高频成分，得到稳定的直流电源；逆变单元：将滤波后的直流电源进行逆变，通过高频开关管控制脉宽，改变电压和频率形成交流电；控制单元：控制变频器的开关器件和 PWM 信号频率，根据输入控制信号调整输出电压和频率，实现电机无级调速。", k:"整流→滤波→逆变→控制", s:"P18"},
+  {id:34, g:"电气设备·电力电子", q:"逆变器、整流器、软启动器分别是什么？各有什么要求？", a:"逆变器：一种电源转换装置，可将直流电源转换为交流电源，由逆变电路、逻辑控制电路、滤波电路三大部分组成；开关元件是核心部件，PWM 控制器控制 IGBT 管的导通或截止，反馈回路用于监测输出电压和电流。整流器：将交流电转换为直流电的装置或元件，包括二极管整流器、晶闸管整流器等。软启动器：电动机在不调速拖动控制中使用的一种性能优异的拖动设备，主要有电子式（晶闸管调压式）、磁控式和液体电阻式等类型；集软启动、软停车、轻载节能和多种保护功能于一体；启动方式有限流启动、斜坡电压启动、转矩控制启动、电压控制启动等。", k:"", s:"P18"}
+];
+
+const EXAM = [
+  { type:"正向",
+    cardIds:[2, 9],
+    q:"泵按工作原理和结构形式可分为哪两类？各包括哪些泵？",
+    answer:"① 容积式泵：按运动部件运动方式的不同分为往复泵（有活塞泵、柱塞泵等）和回转泵（有齿轮泵、螺杆泵和叶片泵等）。② 叶轮式泵：按泵的叶轮和流道结构特点的不同，分为离心泵、轴流泵和旋涡泵等。",
+    keys:["容积式", "往复", "回转", "叶轮式", "离心", "轴流", "旋涡"],
+    need:5 },
+  { type:"正向",
+    cardIds:[25],
+    q:"变压器按冷却介质、相数、每相绕组数、用途分别可分为哪些类型？",
+    answer:"按冷却介质：油浸式变压器、干式变压器、充气式变压器等；按相数：单相变压器、三相变压器；按每相绕组数：双绕组变压器、三绕组变压器和自耦变压器等；按用途：电力变压器、电炉变压器、整流变压器、电焊变压器、船用变压器、测量变压器等。",
+    keys:["油浸式", "干式", "充气式", "单相", "三相", "双绕组", "三绕组", "自耦", "电力变压器"],
+    need:6 },
+  { type:"选择",
+    cardIds:[2, 9, 10],
+    q:"关于泵、风机、压缩机的分类，下列说法错误的是：",
+    options:["离心式泵效率高、结构简单、适用范围最广", "风机按气体在旋转叶轮内部流动方向可分为离心式风机、轴流式风机、混流式风机", "压缩机按压缩气体方式可分为容积式压缩机和动力式压缩机两大类", "回转泵（齿轮泵、螺杆泵、叶片泵）属于叶轮式泵"],
+    correct:3,
+    why:"教材：容积式泵按运动部件运动方式不同分为往复泵和回转泵两类，回转泵（齿轮泵、螺杆泵、叶片泵）属于容积式泵；叶轮式泵才是离心泵、轴流泵和旋涡泵。D 把回转泵归到了叶轮式，错。其余三项与教材一致。" },
+  { type:"选择",
+    cardIds:[29, 31],
+    q:"关于控制设备，下列说法错误的是：",
+    options:["断路器能带负荷连接或断开电路，过载或短路时能自动跳闸", "隔离开关不能带负荷分合电路，分闸时有明显断开点", "负荷开关在过载及短路时能自动跳闸", "接触器可频繁地通、断电路，以小电流控制大电流，与热继电器配合可对负载设备进行过载保护"],
+    correct:2,
+    why:"教材：负荷开关能带负荷分合电路，但在过载及短路时不会自动跳闸，一般需要和熔断器配合使用；能自动跳闸的是断路器。C 把两种设备的功能记混了。" },
+  { type:"反向",
+    cardIds:[5, 8, 22, 30],
+    q:"说出下列数字/名称对应的设备或要求：\n130m ／ 20℃、相对湿度 50%、一个标准大气压 ／ 一窑三磨 ／ SF6",
+    answer:"130m —— 30 层（98m 高）高层建筑的消防水泵扬程应在 130m 以上；\n20℃、相对湿度 50%、一个标准大气压 —— 风机性能的标准进气状态；\n一窑三磨 —— 水泥生产设备，即回转窑、生料磨、煤磨、水泥磨；\nSF6 —— 断路器按灭弧介质分类中的 SF6 断路器（还有空气、真空、油断路器）。",
+    keys:["扬程", "标准进气状态", "回转窑", "生料磨", "灭弧"],
+    need:3 },
+  { type:"场景",
+    cardIds:[5, 23, 24],
+    q:"某 30 层住宅（建筑高度 98m）的消防水泵房，施工单位按 110m 扬程选泵；地下室设备间需要设置应急备用电源。请用本节知识回答：\n（1）消防水泵扬程选型是否合适？教材的判据是什么？\n（2）应急备用电源宜选用什么设备？至少列出该设备的 5 项性能参数。",
+    answer:"（1）不合适。教材：一幢 30 层（98m 高）的高层建筑，其消防水泵的扬程应在 130m 以上。110m 小于 130m，不满足要求。\n（2）宜选用柴油发电机组：建筑机电工程中常用柴油发电机组作为应急或备用电源，是一种小型的发电设备。其性能参数有：功率、电压、频率、电流、冷却量及冷却方式、燃烧空气量、排风量、允许排气背压等。",
+    keys:["130", "柴油发电机组", "功率", "电压", "频率", "电流"],
+    need:3 }
+];
+
+const KEY_STATUS = "erjian_sw_1_2_status";
+const KEY_PASS = "erjian_sw_1_2_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

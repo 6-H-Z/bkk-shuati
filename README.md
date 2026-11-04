@@ -25,7 +25,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File E:\Users\31202\Desktop\deeh\
 脚本走 GitHub Git Data API，一个 commit 发完默认清单（分区首页、2 区、1 区、README），
 30~90 秒后线上更新。只发某几个文件用 `-Files a.html,b.html`，删文件用 `-Delete old.html`。
 
-- 1 区的 `danzhao/index.html`、`danzhao/bank/data.js` 是 `02_考试/单招2027/脚本/build.py` 生成的，别在这里手改。
+- 1 区的 `danzhao/index.html`、`danzhao/bank/data.js`、`danzhao/js/variants-*.js` 都是 `02_考试/单招2027/脚本/build.py` 生成的，别在这里手改。
 - 2 区的 `zikao/index.html` 是 `02_考试/本科自考/本科刷题工具.html` 的发布副本，改源头再复制过来。
 - 本目录里的 `.git` 是早期用 GitHub Desktop 时留下的，**已过时**，不要再用它 commit/push。
 

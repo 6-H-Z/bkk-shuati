@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 3.3 通风与空调工程施工技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;padding:14px 14px 96px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+       background:#f5f6f8;color:#1a1a1a;max-width:640px;margin:0 auto}
+  .top{display:flex;align-items:center;gap:8px;margin:2px 0 4px}
+  h1{font-size:18px;margin:0;flex:1}
+  #gateBtn{min-height:36px;padding:0 14px;font-size:14px;font-weight:600;border-radius:9px;
+           border:1px solid #0b6bcb;background:#0b6bcb;color:#fff}
+  #gateBtn.passed{background:#1e7b4f;border-color:#1e7b4f}
+  .sub{font-size:12px;color:#666;margin:0 0 10px}
+  .badge{display:inline-block;font-size:12px;color:#1e7b4f;background:#e6f5ec;border-radius:6px;padding:2px 8px;margin-left:6px}
+  .bar{display:flex;gap:6px;font-size:12px;color:#444;margin-bottom:10px}
+  .bar span{background:#fff;border:1px solid #e3e6ea;border-radius:8px;padding:5px 6px;flex:1;text-align:center}
+  .bar b{font-size:15px;display:block;margin-top:1px}
+  .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06);
+        min-height:200px;display:flex;flex-direction:column;cursor:pointer}
+  .card:active{background:#fafbfc}
+  .tag{font-size:12px;color:#0b6bcb;background:#e8f2ff;border-radius:6px;padding:3px 8px;align-self:flex-start;margin-bottom:10px}
+  .q{font-size:18px;line-height:1.6;font-weight:600;white-space:pre-wrap}
+  .a{margin-top:14px;padding-top:14px;border-top:1px dashed #dde1e6;font-size:16px;line-height:1.7;color:#0f4c81;white-space:pre-wrap}
+  .kk{margin-top:12px;padding:9px 11px;background:#fff8e6;border-left:3px solid #f0b429;border-radius:6px;
+      font-size:15px;line-height:1.6;color:#7a5b00}
+  .hint{margin-top:12px;font-size:12px;color:#9aa0a8}
+  .src{margin-top:auto;padding-top:10px;font-size:12px;color:#8a8f98}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e3e6ea;
+        padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:16px;border-radius:10px;border:1px solid #d8dde3;
+               background:#fff;color:#222;font-weight:600}
+  #flip{background:#0b6bcb;color:#fff;border-color:#0b6bcb;flex:1.3}
+  #bad{color:#c0392b;border-color:#f0c4bd}
+  #good{color:#1e7b4f;border-color:#bfe3ce}
+  .tools{display:flex;gap:8px;margin-top:10px;font-size:13px;flex-wrap:wrap}
+  .tools button{min-height:34px;font-size:13px;font-weight:400;color:#555;background:#fff;
+                border:1px solid #d8dde3;border-radius:8px;padding:0 12px}
+  .tools button.on{background:#e8f2ff;border-color:#0b6bcb;color:#0b6bcb;font-weight:600}
+  .tools .nav{margin-left:auto}
+  footer{margin-top:14px;font-size:12px;color:#8a8f98;line-height:1.6}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:8px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:12px 14px;font-size:15px;
+       line-height:1.5;border:1px solid #d8dde3;border-radius:10px;background:#fff;color:#222}
+  .opt.ok{background:#e6f5ec;border-color:#1e7b4f;color:#14532d;font-weight:600}
+  .opt.no{background:#fdecea;border-color:#c0392b;color:#7f1d1d}
+  #exInput{width:100%;margin-top:12px;padding:12px;font-size:15px;line-height:1.6;
+           border:1px solid #d8dde3;border-radius:10px;font-family:inherit;background:#fff;resize:vertical}
+  #exInput:focus{outline:none;border-color:#0b6bcb}
+  .why{margin-top:10px;font-size:14px;line-height:1.7;color:#444;background:#f7f8fa;border-radius:8px;padding:10px 12px;white-space:pre-wrap}
+  .exDock{display:flex;gap:8px;margin-top:14px}
+  .exDock button{flex:1;min-height:46px;font-size:15px;border-radius:10px;border:1px solid #d8dde3;background:#fff;font-weight:600}
+  .exDock button.primary{background:#0b6bcb;color:#fff;border-color:#0b6bcb}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>3.3 通风与空调工程施工技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P68–77（本页 P68–77） · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P68–77。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [{"id":1,"g":"分部分项","q":"通风与空调分部工程包括哪些子分部工程？","a":"送风系统、排风系统、防排烟系统、舒适性空调风系统、净化空调风系统、空调（冷、热）水系统、冷却水系统、冷凝水系统、多联机（热泵）空调系统。","k":"五风三水一多联","s":"P68–69"},{"id":2,"g":"分部分项","q":"送风系统、排风系统、防排烟系统的分项工程分别有哪些？","a":"送风系统：风管与部件制作，风管系统安装，风机与空气处理设备安装，风管与设备防腐，旋流风口、岗位送风口、织物（布）风管安装，系统调试。\n排风系统：风管与部件制作，风管系统安装，风机与空气处理设备安装，风管与设备防腐，吸风罩及其他空气处理设备安装，厨房、卫生间排放系统安装，系统调试。\n防排烟系统：风管与部件制作，风管系统安装，风机与空气处理设备安装，风管与设备防腐，排烟风阀（口）、正压送风口、防火风管安装，系统调试。","k":"","s":"P68"},{"id":3,"g":"分部分项","q":"净化空调风系统、冷凝水系统、多联机（热泵）空调系统的分项工程分别有哪些？","a":"净化空调风系统：风管与部件制作，风管系统安装，风机与净化空调机组安装，消声器、换热器等设备安装，中、高效过滤器及风机过滤器机组等末端设备安装，风管与设备绝热，洁净度测试，系统调试。\n冷凝水系统：管道系统及部件安装，水泵及附属设备安装，管道、设备防腐与绝热，管道冲洗，系统灌水渗漏及排放试验。\n多联机（热泵）空调系统：室外机组安装，室内机组安装，制冷剂管路连接及控制开关安装，风管安装，冷凝水管道安装，制冷剂灌注，系统压力试验及调试。","k":"","s":"P68–69"},{"id":4,"g":"施工程序","q":"金属风管的制作程序、安装程序，以及风管系统阀部件安装程序、风管漏风量测试程序分别是什么？","a":"制作程序：板材、型材选用及复检→风管预制→角钢法兰预制→板材拼接及轧制、薄钢板法兰风管轧制→防腐→风管组合→加固、成型→质量检查。\n安装程序：测量放线→支吊架安装→风管检查→组合连接→风管调整→漏风量测试→风管绝热→质量检查。\n阀部件安装程序：风阀及部件检查→支吊架安装→风阀及部件安装→质量检查。\n漏风量测试程序：风管漏风量抽样方案确定→风管检查→测试仪器仪表检查校准→现场测试→现场数据记录→质量检查。","k":"","s":"P69"},{"id":5,"g":"施工程序","q":"空调水系统管道施工程序是什么？","a":"管道预制→管道支吊架制作与安装→管道与附件安装→水压试验→冲洗→质量检查。","k":"预制支吊装，试压冲洗检","s":"P69"},{"id":6,"g":"施工程序","q":"制冷机组、冷却塔、水泵的安装程序分别是什么？","a":"制冷机组：基础验收→机组运输吊装→机组减振装置安装→机组就位安装→机组配管→质量检查。\n冷却塔：基础验收→冷却塔运输吊装→冷却塔减振安装→冷却塔就位安装→冷却塔配管→质量检查。\n水泵：基础验收→减振装置安装→水泵就位→找正找平→配管及附件安装→质量检查。","k":"基础—减振—就位—配管","s":"P69"},{"id":7,"g":"施工程序","q":"新风机组、组合式空调机组、风机盘管及空调末端装置、风机（箱）、多联机系统的安装程序分别是什么？","a":"新风机组、组合式空调机组：设备检查试验→基础验收→减振装置安装→机组安装→找正找平→管道安装→质量检查。\n风机盘管、空调末端装置：设备检查试验→支吊架安装→减振装置安装→设备安装及配管→质量检查。\n风机（箱）：风机检查试验→基础验收→支吊架安装→减振安装→风机就位→找平找正→管道安装→质量检查。\n多联机系统：基础验收→室外机吊运→设备减振安装→室外机安装→室内机安装→管道连接→管道强度及真空试验→系统充制冷剂→管道及设备绝热→调试运行→质量检查。","k":"","s":"P69"},{"id":8,"g":"施工程序","q":"管道及支吊架防腐、风管绝热、水管及设备绝热的施工程序分别是什么？","a":"管道及支吊架防腐：除锈→去污→表面清洁→底层涂料→面层涂料→质量检查。\n风管绝热：清理去污→保温钉固定（涂刷胶粘剂）→绝热材料下料→绝热层施工→防潮层施工→保护层施工→质量检查。\n水管及设备绝热：清理去污→涂刷胶粘剂→绝热层施工→接缝处胶粘→防潮层施工→保护层施工→质量检查。","k":"清钉下，绝防保","s":"P69–70"},{"id":9,"g":"施工程序","q":"设备单机试运行、水系统调试、风系统调试的程序分别是什么？","a":"设备单机试运行：设备检查→设备测试→试运行→参数测试→数据记录→质量检查。\n水系统调试：设备检查→阀部件检查→测试仪器仪表准备→水流量测试与调整→压力表温度计数据记录→质量检查。\n风系统调试：风机设备检查→风管、风阀、风口检查→测试仪器仪表准备→风量测试→风量平衡调整→记录测试数据→质量检查。","k":"","s":"P70"},{"id":10,"g":"施工程序","q":"防排烟系统、通风空调系统联合试运行的程序分别是什么？","a":"防排烟系统联合试运行：系统检查→机械正压送风系统测试与调整→机械排烟系统测试与调整→联合试运行参数的测试与调整→数据记录→质量检查。\n通风空调系统联合试运行：系统检查→通风空调系统的风量、水量测试与调整→空调自控系统的测试调整→联合试运行→数据记录→质量检查。","k":"","s":"P70"},{"id":11,"g":"风管制作","q":"通风与空调工程的风管按工作压力分为哪几级？压力范围如何规定？","a":"按工作压力分为微压、低压、中压、高压四个等级：\n微压：管内正压 P≤125Pa，管内负压 P≥−125Pa；\n低压：125Pa<P≤500Pa，−500Pa≤P<−125Pa；\n中压：500Pa<P≤1500Pa，−1000Pa≤P<−500Pa；\n高压：1500Pa<P≤2500Pa，−2000Pa≤P<−1000Pa。","k":"微125，低500，中1500，高2500","s":"P70"},{"id":12,"g":"风管制作","q":"各级风管的施工密封要求分别是什么？","a":"微压：接缝及接管连接处应严密。\n低压：接缝及接管连接处应严密，密封面宜设在风管的正压侧。\n中压：接缝及接管连接处增加密封措施。\n高压：所有的拼接缝及接管连接处，均应采取密封措施。","k":"微严，低严正压侧，中增，高全","s":"P70"},{"id":13,"g":"风管制作","q":"风管制作对材料有哪些要求？（镀锌层、复合材料风管、防排烟风管）","a":"制作风管所采用的板材、型材以及其他主要材料，应符合设计要求及国家现行标准的有关规定，并具有相应的出厂检验合格证明文件。镀锌钢板板材的镀锌层不应低于80g/m²。所选用的成品风管，应提供产品合格证书、性能检验报告或进行强度和严密性的现场复验。\n复合材料风管的覆面材料必须为不燃材料，内层的绝热材料应采用不燃或难燃且对人体无害的材料，材料进场时应提供燃烧性能检验报告。\n防排烟系统风管的耐火极限应符合设计规定，可采用防火风管或镀锌铁皮风管包覆岩棉+防火板等技术措施，相关材料进场时应提供燃烧性能检测报告。防火风管的本体、框架与固定材料、密封垫料等必须为不燃材料。","k":"八十克，不燃","s":"P70"},{"id":14,"g":"风管制作","q":"金属风管的拼接与连接有哪些规定？（咬口缝、镀锌板、法兰、螺栓间距）","a":"金属风管规格以外径或外边长为准，非金属风管和风道规格以内径或内边长为准。金属风管板材的拼接采用咬口连接、铆接、焊接连接等方法，风管与风管连接采用法兰连接、薄钢板法兰连接等。风管板材拼接的咬口缝应错开，不得有十字形拼接缝。\n镀锌钢板及含有各类复合保护层的钢板应采用咬口连接或铆接，不得采用焊接连接。板厚小于或等于1.2mm的风管与角钢法兰连接时，应采用翻边铆接；中、低压系统矩形风管法兰螺栓及铆钉间距应小于或等于150mm，高压系统应小于或等于100mm。\n排油烟系统采用不锈钢风管法兰连接时，法兰应采用不锈钢材质，风管与法兰应采用满焊，防止油烟泄漏、串味和火灾发生。","k":"一米二翻边，一百五/一百","s":"P70–71"},{"id":15,"g":"风管制作","q":"哪些金属风管应采取加固措施？加固件用什么材料？","a":"下列条件的金属风管应采取加固措施：\n①直咬缝圆形风管直径大于或等于800mm，且管段长度大于1250mm或总表面积大于4m²；用于高压系统的螺旋风管直径大于2000mm。\n②矩形风管边长大于630mm或矩形保温风管边长大于800mm，管段长度大于1250mm；或低压风管单边平面面积大于1.2m²，中、高压风管大于1.0m²。\n③风管针对其工作压力等级、板材厚度、风管长度与断面尺寸，采取相应的加固措施。风管可采用管内或管外加固件、管壁压制加强筋等形式进行加固。矩形风管加固件宜采用角钢、轻钢型材或钢板折叠；圆形风管加固件宜采用角钢。","k":"圆八零，矩六三零","s":"P71"},{"id":16,"g":"风管安装","q":"风管安装的准备工作、就位顺序和密封材料选用有什么要求？","a":"风管安装前应清理安装部位或操作场所中的杂物，并检查风管及其配件的制作质量、风管支吊架的制作与安装质量。切断支、吊、托架的型钢及其开螺孔应采用机械加工，不得用电气焊切割；支、吊架不宜设置在风口、阀门、检查门及自控装置处。\n风管安装就位的程序通常为先上层后下层、先主干管后支管、先立管后水平管。\n防排烟系统或输送温度高于70℃的空气或烟气，应采用耐热橡胶板或不燃的耐温、防火材料；输送含有腐蚀介质的气体，应采用耐酸橡胶板或软聚氯乙烯板。","k":"先上后下，先干后支，先立后平","s":"P71"},{"id":17,"g":"风管安装","q":"风管穿过封闭的防火、防爆墙体或楼板时，套管和封堵有什么要求？","a":"必须设置厚度不小于1.6mm的钢制防护套管，风管与防护套管之间应采用不燃柔性材料封堵严密。穿墙套管与墙体两侧平齐，穿楼板套管底端与楼板底面平齐，顶端应高出楼板面30mm。","k":"一点六套管，高三十","s":"P71"},{"id":18,"g":"风管安装","q":"风管穿越建筑物变形缝时，按隔断墙数量分为哪几种做法？","a":"①变形缝无隔断墙时，在变形缝处采用不燃或难燃的柔性短管连接风管。\n②变形缝有一道隔断墙时，墙上设钢制防护套管，在隔断墙的变形缝侧设不燃的柔性短管连接风管；隔断墙另一侧安装一个70℃防火阀，防火阀与柔性短管间采用钢板风管连接。风管与防护套管之间采用不燃柔性材料填实。\n③变形缝有两道隔断墙时，两道隔断墙上各设一个钢制防护套管；在两道隔断墙的外侧200mm处各装一个70℃防火阀，并用钢板制作的短管穿过两道隔断墙将两个防火阀连接；在其中一道隔断墙外侧防火阀处设不燃柔性短管连接防火阀与风管。风管与防护套管之间采用不燃柔性材料填实。","k":"无墙柔性管，一墙七十阀，两墙二百两侧阀","s":"P71–72"},{"id":19,"g":"风管安装","q":"防火阀应设置在哪些部位？对距墙距离和独立支吊架有什么要求？","a":"风管穿越防火分区处，穿越通风、空调机房的房间隔墙和楼板处及穿越防火分隔处的变形缝两侧，应安装公称动作温度为70℃的防火阀。位于防火分区隔墙两侧的防火阀，距墙表面不应大于200mm。边长（直径）大于或等于630mm的防火阀或边长（直径）大于1250mm的弯头和三通应设置独立的支吊架。","k":"七十度，二百距，六三零独立架","s":"P72"},{"id":20,"g":"风管安装","q":"风管弹簧夹连接、接口位置及消声器、静压箱安装有什么要求？","a":"矩形薄钢板法兰弹簧夹连接时，微、中、低压系统风管的弹簧夹间距不大于150mm，弹簧夹应一正一反交错卡压固定，不应松动。\n风管的连接应平直，接口不得安装在墙内或楼板内，不锈钢板风管与碳素钢支架的接触处，应采取隔绝或防腐绝缘措施。\n消声器、静压箱安装时，应单独设置支吊架，固定牢固。","k":"弹簧夹一百五，一正一反","s":"P72"},{"id":21,"g":"空调水系统","q":"空调水系统管道常用哪些连接方式？镀锌管道连接后如何防腐？管道穿墙、楼板的套管如何设置？","a":"常用连接方式有螺纹连接、焊接连接、法兰连接、沟槽连接等。镀锌管道采用螺纹或沟槽连接时，镀锌层破坏的表面及外露螺纹部分应进行防腐处理；采用焊接和法兰焊接连接时，对焊缝及热影响区的表面应进行二次镀锌或防腐处理。\n管道穿过地下室或地下构筑物外墙时，应采取防水措施，对有严格防水要求的建筑物，必须采用柔性防水套管。管道穿楼板和墙体处应设置钢制套管：设置在墙体内的套管应与墙体两侧饰面相平；设置在楼板的套管，其底部与楼板底部平齐，顶部应高出装饰面20~50mm，且不得将套管作为管道支撑。穿越防火分区时应采用不燃材料进行防火封堵；保温管道与套管四周的缝隙应使用不燃材料堵塞紧密。","k":"二十到五十，套管不当支撑","s":"P72"},{"id":22,"g":"空调水系统","q":"空调水管道支吊架衬垫、冷凝水排水坡度、阀门试验分别有什么要求？","a":"冷（热）水管道与支吊架之间，应设置衬垫以防止冷桥产生。衬垫的承压强度应满足管道全重，且应采用不燃与难燃硬质绝热材料或经防腐处理的木衬垫。衬垫的表面应平整，上下两衬垫接合面的空隙应填实。\n冷凝水排水管的坡度应符合设计要求。当设计无要求时，管道坡度宜大于或等于8‰，且应坡向出水口。\n阀门安装前应进行外观检查。对于工作压力大于1.0MPa及在主干管上起到切断作用和系统冷、热水运行转换调节功能的阀门和止回阀，应进行壳体强度和阀瓣密封性能的试验，且试验合格。阀门安装的位置、高度、进出口方向应正确，且应便于操作。","k":"八‰坡向出水口，一点零兆帕做试验","s":"P72"},{"id":23,"g":"空调水系统","q":"空调水管道水压试验压力如何确定？试验合格后还有哪些要求？","a":"空调冷冻、冷却水管道系统安装完毕，外观检查合格后，应按设计要求进行水压试验（分为强度试验和严密性试验）。当设计无要求时：冷（热）水、冷却水与蓄能（冷、热）系统的强度试验压力，当工作压力小于或等于1.0MPa时，金属管道及金属复合管道应为1.5倍工作压力，最低不应小于0.6MPa；当工作压力大于1.0MPa时，应为工作压力加0.5MPa。严密性试验压力为设计工作压力。水系统管道试验合格后，与制冷机组、空调设备连通前，应进行管道系统冲洗。\n设有补偿器的管道应设置固定支架和导向支架；管道系统水压试验后，应及时松开波纹补偿器调整螺杆上的螺母，使补偿器处于自由状态。\n凝结水系统进行通水试验，应以不渗漏、排水畅通为合格。制冷剂管道系统安装完毕、外观检查合格后，应进行强度、气密性和抽真空试验。","k":"小等一点五，最低零点六；大加零点五","s":"P72–73"},{"id":24,"g":"设备安装","q":"冷却塔安装有什么要求？","a":"冷却塔的安装位置应符合设计要求，进风侧距建筑物应大于1000mm。冷却塔并联安装应水平，同一冷却水系统多台冷却塔安装时，各台开式冷却塔的水面高度应一致，高度偏差不应大于30mm。冷却塔的积水盘应无渗漏，布水器应布水均匀，组装的冷却塔的填料安装应在所有电、气焊接作业完成后进行。","k":"进风过千，高差三十","s":"P73"},{"id":25,"g":"设备安装","q":"组合式空调机组、新风机组安装有哪些要求？（漏风率、防冻风阀、盘管布置）","a":"空调机组、新风机组、空气热回收装置安装前，应检查各功能段的设置是否符合设计要求。严寒地区的新风机组新风进口侧应设防冻电动风阀，且该风阀与系统送风机联锁；四管制的机组，热盘管应布置在进风端，冷盘管应布置在其里侧。设备组装各功能段之间的连接应严密牢固。现场组装的组合式空调机组，组装完成后应进行漏风量的检测；机组在700Pa静压下，漏风率不应大于2%。过滤器段、风机段等开门侧应预留操作维修的空间；过滤器应在单机试运行完成后安装。与机组连接的阀门、仪器仪表应安装齐全，规格、位置正确，风阀开启方向应顺气流方向，与机组连接的风管、水管均采用柔性连接。","k":"七百帕，百分之二","s":"P73"},{"id":26,"g":"设备安装","q":"风机盘管机组进场检验和安装前试验有什么要求？","a":"风机盘管机组进场时，应对机组的供冷量、供热量、风量、水阻力、功率及噪声等性能进行见证取样检验。同厂家的风机盘管机组数量在500台及以下时，抽检2台；每增加1000台时应增加抽检1台；复验合格后再进行安装。安装前宜进行风机三速试运行及盘管水压试验，试验压力应为系统工作压力的1.5倍，试验观察时间应为2min，不渗漏为合格。风机盘管机组与供回水管道的连接，应采用耐压值大于或等于1.5倍工作压力的金属软管柔性连接；风机盘管与凝结水管连接时，宜设置透明软管，能观察到凝结水排水情况，长度不宜大于150mm。","k":"五百抽二，每千加一；一点五倍，两分钟","s":"P74"},{"id":27,"g":"设备安装","q":"风机安装、开式水箱与换热器的试验、空调循环水泵减振台座有什么要求？","a":"风机安装分为落地安装和吊挂安装两种方式，风机与风管连接采用柔性短管。风机传动装置的外露部位以及直通大气的进、出风口，必须装设防护罩、防护网或采取其他安全防护措施。露天安装的风机，其电机、轴承及联轴器等部位应采取防雨措施。\n开式水箱（罐）在连接管道前，应进行满水试验；换热器及密闭容器在连接管道前，应进行水压试验。\n对减振要求较高的场所，空调循环水泵应设置整体式减振台座（惰性台座），减振台座与基础间设置减振器，并设置防止水泵水平位移的限位装置。减振台座可采用型钢制作框架，中间浇筑钢筋混凝土。多台水泵成排安装时，应排列整齐。","k":"","s":"P73–74"},{"id":28,"g":"防腐绝热","q":"绝热材料复验、绝热施工时机、管道金属保护壳搭接有什么要求？","a":"绝热材料进场时，应对材料的导热系数或热阻、密度、吸水率等节能性能进行见证抽样复验；复验合格后方可开始安装。同一厂家同材质的绝热材料复验不得少于2次。\n风管、部件及空调设备绝热工程施工应在风管系统严密性试验合格后进行。空调水系统和制冷系统管道的绝热施工，应在管路系统强度与严密性检验合格和防腐处理结束后进行。\n管道金属保护壳施工应按由下而上、由低到高的顺序，采用咬口、铆接、搭接的方法施工。水平管道金属保护层的环向接缝应顺水搭接，纵向接缝应设于管道的侧下方。立管金属保护层的环向接缝必须上搭下。","k":"复验两次；下到上，顺水搭，侧下方，上搭下","s":"P74"},{"id":29,"g":"调试检测","q":"风管的强度试验和严密性试验如何规定？（试验压力、保持时间、合格标准）","a":"风管批量制作前，对风管制作工艺进行检测或检验时，应进行风管强度与严密性试验。强度试验压力：低压风管为1.5倍的工作压力；中压风管为1.2倍的工作压力，且不低于750Pa；高压风管为1.2倍的工作压力。排烟、除尘、低温送风及变风量空调系统风管的严密性试验应符合中压风管的标准，试验压力为风管系统的工作压力。风管在试验压力保持5min及以上时间时，风管的咬口、接缝或其他连接处无开裂和张口等永久性变形及损伤为合格。风管系统安装完成后，应对安装后的主、干风管分段进行严密性试验，主要检验风管、部件制作加工后的咬口缝、铆接孔、风管的法兰翻边、风管管段之间的连接严密性，检验合格后方能交付下道工序。","k":"低压一点五，中高一点二，中压保底七五零","s":"P75"},{"id":30,"g":"调试检测","q":"空调水系统的开机顺序和关机顺序是什么？","a":"开机顺序：冷却塔→冷却水泵→空调末端装置→冷冻水泵→制冷机组。\n关机顺序：制冷机组→冷冻水泵→冷却水泵→冷却塔→空调末端装置。","k":"开机塔泵端泵机，关机机泵泵塔端","s":"P75"},{"id":31,"g":"调试检测","q":"系统联合试运行调试的允许偏差有哪些规定？","a":"系统总风量调试结果与设计风量的允许偏差应为−5%~+10%，各风口的风量与设计风量的允许偏差不应大于15%；建筑内各区域的压差均应符合设计要求。空调冷（热）水系统、冷却水系统总流量与设计流量的偏差不应大于10%，定流量系统的各空气处理机组的水流量允许偏差应为15%。","k":"总风−5~+10，风口15；总水10，定流量15","s":"P75"},{"id":32,"g":"净化空调","q":"洁净度等级是如何划分的？（工业洁净室、洁净手术部、药品生产环境）","a":"电子厂房等工业洁净室，洁净度等级是指洁净室（区）内悬浮粒子洁净度的水平，根据每立方米空气中的规定粒径悬浮粒子浓度划分了N1级至N9级的9个洁净度等级，其中N1级洁净度的水平最高。洁净手术部按空态或静态条件下的细菌浓度，分为Ⅰ、Ⅱ、Ⅲ、Ⅳ级，其中Ⅰ级手术室的洁净水平要求最高。药品生产环境的洁净度主要依据《药品生产质量管理规范（2010年修订）》（GMP）进行划分，通常分为A、B、C、D四个级别，其中A级洁净度标准最高，主要用于高风险操作区。","k":"N1最高，Ⅰ级最高，A级最高","s":"P75–76"},{"id":33,"g":"净化空调","q":"净化空调系统的洁净风管制作有哪些要求？","a":"净化空调系统的风管与舒适性空调系统风管的区别主要是净化空调系统对风管表面的清洁程度和严密性有更高的要求。风管及部件的制作应在相对较封闭和清洁的环境中进行，地面应铺橡胶板或其他防护材料。加工风管的板材，在下料前应进行清洗，洗后应立即擦干；加工过程中应有措施保证不二次污染。风管及部件制作完成后，用无腐蚀性清洗液将内表面清洗干净；风管达到清洁要求后，应对端部进行密闭封堵，并应存放在清洁的房间。风管不得有横向接缝，应尽量减少纵向拼接缝；矩形风管边长不大于800mm时，不得有纵向接缝。风管的所有咬口缝、翻边处、铆钉处均必须涂密封胶。","k":"无横向缝，八百不纵缝，处处涂密封胶","s":"P76"},{"id":34,"g":"净化空调","q":"净化空调风管的刚度和严密性按什么等级要求？高效过滤器安装前应具备什么条件？","a":"净化空调系统制作风管的刚度和严密性，均按高压和中压系统的风管要求进行。其中，净化空调系统进行风管严密性检验时，洁净度等级N1级至N5级的按高压系统的风管制作要求；洁净度等级N6级至N9级，且工作压力小于或等于1500Pa的，按中压系统的风管制作要求。\n高效过滤器安装前，洁净室的内装修工程必须全部完成，系统中末端过滤器前的所有空气过滤器应安装完毕，且经全面清扫、擦拭，系统连续试运行12h以上。高效过滤器应在安装现场拆开包装，其外层包装不得带入洁净室，但其最内层包装必须在洁净室内方能拆开。安装前应进行外观检查，重点检查过滤器有无破损漏泄等，并按规范要求进行现场扫描检漏，且应合格。\n（4）安装时要保证滤料的清洁和严密。高效过滤器安装方向应正确，密封面应严密。","k":"N1–N5高压，N6–N9中压；连续运行12小时","s":"P76–77"},{"id":35,"g":"净化空调","q":"净化空调系统调试前应具备什么条件？检测、调整和调试有什么要求？","a":"净化空调系统调试前，洁净室各分部工程的外观检查已完成，且符合合同和规范的要求；通风空调系统运行所需的水、电、汽及压缩空气等已具备；调试所用仪表、工具已备齐；洁净室内无施工废料等杂物，且已全部进行了认真彻底的清扫。\n净化空调系统的检测和调整应在系统正常运行24h及以上，达到稳定后进行。工程竣工洁净室（区）洁净度的检测，应在空态或静态下进行。检测时，室内人员不宜多于3人，并应穿着与洁净室等级相适应的洁净工作服。\n洁净空调工程调试应包括单机试运行和系统联动试运行及调试；系统的调试，其检测结果应全部符合设计要求。","k":"运行24h；检测人员不超3人","s":"P77"}];
+
+const EXAM = [{"type":"正向","cardIds":[11],"q":"通风与空调工程的风管按工作压力分为哪几级？各级的压力范围如何规定？","answer":"按工作压力分为微压、低压、中压、高压四个等级：\n微压：管内正压 P≤125Pa，管内负压 P≥−125Pa；\n低压：125Pa<P≤500Pa，−500Pa≤P<−125Pa；\n中压：500Pa<P≤1500Pa，−1000Pa≤P<−500Pa；\n高压：1500Pa<P≤2500Pa，−2000Pa≤P<−1000Pa。","keys":["微压","低压","中压","高压","125","2500"],"need":4},{"type":"正向","cardIds":[17],"q":"风管穿过封闭的防火、防爆墙体或楼板时，套管和封堵有什么要求？","answer":"必须设置厚度不小于1.6mm的钢制防护套管，风管与防护套管之间应采用不燃柔性材料封堵严密。穿墙套管与墙体两侧平齐，穿楼板套管底端与楼板底面平齐，顶端应高出楼板面30mm。","keys":["1.6","钢制防护套管","不燃柔性","30"],"need":3},{"type":"选择","cardIds":[23],"q":"某空调水系统的工作压力为 0.8MPa，设计无要求时，其强度试验压力应为（　）。","options":["1.2MPa（1.5 倍工作压力）","0.8MPa（等于设计工作压力）","1.3MPa（工作压力加 0.5MPa）","0.6MPa（规范规定的最低值）"],"correct":0,"why":"教材 P73：工作压力小于或等于 1.0MPa 时，金属管道及金属复合管道的强度试验压力应为 1.5 倍工作压力，最低不应小于 0.6MPa；只有工作压力大于 1.0MPa 时才是「工作压力加 0.5MPa」。0.8×1.5=1.2MPa，故选 A。B 是严密性试验压力，D 是低工作压力时的下限值。"},{"type":"选择","cardIds":[19,17],"q":"关于通风与空调风管施工，下列说法错误的是：","options":["镀锌钢板及含有各类复合保护层的钢板应采用咬口连接或铆接，不得采用焊接连接","中、低压系统矩形风管法兰螺栓及铆钉间距应不大于 150mm，高压系统应不大于 100mm","风管穿过防火、防爆墙体或楼板时，防护套管厚度不应小于 1.6mm","位于防火分区隔墙两侧的防火阀，距墙表面不应大于 500mm"],"correct":3,"why":"教材 P72：位于防火分区隔墙两侧的防火阀，距墙表面不应大于 200mm，不是 500mm。A（P70）、B（P70–71）、C（P71）均为教材原文，数字也正确。"},{"type":"反向","cardIds":[22,23,29,31],"q":"说出这些数字/符号对应的要求：\n5min　／　750Pa　／　−5%~+10%　／　8‰","answer":"5min —— 风管在强度/严密性试验压力下保持时间（保持 5min 及以上，咬口、接缝等无开裂和张口等永久性变形及损伤为合格）；\n750Pa —— 中压风管强度试验压力（1.2 倍工作压力，且不低于 750Pa）；\n−5%~+10% —— 系统总风量调试结果与设计风量的允许偏差；\n8‰ —— 冷凝水排水管在设计无要求时的最小坡度（且应坡向出水口）。","keys":["5min","750","5%","8‰"],"need":3},{"type":"场景","cardIds":[26],"q":"某办公楼空调工程采用同一厂家的风机盘管机组 800 台。进场应如何抽检？安装前应做哪些试验？试验压力、观察时间如何规定？","answer":"抽检：风机盘管机组进场时，应对机组的供冷量、供热量、风量、水阻力、功率及噪声等性能进行见证取样检验；同厂家的风机盘管机组数量在 500 台及以下时，抽检 2 台；每增加 1000 台时应增加抽检 1 台（教材 P74 原文）。本案例 800 台，超过 500 台但未再增加满 1000 台，故按抽检 2 台执行（此句为按教材规则的常识推断）。\n安装前试验：宜进行风机三速试运行及盘管水压试验，试验压力应为系统工作压力的 1.5 倍，试验观察时间应为 2min，不渗漏为合格（教材 P74 原文）。\n另：与供回水管道的连接应采用耐压值大于或等于 1.5 倍工作压力的金属软管柔性连接；与凝结水管连接宜设透明软管，长度不宜大于 150mm。","keys":["500","2台","1.5","2min"],"need":3}];
+
+const KEY_STATUS = "erjian_sw_3_3_status";
+const KEY_PASS = "erjian_sw_3_3_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

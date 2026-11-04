@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 2.3 机电工程焊接技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  body{margin:0;padding:14px 14px 96px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;
+       background:#f5f6f8;color:#1a1a1a;max-width:640px;margin:0 auto}
+  .top{display:flex;align-items:center;gap:8px;margin:2px 0 4px}
+  h1{font-size:18px;margin:0;flex:1}
+  #gateBtn{min-height:36px;padding:0 14px;font-size:14px;font-weight:600;border-radius:9px;
+           border:1px solid #0b6bcb;background:#0b6bcb;color:#fff}
+  #gateBtn.passed{background:#1e7b4f;border-color:#1e7b4f}
+  .sub{font-size:12px;color:#666;margin:0 0 10px}
+  .badge{display:inline-block;font-size:12px;color:#1e7b4f;background:#e6f5ec;border-radius:6px;padding:2px 8px;margin-left:6px}
+  .bar{display:flex;gap:6px;font-size:12px;color:#444;margin-bottom:10px}
+  .bar span{background:#fff;border:1px solid #e3e6ea;border-radius:8px;padding:5px 6px;flex:1;text-align:center}
+  .bar b{font-size:15px;display:block;margin-top:1px}
+  .card{background:#fff;border-radius:14px;padding:18px;box-shadow:0 2px 8px rgba(0,0,0,.06);
+        min-height:200px;display:flex;flex-direction:column;cursor:pointer}
+  .card:active{background:#fafbfc}
+  .tag{font-size:12px;color:#0b6bcb;background:#e8f2ff;border-radius:6px;padding:3px 8px;align-self:flex-start;margin-bottom:10px}
+  .q{font-size:18px;line-height:1.6;font-weight:600;white-space:pre-wrap}
+  .a{margin-top:14px;padding-top:14px;border-top:1px dashed #dde1e6;font-size:16px;line-height:1.7;color:#0f4c81;white-space:pre-wrap}
+  .kk{margin-top:12px;padding:9px 11px;background:#fff8e6;border-left:3px solid #f0b429;border-radius:6px;
+      font-size:15px;line-height:1.6;color:#7a5b00}
+  .hint{margin-top:12px;font-size:12px;color:#9aa0a8}
+  .src{margin-top:auto;padding-top:10px;font-size:12px;color:#8a8f98}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid #e3e6ea;
+        padding:10px 12px calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:16px;border-radius:10px;border:1px solid #d8dde3;
+               background:#fff;color:#222;font-weight:600}
+  #flip{background:#0b6bcb;color:#fff;border-color:#0b6bcb;flex:1.3}
+  #bad{color:#c0392b;border-color:#f0c4bd}
+  #good{color:#1e7b4f;border-color:#bfe3ce}
+  .tools{display:flex;gap:8px;margin-top:10px;font-size:13px;flex-wrap:wrap}
+  .tools button{min-height:34px;font-size:13px;font-weight:400;color:#555;background:#fff;
+                border:1px solid #d8dde3;border-radius:8px;padding:0 12px}
+  .tools button.on{background:#e8f2ff;border-color:#0b6bcb;color:#0b6bcb;font-weight:600}
+  .tools .nav{margin-left:auto}
+  footer{margin-top:14px;font-size:12px;color:#8a8f98;line-height:1.6}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:#666;margin-bottom:8px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:12px 14px;font-size:15px;
+       line-height:1.5;border:1px solid #d8dde3;border-radius:10px;background:#fff;color:#222}
+  .opt.ok{background:#e6f5ec;border-color:#1e7b4f;color:#14532d;font-weight:600}
+  .opt.no{background:#fdecea;border-color:#c0392b;color:#7f1d1d}
+  #exInput{width:100%;margin-top:12px;padding:12px;font-size:15px;line-height:1.6;
+           border:1px solid #d8dde3;border-radius:10px;font-family:inherit;background:#fff;resize:vertical}
+  #exInput:focus{outline:none;border-color:#0b6bcb}
+  .why{margin-top:10px;font-size:14px;line-height:1.7;color:#444;background:#f7f8fa;border-radius:8px;padding:10px 12px;white-space:pre-wrap}
+  .exDock{display:flex;gap:8px;margin-top:14px}
+  .exDock button{flex:1;min-height:46px;font-size:15px;border-radius:10px;border:1px solid #d8dde3;background:#fff;font-weight:600}
+  .exDock button.primary{background:#0b6bcb;color:#fff;border-color:#0b6bcb}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>2.3 机电工程焊接技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P38–47 · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P38–47。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"焊接设备", q:"熔化焊设备的定义是什么？焊条电弧焊设备由哪些部分组成？", a:"熔化焊设备是将母材和填充金属（部分无填充）局部加热至熔化状态完成冶金结合的装备，焊接过程中存在熔池。\n焊条电弧焊设备由焊机、焊接电源、焊钳、焊接电缆和地线夹钳等组成；焊接设备简单，但对操作者技能要求高。", k:"焊机·电源·焊钳·电缆·地线夹", s:"P38"},
+  {id:2, g:"焊接设备", q:"钨极惰性气体保护焊设备由哪些部分组成？", a:"主要由焊接电源、焊枪、供气系统、水冷系统、焊接电缆线和遥控器等组成。\n设备有手工和自动两大类；焊接电流可分为直流、交流和脉冲电流。", k:"源·枪·气·水·缆·遥控", s:"P38"},
+  {id:3, g:"焊接设备", q:"CO₂ 气体保护焊设备由哪五部分组成？", a:"由焊接电源、焊枪、送丝机构、气路系统和控制系统五部分组成。\n可手工半自动焊接，也可搭配焊接小车、变位机实现机械化焊接，适配长直焊缝、环焊缝的批量作业。", k:"源·枪·丝·气路·控制", s:"P38"},
+  {id:4, g:"焊接设备", q:"埋弧焊设备由哪些部分组成？有什么特点？", a:"由焊接小车和机头移动机构、送丝机、焊丝矫正压紧机构、焊接电源、控制系统等组成。\n埋弧焊具有焊接效率高、焊缝质量易保证等特点，适配中厚板长直焊缝、环焊缝的批量工业焊接。", k:"车·机头·送丝·矫正·源·控", s:"P38"},
+  {id:5, g:"焊接设备", q:"电渣焊设备由哪些部分组成？分为哪几种？", a:"主要由焊接电源、机头、电控系统、水冷成型（滑）块组成；焊接方法可分为丝极电渣焊、板极电渣焊、熔嘴电渣焊。\n电渣焊具有一次成型好、焊接效率高、劳动强度低等特点。", k:"源·机头·电控·水冷块（丝·板·熔嘴）", s:"P38"},
+  {id:6, g:"焊接设备", q:"等离子弧焊机和激光焊接设备各由什么组成？各有什么特点？", a:"等离子弧焊机主要由电源、控制箱和焊枪等部件组成，利用电弧被压缩形成的高温等离子体进行焊接，具有穿透力强的特点。\n激光焊接设备主要由激光发生器、光纤传输系统、冷却系统和控制系统组成，利用高能激光束熔化金属，具有热影响区小、变形小、精度极高的特点。", k:"等离子靠穿透，激光靠精度", s:"P38"},
+  {id:7, g:"焊接设备", q:"电阻焊设备有哪两类？各自的组成和特点是什么？", a:"电阻焊设备是利用电流通过工件接触面产生的电阻热进行焊接的装备，具有速度快、适合自动化生产的特点。\n①点焊机：由工频、逆变式焊接电源、电极头、加压机构、电极臂、冷却系统、脚踏、气动开关等组成，点焊可形成独立的焊点；\n②缝焊机：由滚轮电极、加压机构、行走机构、冷却系统、传动装置等组成，缝焊机可连续点焊形成密封焊缝。", k:"点焊成点，缝焊成缝", s:"P38"},
+  {id:8, g:"焊接设备", q:"钎焊设备的焊接原理是什么？火焰钎焊设备和激光钎焊设备各由什么组成？", a:"钎焊设备是通过加热，使钎料（熔点低于母材）熔化，液态钎料靠毛细作用润湿母材表面、填充接头间隙，实现冶金结合的装备。\n①火焰钎焊设备由火焰钎焊机、钎焊专用多焰嘴焊炬、氧气瓶、燃气瓶、减压器、钎料、钎剂等组成，适用于手工操作，便携简单；\n②激光钎焊设备由激光发生器、钎料送丝机构、焊接头组成，适用于自动化焊接等。", k:"钎料低熔，毛细润湿", s:"P38–39"},
+  {id:9, g:"焊接设备", q:"钨极惰性气体保护焊机不能焊哪些金属？适用的接头厚度和焊接位置范围？野外施工要注意什么？", a:"①除了低熔点、易挥发的金属材料（如铅、锌等）以外，均可以采用钨极惰性气体保护焊机进行焊接；\n②常规钨极惰性气体保护焊使用的接头范围为 0.5~4.0mm；\n③适用于平焊、平角焊、横焊、立焊和仰焊，以及水平固定的管件对接头的全位置焊；由于空气对流、过堂风、微风都可能破坏惰性气体对焊接区的保护，野外施工时应配置附属防风设施；\n④可用于焊接自动化。", k:"铅锌不焊，零点五到四毫米，野外防风", s:"P39"},
+  {id:10, g:"焊接设备", q:"焊条电弧焊机、CO₂ 气体保护焊机、埋弧焊机各自的主要应用场合？", a:"焊条电弧焊机：在建筑结构、船舶结构、锅炉、压力容器、化工装备制造结构、海洋工程结构以及输油输气管道结构等领域得到较广泛应用，特别是在现场固定口焊接和修补工作中被普遍采用。\nCO₂ 气体保护焊机：是我国重点推广的一种焊接技术，主要用于低碳钢及低合金钢等焊接，也适用于易损零件的堆焊及铸钢件的补焊等；在许多金属结构生产中已逐渐取代焊条电弧焊和埋弧焊。\n埋弧焊机：主要用于焊接各种钢板结构，可焊接碳素结构钢、不锈钢、耐热钢及其复合钢材等；在造船、锅炉、化工容器、桥梁、起重机械、冶金机械制造业、海洋结构、核电设备中应用最为广泛；用埋弧焊堆焊耐磨耐蚀合金或用于焊接镍基合金、铜合金也较理想。", k:"手弧→现场补，气保→低碳钢，埋弧→钢板结构", s:"P39"},
+  {id:11, g:"焊接材料", q:"焊条按药皮成分分为哪八大类？按熔渣性质又分哪两类？", a:"按焊条药皮成分分为：氧化钛型、钛钙型、氧化铁型、低氢型、纤维素型、石墨型、钛铁矿型、盐基型八大类。\n按熔渣性质分为：碱性焊条（低氢型焊条）和酸性焊条。", k:"氧钛·钛钙·氧铁·低氢·纤维·石墨·钛铁·盐基；熔渣分酸碱", s:"P39"},
+  {id:12, g:"焊接材料", q:"设计无规定时，焊条选用应综合考虑哪些因素？", a:"焊接材料应按设计文件要求选用。设计无规定时，应在满足结构安全、可靠使用的前提下，以改善作业条件和提高技术经济效益为原则，综合考虑以下因素：\n钢材化学成分及力学性能；焊缝金属性能；钢结构特点（板厚、接头形式）和受力状态；工艺性，焊接位置和施焊条件（室内、野外）；焊接工作量（焊缝长度、焊缝当量）。", k:"材·缝·构·艺·量", s:"P40"},
+  {id:13, g:"焊接材料", q:"焊条保管有哪些要求？", a:"焊条入库时需按照其质量证明书进行验收，确保其包装无破损、无受潮和雨淋现象。\n焊条必须存放在干燥通风、整洁的库房中，摆放在距离地面、墙面 300mm 以上的架子上，应保持上下、左右空气通畅，以免受潮。\n焊条在库房中应按照种类、牌号、批次、规格及入库时间等分类存放，每种焊条应有明确的标识，避免混放。\n焊条库房中应装有温度计和湿度计，库房内温度不得低于 5℃，湿度不得大于 60%。", k:"架高三百，温度五度，湿度六十", s:"P40"},
+  {id:14, g:"焊接材料", q:"焊条药皮水分有哪几种？酸性焊条和碱性焊条的烘干温度、保温时间各是多少？", a:"焊条药皮的水分主要有吸附水（温度超过 100℃ 时蒸发）、结晶水（温度为 200~400℃ 时蒸发）及化合水（更高温度下去除）。\n使用前应按照说明书规定进行烘干：酸性焊条的烘干温度为 70~150℃，保温时间为 1~1.5h；碱性焊条的烘干温度为 300~400℃，保温时间为 1~2h。焊条应随烘随用，并放在保温桶内，以免再次受潮。", k:"酸七十到一五零，碱三百到四百", s:"P40"},
+  {id:15, g:"焊接材料", q:"纯钨极、钍钨极、铈钨极各有什么特点？", a:"常用的钨极有纯钨极、钍钨极和铈钨极三种。\n①纯钨极：使用最早的一种电极材料，钨极熔点为 3387℃，沸点为 5900℃；发射电子所要求的电压较高，要求焊机具有高的空载电压；但极易烧损，逐渐被钍钨极取代。\n②钍钨极：在纯钨中加入 1%~2% 的氧化钍，具有较高的热电子发射能力和耐熔性，容易引弧、所需空载电压低，许用电流与同直径的纯钨极相比可提高 1/3，不易烧损、使用寿命长；但钍钨极的粉尘具有微量放射性，磨削时必须加强劳动防护措施。\n③铈钨极：在纯钨中加入 2% 以下的氧化铈，比钍钨极具有更多优点，易引弧、电弧稳定，弧束细长、热量集中，最大许用电流密度可增加 5%~8%，烧损小、寿命长；几乎没有放射性危害，是目前应用最广的一种电极材料。", k:"钍加一至二，铈加不超二，铈最广", s:"P40"},
+  {id:16, g:"焊接材料", q:"焊丝按截面结构分为哪两类？实心焊丝、药芯焊丝、自保护药芯焊丝各用于什么场合？", a:"按截面结构形式分为实心焊丝和药芯焊丝两类（按焊丝型号/牌号分：气体保护焊丝以型号来划分，埋弧焊丝以牌号来划分）。\n①实心焊丝：主要用于钨极气体保护焊和熔化极气体保护焊；选择实心焊丝的成分主要考虑焊缝金属应与母材力学性能或物理性能的良好匹配；\n②药芯焊丝：用于采用 CO₂ 和 Ar+CO₂ 为保护气体的熔化极气体保护焊，全位置焊接适应性强，在管道、钢结构等复杂形状工件的焊接中能很好地保证结构的完整性和安全性；\n③自保护药芯焊丝：与焊条相似，不用另加气体保护，抗风能力优于气体保护焊，通常可在四级风力下施焊，适用于野外或高空作业。", k:"实心·药芯·自保护", s:"P41"},
+  {id:17, g:"焊接材料", q:"焊接用保护气体和气焊常用气体各有哪些？双相不锈钢焊接对保护气体有什么要求？", a:"①焊接用保护气体：二氧化碳（CO₂）、氩气（Ar）、氦气（He）、氮气（N₂）、氧气（O₂）和氢气（H₂）；\n②气焊常用气体：助燃气体（O₂）；可燃气体：乙炔、丙烷、液化石油气、天然气等。\n在双相不锈钢焊接中，为了提高焊缝金属强度及伸长率，可以在保护气中加入 2%~3% 的氮气，以确保焊缝金属中奥氏体的含量。", k:"保护气六种，双相钢加氮二到三", s:"P41"},
+  {id:18, g:"焊接材料", q:"焊剂按生产工艺和添加物分别怎么分类？焊剂选用的关键是什么？", a:"根据生产工艺的不同，焊剂可分为熔炼焊剂、粘结焊剂和烧结焊剂；按照焊剂中添加脱氧剂、合金剂的不同，又可分为中性焊剂、活性焊剂和合金焊剂。\n焊剂的焊接工艺性能、化学冶金性能是决定焊缝金属性能的主要因素；焊剂与焊丝应匹配使用。", k:"熔炼·粘结·烧结；中性·活性·合金", s:"P41"},
+  {id:19, g:"焊接方法", q:"焊条电弧焊有哪些特点？对电源线和焊把线长度有什么限制？", a:"①机动性和灵活性好：所需焊接设备相对简单，只要配备适用的焊接电源、焊钳和足够长的焊接电缆即可进行焊接作业；焊接场地不受限制，在结构复杂、空间狭小的条件下作业时比其他焊接方法更具优势；焊条直径为 1.6~8mm 不等，可适用于全位置焊接，可以焊接从薄板到厚板的各种焊接接头。但弧焊机进线侧电源线长度不应大于 5m，焊把线应采用专用防水橡皮护套软电缆，长度不应大于 30m。\n②焊缝金属性能良好：因焊接热输入较低，焊缝金属结晶较致密，其力学性能比其他熔焊方法好，特别是缺口冲击韧性高更容易得到保证。\n③工艺适应性强：可以焊接除活性金属以外的大多数金属结构材料。", k:"电源线五米，焊把线三十米，焊条一点六到八", s:"P41–42"},
+  {id:20, g:"焊接方法", q:"钨极惰性气体保护焊和 CO₂ 气体保护焊各有什么优点？", a:"钨极惰性气体保护焊：①电弧热量集中，可精确控制焊接热输入，焊接热影响区窄；焊接过程不产生熔渣、无飞溅，焊缝表面光洁；焊接过程无烟尘；熔池容易控制；焊缝质量高。②焊接工艺适用性强，几乎可以焊接所有金属材料；焊接参数可精确控制，易于实现焊接过程全自动化。\nCO₂ 气体保护焊：①生产效率高——电弧穿透力强，焊接电流密度大（通常为 100~300A/mm²），焊丝熔化率高，焊后一般不需清渣，生产率比焊条电弧焊高 1~3 倍；②焊接成本低——CO₂ 气体价格便宜，焊接成本只有埋弧焊和焊条电弧焊的 40%~50%；③焊接变形小；④焊接质量好——抗锈能力强，焊缝含氢量低；⑤操作简便——明弧操作；⑥适用范围广——薄板、中厚板均可，可全位置焊接。", k:"氩弧：热集中、无渣、质量高；气保：快、省、变形小", s:"P42"},
+  {id:21, g:"焊接方法", q:"常用焊接方法及代号有哪些？", a:"焊条电弧焊——SMAW；单丝埋弧焊——SAW；钨极气体保护焊——GTAW；熔化极气体保护焊——GMAW（MAG）；自保护药芯焊丝电弧焊——FCAW；电渣焊——ESW；气电立焊——EGW；短路电弧螺柱焊——SW。", k:"SMAW·SAW·GTAW·GMAW·FCAW·ESW·EGW·SW", s:"P42–43"},
+  {id:22, g:"焊接方法", q:"钢结构、立式圆筒形钢制焊接储罐、球罐现场焊接、厚壁工业管道焊缝，各常用哪些焊接方法？", a:"①钢结构常用的焊接方法有 SMAW、SAW、GMAW、FCAW、ESW、EGW、SW 及其组合；\n②立式圆筒形钢制焊接储罐常用的焊接方法有 SMAW、GMAW、SAW、EGW；\n③球罐现场焊接常用的焊接方法有 SMAW、GTAW；\n④厚壁工业管道焊缝底层一般采用 GTAW 焊接方法，填充和面层采用 SMAW 焊接方法。", k:"球罐手氩，厚壁氩底手填", s:"P43"},
+  {id:23, g:"焊接方法", q:"焊接接头由哪几部分组成？有哪几种接头形式？焊缝坡口有哪几种基本形式？", a:"焊接接头由焊缝、熔合区、热影响区和母材金属组成。\n焊接接头形式有对接接头、T 形接头、角接接头及搭接接头等；钢制储罐底板的幅板之间、幅板与边缘板之间、人孔（接管）或支腿补强板与容器壁板（顶板）之间等常用搭接连接。焊接接头形式主要由两焊件相对位置决定。\n焊缝坡口分为 I 形（不开坡口）、V 形、单边 V 形、U 形、双 U 形、J 形等各种坡口形式。", k:"接头四区：缝·熔·热·母材", s:"P43"},
+  {id:24, g:"焊接方法", q:"焊缝按结合形式、按空间位置分别分为哪几种？形状尺寸参数有哪些？", a:"按焊缝结合形式分为：对接焊缝、角焊缝、塞焊缝、槽焊缝、端接焊缝五种。\n按焊缝在空间的位置分为：平焊缝、立焊缝、横焊缝、仰焊缝四种。\n焊缝的形状用几何尺寸来表示，不同形式的焊缝其形状参数也不一样：对接接头、对接焊缝形状尺寸包括焊缝长度、焊缝宽度、焊缝余高；T 形接头对接焊缝或角焊缝形状尺寸包括焊脚、焊脚尺寸、焊缝凸（凹）度。", k:"结合五种，位置四种", s:"P43"},
+  {id:25, g:"焊接工艺", q:"焊接线能量的计算公式是什么？主要参数和单位？", a:"决定焊接线能量的主要参数是焊接速度、焊接电流和电弧电压，公式为 q = IU/v。\n式中 q——线能量（J/cm）；I——焊接电流（A）；U——电弧电压（V）；v——焊接速度（cm/s）。", k:"q=IU/v；速·流·压", s:"P43"},
+  {id:26, g:"焊接工艺", q:"焊接预热的主要目的是什么？", a:"焊接预热是指在正式施焊之前，对焊件焊缝及两侧一定范围内的母材进行加热，使其达到规定温度并保持恒温，再开展焊接作业的工艺。\n主要目的：①减缓焊接冷却速度，避免淬硬组织生成，降低冷裂纹、延迟裂纹的产生概率；②减小焊件温差，降低焊接残余应力与焊接变形；③促进焊缝金属中氢的逸出，减少氢致裂纹。", k:"缓冷·减差·脱氢", s:"P43–44"},
+  {id:27, g:"焊接工艺", q:"焊接后热（消氢处理）指什么？主要目的是什么？", a:"焊接后热是指在焊接完成后，焊缝冷却至室温之前，立即对焊缝及热影响区进行短时间加热、保温，随后自然冷却的工艺，也常被称作消氢处理。\n主要目的：①加速焊缝及热影响区中扩散氢的排出，从根源上抑制氢致冷裂纹；②适当减缓冷却速度，进一步改善接头组织，辅助降低残余应力。", k:"排氢·缓冷", s:"P44"},
+  {id:28, g:"焊接工艺", q:"焊后热处理指什么？常见形式有哪些？工程中最常用哪种？主要目的是什么？", a:"焊后热处理是指焊件焊接全部完成，冷却至室温后，按规范要求，对焊接接头或整体构件进行重新加热、保温、缓慢冷却的完整热处理工艺。常见形式有退火、正火、回火等，工程中以高温回火最为常用。\n主要目的：①显著消除焊接残余应力，防止构件在使用中发生应力腐蚀、变形开裂；②改善焊接接头的金相组织，提升塑性、韧性，降低硬度，改善切削加工性能；③稳定构件尺寸，保证长期使用中的尺寸精度与结构稳定性。", k:"消应力·改组织·稳尺寸", s:"P44"},
+  {id:29, g:"工艺评定", q:"什么是焊接工艺评定？焊接工艺评定报告与焊接作业指导书是什么关系？", a:"焊接工艺评定是为验证所拟定的焊接工艺正确性而进行的试验过程及结果评价；记载验证性的数据结果、对拟定的焊接工艺进行评价的报告称为焊接工艺评定报告。焊接工艺评定应在本单位进行，所用设备、仪表应处于正常工作状态，金属材料、焊接材料应符合相应标准，由本单位操作技能熟练的焊接人员使用本单位满足焊接要求的设备焊接试件。\n依据焊接工艺评定报告编制焊接作业指导书，用于指导焊工施焊和焊后热处理工作：一个焊接工艺评定报告可用于编制多个焊接作业指导书；一个焊接作业指导书可以依据一个或多个焊接工艺评定报告编制。", k:"一报告可编多指导书，一指导书可依多报告", s:"P44"},
+  {id:30, g:"工艺评定", q:"焊接工艺参数分为哪三种因素？发生变化时分别怎么处理？", a:"按照《承压设备焊接工艺评定》NB/T 47014—2023，把所有焊接工艺参数分为重要因素、补加因素和次要因素三种。\n①凡是重要因素变化的情况都需要进行重新评定，如焊接方法、母材分类、母材厚度、焊丝类别、预热、焊后热处理、保护气体种类、电流种类和极性等变化都可以成为重要因素。\n②当有冲击韧性要求时，补加因素就上升为重要因素，如线能量、平焊改立焊、多道焊改为单道焊等，反之则下降为次要因素。\n③次要因素变化则无需进行再次评定，如坡口形式尺寸、焊丝规格、保护气体流量等，但需要重新编制焊接工艺规程。", k:"重要重评，补加上升，次要重编规程", s:"P45"},
+  {id:31, g:"焊接检验", q:"焊接检验方法分为哪两类？各包括哪些具体方法？", a:"①破坏性检验：力学性能试验（弯曲试验、拉伸试验、冲击试验、硬度试验、断裂性试验、疲劳试验）、化学成分分析（化学成分分析、不锈钢晶间腐蚀试验、焊条扩散氢含量测试）、金相试验（宏观组织、微观组织）、焊接性试验。\n②非破坏性检验：外观检验、无损检测（渗透检测、磁粉检测、超声检测、射线检测）、耐压试验和泄漏性试验。", k:"破坏：力学·化学·金相；非破坏：外观·无损·耐压·泄漏", s:"P45"},
+  {id:32, g:"焊接检验", q:"焊缝表面允许存在和不允许存在哪些缺陷？外观检测常借助什么工具？", a:"焊缝表面不允许存在的缺陷包括：裂纹、未焊透、未熔合、表面气孔、外露夹渣、未焊满。\n焊缝表面允许存在的其他缺陷包括：咬边、角焊缝厚度不足、角焊缝焊脚不对称等。\n焊缝外观目视检测，常借助照明光源、反光镜和低倍放大镜等。", k:"裂·透·熔·孔·渣·满——不许", s:"P46"},
+  {id:33, g:"焊接检验", q:"常用无损检测方法有哪些代号？各自适用的材料和接头形式、透照厚度（表 2.3-2）？", a:"①RT（射线检测，包括 X 射线和 γ 射线两种）：金属材料，对接、角接、管板角焊缝等，透照厚度钢 <38mm；\n②UT（超声检测，包括脉冲反射式超声波检测和衍射时差法超声波检测）：金属材料，对接、T 形焊接、角接和对堆焊层等，容器 6~500mm、管道 6~150mm；\n③MT（磁粉检测，使用磁粉探伤机）：铁磁性材料，对接、T 形焊接和角接等；\n④PT（渗透检测，使用渗透检测剂）：非多孔性金属材料，不限制。", k:"RT钢三十八，UT容六到五百、管六到一百五", s:"P46"},
+  {id:34, g:"焊接检验", q:"焊缝表面无损检测选用什么方法？进行 PT 和 MT 前，对焊缝表面各有什么要求？", a:"设计文件无规定时，焊缝表面无损检测可选用 MT 或 PT。除设计文件另有规定外，现场焊接的管道和管道组成件的承插焊缝、支管连接焊缝（对接式支管连接焊缝除外）和补强圈焊缝、密封焊缝、支吊架与管道直接焊接的焊缝，以及管道上的其他角焊缝，其表面应进行 MT 或 PT。\n进行 PT 前，焊缝表面不得有铁锈、焊渣、焊接飞溅及各种防护层等；进行 MT 前，焊缝表面及其两侧 25mm 范围内，不得有油脂、污垢、焊渣、焊接飞溅或其他粘附磁粉的物质等。", k:"PT清表面，MT清两侧二十五", s:"P46–47"},
+  {id:35, g:"焊接检验", q:"射线检测（RT）和超声检测（UT）各有什么优缺点？", a:"RT 优点：检测结果有直接记录（底片），可以获得缺陷的投影图像，缺陷定性、长度测量比较准确，对体积型缺陷和薄壁工件中的缺陷检测率较高；缺点：厚壁工件的缺陷检出率偏低，缺陷在工件厚度方向的位置难以确定，自身高度难以测量，对面型缺陷的检出受多种因素影响，有时会漏检，射线对人体和环境有危害，防护成本、检测成本较高，而且速度较慢。\nUT 优点：面型缺陷的检出率较高，穿透能力强，适合厚壁工件，定位准确，可以测量缺陷自身高度，对人体和环境无害，检测成本较低、速度快；缺点：缺陷定性困难，定量精度不高，常用的（不可记录）脉冲反射法检测结果无直接见证记录，无缺陷直观图像，薄壁工件检测困难，一般需要对探头扫查面进行打磨处理，导致工作量增加。", k:"RT看体积、UT看面型", s:"P47"}
+];
+
+const EXAM = [
+  {type:"正向", cardIds:[13,14], q:"焊条应如何保管？酸性焊条和碱性焊条使用前的烘干温度与保温时间各是多少？", answer:"保管：入库按质量证明书验收，包装无破损、无受潮和雨淋；存放在干燥通风、整洁的库房中，摆放在距离地面、墙面 300mm 以上的架子上，保持上下、左右空气通畅；按种类、牌号、批次、规格及入库时间分类存放并有明确标识；库房应装温度计和湿度计，温度不得低于 5℃，湿度不得大于 60%。\n烘干：酸性焊条 70~150℃，保温 1~1.5h；碱性焊条 300~400℃，保温 1~2h。焊条应随烘随用，并放在保温桶内。", keys:["300","5","60","70","150","300~400","保温"], need:4},
+  {type:"正向", cardIds:[30], q:"焊接工艺评定中，重要因素、补加因素、次要因素发生变化时分别如何处理？", answer:"重要因素：凡是重要因素变化的情况都需要进行重新评定（如焊接方法、母材分类、母材厚度、焊丝类别、预热、焊后热处理、保护气体种类、电流种类和极性等）。\n补加因素：当有冲击韧性要求时，补加因素就上升为重要因素（如线能量、平焊改立焊、多道焊改为单道焊等），反之则下降为次要因素。\n次要因素：变化则无需进行再次评定（如坡口形式尺寸、焊丝规格、保护气体流量等），但需要重新编制焊接工艺规程。", keys:["重要因素","重新评定","补加因素","冲击韧性","次要因素","重新编制"], need:4},
+  {type:"选择", cardIds:[34], q:"进行磁粉检测（MT）前，焊缝表面及其两侧（　）mm 范围内，不得有油脂、污垢、焊渣、焊接飞溅或其他粘附磁粉的物质。", options:["10","15","25","50"], correct:2, why:"教材 P47：进行 MT 前，焊缝表面及其两侧 25mm 范围内，不得有油脂、污垢、焊渣、焊接飞溅或其他粘附磁粉的物质等。注意与「焊条距地面、墙面 300mm」「PT 前清表面」区分。"},
+  {type:"选择", cardIds:[20], q:"关于 CO₂ 气体保护焊，下列说法错误的是：", options:["电弧穿透力强，焊接电流密度通常为 100~300A/mm²","生产率比焊条电弧焊高 1~3 倍","焊接成本只有埋弧焊和焊条电弧焊的 40%~50%","焊后必须清渣，因此生产率低于埋弧焊"], correct:3, why:"教材 P42：CO₂ 气体保护焊焊后一般不需清渣，所以其生产率比焊条电弧焊高 1~3 倍。D 把「不需清渣」写成「必须清渣」、把「高于焊条电弧焊」写成「低于埋弧焊」，是双重错误。"},
+  {type:"反向", cardIds:[9,13,14,19], q:"说出这些数字对应的要求：\n0.5~4.0mm　／　300mm　／　5℃ 与 60%　／　5m 与 30m", answer:"0.5~4.0mm —— 常规钨极惰性气体保护焊使用的接头厚度范围；\n300mm —— 焊条在库房中摆放时距地面、墙面应大于的距离；\n5℃ 与 60% —— 焊条库房内温度不得低于 5℃、湿度不得大于 60%；\n5m 与 30m —— 焊条电弧焊弧焊机进线侧电源线长度不应大于 5m，焊把线长度不应大于 30m。", keys:["钨极","接头","焊条","库房","电源线","焊把线"], need:3},
+  {type:"场景", cardIds:[13,14], q:"某工地用碱性焊条焊接低合金钢结构。检查发现：焊条库房温度 3℃、湿度 70%，焊条直接放在地面木板上；焊工从库房领出焊条后直接施焊，未做烘干。请指出不符合教材要求之处并说明正确做法。", answer:"不符合项及正确做法（均为教材 P40 原文）：\n①库房温度 3℃ 不符合——库房内温度不得低于 5℃；湿度 70% 不符合——湿度不得大于 60%；\n②焊条直接放地面不符合——应摆放在距离地面、墙面 300mm 以上的架子上；\n③未烘干不符合——碱性焊条使用前应在 300~400℃ 烘干、保温 1~2h，且随烘随用，放在保温桶内。\n常识推断：现场应配置温湿度计并记录，焊条按种类、牌号、批次、规格及入库时间分类存放、标识清晰（分类存放要求同样出自教材 P40）。", keys:["5","60","300","烘干","300~400","保温桶"], need:3}
+];
+
+const KEY_STATUS = "erjian_sw_2_3_status";
+const KEY_PASS = "erjian_sw_2_3_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

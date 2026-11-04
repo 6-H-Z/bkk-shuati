@@ -2,132 +2,80 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F2F2F7">
+<meta name="color-scheme" content="light dark">
 <title>机电实务 · 知识卡</title>
 <style>
-  *{box-sizing:border-box}
   :root{--bg:#F2F2F7;--card:#FFF;--label:#000;--label2:rgba(60,60,67,.6);--label3:rgba(60,60,67,.3);
-        --sep:rgba(60,60,67,.29);--blue:#007AFF;--green:#34C759;--fill:rgba(120,120,128,.12)}
-  @media (prefers-color-scheme: dark){
-    :root{--bg:#000;--card:#1C1C1E;--label:#FFF;--label2:rgba(235,235,245,.6);
-          --label3:rgba(235,235,245,.3);--sep:rgba(84,84,88,.65);--fill:rgba(120,120,128,.24)}
+    --sep:rgba(60,60,67,.18);--blue:#007AFF;--green:#34C759;--fill:rgba(120,120,128,.12)}
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#000;--card:#1C1C1E;--label:#FFF;--label2:rgba(235,235,245,.6);--label3:rgba(235,235,245,.3);
+      --sep:rgba(84,84,88,.65);--blue:#0A84FF;--green:#30D158;--fill:rgba(120,120,128,.24)}
   }
-  html{-webkit-text-size-adjust:100%}
-  body{margin:0 auto;padding:12px 16px 28px;max-width:640px;background:var(--bg);color:var(--label);
-       font:17px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif;
-       -webkit-font-smoothing:antialiased}
-  .back{display:inline-block;font-size:17px;color:var(--blue);text-decoration:none;margin:4px 0 6px}
-  h1{font-size:28px;line-height:1.2;font-weight:700;letter-spacing:-.02em;margin:2px 0 6px}
-  .sub{font-size:13px;color:var(--label2);margin:0 0 14px}
-  .ch{background:var(--card);border-radius:12px;padding:2px 0 6px;margin-bottom:10px;overflow:hidden}
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html{-webkit-text-size-adjust:100%;background:var(--bg)}
+  body{margin:0 auto;max-width:640px;background:var(--bg);color:var(--label);
+    font:17px/1.47 -apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif;
+    padding:calc(8px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom));-webkit-font-smoothing:antialiased}
+  .back{display:inline-flex;align-items:center;font-size:15px;color:var(--blue);text-decoration:none;padding:3px 0;margin-bottom:2px}
+  header{margin:4px 2px 16px}
+  h1{font-size:28px;line-height:1.18;font-weight:700;letter-spacing:-.4px;margin:0}
+  .sub{font-size:13px;color:var(--label2);margin:5px 0 0}
+  .ch{background:var(--card);border-radius:12px;margin-bottom:10px;overflow:hidden}
   .ch.off{opacity:.55}
-  .ch h2{font-size:15px;font-weight:600;margin:0;padding:14px 16px 8px;letter-spacing:-.01em;
-         display:flex;justify-content:space-between;align-items:baseline}
-  .ch h2 .n{font-size:12px;color:var(--label2);font-weight:400}
-  .sec{display:block;padding:12px 16px;text-decoration:none;color:var(--label);font-size:16px;
-       letter-spacing:-.01em;border-top:.5px solid var(--sep)}
+  .ch h2{font-size:15px;font-weight:600;margin:0;padding:13px 15px 9px;letter-spacing:-.2px;
+    display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+  .ch h2 .n{font-size:12px;color:var(--label2);font-weight:400;white-space:nowrap}
+  .sec{display:block;padding:12px 15px;text-decoration:none;color:var(--label);font-size:16px;
+    letter-spacing:-.2px;border-top:.5px solid var(--sep);transition:background .12s}
   .sec:active{background:var(--fill)}
   .sec .p{font-size:12.5px;color:var(--label2);margin-top:2px}
   .sec.todo{color:var(--label3)}
-  .pill{font-size:12px;color:var(--green);font-weight:400}
-  footer{margin-top:16px;font-size:12px;color:var(--label3);line-height:1.8;text-align:center}
+  .pill{font-size:12px;color:var(--green);font-weight:500;white-space:nowrap}
+  footer{margin-top:16px;font-size:12px;color:var(--label3);line-height:1.7;text-align:center}
 </style>
 </head>
 <body>
-<a class="back" href="../">← 三科</a>
-<h1>机电工程管理与实务</h1>
-<p class="sub">16 章 · 2027 版教材 · 已开 12 节 / 411 张卡</p>
+<a class="back" href="../">‹ 二建</a>
+<header>
+  <h1>机电工程管理与实务</h1>
+  <p class="sub">16 章 · 2027 版教材 · 已开 12 节 / 411 张卡</p>
+</header>
 
 <div class="ch">
   <h2>第 1 章 机电工程常用材料与设备 <span class="n">P1–18</span></h2>
-  <a class="sec" href="c01s01.html">
-    1.1 金属材料 <span class="pill">32 张</span>
-    <div class="p">P1–4 · 含验收 6 题</div>
-  </a>
-  <a class="sec" href="c01s02.html">
-    1.2 机电工程常用设备 <span class="pill">34 张</span>
-    <div class="p">P13–18 · 含验收 6 题</div>
-  </a>
+  <a class="sec" href="c01s01.html">1.1 金属材料 <span class="pill">32 张</span><div class="p">P1–4 · 含验收 6 题</div></a>
+  <a class="sec" href="c01s02.html">1.2 机电工程常用设备 <span class="pill">34 张</span><div class="p">P13–18 · 含验收 6 题</div></a>
 </div>
 
 <div class="ch">
   <h2>第 2 章 机电工程专业技术 <span class="n">P19–47</span></h2>
-  <a class="sec" href="c02s01.html">
-    2.1 机电工程测量技术 <span class="pill">34 张</span>
-    <div class="p">P19–26 · 含验收 6 题</div>
-  </a>
-  <a class="sec" href="c02s02.html">
-    2.2 机电工程起重技术 <span class="pill">35 张</span>
-    <div class="p">P26–37 · 含验收 6 题</div>
-  </a>
-  <a class="sec" href="c02s03.html">
-    2.3 机电工程焊接技术 <span class="pill">35 张</span>
-    <div class="p">P38–47 · 含验收 6 题</div>
-  </a>
+  <a class="sec" href="c02s01.html">2.1 机电工程测量技术 <span class="pill">34 张</span><div class="p">P19–26 · 含验收 6 题</div></a>
+  <a class="sec" href="c02s02.html">2.2 机电工程起重技术 <span class="pill">35 张</span><div class="p">P26–37 · 含验收 6 题</div></a>
+  <a class="sec" href="c02s03.html">2.3 机电工程焊接技术 <span class="pill">35 张</span><div class="p">P38–47 · 含验收 6 题</div></a>
 </div>
 
 <div class="ch">
   <h2>第 3 章 建筑机电工程施工技术 <span class="n">P48–102</span></h2>
-  <a class="sec" href="c03s01.html">
-    3.1 建筑给水排水与供暖 <span class="pill">35 张</span>
-    <div class="p">P48–56 · 含验收 6 题</div>
-  </a>
-  <a class="sec" href="c03s02.html">
-    3.2 建筑电气 <span class="pill">35 张</span>
-    <div class="p">P56–67 · 含验收 6 题</div>
-  </a>
-  <a class="sec" href="c03s03.html">
-    3.3 通风与空调 <span class="pill">35 张</span>
-    <div class="p">P68–77 · 含验收 6 题</div>
-  </a>
-  <a class="sec" href="c03s04.html">
-    3.4 智能化系统 <span class="pill">29 张</span>
-    <div class="p">P77–85 · 含验收 6 题</div>
-  </a>
-  <a class="sec" href="c03s05.html">
-    3.5 电梯工程安装 <span class="pill">35 张</span>
-    <div class="p">P85–94 · 含验收 6 题</div>
-  </a>
-  <a class="sec" href="c03s06.html">
-    3.6 消防工程施工技术 <span class="pill">34 张</span>
-    <div class="p">P94–101 · 含验收 6 题</div>
-  </a>
+  <a class="sec" href="c03s01.html">3.1 建筑给水排水与供暖 <span class="pill">35 张</span><div class="p">P48–56 · 含验收 6 题</div></a>
+  <a class="sec" href="c03s02.html">3.2 建筑电气 <span class="pill">35 张</span><div class="p">P56–67 · 含验收 6 题</div></a>
+  <a class="sec" href="c03s03.html">3.3 通风与空调 <span class="pill">35 张</span><div class="p">P68–77 · 含验收 6 题</div></a>
+  <a class="sec" href="c03s04.html">3.4 智能化系统 <span class="pill">29 张</span><div class="p">P77–85 · 含验收 6 题</div></a>
+  <a class="sec" href="c03s05.html">3.5 电梯工程安装 <span class="pill">35 张</span><div class="p">P85–94 · 含验收 6 题</div></a>
+  <a class="sec" href="c03s06.html">3.6 消防工程施工技术 <span class="pill">34 张</span><div class="p">P94–101 · 含验收 6 题</div></a>
 </div>
 
 <div class="ch">
   <h2>第 4 章 工业机电工程安装技术 <span class="n">P103–175</span></h2>
-  <a class="sec" href="c04s01.html">
-    4.1 机械设备安装技术 <span class="pill">38 张</span>
-    <div class="p">P103–113 · 含验收 6 题 · 口诀全覆盖</div>
-  </a>
-  <a class="sec todo" href="#">
-    4.2 工业管道施工技术
-    <div class="p">P114–122 · 待出卡</div>
-  </a>
-  <a class="sec todo" href="#">
-    4.3 电气装置安装技术
-    <div class="p">P123–135 · 待出卡</div>
-  </a>
-  <a class="sec todo" href="#">
-    4.4 自动化仪表工程
-    <div class="p">P136–142 · 待出卡</div>
-  </a>
-  <a class="sec todo" href="#">
-    4.5 防腐蚀与绝热工程
-    <div class="p">P143–150 · 待出卡</div>
-  </a>
-  <a class="sec todo" href="#">
-    4.6 石油化工设备安装
-    <div class="p">P151–156 · 待出卡</div>
-  </a>
-  <a class="sec todo" href="#">
-    4.7 发电设备安装技术
-    <div class="p">P157–164 · 待出卡</div>
-  </a>
-  <a class="sec todo" href="#">
-    4.8 冶炼设备安装技术
-    <div class="p">P165–175 · 待出卡</div>
-  </a>
+  <a class="sec" href="c04s01.html">4.1 机械设备安装技术 <span class="pill">38 张</span><div class="p">P103–113 · 含验收 6 题 · 口诀全覆盖</div></a>
+  <a class="sec todo" href="#">4.2 工业管道施工技术<div class="p">P114–122 · 待出卡</div></a>
+  <a class="sec todo" href="#">4.3 电气装置安装技术<div class="p">P123–135 · 待出卡</div></a>
+  <a class="sec todo" href="#">4.4 自动化仪表工程<div class="p">P136–142 · 待出卡</div></a>
+  <a class="sec todo" href="#">4.5 防腐蚀与绝热工程<div class="p">P143–150 · 待出卡</div></a>
+  <a class="sec todo" href="#">4.6 石油化工设备安装<div class="p">P151–156 · 待出卡</div></a>
+  <a class="sec todo" href="#">4.7 发电设备安装技术<div class="p">P157–164 · 待出卡</div></a>
+  <a class="sec todo" href="#">4.8 冶炼设备安装技术<div class="p">P165–175 · 待出卡</div></a>
 </div>
 <div class="ch off"><h2>第 5 章 相关法规 <span class="n">P176–198</span></h2></div>
 <div class="ch off"><h2>第 6 章 相关标准 <span class="n">P199–215</span></h2></div>

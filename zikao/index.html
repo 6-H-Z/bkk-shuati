@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F2F2F7">
 <meta name="theme-color" content="#1d4ed8">
 <title>自考本科刷题 · 消防经济学 / 习概 / 近代史 / 马原</title>
 <style>
@@ -170,10 +172,150 @@
     .btn{padding:8px 10px;font-size:13px}
   }
 </style>
+<style>
+  /* ===== iOS 皮肤（2026-11-04）：不改功能，只覆盖视觉 ===== */
+  :root{
+    --bg:#F2F2F7;--card:#FFFFFF;--line:rgba(60,60,67,.18);--text:#000000;--muted:rgba(60,60,67,.60);
+    --brand:#007AFF;--brand-dk:#007AFF;--brand-lt:rgba(0,122,255,.10);
+    --ok:#34C759;--ok-bg:rgba(52,199,89,.14);--bad:#FF3B30;--bad-bg:rgba(255,59,48,.12);
+    --warn:#FF9500;--warn-bg:rgba(255,149,0,.14);--fav:#FF9500;--fav-bg:rgba(255,149,0,.14);
+    --ok-text:#1B7F3B;--bad-text:#C0392B;
+    --fill:rgba(120,120,128,.12);--r:12px;
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#000000;--card:#1C1C1E;--line:rgba(84,84,88,.65);--text:#FFFFFF;--muted:rgba(235,235,245,.60);
+      --brand:#0A84FF;--brand-lt:rgba(10,132,255,.16);--ok:#30D158;--ok-bg:rgba(48,209,88,.16);
+      --bad:#FF453A;--bad-bg:rgba(255,69,58,.17);--fav:#FF9F0A;--fav-bg:rgba(255,159,10,.16);
+      --warn-bg:rgba(255,159,10,.16);--ok-text:#6EE7A0;--bad-text:#FF8A80;--fill:rgba(120,120,128,.24)}
+  }
+  html{background:var(--bg)}
+  body{background:var(--bg);color:var(--text);
+    font:17px/1.47 -apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Helvetica Neue","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased}
+  h1,h2,h3{letter-spacing:-.2px}
+  header{position:static;background:transparent;box-shadow:none;color:var(--text);
+    padding:calc(8px + env(safe-area-inset-top)) 16px 2px;display:block}
+  header h1{font-size:31px;line-height:1.16;font-weight:700;letter-spacing:-.5px;margin:0}
+  header .sub{display:block;margin-top:4px;font-size:13px;color:var(--muted);opacity:1}
+  .zone-back{display:inline-flex;align-items:center;font-size:15px;color:var(--brand);
+    text-decoration:none;margin:0 0 4px;padding:3px 0}
+  .wrap{max-width:680px;margin:0 auto;padding:12px 16px calc(118px + env(safe-area-inset-bottom))}
+  .overview{background:var(--card);border:0;border-radius:12px;padding:14px 16px;box-shadow:none;margin-bottom:12px}
+  .ring{width:58px;height:58px;flex:0 0 58px;border:0;position:relative;border-radius:50%;
+    background:conic-gradient(var(--brand) calc(var(--p,0)*1%),rgba(120,120,128,.16) 0);
+    display:flex;align-items:center;justify-content:center}
+  .ring::after{content:'';position:absolute;inset:5px;border-radius:50%;background:var(--card)}
+  .ring b{position:relative;z-index:1;font-size:14px;font-weight:600;color:var(--text)}
+  .ov-nums{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted)}
+  .ov-nums b{display:block;font-size:18px;font-weight:600;color:var(--text);letter-spacing:-.3px;margin-top:1px}
+  .ov-nums .ok b{color:var(--ok)} .ov-nums .bad b{color:var(--bad)}
+  .ov-bk{font-size:12px;color:var(--muted)}
+  .bar{display:flex;flex-wrap:nowrap;align-items:center;gap:7px;background:transparent;border:0;
+    padding:2px 0 8px;margin:10px 0 6px;box-shadow:none;overflow-x:auto;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none}
+  .bar::-webkit-scrollbar{display:none}
+  .bar>*{flex:0 0 auto}
+  .bar .lab{font-size:13px;color:var(--muted)}
+  select{-webkit-appearance:none;appearance:none;border:0;background:var(--fill);color:var(--text);
+    font:15px/1.2 inherit;font-weight:500;padding:8px 12px;border-radius:10px}
+  .chip{background:var(--fill);border:0;border-radius:99px;font-size:13px;font-weight:600;
+    padding:6px 12px;color:var(--text);user-select:none}
+  .chip.on{background:var(--brand);color:#fff;font-weight:600}
+  .sw{font-size:13px;color:var(--muted);display:inline-flex;align-items:center;gap:6px}
+  .sw input{width:18px;height:18px;accent-color:var(--ok)}
+  .btn{border:0;border-radius:10px;background:var(--fill);color:var(--text);font-size:14px;font-weight:600;
+    padding:9px 13px;box-shadow:none;transition:transform .12s cubic-bezier(.32,.72,0,1),opacity .12s}
+  .btn:active{transform:scale(.97);opacity:.8}
+  .btn.primary{background:var(--brand);color:#fff}
+  .btn.danger{background:var(--bad-bg);color:var(--bad)}
+  .btn.ghost{background:transparent;color:var(--brand)}
+  .hintbar{display:none}
+  .pbar{height:3px;background:rgba(120,120,128,.16);border-radius:2px;margin:0 0 14px}
+  .pbar>div{background:var(--brand);border-radius:2px}
+  .nav{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+  .nav .mid{font-size:12px;color:var(--muted)}
+  .qcard{background:var(--card);border:0;border-radius:16px;padding:16px;margin-bottom:12px;box-shadow:none}
+  .qmeta{gap:6px;margin-bottom:10px}
+  .tag{border-radius:7px;background:var(--fill);color:var(--muted);font-size:11.5px;font-weight:600;padding:3px 8px}
+  .tag.single,.tag.subj{background:rgba(0,122,255,.12);color:var(--brand)}
+  .tag.multi{background:rgba(255,149,0,.14);color:var(--warn)}
+  .tag.judge{background:rgba(52,199,89,.14);color:var(--ok)}
+  .tag.essay,.tag.fill{background:rgba(175,82,222,.14);color:#AF52DE}
+  .tag.wrongn{background:var(--bad-bg);color:var(--bad)}
+  .tag.favt{background:var(--fav-bg);color:var(--fav)}
+  .qstem{font-size:19px;line-height:1.5;font-weight:600;letter-spacing:-.2px;margin-bottom:14px}
+  .hint{font-size:13px;color:var(--muted);margin-bottom:10px}
+  .optsWrap{background:var(--card);border-radius:12px;overflow:hidden}
+  .optsWrap .opt{margin:0;border:0;border-radius:0;background:transparent;padding:13px 14px;
+    font-size:17px;line-height:1.4;display:flex;gap:11px;align-items:center;cursor:pointer}
+  .optsWrap .opt+.opt{border-top:.5px solid var(--line)}
+  .optsWrap .opt:active{background:var(--fill)}
+  .opt .letter{width:25px;height:25px;flex:0 0 25px;border-radius:50%;background:var(--fill);color:var(--muted);
+    font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;border:0}
+  .opt .txt{flex:1;min-width:0}
+  .opt.selected{background:var(--brand-lt)}
+  .opt.selected .letter{background:var(--brand);color:#fff}
+  .opt.correct{background:var(--ok-bg)}
+  .opt.correct .letter{background:var(--ok);color:#fff}
+  .opt.wrong{background:var(--bad-bg)}
+  .opt.wrong .letter{background:var(--bad);color:#fff}
+  .jbtns{display:flex;gap:10px}
+  .jbtn{flex:1;border:0;border-radius:12px;background:var(--fill);color:var(--text);
+    font-size:17px;font-weight:600;padding:14px 0;cursor:pointer}
+  .jbtn.selected{background:var(--brand-lt);color:var(--brand)}
+  .jbtn.correct{background:var(--ok-bg);color:var(--ok)}
+  .jbtn.wrong{background:var(--bad-bg);color:var(--bad)}
+  .fb{margin-top:12px;padding:11px 13px;border-radius:12px;font-size:15px;border:0}
+  .fb.ok{background:var(--ok-bg);color:var(--ok-text)}
+  .fb.bad{background:var(--bad-bg);color:var(--bad-text)}
+  .fb.reveal{background:var(--warn-bg);color:var(--warn)}
+  .ansbox{margin-top:10px;padding:12px 13px;border-radius:12px;border:0;background:var(--fill);
+    color:var(--text);font-size:15px;line-height:1.55;white-space:pre-wrap}
+  .ansbox.full{background:var(--fill);color:var(--text);font-size:14px}
+  .ansbox b{display:block;margin-bottom:5px;font-size:13px;color:var(--muted)}
+  textarea.myans{width:100%;min-height:104px;margin-top:8px;padding:12px;border:0;border-radius:12px;
+    background:var(--fill);color:var(--text);font-size:16px;line-height:1.6;font-family:inherit;resize:vertical}
+  textarea.myans:focus{outline:2px solid var(--brand);background:var(--card)}
+  .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+  .panel{background:var(--card);border:0;border-radius:12px;padding:14px;margin-top:12px}
+  .panel h3{font-size:15px;font-weight:600;margin:0 0 10px}
+  .grid{display:flex;flex-wrap:wrap;gap:6px;max-height:220px;overflow:auto}
+  .ix{width:32px;height:32px;border-radius:8px;border:0;background:var(--fill);color:var(--muted);
+    display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;cursor:pointer;position:relative}
+  .ix.ok{background:var(--ok-bg);color:var(--ok-text)}
+  .ix.bad{background:var(--bad-bg);color:var(--bad-text)}
+  .ix.cur{outline:2px solid var(--brand);outline-offset:1px}
+  .legend{font-size:12px;color:var(--muted);margin-top:9px}
+  .empty h3{font-size:16px}
+  .mbg{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:center;
+    background:rgba(0,0,0,.34);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);padding:0}
+  .modal{background:var(--card);color:var(--text);border-radius:16px 16px 0 0;max-width:680px;width:100%;
+    max-height:88vh;overflow:auto;padding:20px 20px calc(24px + env(safe-area-inset-bottom));
+    animation:sheetIn .38s cubic-bezier(.32,.72,0,1);-webkit-overflow-scrolling:touch}
+  @keyframes sheetIn{from{transform:translateY(100%)}to{transform:none}}
+  .modal h2{font-size:22px;font-weight:700;letter-spacing:-.3px;margin:0 0 10px}
+  table{width:100%;border-collapse:collapse;font-size:14px}
+  input[type=number]{width:76px;border:0;border-radius:8px;background:var(--fill);color:var(--text);
+    font:17px/1.2 inherit;padding:7px 9px;-webkit-appearance:none;appearance:none}
+  input[type=file]{font-size:13px;color:var(--muted)}
+  th,td{padding:9px 8px;border-bottom:.5px solid var(--line);text-align:left}
+  th{color:var(--muted);font-weight:600}
+  .muted{color:var(--muted)}
+  code,kbd{background:var(--fill);border:0;border-radius:5px;padding:0 5px;font-size:12px}
+  #navBottom{background:transparent;border:0}
+  @media (max-width:720px){
+    #navBottom{background:rgba(255,255,255,.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+      border-top:.5px solid var(--line);box-shadow:none;padding:8px 12px calc(8px + env(safe-area-inset-bottom))}
+  }
+  @media (max-width:720px) and (prefers-color-scheme:dark){
+    #navBottom{background:rgba(28,28,30,.88)}
+  }
+</style>
 </head>
 <body>
 <header>
-  <h1>📚 自考本科刷题</h1>
+  <a class="zone-back" href="../">‹ 分区</a>
+  <h1>自考本科刷题</h1>
   <span class="sub">消防经济学 · 习概 · 近代史纲要 · 马原　共 <span id="totalCount"></span> 题</span>
 </header>
 
@@ -206,11 +348,11 @@
     <select id="modeSel">
       <option value="all">全部题目</option>
       <option value="undone">只看未做</option>
-      <option value="wrongToday">📕 今日错题</option>
-      <option value="wrongYest">📕 昨日错题</option>
-      <option value="wrongAll">❌ 未订正错题</option>
-      <option value="wrongEver">📚 错题本（含已订正）</option>
-      <option value="fav">★ 我的收藏</option>
+      <option value="wrongToday">今日错题</option>
+      <option value="wrongYest">昨日错题</option>
+      <option value="wrongAll">未订正错题</option>
+      <option value="wrongEver">错题本（含已订正）</option>
+      <option value="fav">我的收藏</option>
     </select>
     <span class="lab">顺序</span>
     <select id="orderSel"><option value="seq">顺序</option><option value="rand">随机</option></select>
@@ -219,13 +361,13 @@
   </div>
 
   <div class="bar">
-    <button class="btn primary" id="examBtn">📝 模拟考试</button>
-    <button class="btn" id="wrongbookBtn">📕 今日错题</button>
-    <button class="btn" id="favBtn">☆ 收藏</button>
-    <button class="btn" id="bankBtn">📚 题库</button>
-    <button class="btn" id="exportBtn">⬇ 导出本组</button>
-    <button class="btn" id="backupBtn">💾 备份</button>
-    <button class="btn" id="restoreBtn">📥 恢复</button>
+    <button class="btn primary" id="examBtn">模拟考试</button>
+    <button class="btn" id="wrongbookBtn">今日错题</button>
+    <button class="btn" id="favBtn">收藏</button>
+    <button class="btn" id="bankBtn">题库</button>
+    <button class="btn" id="exportBtn">导出本组</button>
+    <button class="btn" id="backupBtn">备份</button>
+    <button class="btn" id="restoreBtn">恢复</button>
     <input type="file" id="restoreFile" accept=".json,application/json" style="display:none">
     <input type="file" id="bankFile" accept=".json,.csv,.txt" style="display:none">
     <button class="btn danger" id="resetBtn">清空</button>
@@ -292,12 +434,12 @@
 
 <div class="mbg hidden" id="bankModal">
   <div class="modal">
-    <h2>📚 题库管理</h2>
+    <h2>题库管理</h2>
     <div id="bankInfo" style="font-size:13.5px;margin-bottom:12px"></div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
-      <button class="btn primary" id="bankImportBtn">📥 导入题库文件</button>
-      <button class="btn" id="bankExportBtn">📤 导出全部题库</button>
-      <button class="btn danger" id="bankClearBtn">🗑 清空自定义题库</button>
+      <button class="btn primary" id="bankImportBtn">导入题库文件</button>
+      <button class="btn" id="bankExportBtn">导出全部题库</button>
+      <button class="btn danger" id="bankClearBtn">清空自定义题库</button>
     </div>
     <div style="margin-top:14px;font-size:12.5px;color:var(--muted);line-height:1.75">
       <b>支持 3 种格式：</b><br>
@@ -470,12 +612,12 @@ function qHTML(q,p){
     body+=`<div class="jbtns">`+q.options.map(o=>
       `<button class="jbtn ${cls(o)}" data-v="${o}" ${graded?'disabled':''}>${o}</button>`).join('')+`</div>`;
   } else {
-    body+=q.options.map((o,i)=>{
+    body+='<div class="optsWrap">'+q.options.map((o,i)=>{
       const L=LETTERS[i]; let cls='';
       if(graded){ if(ansSet.has(L))cls='correct'; else if(chosenSet.has(L))cls='wrong'; cls+=' locked'; }
       else if(chosenSet.has(L))cls='selected';
       return `<div class="opt ${cls}" data-v="${L}"><span class="letter">${L}</span><span class="txt">${o}</span></div>`;
-    }).join('');
+    }).join('')+'</div>';
     if(q.type==='multi'&&!graded) body+=`<div class="hint" style="margin-top:6px">多选：点选所有正确选项，再点「✅ 确认答案」。</div>`;
   }
 
@@ -952,6 +1094,7 @@ document.addEventListener('keydown',e=>{
 
 /* ---------- 启动 ---------- */
 (function init(){
+  const tc=document.getElementById('totalCount'); if(tc) tc.textContent=DATA.length;
   let pos=null; try{pos=JSON.parse(localStorage.getItem(LS_POS));}catch(e){}
   if(pos&&pos.s){curSubject=pos.s;curType=pos.t||'all';curMode=pos.m||'all';}
   buildSubjSel(); setChips(); $('modeSel').value=curMode;

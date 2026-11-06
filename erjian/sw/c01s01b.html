@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 1.1 非金属材料与电气材料 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  :root{
+    --bg:#F2F2F7; --card:#FFFFFF; --label:#000000; --label2:rgba(60,60,67,.6);
+    --label3:rgba(60,60,67,.3); --sep:rgba(60,60,67,.29); --blue:#007AFF;
+    --red:#FF3B30; --green:#34C759; --orange:#FF9500; --yellowBG:#FFF7E0;
+    --fill:rgba(120,120,128,.12); --radius:12px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#000; --card:#1C1C1E; --label:#FFF; --label2:rgba(235,235,245,.6);
+          --label3:rgba(235,235,245,.3); --sep:rgba(84,84,88,.65); --yellowBG:#3A2F12;
+          --fill:rgba(120,120,128,.24)}
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0 auto;padding:8px 16px 108px;max-width:640px;background:var(--bg);color:var(--label);
+       font:17px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .top{display:flex;align-items:center;gap:12px;margin:6px 0 2px}
+  h1{font-size:28px;line-height:1.2;letter-spacing:-.02em;font-weight:700;margin:0;flex:1}
+  #gateBtn{-webkit-appearance:none;border:0;background:transparent;color:var(--blue);
+           font-size:17px;font-weight:400;padding:6px 0 6px 8px;cursor:pointer}
+  #gateBtn.passed{color:var(--green)}
+  .sub{font-size:13px;color:var(--label2);margin:2px 0 16px;letter-spacing:-.01em}
+  .badge{color:var(--green);font-size:13px;margin-left:6px}
+  .bar{display:flex;gap:0;margin:0 0 14px;background:var(--card);border-radius:var(--radius);
+       padding:12px 4px}
+  .bar span{flex:1;text-align:center;font-size:12px;color:var(--label2);letter-spacing:-.01em}
+  .bar span+span{border-left:.5px solid var(--sep)}
+  .bar b{display:block;font-size:22px;font-weight:600;color:var(--label);letter-spacing:-.02em;margin-top:1px}
+  .card{background:var(--card);border-radius:var(--radius);padding:22px 20px 16px;
+        min-height:230px;display:flex;flex-direction:column;cursor:pointer;
+        transition:transform .12s ease,background .12s ease}
+  .card:active{transform:scale(.992)}
+  .tag{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.02em;margin-bottom:12px}
+  .q{font-size:20px;line-height:1.45;font-weight:600;letter-spacing:-.015em;white-space:pre-wrap}
+  .a{margin-top:16px;padding-top:16px;border-top:.5px solid var(--sep);font-size:17px;
+     line-height:1.65;color:var(--label);white-space:pre-wrap;animation:slideIn .22s ease}
+  .kk{margin-top:14px;padding:12px 14px;background:var(--yellowBG);border-radius:10px;
+      font-size:15px;line-height:1.55;color:var(--orange)}
+  .hint{margin-top:14px;font-size:12px;color:var(--label3)}
+  .src{margin-top:auto;padding-top:14px;font-size:12px;color:var(--label3);letter-spacing:-.01em}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);
+        padding:8px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:17px;font-weight:600;border:0;border-radius:12px;
+               background:var(--fill);color:var(--label);cursor:pointer;
+               transition:transform .1s ease,opacity .1s ease}
+  .dock button:active{transform:scale(.97);opacity:.85}
+  #flip{background:var(--blue);color:#fff;flex:1.3}
+  #bad{color:var(--red)}
+  #good{color:var(--green)}
+  .tools{display:flex;margin:14px 0 0;background:var(--fill);border-radius:9px;padding:2px}
+  .tools button{-webkit-appearance:none;flex:1;border:0;background:transparent;color:var(--label);
+                font-size:13px;font-weight:500;padding:6px 4px;border-radius:7px;cursor:pointer;
+                transition:background .15s ease}
+  .tools button.on{background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:600}
+  .tools .nav{display:none}
+  footer{margin-top:14px;font-size:12px;color:var(--label3);line-height:1.7;text-align:center}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:var(--label2);margin:2px 0 10px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:14px 16px;font-size:17px;
+       line-height:1.4;border:0;border-radius:12px;background:var(--card);color:var(--label);cursor:pointer;
+       transition:transform .1s ease}
+  .opt:active{transform:scale(.99)}
+  .opt.ok{background:rgba(52,199,89,.16);color:var(--green);font-weight:600}
+  .opt.no{background:rgba(255,59,48,.14);color:var(--red)}
+  #exInput{width:100%;margin-top:12px;padding:14px;font-size:17px;line-height:1.6;color:var(--label);
+           border:.5px solid var(--sep);border-radius:12px;background:var(--card);
+           font-family:inherit;resize:vertical}
+  #exInput:focus{outline:2px solid var(--blue);outline-offset:-1px}
+  .why{margin-top:12px;font-size:15px;line-height:1.7;color:var(--label2);background:var(--fill);
+       border-radius:12px;padding:14px;white-space:pre-wrap;animation:slideIn .22s ease}
+  .exDock{display:flex;gap:10px;margin-top:14px}
+  .exDock button{flex:1;min-height:50px;font-size:17px;font-weight:600;border:0;border-radius:12px;
+                 background:var(--fill);color:var(--label);cursor:pointer}
+  .exDock button.primary{background:var(--blue);color:#fff}
+  @keyframes slideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>1.1 非金属材料与电气材料</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P5–12 · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P5–12（1.1.2 非金属材料、1.1.3 电气材料，另含 P5 金属材料尾条）。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"金属补漏", q:"钛及钛合金有什么特点？常用于什么？机电安装工程涉及的“其他有色金属”还有哪些？贵金属指哪些、牌号分哪五类？", a:"钛及钛合金具有密度小、比强度高、耐腐蚀性能好等特点，常用于强腐蚀介质管道及精密构件。\n机电安装工程涉及的有色金属材料还包括：镁、镍、锆金属及其合金。\n贵金属主要指金、银和铂族金属。按照生产过程，并兼顾到某种产品的特定用途，贵金属及其合金牌号分为冶炼产品、加工产品、复合材料、粉末产品、钎焊料五类。", k:"钛：轻、强、耐蚀；其他：镁镍锆；贵金属：金银铂；牌号五类：冶、加、复、粉、钎", s:"P5"},
+  {id:2, g:"非金属材料分类", q:"非金属材料分为哪两大类？高分子材料又称什么？按特性可分为哪几类？", a:"非金属材料分为高分子材料和无机非金属材料两大类。\n高分子材料也称为聚合物材料，它是一类以高分子化合物为基体，再配以其他添加剂所构成的材料。\n高分子材料按特性可分为塑料、橡胶、纤维、高分子涂料、高分子胶粘剂、高分子基复合材料和功能高分子材料等。", k:"塑、橡、纤、涂、粘、基复合、功能", s:"P5"},
+  {id:3, g:"非金属材料分类", q:"塑料是以什么为主要成分制成的？按用途分为哪三类？通用塑料有哪四大品种？热塑性塑料和热固性塑料有什么区别？", a:"塑料是以合成树脂或化学改性的天然高分子为主要成分，再加入填料、增塑剂和其他添加剂制得。按用途可分为通用塑料、工程塑料和特种塑料三种类型。\n通用塑料一般指产量大、用途广、成型性好、价格便宜的塑料，有四大品种：聚乙烯（PE）、聚丙烯（PP）、聚氯乙烯（PVC）、聚苯乙烯（PS）。\n按合成树脂的特性分为热塑性塑料和热固性塑料：热塑性塑料的产品可再回收利用，而热固性塑料则不能。", k:"通用、工程、特种；四大品种 PE PP PVC PS；热塑可回收，热固不能", s:"P5"},
+  {id:4, g:"非金属材料分类", q:"聚乙烯（PE）有哪几个品种？性能各有什么侧重？聚丙烯（PP）三种品种各主要用于什么？", a:"聚乙烯是典型的热塑性塑料，可分为低密度聚乙烯（LDPE）、高密度聚乙烯（HDPE）和线性低密度聚乙烯（LLDPE）。三者当中，HDPE有较好的热性能、电性能和机械性能，而LDPE和LLDPE有较好的柔韧性、冲击性能和成膜性等。\n聚丙烯易燃，能在高温和氧化作用下分解。品种主要有均聚聚丙烯（HOMOPP）、嵌段共聚聚丙烯（COPP）和无规共聚聚丙烯（RAPP）：均聚聚丙烯主要用在拉丝、纤维、注射件、BOPP膜等领域；嵌段共聚聚丙烯主要应用于家用电器、注射件、管材等；无规共聚聚丙烯主要用于透明制品、高性能产品、高性能管材等。", k:"PE：高密度强热电、低密度柔冲膜；PP：均聚拉丝膜、嵌段家电管、无规透明高性能", s:"P5"},
+  {id:5, g:"非金属材料分类", q:"聚氯乙烯（PVC）有什么特性和用途？燃烧时会有什么问题？聚苯乙烯（PS）有什么特性与用途？", a:"聚氯乙烯由于具有成本低廉和自阻燃的特性，故在建筑领域里被广泛应用，尤其是在下水道管材、塑钢门窗、板材、各种口径的硬管、异形管、波纹管、电线套管等方面用途最为广泛。但是聚氯乙烯在燃烧过程中会释放出氯化氢和其他有毒气体。\n聚苯乙烯易加工成型，并具有透明、廉价、刚硬、绝缘、印刷性好等优点，可广泛用于照明指示和包装等方面。其在电气方面更是良好的绝缘和隔热保温材料，可以制作各种仪表外壳、灯罩、光学化学仪器零件等。", k:"PVC：价低自阻燃，下水塑钢硬管；燃烧放氯化氢。PS：透明刚硬绝缘，照明包装仪表壳", s:"P5–6"},
+  {id:6, g:"非金属材料分类", q:"工程塑料分为哪两大类？通用工程塑料主要指哪几种？特种塑料有哪些？", a:"工程塑料可分为通用工程塑料和特种工程塑料两大类。通用工程塑料是指聚酰胺（尼龙，PA）、聚碳酸酯（聚碳，PC）、聚甲醛（POM）、聚酯（主要是PBT）及聚苯醚［PPO和MPPO（PPO的共聚物）］。\n特种塑料是指性能更加优异独特，但生产规模较小、用途相对较窄的一类塑料，如聚苯硫醚（PPS）、聚酰亚胺（PI）、聚砜（PSF）、聚醚酮（PEK）、液晶聚合物（LCP）等。", k:"通用工程：尼龙、聚碳、聚甲醛、聚酯、聚苯醚；特种：硫醚、酰亚胺、砜、醚酮、液晶", s:"P6"},
+  {id:7, g:"非金属材料分类", q:"通用工程塑料 PA、PC、POM、PBT、PPO/MPPO 各有什么用途？", a:"①聚酰胺（PA）：无毒、质轻、优良的机械强度、耐磨性及较好的耐腐蚀性，广泛用于代替铜等金属，在机械、化工、仪表等工业中制造轴承、齿轮、泵叶及其他零件。\n②聚碳酸酯（PC）：层压板广泛用于银行、使馆、拘留所和公共场所的防护窗，飞机舱罩，照明设备等。\n③聚甲醛（POM）：具有类似金属的硬度、强度和刚性，很大的温度和湿度范围内具有很好的自润滑性、良好的耐疲劳性，并富于弹性，还有较好的耐化学品性；以低于其他许多工程塑料的成本，替代锌、黄铜、铝和钢制作许多部件，广泛应用于电子、电气、机械、仪表、建材等领域。\n④聚酯（PBT）：在汽车制造中主要用于代替金属部件，阻燃型玻璃纤维增强PBT用于制作电器制品等。\n⑤聚苯醚（PPO和MPPO）：主要用于制作汽车仪表板、散热器格子、扬声器格栅、控制台、保险盒、继电器箱、连接器、轮罩，也可用于制作水泵、鼓风机的外壳和零部件、无声齿轮、管道、阀零部件等。", k:"PA 代铜做轴齿泵；PC 防窗舱罩；POM 像金属；PBT 汽车；PPO 汽车内饰加水泵风机壳", s:"P6"},
+  {id:8, g:"其他高分子", q:"橡胶按来源、按性能和用途怎么分类？通用橡胶和特种橡胶各有哪些？各用于什么？", a:"橡胶按来源可分为天然橡胶和合成橡胶，按性能和用途可分为通用橡胶和特种橡胶。\n通用橡胶指性能与天然橡胶相同或接近，物理性能和加工性能较好，用于制造软管、密封件、传送带等一般制品的橡胶，如天然橡胶、丁苯橡胶、顺丁橡胶、氯丁橡胶等。\n特种橡胶指具有特殊性能，专供耐热、耐寒、耐化学腐蚀、耐油、耐溶剂、耐辐射等特殊性能要求使用的橡胶，如硅橡胶、氟橡胶、聚氨酯橡胶、丁腈橡胶等。", k:"通用：天然、丁苯、顺丁、氯丁；特种：硅、氟、聚氨酯、丁腈", s:"P6"},
+  {id:9, g:"其他高分子", q:"高分子涂料按成膜物质分为哪三类？高分子胶粘剂分哪两种？纤维分哪两类？", a:"高分子涂料是以聚合物为主要成膜物质，添加溶剂和各种添加剂制得。根据成膜物质不同，分为油脂涂料、天然树脂涂料和合成树脂涂料。\n高分子胶粘剂是以合成天然高分子化合物为主体制成的胶粘材料，分为天然和合成两种；应用较多的胶粘剂是合成胶粘剂。\n纤维分为天然纤维和化学纤维：前者指蚕丝、棉、麻、毛等，后者是以天然高分子或合成高分子为原料，经过纺丝和后处理制得。", k:"涂料：油、天树、合成；胶粘：天然+合成；纤维：天然+化学", s:"P6–7"},
+  {id:10, g:"其他高分子", q:"高分子基复合材料是什么？改性分为哪两种？功能高分子材料有哪些特殊功能和品种？", a:"高分子基复合材料是以高分子化合物为基体，添加各种增强材料所制得的一种复合材料。它不仅综合了原有材料的性能特点，而且可根据需要进行材料设计。高分子基复合材料也称为高分子改性材料，改性分为分子改性和共混改性。\n功能高分子材料除具有聚合物的一般力学性能、绝缘性能和热性能外，还具有物质、能量和信息转换、磁性、传递和储存等特殊功能。包括高分子信息转换材料、高分子透明材料、高分子模拟酶、生物降解高分子材料、高分子形状记忆材料和医用、药用高分子材料等。", k:"复合＝基体+增强，改性分分子/共混；功能＝转换、磁性、传递、储存", s:"P7"},
+  {id:11, g:"无机非金属材料", q:"无机非金属材料由什么物质组成？有哪些基本属性？", a:"无机非金属材料是由某些元素的氧化物、碳化物、氮化物、卤素化合物、硼化物以及硅酸盐、铝酸盐、磷酸盐、硼酸盐等物质组成的材料，是除有机高分子材料和金属材料以外的所有材料的统称。\n无机非金属材料具有高熔点、高硬度、耐腐蚀、耐磨损、高强度和良好的抗氧化性等基本属性，以及宽广的导电性、隔热性、透光性及良好的铁电性、铁磁性和压电性。", k:"三高两耐一抗氧；导电、隔热、透光，铁电、铁磁、压电", s:"P7"},
+  {id:12, g:"无机非金属材料", q:"普通（传统）无机非金属材料和特种（新型）无机非金属材料各指什么？各有什么特点？", a:"普通（传统）的无机非金属材料主要是指硅酸盐材料。硅酸盐材料是以含硅的物质为原料经加热而制成的，如水泥、玻璃、陶瓷和耐火材料等，是工业和基本建设所必需的基础材料。传统无机非金属材料具有性质稳定、抗腐蚀、耐高温等优点，但质脆，经不起热冲击。\n特种（新型）的无机非金属材料是具有特殊性能和用途的材料，是现代新技术、新产业、传统工业技术改造、现代国防和生物医学所不可缺少的物质基础。主要有先进陶瓷、非晶态材料、人工晶体、无机涂层、无机纤维等。新型无机非金属材料除具有传统无机非金属材料的优点外，还具有某些特征，如强度高，具有电学、光学特性和生物功能等。", k:"传统＝硅酸盐（水泥、玻璃、陶瓷、耐火），稳、腐、热但质脆；新型＝先进陶瓷、非晶、晶体、涂层、纤维", s:"P7"},
+  {id:13, g:"砌筑·绝热·防腐", q:"机电工程常用的砌筑材料有哪些？一般用于什么工程？", a:"在机电工程中，常用的砌筑材料包括耐火黏土砖、普通高铝砖、轻质耐火砖、耐火水泥、硅藻土质隔热材料、轻质黏土砖、石棉绒、石棉水泥板、矿渣棉、蛭石和浮石等，一般用于各类型炉窑砌筑工程，如锅炉炉墙、冶炼炉、窑炉的砌筑等。", k:"耐火黏土砖、高铝砖、轻质砖、耐火水泥；石棉、矿渣棉、蛭石、浮石——炉窑砌筑", s:"P7"},
+  {id:14, g:"砌筑·绝热·防腐", q:"机电工程常用的绝热材料有哪些？常用于哪些工程？", a:"在机电工程中，常用的绝热材料种类有很多，包括膨胀珍珠岩类、离心玻璃棉类、超细玻璃棉类、微孔硅酸壳、矿棉类、岩棉类、泡沫塑料类等，常用于各类容器、管道、通风空调管道的绝热工程等。", k:"珍珠岩、玻璃棉、硅酸壳、矿棉、岩棉、泡沫塑料——容器·管道·风管绝热", s:"P7"},
+  {id:15, g:"砌筑·绝热·防腐", q:"防腐材料分为哪几类？常用防腐材料中的涂料、塑料制品、橡胶制品、玻璃钢制品、陶瓷制品各举例并说明用途。", a:"防腐材料可分为高分子材料、无机非金属材料、复合材料和涂料等。常用防腐材料有：\n①涂料：清漆、冷固环氧树脂漆、环氧呋喃树脂漆、酚醛树脂漆等，无机富锌漆、防锈底漆广泛用于设备管道工程中；\n②塑料制品：聚氯乙烯、聚乙烯、聚四氟乙烯等，用于建筑管道、化工耐腐蚀零件及热交换器等；\n③橡胶制品：天然橡胶、氯化橡胶、氯丁橡胶、氯磺化聚乙烯橡胶、丁苯橡胶、丁酯橡胶等，用于衬板、衬里等；\n④玻璃钢制品：以玻璃纤维为增强剂、合成树脂为胶粘剂制成的复合材料，主要用于石油化工耐腐蚀耐压容器及管道等；\n⑤陶瓷制品：主要用于管件、阀门、管材、泵用零件等。", k:"涂、塑、橡、玻、陶；衬里用橡胶，耐腐蚀耐压容器用玻璃钢", s:"P8"},
+  {id:16, g:"非金属风管", q:"非金属风管材料有哪几种？酚醛复合风管和聚氨酯复合风管分别适用于什么系统、不适用于什么系统？", a:"非金属风管材料包括酚醛复合板材、聚氨酯复合板材、玻璃纤维复合板材、玻璃钢板材、硬聚氯乙烯板材。\n①酚醛复合风管适用于低、中压空调系统及潮湿环境，但对高压及洁净空调、酸碱性环境和防排烟系统不适用。\n②聚氨酯复合风管适用于低、中、高压洁净空调系统及潮湿环境，但对酸碱性环境和防排烟系统不适用。", k:"酚醛：低中压+潮湿，不高压、不洁净、不酸碱、不排烟；聚氨酯：洁净空调全压力+潮湿，不酸碱、不排烟", s:"P8"},
+  {id:17, g:"非金属风管", q:"有机玻璃钢风管、无机玻璃钢风管、硬聚氯乙烯风管分别适用于什么系统？相对湿度各有什么限制？", a:"①有机玻璃钢风管：适用于低、中压空调系统及酸碱性环境，但对高等级洁净区、防排烟系统以及相对湿度95%以上的系统不适用。\n②无机玻璃钢风管：适用于低、中压空调系统及防排烟系统，但对高等级洁净区、酸碱性环境以及相对湿度80%以上的系统不适用。\n③硬聚氯乙烯风管：适用于洁净室含酸碱的排风系统。", k:"有机玻钢耐酸碱、怕95%湿、怕排烟；无机玻钢能排烟、怕酸碱、怕80%湿；硬PVC 洁净室含酸碱排风", s:"P8"},
+  {id:18, g:"塑料管", q:"硬聚氯乙烯管有什么特点？使用温度是多少？主要用于什么管道？", a:"硬聚氯乙烯管：内壁光滑、阻力小、不结垢，无毒、无污染，耐腐蚀。使用温度不大于40℃。抗老化性能好、难燃。主要用于给水管道、排水管道和雨水管道。", k:"40℃封顶；给水、排水、雨水", s:"P8"},
+  {id:19, g:"塑料管", q:"氯化聚氯乙烯管有什么特点？主要用于什么管道？", a:"氯化聚氯乙烯管：高温机械强度高，适于受压的场合。主要用于冷热水管、消防水管系统和工业管道系统。", k:"高温受压——冷热水、消防、工业管道", s:"P8"},
+  {id:20, g:"塑料管", q:"无规共聚聚丙烯管有什么特点？适合什么敷设方式？主要用于什么管道？", a:"无规共聚聚丙烯管：无毒、无害，有高度的耐酸性和耐氯化物性。适合采用嵌墙和地坪面层内的直埋暗敷方式，水流阻力小。主要用于饮用水管、冷热水管。", k:"耐酸耐氯、嵌墙直埋；饮用水、冷热水", s:"P8"},
+  {id:21, g:"塑料管", q:"丁烯管有什么特点？主要用于什么管道？特别适用于什么管道？", a:"丁烯管：有较高的强度、韧性好、无毒。主要用于饮用水、冷热水管。特别适用于薄壁、小口径压力管道。", k:"强度高、韧性好、无毒——薄壁小口径压力管", s:"P8"},
+  {id:22, g:"塑料管", q:"交联聚乙烯管有什么特点？主要用于什么？", a:"交联聚乙烯管：无毒、卫生、透明。主要用于地板辐射供暖系统的盘管。", k:"透明卫生——地暖盘管", s:"P8"},
+  {id:23, g:"选型对比", q:"【管材用途对比】把 P8 的五种塑料管按“性能特点 → 主要用途”列清楚：硬聚氯乙烯管、氯化聚氯乙烯管、无规共聚聚丙烯管、丁烯管、交联聚乙烯管各主要用于什么管道？", a:"①硬聚氯乙烯管（PVC-U）：内壁光滑、阻力小、不结垢，无毒、无污染、耐腐蚀，使用温度不大于40℃，抗老化性能好、难燃；主要用于给水管道、排水管道和雨水管道。\n②氯化聚氯乙烯管（PVC-C）：高温机械强度高，适于受压的场合；主要用于冷热水管、消防水管系统和工业管道系统。\n③无规共聚聚丙烯管（PP-R）：无毒、无害，有高度的耐酸性和耐氯化物性，适合采用嵌墙和地坪面层内的直埋暗敷方式，水流阻力小；主要用于饮用水管、冷热水管。\n④丁烯管（PB）：有较高的强度、韧性好、无毒；主要用于饮用水、冷热水管，特别适用于薄壁、小口径压力管道。\n⑤交联聚乙烯管（PE-X）：无毒、卫生、透明；主要用于地板辐射供暖系统的盘管。\n（提示：括号内英文代号是工程通用叫法、教材正文只写中文名，属常识补充；用途必须按教材原文措辞判——“给水管道”只写给了硬聚氯乙烯管，“饮用水管”写给了无规共聚聚丙烯管（丁烯管写的是“饮用水、冷热水管”）。）", k:"给水排水雨水找 PVC-U；冷热水消防工业找 PVC-C；饮用冷热水找 PP-R/PB；地暖盘管找 PE-X", s:"P8"},
+  {id:24, g:"选型对比", q:"【风管选型对比】五种非金属风管各适用于什么系统、各不适用于什么？", a:"①酚醛复合风管：适用低、中压空调系统及潮湿环境；不适用高压及洁净空调、酸碱性环境和防排烟系统。\n②聚氨酯复合风管：适用低、中、高压洁净空调系统及潮湿环境；不适用酸碱性环境和防排烟系统。\n③有机玻璃钢风管：适用低、中压空调系统及酸碱性环境；不适用高等级洁净区、防排烟系统及相对湿度95%以上的系统。\n④无机玻璃钢风管：适用低、中压空调系统及防排烟系统；不适用高等级洁净区、酸碱性环境及相对湿度80%以上的系统。\n⑤硬聚氯乙烯风管：适用于洁净室含酸碱的排风系统。", k:"复合怕酸碱排烟；有机玻钢怕洁净排烟95%湿；无机玻钢怕洁净酸碱80%湿；硬PVC 只做含酸碱排风", s:"P8"},
+  {id:25, g:"导线", q:"导线按什么分类？裸导线是什么？常用的裸导线有哪几种？裸绞线和型线各有哪些、各用在哪里？LGJ-3×120mm² 和 TMY-100×10 各表示什么？", a:"导线是用来传送电能和信号的，按其性能、结构和特点可分为裸导线、绝缘导线等。\n裸导线没有绝缘层，散热好，可输送较大电流；常用的有圆单线、裸绞线和型线等。\n裸绞线有铜绞线、铝绞线和钢芯铝绞线等，主要用于架空线路，具有良好的导电性能和足够的机械强度：钢芯铝绞线用于各种电压等级的长距离输电线路，抗拉强度大；铝绞线一般用于短距离电力线路。例如 LGJ-3×120mm² 表示钢芯铝绞线，3根，截面积为120mm²。\n型线有铜母线、铝母线和扁钢等：矩形硬铜母线（TMY型）和硬铝母线（LMY型）用于变配电系统中的汇流排装置和车间低压架空母线等；扁钢用于接地线和接闪线，常用的扁钢规格有25×4、25×6、40×4等。例如 TMY-100×10 表示硬铜母线，宽100mm，厚10mm。", k:"裸：圆单线、裸绞线、型线；钢芯铝绞线跑长距离、铝绞线跑短距离；TMY 硬铜、LMY 硬铝、扁钢做接地接闪", s:"P8–9"},
+  {id:26, g:"导线", q:"绝缘导线怎么分类？机电工程中常用什么？常用的导线截面积是多少？BV、BVV 型号各表示什么？", a:"低压供电线路及电气设备的连线，多采用绝缘导线。按绝缘层材料可分为塑料绝缘导线、橡胶绝缘导线等。在机电工程中多采用塑料绝缘铜导线。绝缘导线的线芯材料有铜芯和铝芯（铝芯基本不采用），常用的导线截面积为1.5~240mm²等。\n例如：BV-0.5kV-1.5mm² 表示塑料铜芯线，额定电压为500V，截面积为1.5mm²；BVV-0.5kV-2×1.5mm² 表示塑料护套铜芯线，额定电压为500V，2芯，截面积为1.5mm²。", k:"塑料/橡胶两类，机电多用塑料铜芯；铝芯基本不用；1.5~240 平方", s:"P9"},
+  {id:27, g:"电力电缆", q:"电力电缆用于什么线路？按线芯材质、绝缘材料各分哪几类？YJFE-26/35-3×240 表示什么？", a:"电力电缆主要用于输变电线路中，工作电流在几十安至几千安，额定电压在220V~500kV及以上。\n按线芯材质分为铜芯和铝芯两大类；按绝缘材料分为聚氯乙烯绝缘电力电缆、交联聚乙烯绝缘电力电缆、橡胶绝缘电力电缆和纸绝缘电力电缆等。\n例如：YJFE-26/35-3×240，表示辐照交联聚乙烯绝缘聚烯烃护套铜芯电力电缆，额定电压为26/35kV，3芯，截面积为240mm²。", k:"铜/铝；聚氯乙烯、交联聚乙烯、橡胶、纸；YJFE＝辐照交联+聚烯烃护套", s:"P9"},
+  {id:28, g:"电力电缆", q:"阻燃电缆是什么？分哪两类、几个级别？无卤低烟阻燃电缆指什么？无卤低烟电缆为什么怕潮？", a:"阻燃电缆是指残焰或残灼在限定时间内能自行熄灭的电缆。阻燃电缆被燃烧时能将火焰的蔓延控制在一定范围内，避免因电缆着火延燃而造成的重大灾害，从而提高电缆线路的防火水平。\n根据电缆阻燃材料的不同，阻燃电缆分为含卤阻燃电缆及无卤低烟阻燃电缆。无卤低烟阻燃电缆是指由不含卤素（F、Cl、Br、I、At）、不含铅、镉、铬、汞等物质的胶料制成，燃烧时产生的烟尘较少，且不会产生有毒烟雾，燃烧时的腐蚀性较低，因此对环境产生的危害很小。阻燃电缆分A、B、C、D四个类别，A类最高。\n无卤低烟的聚烯烃材料主要采用氢氧化物作为阻燃剂，氢氧化物又称为碱，其特性是容易吸收空气中的水分（潮解）。潮解会导致绝缘层的体积电阻系数大幅下降，可由原来的17MΩ/km降至0.1MΩ/km。", k:"残焰自熄；含卤/无卤低烟；A、B、C、D，A最高；氢氧化物易潮解，17→0.1", s:"P9"},
+  {id:29, g:"电力电缆", q:"耐火电缆是什么？A、B 两类各在什么火焰温度下能持续供电多久？用于哪些场所？", a:"耐火电缆是指在火焰燃烧情况下，能够保持一定时间安全运行的电缆。分A、B两种类别：A类在火焰温度950~1000℃时，能持续供电90min；B类在火焰温度750~800℃时，能持续供电90min。\n耐火电缆广泛应用于高层建筑、地铁、地下商场、大型电站及重要的工矿企业等与防火安全和消防救生有关的场所。", k:"A 类 950~1000℃，B 类 750~800℃，都是 90min", s:"P9–10"},
+  {id:30, g:"电力电缆", q:"耐火电缆选用有哪些规定？为什么不能当作耐高温电缆使用？", a:"耐火电缆在建筑物燃烧时，伴随着水喷淋的情况，电缆仍可保持线路完整运行。\n当耐火电缆用于电缆密集的电缆隧道、电缆夹层中，或位于油管、油库附近等易燃场所时，应首先选用A类耐火电缆；除上述情况外，当电缆配置数量少时，可采用B类耐火电缆。\n耐火电缆大多用于应急电源的供电回路，要求火灾时能够正常工作。由于火灾时环境温度急剧上升，为保证线路的输送容量，需降低压降，对于供电线路较长且严格限定允许电压降的回路，应将耐火电缆截面至少放大一档。\n耐火电缆不能当作耐高温电缆使用。为降低电缆接头在火灾事故中的故障概率，在安装过程中应尽量减少接头数量，以保证线路在火灾中能正常工作；如果需要做分支接线，应对接头做好防火处理。", k:"密集/油区先用 A，数量少用 B；长线截面放大一档；少接头、接头防火；不能当耐高温电缆", s:"P10"},
+  {id:31, g:"电力电缆", q:"氧化镁电缆由什么组成？有哪些优缺点？BTTQ-3×4、BTTZ-5×1×25 各表示什么？", a:"氧化镁电缆是由铜芯、铜护套、氧化镁绝缘材料加工而成。氧化镁材料是无机物，铜和氧化镁的熔点分别为1083℃和2800℃，防火性能特佳；具有耐高温（电缆允许长期工作温度达250℃，短时间或非常时期允许接近铜熔点温度）、防爆（无缝铜管套及其密封的电缆终端可阻止可燃气体和火焰通过电缆进入电器设备）、载流量大、机械强度高、寿命长、具有良好的接地性能等优点，但价格贵、工艺复杂、不适合潮湿环境、施工难度大。在油灌区、重要木结构公共建筑、高温场所等耐火要求高且经济性可以接受的场合，可采用氧化镁电缆。\n例如：BTTQ-3×4 表示轻型铜护套氧化镁绝缘铜芯电力电缆，3芯，截面积为4mm²；BTTZ-5×1×25 表示重型铜护套氧化镁绝缘铜芯电力电缆，5根，单芯，截面积为25mm²。", k:"铜 1083℃、氧化镁 2800℃、长期 250℃；油灌区/木结构/高温场所用；怕潮、价贵", s:"P10"},
+  {id:32, g:"电力电缆", q:"分支电缆是什么？有什么优点？用于什么建筑？常用哪些型号？", a:"分支电缆是按设计要求，由工厂预先将分支线制造在主干电缆上，分支线截面和长度是由设计要求决定的；极大缩短了施工周期，大幅度减少了材料费用和施工费用，保证了配电的安全性和可靠性。分支电缆可以广泛应用于住宅楼、办公楼、商务楼、教学楼、科研楼等各种中高层建筑中，作为供配电的主、干线电缆使用。常用的有交联聚乙烯绝缘聚氯乙烯护套铜芯电力电缆（YJV型）、交联聚乙烯绝缘聚乙烯护套铜芯电力电缆（YJY型）和无卤低烟阻燃耐火型辐照交联聚乙烯绝缘聚烯烃护套铜芯电力电缆（WDZN-YJFE型）等。", k:"工厂预制主干+分支线；住宅/办公/商务/教学/科研中高层的主、干线电缆", s:"P10"},
+  {id:33, g:"电力电缆", q:"铝合金电缆有什么特点？非铠装、铠装各可替代什么电缆、适用哪些敷设场所？", a:"铝合金电缆不同于传统的铝芯电缆，主要有非铠装和铠装两大类，即带PVC护套和不带PVC护套两种，其芯线采用高强度、抗蠕变、高导电率的铝合金材料。铝合金表面与空气接触自然形成的氧化层能耐受多种腐蚀；在满足相同导电性能的前提下，合金线缆的重量是同样载流量的铜缆的一半；合金铝导体比铜导体柔韧性好、弯曲性能好，安装时有更小的弯曲半径，更容易进行端子连接。非铠装铝合金电力电缆可替代YJV型电力电缆，适用于室内、隧道、电缆沟等场所的敷设，不能承受机械外力；铠装铝合金电力电缆可替代YJV22型电力电缆，适用于隧道、电缆沟、竖井或埋地敷设，能承受较大的机械外力和拉力。", k:"铜缆一半重、柔韧小弯径；非铠替 YJV（室内/隧道/电缆沟）、铠装替 YJV22（加竖井/埋地）", s:"P10–11"},
+  {id:34, g:"控制与仪表电缆", q:"控制电缆用于什么系统？绝缘怎么分类？截面积和线芯有什么特点？KVV、KVVP、KVV22、KVVR 各用于什么场所？仪表电缆有哪些？", a:"控制电缆用于电气控制系统和配电装置的二次系统。二次电路的电流较小，因此芯线截面积通常在10mm²以下，控制电缆的线芯多采用铜导体，其芯线组合有同心式和对绞式。控制电缆按其绝缘层材质，分为聚氯乙烯、聚乙烯和橡胶，其中以聚乙烯电性能最好，可应用于高频线路。\n塑料绝缘控制电缆如KVV、KVVP等，主要用于交流500V、直流1000V及以下控制、信号、保护及测量线路：KVVP用于敷设室内、电缆沟等要求屏蔽的场所；KVV22等用于敷设在电缆沟、直埋地等能承受较大机械外力的场所；KVVR、KVVRP等用于敷设在室内要求移动的场所。\n仪表用电缆适用于仪器仪表及其他电气设备中的信号传输及控制线路，如YVV、YVVP等；阻燃型仪表电缆具有防干扰性能高、电气性能稳定，能可靠地传送数字信号和模拟信号，兼有阻燃等特点，广泛应用于电站、矿山和石油化工等部门的检测和控制系统上，如ZRC-YVVP、ZRC-YYJVP等。", k:"10 平方以下、铜芯、二次系统；P 屏蔽、22 抗外力、R 移动；仪表 YVV、阻燃 ZRC-", s:"P11"},
+  {id:35, g:"母线槽", q:"母线槽由什么组成？有什么优点？适用于哪些场所？", a:"母线槽是由金属外壳（钢板或铝板）、导电排、绝缘材料及有关附件组成的。具有体积小、容量大、装拆方便、安全可靠、使用寿命长等优点，适用于高层建筑、标准厂房、机床密集的车间等场所。", k:"壳、排、绝缘、附件；体积小、容量大、装拆方便、安全可靠、寿命长", s:"P11"},
+  {id:36, g:"母线槽", q:"空气型母线槽和紧密型母线槽各有什么特点？各有什么缺点？", a:"①空气型母线槽：母线之间接头用铜片软接过渡，由于接头之间体积过大，占用了一定空间，故应用较少。空气型母线槽因存在烟囱效应，故不能用于垂直安装。\n②紧密型母线槽：采用插接式连接，主要靠外壳散热，母线槽温升偏高，散热效果较差。母线的相间气隙小，母线通过大电流时，会产生较大的电动力，使磁振荡频率形成叠加状态，从而产生较大的噪声。紧密型母线槽防潮性能较差，在施工时容易受潮或渗水，造成相间绝缘电阻下降。", k:"空气型怕烟囱不能垂直安装；紧密型温升高、噪声大、防潮差", s:"P11"},
+  {id:37, g:"母线槽", q:"高强度母线槽、耐火型母线槽、树脂浇注母线槽各有什么特点？", a:"①高强度母线槽：外壳做成瓦沟形式，使母线槽机械强度增加，解决了大跨度安装无法支撑吊装的问题。与其他类型母线槽相比，其防潮和散热功能有明显的提高；由于线间存在一定空隙，使导线温升下降，从而提高了过载能力，并减少了磁振荡噪声。但它产生的杂散电流及感抗要比紧密型母线槽大得多，因此在同规格比较时，它的导电排截面必须比紧密型母线槽大。\n②耐火型母线槽：专供消防设备电源的使用，其外壳采用耐高温不低于1100℃的防火材料，隔热层采用耐高温不低于300℃的绝缘材料，耐火时间有60min、90min、120min、180min，满负荷运行可达8h以上。耐火型母线槽除应通过CCC认证外，还应有国家认可的检测机构出具的型式检验报告。\n③树脂浇注母线槽：采用环氧树脂全封闭浇注工艺，防护等级高达IP68，具有防水、阻燃、耐腐蚀等特性，适用于潮湿、多尘、高防火要求的工业与民用场景（如化工、地铁、数据中心）。缺点是散热性较差、成本高。", k:"高强瓦沟大跨；耐火 1100/300、60·90·120·180min、满负荷 8h；树脂 IP68", s:"P12"},
+  {id:38, g:"母线槽", q:"母线槽选用有哪些规定？（高层垂直输配电、应急电源、外壳防护等级、软接头）", a:"①高层建筑的垂直输配电应选用紧密型母线槽，可防止烟囱效应，其导体应选用长期工作温度不低于130℃的阻燃材料包覆。楼层之间应设阻火隔断，阻火隔断应采用防火堵料。应急电源应选用耐火型母线槽，且不应释放出危及人身安全的有毒气体。\n②大容量母线槽应选用散热好的紧密型母线槽；若选用空气型母线槽，其外壳防护等级应根据安装环境选择，如在环境条件较好的专用场所，可选用IP30等级。\n③母线槽接口相对较容易受潮，选用母线槽时应注意其防护等级。对于不同的安装场所，应选用不同外壳防护等级的母线槽。一般室内正常环境可选用防护等级为IP40的母线槽，消防喷淋区域应选用防护等级为IP54或IP66的母线槽。\n④母线槽不能直接和有显著摇动或冲击振动的设备连接，应采用软接头加以连接。", k:"垂直选紧密（导体≥130℃阻燃包覆）、应急选耐火；室内 IP40、喷淋 IP54/IP66；振动处用软接头", s:"P12"},
+  {id:39, g:"绝缘材料", q:"绝缘材料按物理状态、按化学性质各分为哪三类？各举例。", a:"按物理状态可分为气体绝缘材料、液体绝缘材料和固体绝缘材料：气体绝缘材料有空气、氮气、六氟化硫（SF6）等；液体绝缘材料有变压器油、断路器油、电容器油、电缆油等；固体绝缘材料有绝缘漆、胶和熔敷粉末，纸、纸板等绝缘纤维制品，漆布、漆管和绑扎带等绝缘浸渍纤维制品，绝缘云母制品，电工用薄膜、复合制品和粘带，电工用层压制品，电工用塑料和橡胶等。\n按化学性质可分为无机绝缘材料、有机绝缘材料和混合绝缘材料：无机绝缘材料有云母、石棉、大理石、瓷器、玻璃和硫黄等，主要用作电机和电器绝缘、开关的底板和绝缘子等；有机绝缘材料有矿物油、虫胶、树脂、橡胶、棉纱、纸、麻、蚕丝和人造丝等，大多用于制造绝缘漆、绕组和导线的被覆绝缘物等；混合绝缘材料是由无机绝缘材料和有机绝缘材料经加工后制成的各种成型绝缘材料。", k:"物理：气（空、氮、SF6）、液（四种油）、固；化学：无机（云母石棉瓷玻璃）、有机（油胶脂橡纱纸麻丝）、混合", s:"P12"}
+];
+
+const EXAM = [
+  { type:"正向", cardIds:[18,19,20,21,22,23],
+    q:"P8 的五种塑料管各有什么特点和主要用途？请逐条说清。",
+    answer:"①硬聚氯乙烯管：内壁光滑、阻力小、不结垢，无毒、无污染，耐腐蚀；使用温度不大于40℃；抗老化性能好、难燃；主要用于给水管道、排水管道和雨水管道。\n②氯化聚氯乙烯管：高温机械强度高，适于受压的场合；主要用于冷热水管、消防水管系统和工业管道系统。\n③无规共聚聚丙烯管：无毒、无害，有高度的耐酸性和耐氯化物性；适合采用嵌墙和地坪面层内的直埋暗敷方式，水流阻力小；主要用于饮用水管、冷热水管。\n④丁烯管：有较高的强度、韧性好、无毒；主要用于饮用水、冷热水管，特别适用于薄壁、小口径压力管道。\n⑤交联聚乙烯管：无毒、卫生、透明；主要用于地板辐射供暖系统的盘管。",
+    keys:["给水","排水","雨水","冷热水","消防","饮用水","地板辐射供暖","40℃"], need:5 },
+  { type:"正向", cardIds:[28,29],
+    q:"阻燃电缆和耐火电缆各是什么？阻燃电缆分哪两类、几个级别、哪类最高？耐火电缆 A、B 两类各在什么火焰温度下持续供电多久？",
+    answer:"阻燃电缆是指残焰或残灼在限定时间内能自行熄灭的电缆；被燃烧时能将火焰的蔓延控制在一定范围内，提高电缆线路的防火水平。根据阻燃材料不同，分为含卤阻燃电缆及无卤低烟阻燃电缆；阻燃电缆分A、B、C、D四个类别，A类最高。\n耐火电缆是指在火焰燃烧情况下，能够保持一定时间安全运行的电缆，分A、B两种类别：A类在火焰温度950~1000℃时，能持续供电90min；B类在火焰温度750~800℃时，能持续供电90min。",
+    keys:["残焰","含卤","低烟","A、B、C、D","A类最高","950~1000","750~800","90min"], need:5 },
+  { type:"选择", cardIds:[18,19,20,21,23],
+    q:"下列管道中，可主要用于给水管道的是（　）。",
+    options:["硬聚氯乙烯管","氯化聚氯乙烯管","无规共聚聚丙烯管","丁烯管"],
+    correct:0,
+    why:"教材P8原文措辞：\n· 硬聚氯乙烯管：“主要用于给水管道、排水管道和雨水管道”——A正确。\n· 氯化聚氯乙烯管：“主要用于冷热水管、消防水管系统和工业管道系统”。\n· 无规共聚聚丙烯管：“主要用于饮用水管、冷热水管”。\n· 丁烯管：“主要用于饮用水、冷热水管，特别适用于薄壁、小口径压力管道”。\n这题按教材原文措辞判，不要按“给水＝饮用水”的常识判：教材把“给水管道”四个字只写给了硬聚氯乙烯管，“饮用水管”写的是无规共聚聚丙烯管。2026版教材对应P9。" },
+  { type:"选择", cardIds:[36,38],
+    q:"关于母线槽的选用，下列说法正确的是（　）。",
+    options:["高层建筑的垂直输配电应选用空气型母线槽，以利用烟囱效应散热","一般室内正常环境可选用防护等级为 IP40 的母线槽","消防喷淋区域应选用防护等级为 IP30 的母线槽","母线槽可直接与有显著摇动或冲击振动的设备连接"],
+    correct:1,
+    why:"教材P12：高层建筑垂直输配电应选用“紧密型”母线槽，可防止烟囱效应（A错，空气型恰恰有烟囱效应、不能垂直安装）；一般室内正常环境可选用IP40（B对）；消防喷淋区域应选用IP54或IP66（C错）；母线槽不能直接和有显著摇动或冲击振动的设备连接，应采用“软接头”加以连接（D错）。补充：垂直输配电导体应选用长期工作温度不低于130℃的阻燃材料包覆；应急电源应选用耐火型母线槽。" },
+  { type:"反向", cardIds:[23,18,19,20,21,22],
+    q:"把口诀展开：“给水排水雨水找 PVC-U；冷热水消防工业找 PVC-C；饮用冷热水找 PP-R/PB；地暖盘管找 PE-X”——各说的是哪种管材？教材写的用途分别是什么？",
+    answer:"①PVC-U（硬聚氯乙烯管）：主要用于给水管道、排水管道和雨水管道。\n②PVC-C（氯化聚氯乙烯管）：高温机械强度高，适于受压的场合；主要用于冷热水管、消防水管系统和工业管道系统。\n③PP-R（无规共聚聚丙烯管）：主要用于饮用水管、冷热水管；适合采用嵌墙和地坪面层内的直埋暗敷方式。\n④PB（丁烯管）：主要用于饮用水、冷热水管，特别适用于薄壁、小口径压力管道。\n⑤PE-X（交联聚乙烯管）：主要用于地板辐射供暖系统的盘管。\n（括号内英文代号为工程通用叫法，教材正文只写中文名，属常识补充。）",
+    keys:["给水管道","排水管道","雨水管道","冷热水管","消防水管","饮用水","地板辐射供暖"], need:4 },
+  { type:"场景", cardIds:[18,19,22,23,29,30,38],
+    q:"某住宅小区机电安装工程：①室内生活给水管道（按教材原文措辞选）②地板辐射供暖盘管 ③消防水管系统 ④地下车库消防水泵的应急电源电缆，敷设在电缆密集的电缆隧道内 ⑤高层住宅的垂直输配电母线槽。请为每项选材并说明教材依据。",
+    answer:"①给水管道→硬聚氯乙烯管：教材“主要用于给水管道、排水管道和雨水管道”（原文，P8）。\n②地板辐射供暖盘管→交联聚乙烯管：教材“主要用于地板辐射供暖系统的盘管”（原文，P8）。\n③消防水管系统→氯化聚氯乙烯管：教材“主要用于冷热水管、消防水管系统和工业管道系统”（原文，P8）。\n④应急电源电缆、电缆密集的电缆隧道→应首先选用A类耐火电缆：教材“当耐火电缆用于电缆密集的电缆隧道、电缆夹层中，或位于油管、油库附近等易燃场所时，应首先选用A类耐火电缆”（原文，P10）。\n⑤高层住宅垂直输配电→紧密型母线槽：教材“高层建筑的垂直输配电应选用紧密型母线槽，可防止烟囱效应”，且导体应选用长期工作温度不低于130℃的阻燃材料包覆（原文，P12）。\n（本题五项均按教材原文措辞选取；现场施工中还常按地方标准、产品标准复核，属常识补充，不是教材内容。）",
+    keys:["硬聚氯乙烯","交联聚乙烯","氯化聚氯乙烯","A类","紧密型","130"], need:4 }
+];
+
+const KEY_STATUS = "erjian_sw_1_1b_status";
+const KEY_PASS = "erjian_sw_1_1b_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

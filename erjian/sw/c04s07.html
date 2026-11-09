@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 4.7 发电设备安装技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  :root{
+    --bg:#F2F2F7; --card:#FFFFFF; --label:#000000; --label2:rgba(60,60,67,.6);
+    --label3:rgba(60,60,67,.3); --sep:rgba(60,60,67,.29); --blue:#007AFF;
+    --red:#FF3B30; --green:#34C759; --orange:#FF9500; --yellowBG:#FFF7E0;
+    --fill:rgba(120,120,128,.12); --radius:12px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#000; --card:#1C1C1E; --label:#FFF; --label2:rgba(235,235,245,.6);
+          --label3:rgba(235,235,245,.3); --sep:rgba(84,84,88,.65); --yellowBG:#3A2F12;
+          --fill:rgba(120,120,128,.24)}
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0 auto;padding:8px 16px 108px;max-width:640px;background:var(--bg);color:var(--label);
+       font:17px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .top{display:flex;align-items:center;gap:12px;margin:6px 0 2px}
+  h1{font-size:28px;line-height:1.2;letter-spacing:-.02em;font-weight:700;margin:0;flex:1}
+  #gateBtn{-webkit-appearance:none;border:0;background:transparent;color:var(--blue);
+           font-size:17px;font-weight:400;padding:6px 0 6px 8px;cursor:pointer}
+  #gateBtn.passed{color:var(--green)}
+  .sub{font-size:13px;color:var(--label2);margin:2px 0 16px;letter-spacing:-.01em}
+  .badge{color:var(--green);font-size:13px;margin-left:6px}
+  .bar{display:flex;gap:0;margin:0 0 14px;background:var(--card);border-radius:var(--radius);
+       padding:12px 4px}
+  .bar span{flex:1;text-align:center;font-size:12px;color:var(--label2);letter-spacing:-.01em}
+  .bar span+span{border-left:.5px solid var(--sep)}
+  .bar b{display:block;font-size:22px;font-weight:600;color:var(--label);letter-spacing:-.02em;margin-top:1px}
+  .card{background:var(--card);border-radius:var(--radius);padding:22px 20px 16px;
+        min-height:230px;display:flex;flex-direction:column;cursor:pointer;
+        transition:transform .12s ease,background .12s ease}
+  .card:active{transform:scale(.992)}
+  .tag{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.02em;margin-bottom:12px}
+  .q{font-size:20px;line-height:1.45;font-weight:600;letter-spacing:-.015em;white-space:pre-wrap}
+  .a{margin-top:16px;padding-top:16px;border-top:.5px solid var(--sep);font-size:17px;
+     line-height:1.65;color:var(--label);white-space:pre-wrap;animation:slideIn .22s ease}
+  .kk{margin-top:14px;padding:12px 14px;background:var(--yellowBG);border-radius:10px;
+      font-size:15px;line-height:1.55;color:var(--orange)}
+  .hint{margin-top:14px;font-size:12px;color:var(--label3)}
+  .src{margin-top:auto;padding-top:14px;font-size:12px;color:var(--label3);letter-spacing:-.01em}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);
+        padding:8px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:17px;font-weight:600;border:0;border-radius:12px;
+               background:var(--fill);color:var(--label);cursor:pointer;
+               transition:transform .1s ease,opacity .1s ease}
+  .dock button:active{transform:scale(.97);opacity:.85}
+  #flip{background:var(--blue);color:#fff;flex:1.3}
+  #bad{color:var(--red)}
+  #good{color:var(--green)}
+  .tools{display:flex;margin:14px 0 0;background:var(--fill);border-radius:9px;padding:2px}
+  .tools button{-webkit-appearance:none;flex:1;border:0;background:transparent;color:var(--label);
+                font-size:13px;font-weight:500;padding:6px 4px;border-radius:7px;cursor:pointer;
+                transition:background .15s ease}
+  .tools button.on{background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:600}
+  .tools .nav{display:none}
+  footer{margin-top:14px;font-size:12px;color:var(--label3);line-height:1.7;text-align:center}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:var(--label2);margin:2px 0 10px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:14px 16px;font-size:17px;
+       line-height:1.4;border:0;border-radius:12px;background:var(--card);color:var(--label);cursor:pointer;
+       transition:transform .1s ease}
+  .opt:active{transform:scale(.99)}
+  .opt.ok{background:rgba(52,199,89,.16);color:var(--green);font-weight:600}
+  .opt.no{background:rgba(255,59,48,.14);color:var(--red)}
+  #exInput{width:100%;margin-top:12px;padding:14px;font-size:17px;line-height:1.6;color:var(--label);
+           border:.5px solid var(--sep);border-radius:12px;background:var(--card);
+           font-family:inherit;resize:vertical}
+  #exInput:focus{outline:2px solid var(--blue);outline-offset:-1px}
+  .why{margin-top:12px;font-size:15px;line-height:1.7;color:var(--label2);background:var(--fill);
+       border-radius:12px;padding:14px;white-space:pre-wrap;animation:slideIn .22s ease}
+  .exDock{display:flex;gap:10px;margin-top:14px}
+  .exDock button{flex:1;min-height:50px;font-size:17px;font-weight:600;border:0;border-radius:12px;
+                 background:var(--fill);color:var(--label);cursor:pointer}
+  .exDock button.primary{background:var(--blue);color:#fff}
+  @keyframes slideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>4.7 发电设备安装技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P157–165 · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P103–113。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"锅炉分类", q:"锅炉按燃料、按燃烧方式、按水循环方式分别可分为哪几类？", a:"按燃料分：燃煤锅炉、燃油锅炉、燃气锅炉和生活垃圾焚烧锅炉。按燃烧方式分：层燃炉、室燃炉和介于二者之间的沸腾（流化床）炉。按锅炉水循环方式分：自然循环锅炉、强制循环锅炉和复合循环锅炉。", k:"燃料：煤、油、气、垃圾焚烧；燃烧：层燃、室燃、沸腾（流化床）；循环：自然、强制、复合", s:"P157"},
+  {id:2, g:"锅炉分类", q:"锅炉按出口工质压力如何分级？各等级的压力范围是多少？", a:"低压锅炉：P＜3.8MPa；中压锅炉：3.8MPa≤P＜5.4MPa；高压锅炉：5.4MPa≤P＜16.7MPa；亚临界锅炉：16.7MPa≤P＜22.1MPa；超临界锅炉：22.1MPa≤P≤25.4MPa；超超临界锅炉：P＞25.4MPa 或额定出口温度≥590℃的锅炉。", k:"分界递进：3.8—5.4—16.7—22.1—25.4；超超临界：＞25.4MPa 或 ≥590℃", s:"P157"},
+  {id:3, g:"锅炉设备组成", q:"锅炉本体的“锅”（汽水系统）由哪些设备组成？", a:"由汽包（汽水分离器及储水箱）、下降管、集箱（联箱）、水冷壁、过热器、再热器、汽温调节装置、排污装置、省煤器及其连接管路的汽水系统组成。", k:"汽包、下降管、集箱、水冷壁、过热器、再热器、调温、排污、省煤器", s:"P158"},
+  {id:4, g:"锅炉设备组成", q:"锅炉本体的“炉”（燃烧系统）由哪些设备组成？", a:"由炉膛（钢架）、炉前煤斗、炉排（炉箅）、分配送风装置、燃烧器、烟道、空气预热器、除渣机等组成。", k:"炉膛、煤斗、炉排、送风、燃烧器、烟道、空预器、除渣机", s:"P158"},
+  {id:5, g:"锅炉设备组成", q:"锅炉辅助设备主要由哪些设备组成？", a:"主要由燃料供应系统设备、送引风设备、汽水系统设备、除渣设备、烟气净化设备、仪表和自动控制系统设备等组成。", k:"燃料供应、送引风、汽水、除渣、烟气净化、仪表自控（六类）", s:"P158"},
+  {id:6, g:"汽包", q:"汽包的结构是怎样的？它在锅炉中起什么作用？", a:"汽包是用钢板焊制成的圆筒形容器，由筒体和封头两部分组成，其直径、长度、重量随锅炉蒸发量的不同而不同。汽包既是自然循环锅炉的一个主要部件，又是将锅炉各部分受热面（如下降管、水冷壁、省煤器和过热器等）连接在一起的构件；它的储热能力可以提高锅炉运行的安全性；在负荷变化时，可以减缓气压变化的速度，从而保证蒸汽品质。", k:"结构：筒体＋封头；三作用：主要部件、连接受热面、储热稳压保汽质", s:"P158"},
+  {id:7, g:"水冷壁", q:"水冷壁分哪两种？如何选用？管式水冷壁的构造是怎样的？", a:"水冷壁是锅炉主要的辐射蒸发受热面，一般分为管式水冷壁和膜式水冷壁两种。小容量、中低压锅炉多采用管式水冷壁，大容量高温高压锅炉均采用膜式水冷壁。管式水冷壁是连接锅筒与集箱、布置在炉墙内侧的一排光管，由普通无缝钢管弯制加工而成，一般是贴近燃烧室炉墙内壁、相互平行地垂直均匀布置，上端与锅筒或上集箱连接，下端与下集箱连接；管径越小，遮盖同样面积的炉墙所消耗的金属材料越少。", k:"小容量中低压—管式；大容量高温高压—膜式；管径越小，遮盖同面积炉墙越省钢", s:"P158"},
+  {id:8, g:"水冷壁", q:"膜式水冷壁有哪几种形式？水冷壁起什么作用？", a:"膜式水冷壁主要包括由管子加焊扁钢和由肋管拼焊两种形式；从布置形式上分为垂直水冷壁和螺旋水冷壁；制造商一般根据建设单位要求和运输能力，在出厂时已经组合成膜式管排形式，通常为10～20m不等。作用：水冷壁可吸收炉膛内的高温辐射热量以加热工质，并使烟气得到冷却，以便进入对流烟道的烟气温度降低到不结渣的温度，可以保护炉墙，因此炉墙结构可以做得轻一些、薄一些；在蒸发同样水量的情况下，采用水冷壁比采用对流管束节省钢材。", k:"两种制作：加焊扁钢、肋管拼焊；两种布置：垂直、螺旋；管排10～20m出厂", s:"P158"},
+  {id:9, g:"锅炉钢架", q:"电站锅炉钢架安装的顺序和主要要求是什么？", a:"根据土建移交的中心线进行基础划线，钢架按从下到上、分层、分区域进行吊装。每层安装先组成一个刚度单元再进行扩展安装；每层钢架安装时除必须保证立柱的垂直度和柱间间距外，立柱上、下段接头之间间隙也必须符合规范要求。为了便于钢架大板梁、受热面大件及空气预热器等安装，可采取部分构件缓装或部分构件交叉安装的方式。", k:"从下到上、分层分区；先组刚度单元再扩展；三控：立柱垂直度、柱间间距、上下段接头间隙", s:"P158"},
+  {id:10, g:"锅炉钢架", q:"锅炉钢架安装找正用什么仪器检查哪些项目？板梁挠度在哪些时机测量？", a:"钢架安装找正主要是用拉钢卷尺检查立柱中心距离和大梁间的对角线长度；用经纬仪检查立柱垂直度；用水准仪检查大板梁水平度和挠度。板梁挠度在板梁承重前、锅炉水压前、锅炉水压试验上水后及放水后、锅炉机组整套启动试运行前进行测量。", k:"卷尺—立柱中心距与对角线；经纬仪—立柱垂直度；水准仪—大板梁水平度与挠度", s:"P159"},
+  {id:11, g:"受热面安装", q:"锅炉受热面组合场地如何确定？哪些设备必须在现场安装？受热面有哪两种组合形式？", a:"锅炉受热面施工场地是根据设备组合后体积、重量以及现场施工条件来决定的。设备组装后体积偏大、重量超过现场起吊能力、炉内空间受限等必须在锅炉现场安装，其余受热面设备要求首先在给定的组合场内组合，然后运往现场吊装。例如：某200MW机组划定140m×50m锅炉受热面组合场，配备32t/32m龙门起重机；组合件外形尺寸一般控制在18m×7m范围之内，质量一般不超过30t。组合形式包括直立式和横卧式，根据设备的结构特征及现场施工条件确定：直立式组合是按设备的安装状态来组合支架，将联箱放置（或悬吊）在支架上部，管屏在联箱下面组装；横卧式组合是将管排横卧摆放在组合支架上与联箱进行组合，然后将组合件竖立后进行吊装。", k:"场地看体积、重量、施工条件；组合件18m×7m、≤30t；直立式联箱在上、横卧式横卧组合后竖立", s:"P159"},
+  {id:12, g:"受热面安装", q:"锅炉水冷壁安装的技术要点有哪些？", a:"水冷壁设备采取地面整体预拼装，拼缝留有适当的预收缩量。螺旋水冷壁安装时进行分层吊装定位，吊带（垂直搭接板）的基准线定位应准确；螺旋水冷壁安装螺旋角偏差控制在0.5°之内。水冷壁拼接焊成整体，必须对炉膛尺寸、对角线进行测量并符合图纸要求，水冷壁燃烧器喷口及吹灰孔应符合设计要求。水冷壁、包墙过热器与刚性梁间必须固定牢固，刚性梁校平装置安装时必须将刚性梁腹板找正，使之呈水平。管屏吊装时应有加固结构并使用专用起吊工具吊装。", k:"地面整体预拼装、留预收缩量；螺旋角偏差≤0.5°；炉膛尺寸与对角线复测", s:"P159"},
+  {id:13, g:"热态调试与试运行", q:"锅炉烘炉的目的是什么？有哪几种烘炉方式？", a:"锅炉炉墙砌筑完成后要进行烘炉，如循环流化床锅炉、生活垃圾焚烧锅炉等。其目的是使锅炉砖墙能够缓慢地干燥，在使用时不致损裂。根据现场的条件和锅炉炉墙的结构形式，可分别采用火焰烘炉、蒸汽烘炉、蒸汽和火焰混合烘炉。", k:"目的：砖墙缓慢干燥、使用不裂；方式：火焰、蒸汽、汽火混合", s:"P159"},
+  {id:14, g:"热态调试与试运行", q:"煮炉及化学清洗的目的是什么？煮炉时间如何规定？化学清洗包括哪些设备？", a:"目的：利用化学药剂在运行前清除锅内的铁锈、油脂和污垢、水垢等，以防止蒸汽品质恶化，并避免受热面因结垢而影响传热和烧坏。煮炉最好在烘炉的后期，与高温烘炉同时进行，以缩短时间和节约燃料；煮炉时间一般为2～3d，如在较低的压力下煮炉，则应适当延长煮炉时间。化学清洗的设备包括省煤器、汽包（汽水分离器）、水冷壁、省煤器至汽包（汽水分离器）连接管道、下降管等水系统管道及设备。", k:"煮炉2～3d、宜在烘炉后期同做；清洗范围：省煤器、汽包、水冷壁、连接管道、下降管", s:"P159"},
+  {id:15, g:"热态调试与试运行", q:"锅炉蒸汽管路的冲洗与吹洗有哪些要求？", a:"锅炉吹管的临时管道系统应由具有设计资质的单位进行设计；在排汽口处加装消声器；锅炉吹管范围应包括减温水系统、锅炉过热器、再热器及过热蒸汽管道。吹洗过程中，至少有一次停炉冷却（时间12h以上），以提高吹洗效果。", k:"临时管道要设计资质；排汽口加消声器；吹管含减温水、过热器、再热器、过热蒸汽管道；冷却≥12h", s:"P159"},
+  {id:16, g:"热态调试与试运行", q:"锅炉试运行的前提条件和升压要求是什么？", a:"锅炉试运行必须是在烘炉煮炉或化学清洗合格的前提下进行。在试运行时使锅炉升压：在锅炉启动时升压应缓慢，升压速度应控制，尽量减小壁温差以保证锅筒的安全工作。要认真检查人孔、焊口、法兰等部件，如发现有泄漏时应及时处理；仔细观察各联箱、汽包（分离器、储水箱）、钢架、管道及支吊架等的热膨胀及其位移是否正常。试运行完毕后，按规定办理移交签证手续。", k:"前提：烘炉煮炉或化学清洗合格；升压缓慢、控速度、减小壁温差", s:"P160"},
+  {id:17, g:"汽轮机", q:"汽轮机按工作原理、热力特性、主蒸汽压力分别可分为哪几类？", a:"汽轮机是以蒸汽为工质的、将热能转化为机械能的旋转式原动机，主要用来驱动发电机生产电能。按工作原理划分为：冲动式汽轮机、反动式汽轮机和冲动、反动联合汽轮机。按热力特性划分为：凝汽式汽轮机、背压式汽轮机、抽气式汽轮机、抽气背压式汽轮机和多压式汽轮机。按主蒸汽压力划分为：低压汽轮机、中压汽轮机、高压汽轮机、超高压汽轮机、亚临界压力汽轮机、超临界压力汽轮机和超超临界压力汽轮机。", k:"原理：冲动、反动、冲动反动联合；热力：凝汽、背压、抽气、抽气背压、多压；压力：低—中—高—超高压—亚临界—超临界—超超临界", s:"P160"},
+  {id:18, g:"汽轮机", q:"汽轮机由哪些设备组成？其本体的静止部分和转动部分各包括什么？", a:"汽轮机主要由汽轮机本体设备、蒸汽系统设备、凝结水系统设备、给水系统设备和其他辅助设备组成。其中本体设备主要由静止部分和转动部分组成：静止部分包括汽缸、喷嘴组、隔板（套）、汽封、轴承及紧固件等；转动部分包括动叶栅、叶轮、主轴、联轴器、盘车器、止推盘、机械危急保安器等。", k:"静：汽缸、喷嘴组、隔板、汽封、轴承、紧固件；动：动叶栅、叶轮、主轴、联轴器、盘车器、止推盘、危急保安器", s:"P160"},
+  {id:19, g:"发电机", q:"发电机按原动机、冷却方式、冷却介质、结构形式分别如何分类？汽轮发电机由哪些部分组成？", a:"按原动机分：汽轮发电机、水轮发电机、柴油发电机、风力发电机和燃气轮发电机。按冷却方式分：外冷式发电机和内冷式发电机。按冷却介质分：气冷、气液冷和液冷。按结构形式分：旋转磁极式和旋转电枢式，大型发电机属于旋转磁极式。汽轮发电机主要由定子和转子两部分组成：定子主要由机座、定子铁芯、定子绕组、端盖等部分组成；转子主要由转子锻件、励磁绕组、护环、中心环和风扇等组成。", k:"定子：机座、定子铁芯、定子绕组、端盖；转子：转子锻件、励磁绕组、护环、中心环、风扇", s:"P160"},
+  {id:20, g:"汽轮机安装", q:"汽轮机安装的主要程序由哪三部分组成？基础和设备的验收、本体安装各包括哪些内容？", a:"由基础和设备的验收、汽轮机本体的安装和其他系统安装三部分组成。基础验收包括标高检查、各基础相对位置检查、沉降观测点的检查及建设单位提供基础预压记录；设备验收包括出厂合格证明书、外观、规格、型号以及数量等复检，以及对汽缸、隔板、转子、轴承、主汽阀及其他零部件进行检查。本体安装包括汽缸、台板和轴承座的就位，汽缸找中，内部套就位和找中，转子就位及联轴器找中心，滑销系统检查及安装，通流间隙调整，上下汽缸闭合安装，对汽缸几何尺寸、轴系中心、通流间隙、轴封间隙有影响的热力管道安装等。其他系统安装包括本体附件安装、油系统冲洗、蒸汽管道吹扫、液压油系统冲洗等。", k:"三大块：基础与设备验收、本体安装、其他系统安装；其他系统＝附件、油冲洗、蒸汽吹扫、液压油冲洗", s:"P161"},
+  {id:21, g:"汽轮机安装", q:"凝汽器安装的技术要点有哪些？汽侧灌水试验有何要求？", a:"凝汽器壳体的就位和连接：鉴于凝汽器结构尺寸相当庞大，其支承方式多采取直接坐落在凝汽器基础上的支承形式；凝汽器与低压缸排汽口之间的连接，采用具有伸缩性能的中间连接段，凝汽器与汽缸连接的全过程中，不得改变汽轮机的定位尺寸，并不得给汽缸附加额外应力。凝汽器内部设备、部件的安装，包括管板、回热系统最后一级低压加热器、管束的安装、连接；凝汽器壳体内的管板、低压加热器的安装，在低压缸就位前就应当完成，管束则可以在低压缸就位之后进行穿管和连接。凝汽器组装完成后，汽侧应进行灌水试验，灌水高度应在汽封注窝以下100mm，维持24h应无渗漏。", k:"灌水高度：汽封注窝以下100mm，维持24h无渗漏；管板与末级低加在低压缸就位前完成", s:"P161"},
+  {id:22, g:"汽轮机安装", q:"下汽缸和轴封安装的技术要点是什么？", a:"下汽缸：在平垫铁安装好后，将斜垫铁放在平垫铁上，并错开一定距离以便调整；将前后座架与前后轴承座连在一起，把紧螺栓，将下汽缸平稳吊起缓慢放在垫铁上，调整垫铁使下缸水平度达到规定要求，其中纵向水平以转子根据洼窝找好中心后的轴颈扬度为准，调整好后穿上地脚螺栓完成安装。轴封：前后轴封的轴封环安装在轴封体槽内，隔板轴封的轴封环直接安装在隔板的轴封槽内，用楔形塞尺在下轴封两侧进行轴向间隙检测；各间隙符合要求后，与汽缸组装，各结合面涂以黑铅粉，用专用起吊工具吊装隔板及导叶环。", k:"下缸纵向水平以轴颈扬度为准；轴封用楔形塞尺测轴向间隙，结合面涂黑铅粉", s:"P161"},
+  {id:23, g:"汽轮机安装", q:"转子安装包括哪些内容？转子吊装和转子测量各有什么要求？", a:"转子安装可以分为转子吊装、转子测量和转子、汽缸找中心。转子吊装应使用由制造厂提供并具备出厂试验证书的专用横梁和吊索，否则应进行200%的工作负荷试验（时间为1h）。转子测量应包括轴颈椭圆度和不柱度的测量、转子跳动测量（径向、端面和推力盘瓢偏度）、转子弯曲度测量、联轴器端面止口配合间隙测量。", k:"无出厂试验证书的横梁吊索：做200%工作负荷试验、1h", s:"P161"},
+  {id:24, g:"汽轮机安装", q:"汽缸扣盖有哪些技术要求？汽缸螺栓冷紧与热紧如何选用？", a:"扣盖工作从下汽缸吊入第一个部件开始至上汽缸就位且紧固连接螺栓为止，全程工作应连续进行，不得中断。汽轮机正式扣盖之前，应将内部零部件全部装齐后进行试扣；试扣前应用压缩空气吹扫汽缸内各部件及其空隙，确保汽缸内部清洁无杂物、结合面光洁，并保证各孔洞通道部分畅通，需堵塞隔绝部分应堵死。试扣空缸要求在自由状态下间隙符合制造厂技术要求；按冷紧要求紧固1/3螺栓后，用0.05mm塞尺检查不应塞入。试扣检验无问题后，在汽缸中分面均匀抹一层涂料，方可正式扣盖。汽缸紧固一般采用冷紧方法，对于高压高温部位大直径汽缸螺栓，使用冷紧方法不能达到设计要求的扭矩，而应采用热紧进行紧固。紧固之后再盘动转子，听其内部应无摩擦和异常声音。", k:"试扣：自由状态间隙合格＋紧1/3螺栓用0.05mm塞尺不塞入；大直径高温高压螺栓改热紧；扣盖连续不中断", s:"P161"},
+  {id:25, g:"汽轮机安装", q:"低压缸组合包括哪三部分？组合时汽缸找中心的基准有哪些？", a:"低压外下缸组合包括：低压外下缸后段（电机侧）与低压外下缸前段（汽侧）先分别就位，调整水平、标高、找中心后试组合，符合要求后，将前、后段分开一段距离，再次清理检查垂直结合面，确认清洁无异物后再进行正式组合。低压外上缸组合包括：先试组合，以检查水平、垂直结合面间隙，符合要求后正式组合。低压内缸组合包括：当低压内缸就位找正、内部套调整完成后，低压转子吊入汽缸中并定位后，再进行通流间隙调整。组合时汽缸找中心的基准可以用激光、拉钢丝、假轴、转子等，目前多采用拉钢丝法。", k:"外下缸、外上缸、内缸三次组合；基准：激光、拉钢丝、假轴、转子（多用拉钢丝法）", s:"P162"},
+  {id:26, g:"汽轮机安装", q:"汽轮机高、中压缸安装的技术要点是什么？", a:"汽轮机高、中压缸是整体到货，现场不需要组合装配。汽轮机轴通过辅装在缸体端部的运输环对转子和汽缸的轴向、径向定位，在汽缸就位前要测量汽缸前后轴封处的径向间隙、汽缸前后缸体基准面与转子凸肩之间的定位尺寸，并以制造厂家的装配记录校核，以检查缸内的转子在运输过程中是否有移动，确保通流间隙不变。高压缸或中压缸目前多数采用上猫爪搁置在轴承支承面上的支承形式；但在高压外缸或中压外缸进行就位、找中时，不可能用上外汽缸及其猫爪来就位、找中，只能用下半汽缸来就位、找中，因此这种形式的下半汽缸下部设置有就位、找中时用的支承面。", k:"整体到货现场不组合；上猫爪支承；外缸就位找中只能用下半汽缸", s:"P162"},
+  {id:27, g:"汽轮机安装", q:"轴系对轮中心找正包括哪些内容？找正顺序和要求是什么？", a:"主要是对高中压对轮中心、中低压对轮中心、低压对轮中心和低压转子-电转子对轮中心的找正。在轴系对轮中心找正时，首先要以低压转子为基准；其次，对轮找中心通常都以全实缸状态进行调整；再次，各对轮找中时的圆周偏差和端面偏差应符合制造厂技术要求；最后，一般在不同阶段要进行多次对轮中心的复查和找正。以125MW亚临界机组为例，轴系中心找正要进行多次，即轴系初找、汽缸扣盖前的复找、基础二次灌浆前的复找、基础二次灌浆后的复找、轴系联结时的复找。", k:"基准：低压转子；状态：全实缸；五次找正：初找、扣盖前、二次灌浆前、二次灌浆后、轴系联结", s:"P162"},
+  {id:28, g:"发电机安装", q:"发电机安装程序是怎样的？", a:"发电机安装程序：定子就位→定子及转子水压试验→发电机穿转子→氢冷器安装→端盖、轴承、密封瓦调整安装→励磁机安装→对轮复找中心并连接→整体气密性试验等。", k:"定子就位→水压试验→穿转子→氢冷器→端盖轴承密封瓦→励磁机→对轮复找连接→整体气密性", s:"P163"},
+  {id:29, g:"发电机安装", q:"发电机定子吊装有哪几种方案？起吊与就位的操作要求是什么？", a:"发电机定子吊装通常采用液压提升装置吊装、专用吊架吊装和行车改装系统吊装三种方案。一般是采用主厂房中的两台行车并在行车大跑上加装2台临时小跑，再配制吊梁同时抬吊，起吊定子离地1m左右，要试刹车2～3次，确认刹车良好后开始正式起吊。定子就位：提升至发电机定子最低点超过既定标高后，开动行车大车机构行至定子中心线与就位中心线重合，缓缓将定子落于基础上。", k:"三方案：液压提升、专用吊架、行车改装；离地1m试刹车2～3次", s:"P163"},
+  {id:30, g:"发电机安装", q:"发电机转子穿装前有哪些试验和检查？常用穿装方法有哪些？", a:"发电机转子穿装前进行单独气密性试验，待消除泄漏后，应再进行漏气量试验，试验压力和允许漏气量应符合制造厂规定。转子穿装工作必须在完成机务（如支架、千斤顶、吊索等服务准备工作）、电气与热工仪表的各项工作后，会同有关人员对定子和转子进行最后清扫检查，确信其内部清洁、无任何杂物并经签证后方可进行。常用方法有滑道式方法、接轴的方法、用后轴承座作平衡重量的方法、用两台跑车的方法等，具体机组采用何种方法一般由制造厂在产品说明书中明确说明，并提供专用的工具。", k:"先单体气密性→再漏气量试验；四法：滑道式、接轴、后轴承座配重、两台跑车", s:"P163"},
+  {id:31, g:"太阳能发电", q:"太阳能发电设备如何分类？光伏发电设备由哪些部分组成？", a:"太阳能发电设备包括光伏发电、光热发电，光热发电又分为槽式光热发电、塔式光热发电。光伏发电设备主要由光伏支架、光伏组件、汇流箱、逆变器、电气设备等组成；光伏支架包括跟踪式支架、固定支架和手动可调支架等。", k:"光伏五件：支架、组件、汇流箱、逆变器、电气设备；支架三类：跟踪式、固定、手动可调", s:"P163"},
+  {id:32, g:"太阳能发电", q:"槽式与塔式光热发电的集热设备各由哪些部分组成？", a:"光热发电设备包括集热器设备、热交换器、汽轮发电机等设备。槽式光热发电的集热器由集热器支架（驱动塔架、支架）、集热器系统设备（驱动轴、悬臂、反射镜、集热管、集热管支架、管道支架等）、换热器系统设备和发电常规岛设备组成。塔式光热发电的集热设备由镜场设备（包括反射镜和跟踪设备）、吸热塔钢结构、集热塔（吸热塔）、热储存设备、热交换设备和发电常规岛设备组成。", k:"槽式：集热器支架＋集热器系统＋换热器系统＋常规岛；塔式：镜场＋吸热塔钢结构＋集热塔＋储热＋换热＋常规岛", s:"P164"},
+  {id:33, g:"太阳能发电", q:"光伏发电、槽式光热发电、塔式光热发电设备的安装程序分别是什么？", a:"光伏发电：基础验收→设备检查→光伏支架安装→光伏组件安装→汇流箱安装→逆变器安装→电气设备安装→调试→验收。槽式光热发电：基础验收→设备检查→集热器支架安装→集热器及附件安装→换热器及管道系统安装→汽轮发电机设备安装→电气设备安装→调试→验收。塔式光热发电：基础验收→设备检查→定日镜安装→吸热器钢结构安装→吸热器及系统管道安装→热储存设备安装→换热器及系统管道安装→汽轮发电机设备安装→电气设备安装→调试→验收。", k:"三者均以基础验收、设备检查开头，以电气设备安装→调试→验收收尾；中间按支架→组件/集热器→换热器及管道→汽轮发电机", s:"P164"},
+  {id:34, g:"太阳能发电", q:"光伏发电设备的支架、组件、汇流箱、逆变器安装各有什么技术要求？", a:"支架安装：固定支架和手动可调支架采用型钢结构的，支架倾斜度应符合设计要求，手动可调支架调整动作灵活，跟踪式支架与基础固定牢固。光伏组件安装：光伏组件及各部件设备采用螺栓进行固定，力矩应符合产品或设计的要求；光伏组件之间的接线在组串后应进行光伏组件串的开路电压和短路电流的测试，施工时严禁接触组串的金属带电部位。汇流箱安装：检查汇流箱部件应完好且接线不松动，所有开关和熔断器处于断开状态，汇流箱安装垂直度偏差应小于1.5mm。逆变器安装：逆变器基础型钢的顶部应高出抹平地面10mm，并可靠接地，逆变器本体的预留孔及电缆管口应进行防火封堵。", k:"汇流箱垂直度＜1.5mm；逆变器基础型钢高出抹平地面10mm；组串后测开路电压与短路电流", s:"P164"},
+  {id:35, g:"太阳能发电", q:"槽式集热器和塔式吸热器安装各有哪些技术要求？", a:"槽式光热发电设备集热器安装：集热器组合时，对紧固件应先进行初紧，待全部安装完成后方可终紧，并对初拧扭矩、终拧扭矩进行记录；集热器应从驱动端到末端进行安装，安装时轴系间的销钉或销轴应满足技术要求，紧固螺栓应满足力矩设计要求；每个单元集热器安装后应进行旋转试验，试验转动角度应在-180°和+180°之间，偏差在10°。塔式光热发电集热设备安装：定日镜与支架固定牢固，安装位置、镜面调整角度符合设计要求；塔式吸热器管屏设备内部应清洁，无杂物、无堵塞；安装时应对称进行，单面安装应不多于2组。", k:"槽式：先初紧后终紧并记录扭矩，旋转试验±180°、偏差10°；塔式：对称安装、单面≤2组", s:"P164"},
+  {id:36, g:"风力发电", q:"风力发电设备如何分类？主要由哪些设备组成？", a:"风力发电设备可分为陆地风力发电和海上风力发电。陆地风力发电设备多安装在山地、草原等风力集中的地区；海上风力发电设备多安装在滩头和浅海等地区，其施工安全风险相对陆地风力发电设备施工安全风险高。风力发电厂一般由多台风机组成，每台风机构成一个独立的发电单元；风力发电设备主要包括塔架、机舱、发电机、轮毂、叶片、电气设备等。", k:"分陆地、海上两类；组成：塔架、机舱、发电机、轮毂、叶片、电气设备", s:"P164"},
+  {id:37, g:"风力发电", q:"风力发电机组的安装程序是什么？", a:"风力发电机组的安装程序：基础及锚栓安装→塔底变频器、电器柜安装→塔架安装→机舱安装→发电机安装→叶片与轮毂地面组合→叶轮安装→其他零部件安装→电气设备安装→调试试运行→验收。", k:"锚栓→变频器柜→塔架→机舱→发电机→叶片轮毂组合→叶轮→其他→电气→调试验收", s:"P165"},
+  {id:38, g:"风力发电", q:"风力发电设备锚栓、塔筒、机舱、叶轮安装各有什么技术要求？", a:"锚栓安装：检查清理基础锚栓及上锚板平面的水平度，确保水平度偏差在风机厂家规定的范围内。塔筒安装：塔筒分多段供货，现场根据塔筒重量、尺寸以及安装高度选择吊车的吊装工况；按照由下至上的吊装顺序进行塔筒的安装；塔筒结合面法兰清理打磨干净，第一节安装前在第一节塔筒下法兰外缘和内缘各涂一圈密封胶。机舱安装：使用主吊机械吊装机舱就位，安装风速仪、航空灯等附件设备；使用电动扳手和液压扳手等设备对连接螺栓进行紧固。叶轮安装：先将轮毂固定在组合支架上与三个叶片进行组合；吊装组合后的叶轮要保持叶片位置和角度正确，吊装过程中对叶片与吊索具及溜绳进行防护。", k:"塔筒由下至上，首节下法兰内外缘各涂一圈密封胶；机舱装风速仪、航空灯；叶轮＝轮毂＋三叶片地面组合", s:"P165"},
+];
+
+const EXAM = [
+  { type:"正向", cardIds:[2],
+    q:"锅炉按出口工质压力分级时，亚临界锅炉的压力范围是多少？超超临界锅炉如何界定？",
+    answer:"亚临界锅炉：16.7MPa≤P＜22.1MPa。超超临界锅炉：P＞25.4MPa 或额定出口温度≥590℃的锅炉。",
+    keys:["16.7MPa≤P＜22.1MPa", "P＞25.4MPa", "额定出口温度≥590℃"],
+    need:2 },
+  { type:"正向", cardIds:[21],
+    q:"凝汽器组装完成后汽侧灌水试验的灌水高度和持续时间要求是什么？",
+    answer:"灌水高度应在汽封注窝以下100mm，维持24h应无渗漏。",
+    keys:["汽封注窝以下100mm", "24h", "无渗漏"],
+    need:2 },
+  { type:"选择", cardIds:[23],
+    q:"汽轮机转子吊装若未使用制造厂提供并具备出厂试验证书的专用横梁和吊索，则应进行的工作负荷试验是（ ）。",
+    options:["A. 100%的工作负荷试验，时间1h", "B. 150%的工作负荷试验，时间1h", "C. 200%的工作负荷试验，时间1h", "D. 200%的工作负荷试验，时间2h"],
+    correct:2,
+    why:"教材原文：转子吊装应使用由制造厂提供并具备出厂试验证书的专用横梁和吊索，否则应进行200%的工作负荷试验（时间为1h）。错项分别改动了试验比例或持续时间。" },
+  { type:"选择", cardIds:[34],
+    q:"光伏发电设备安装中，汇流箱安装的垂直度偏差应小于（ ）。",
+    options:["A. 1.0mm", "B. 1.5mm", "C. 2.0mm", "D. 10mm"],
+    correct:1,
+    why:"汇流箱安装垂直度偏差应小于1.5mm；10mm是逆变器基础型钢顶部高出抹平地面的数值，两者不可混用。" },
+  { type:"反向", cardIds:[13, 14],
+    q:"某锅炉炉墙砌筑完成后，为使砖墙缓慢干燥、使用时不开裂而进行的工序，以及用化学药剂清除锅内铁锈、油脂、污垢和水垢的工序，分别叫什么？",
+    answer:"前者为烘炉；后者为煮炉（及化学清洗）。",
+    keys:["烘炉", "煮炉", "化学清洗"],
+    need:2 },
+  { type:"场景", cardIds:[27, 24],
+    q:"某电站汽轮机在扣盖前需复找轴系对轮中心，基础二次灌浆前后还要复查。按教材要求，轴系对轮中心找正应遵循哪些做法？",
+    answer:"以低压转子为基准；对轮找中心通常以全实缸状态进行调整；各对轮找中时的圆周偏差和端面偏差应符合制造厂技术要求；在不同阶段多次复查和找正，即轴系初找、汽缸扣盖前的复找、基础二次灌浆前的复找、基础二次灌浆后的复找、轴系联结时的复找。",
+    keys:["以低压转子为基准", "全实缸状态调整", "圆周与端面偏差符合制造厂要求", "分阶段多次复找"],
+    need:2 }
+];
+
+const KEY_STATUS = "erjian_sw_4_7_status";
+const KEY_PASS = "erjian_sw_4_7_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

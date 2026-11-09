@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 4.3 电气装置安装技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  :root{
+    --bg:#F2F2F7; --card:#FFFFFF; --label:#000000; --label2:rgba(60,60,67,.6);
+    --label3:rgba(60,60,67,.3); --sep:rgba(60,60,67,.29); --blue:#007AFF;
+    --red:#FF3B30; --green:#34C759; --orange:#FF9500; --yellowBG:#FFF7E0;
+    --fill:rgba(120,120,128,.12); --radius:12px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#000; --card:#1C1C1E; --label:#FFF; --label2:rgba(235,235,245,.6);
+          --label3:rgba(235,235,245,.3); --sep:rgba(84,84,88,.65); --yellowBG:#3A2F12;
+          --fill:rgba(120,120,128,.24)}
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0 auto;padding:8px 16px 108px;max-width:640px;background:var(--bg);color:var(--label);
+       font:17px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .top{display:flex;align-items:center;gap:12px;margin:6px 0 2px}
+  h1{font-size:28px;line-height:1.2;letter-spacing:-.02em;font-weight:700;margin:0;flex:1}
+  #gateBtn{-webkit-appearance:none;border:0;background:transparent;color:var(--blue);
+           font-size:17px;font-weight:400;padding:6px 0 6px 8px;cursor:pointer}
+  #gateBtn.passed{color:var(--green)}
+  .sub{font-size:13px;color:var(--label2);margin:2px 0 16px;letter-spacing:-.01em}
+  .badge{color:var(--green);font-size:13px;margin-left:6px}
+  .bar{display:flex;gap:0;margin:0 0 14px;background:var(--card);border-radius:var(--radius);
+       padding:12px 4px}
+  .bar span{flex:1;text-align:center;font-size:12px;color:var(--label2);letter-spacing:-.01em}
+  .bar span+span{border-left:.5px solid var(--sep)}
+  .bar b{display:block;font-size:22px;font-weight:600;color:var(--label);letter-spacing:-.02em;margin-top:1px}
+  .card{background:var(--card);border-radius:var(--radius);padding:22px 20px 16px;
+        min-height:230px;display:flex;flex-direction:column;cursor:pointer;
+        transition:transform .12s ease,background .12s ease}
+  .card:active{transform:scale(.992)}
+  .tag{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.02em;margin-bottom:12px}
+  .q{font-size:20px;line-height:1.45;font-weight:600;letter-spacing:-.015em;white-space:pre-wrap}
+  .a{margin-top:16px;padding-top:16px;border-top:.5px solid var(--sep);font-size:17px;
+     line-height:1.65;color:var(--label);white-space:pre-wrap;animation:slideIn .22s ease}
+  .kk{margin-top:14px;padding:12px 14px;background:var(--yellowBG);border-radius:10px;
+      font-size:15px;line-height:1.55;color:var(--orange)}
+  .hint{margin-top:14px;font-size:12px;color:var(--label3)}
+  .src{margin-top:auto;padding-top:14px;font-size:12px;color:var(--label3);letter-spacing:-.01em}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);
+        padding:8px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:17px;font-weight:600;border:0;border-radius:12px;
+               background:var(--fill);color:var(--label);cursor:pointer;
+               transition:transform .1s ease,opacity .1s ease}
+  .dock button:active{transform:scale(.97);opacity:.85}
+  #flip{background:var(--blue);color:#fff;flex:1.3}
+  #bad{color:var(--red)}
+  #good{color:var(--green)}
+  .tools{display:flex;margin:14px 0 0;background:var(--fill);border-radius:9px;padding:2px}
+  .tools button{-webkit-appearance:none;flex:1;border:0;background:transparent;color:var(--label);
+                font-size:13px;font-weight:500;padding:6px 4px;border-radius:7px;cursor:pointer;
+                transition:background .15s ease}
+  .tools button.on{background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:600}
+  .tools .nav{display:none}
+  footer{margin-top:14px;font-size:12px;color:var(--label3);line-height:1.7;text-align:center}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:var(--label2);margin:2px 0 10px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:14px 16px;font-size:17px;
+       line-height:1.4;border:0;border-radius:12px;background:var(--card);color:var(--label);cursor:pointer;
+       transition:transform .1s ease}
+  .opt:active{transform:scale(.99)}
+  .opt.ok{background:rgba(52,199,89,.16);color:var(--green);font-weight:600}
+  .opt.no{background:rgba(255,59,48,.14);color:var(--red)}
+  #exInput{width:100%;margin-top:12px;padding:14px;font-size:17px;line-height:1.6;color:var(--label);
+           border:.5px solid var(--sep);border-radius:12px;background:var(--card);
+           font-family:inherit;resize:vertical}
+  #exInput:focus{outline:2px solid var(--blue);outline-offset:-1px}
+  .why{margin-top:12px;font-size:15px;line-height:1.7;color:var(--label2);background:var(--fill);
+       border-radius:12px;padding:14px;white-space:pre-wrap;animation:slideIn .22s ease}
+  .exDock{display:flex;gap:10px;margin-top:14px}
+  .exDock button{flex:1;min-height:50px;font-size:17px;font-weight:600;border:0;border-radius:12px;
+                 background:var(--fill);color:var(--label);cursor:pointer}
+  .exDock button.primary{background:var(--blue);color:#fff}
+  @keyframes slideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>4.3 电气装置安装技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P123–136 · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P103–113。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"变配电设备安装程序", q:"油浸式电力变压器的施工程序是什么？", a:"开箱检查→二次搬运→设备就位→吊芯检查→附件安装→滤油、注油→交接试验→验收。", k:"箱、运、位、芯、附、油、试、验", s:"P123"},
+  {id:2, g:"变配电设备安装程序", q:"真空断路器和六氟化硫断路器的安装程序分别是什么？", a:"真空断路器：开箱检查→真空断路器就位→操作机构安装→检查调整→机械及电气性能试验；六氟化硫断路器：开箱检查→本体安装→充加六氟化硫→操作机构安装→检查调整→机械及电气性能试验。", k:"真空：箱—位—机—调—试；SF6：箱—体—气—机—调—试", s:"P123"},
+  {id:3, g:"变配电设备安装程序", q:"隔离开关、电抗器、电容器的安装程序分别是什么？", a:"隔离开关：开箱检查→本体安装→操作机构安装→检查调整；电抗器：基础检查→开箱检查→交接试验→电抗器吊装→电抗器找平、找正→电抗器固定→安装接地线；电容器：开箱检查→框架制作安装→电容器安装→接线→送电前检查→送电运行验收。", k:"隔离开关：箱—体—机—调；电抗器：基—箱—试—吊—校—固—地；电容器：箱—架—装—接—查—验", s:"P124"},
+  {id:4, g:"变压器运输与就位", q:"充干燥气体运输变压器时，油箱内气体压力和干燥气体露点应满足什么要求？", a:"油箱内的气体压力应保持在0.01~0.03MPa，干燥气体露点必须低于-40℃，始终保持正压力，并设置压力表进行监视。", k:"0.01~0.03MPa、露点低于-40℃", s:"P124"},
+  {id:5, g:"变压器运输与就位", q:"机械牵引变压器时，牵引着力点位置、运输倾斜角和牵引速度有何规定？", a:"牵引着力点应在变压器重心以下，运输倾斜角不得超过15°，并采取防滑、防溜措施，牵引速度不应超过2m/min。", k:"重心下、15°、2m/min", s:"P124"},
+  {id:6, g:"变压器运输与就位", q:"变压器吊装时钢丝绳应挂在何处？装有气体继电器的变压器顶盖应形成多大坡度？", a:"钢丝绳必须挂在油箱的吊钩上，变压器顶盖上部的吊环仅作吊芯检查用，严禁用此吊环吊装整台变压器；装有气体继电器的变压器，应使顶盖沿气体继电器的气流方向有1.0%~1.5%的升高坡度。", k:"挂油箱吊钩、坡度1.0%~1.5%", s:"P124"},
+  {id:7, g:"变压器吊芯检查", q:"油浸式电力变压器是否需要吊芯检查，由哪些因素确定？", a:"根据变压器的大小、制造厂规定、存放时间、运输过程中有无异常和建设单位要求来确定。", k:"大小、规定、时间、异常、要求", s:"P124"},
+  {id:8, g:"变压器吊芯检查", q:"变压器吊芯时对吊索夹角和器身有什么要求？吊芯检查哪些内容？", a:"吊索与铅垂线的夹角不宜大于30°，器身不得与箱壁有接触，器身检查完毕后必须用合格的变压器油进行冲洗；检查内容：铁芯、绕组检查，绝缘围屏、引出线绝缘检查，无励磁调压切换装置、有载调压切换装置检查，绝缘屏障检查，强迫油循环管路与下轭绝缘接口部位检查。", k:"30°、合格变压器油冲洗；芯、圈、调压装置、屏障、管路", s:"P124"},
+  {id:9, g:"变压器接地", q:"变压器接地有哪些要求？", a:"变压器低压侧中性点必须直接与接地装置引出的接地干线连接，变压器箱体、外壳、支架应接地，且有标识。", k:"", s:"P124"},
+  {id:10, g:"变压器交接试验与送电", q:"变压器交接试验包括哪些项目？", a:"绝缘油试验；SF6气体含水量检验；绕组连同套管的直流电阻测量；绕组连同套管的绝缘电阻、吸收比测量；绕组连同套管的交流耐压试验；铁芯及夹件的绝缘电阻测量；分接开关电压比检查；变压器三相连接组别检查。", k:"油、气、阻、绝、压、铁、比、组", s:"P125"},
+  {id:11, g:"变压器交接试验与送电", q:"变压器交接试验中，SF6气体含水量、绕组直流电阻、电压比偏差的限值各是多少？", a:"SF6气体含水量（20℃的体积分数）不宜大于250μL/L；绕组连同套管的直流电阻与同温下产品出厂实测数值比较，相应变化不应大于2%；电压等级35kV以下、电压比小于3的变压器，电压比允许偏差应为±1%。", k:"250μL/L、2%、±1%", s:"P125"},
+  {id:12, g:"变压器交接试验与送电", q:"变压器送电试运行有哪些要求？", a:"第一次投入时可全压冲击合闸，冲击合闸宜由高压侧投入；应进行5次空载全压冲击合闸，每次间隔时间宜为5min，应无异常情况，励磁涌流不应引起保护装置的误动作；空载运行24h，无异常情况方可投入负荷运行，并联运行应核对好相位。", k:"5次、间隔5min、空载24h", s:"P125"},
+  {id:13, g:"真空断路器与GIS安装要求", q:"真空断路器安装有哪些要求？", a:"安装应垂直牢固，相间支持瓷套应在同一水平面上；三相联动连杆的拐臂应在同一水平面上，拐臂角度应一致；安装完毕后应先进行手动缓慢分、合闸操作，手动操作正常后方可进行电动分、合闸操作；行程、压缩行程在现场能够测量时，测量值应符合产品技术文件要求，三相同期性应符合产品技术文件要求。", k:"", s:"P126"},
+  {id:14, g:"真空断路器与GIS安装要求", q:"GIS安装对环境条件和内部检查有哪些要求？", a:"室外安装的GIS应在无风沙、无雨雪、空气相对湿度小于80%的条件下进行，并采取防尘、防潮措施；预充氮气的箱体应先排氮，然后充干燥空气，箱体内空气中的氧气含量必须达到18%以上时，安装人员才允许进入内部进行检查或安装；连接插件的触头中心应对准插口，插入深度、接触电阻不宜超过产品技术文件规定值的1.1倍；已用过的密封垫（圈）不得重复使用。", k:"", s:"P126"},
+  {id:15, g:"GIS充气与操动机构", q:"GIS抽真空检漏的合格标准及充气后的检查要求是什么？", a:"抽真空至规定指标，真空度为133×10⁻⁶MPa，再继续抽气30min，停泵30min，记录真空度A，再隔5h读真空度B，若B-A<133×10⁻⁶MPa，则认为合格；GIS可采用充高纯氮气（纯度99.999%）或抽真空进行内部净化和检漏；充气后对设备密封处、焊缝及管路接头全面检漏，充装完毕24h后对设备中气体进行湿度测量。", k:"133×10⁻⁶MPa、抽30min停30min、隔5h、24h、纯度99.999%", s:"P127"},
+  {id:16, g:"GIS充气与操动机构", q:"操动机构安装有哪些要求？", a:"SF6断路器和GIS配置的操动机构分为液压机构、气动机构、弹簧机构，真空断路器多采用弹簧机构；底座或支架与基础间的垫片不宜超过3片，总厚度不应超过10mm；操动机构应具有可靠的防止跳跃功能，采用分相操作机构的应具有可靠的防止非全相运行的功能，远方和就地操作之间应有闭锁。", k:"3片、总厚度10mm", s:"P127"},
+  {id:17, g:"隔离开关与负荷开关", q:"隔离开关安装有哪些要求？", a:"各支柱绝缘子间应连接牢固，安装时可用金属垫片校正其水平或垂直偏差，使触头相互对准、接触良好；安装螺栓宜由下向上穿入，组装完毕应用力矩扳手检查所有安装部位的螺栓，力矩值应符合产品技术文件要求；相间距离允许偏差10mm，相间连杆应在同一水平线上；触头表面应平整、清洁，并涂以薄层中性凡士林。", k:"", s:"P127"},
+  {id:18, g:"电抗器与电容器", q:"干式电抗器的绕向和接地有哪些要求？", a:"干式空心电抗器应按其编号进行安装：三相垂直排列时，中间一相线圈的绕向应与上、下两相相反，各相中心线应一致；两相重叠、一相并列时，重叠的两相绕向应相反，另一相应与上面的一相绕向相同；三相水平排列时，三相绕向应相同。上下重叠安装时，应在其绝缘子顶帽上放置与顶帽同样大小且厚度不超过4mm的绝缘纸垫片或橡胶垫片。干式铁芯电抗器的铁芯应一点接地；干式空心电抗器支柱绝缘子的接地线不应构成闭合环路。", k:"4mm垫片、铁芯一点接地、接地线不成闭合环路", s:"P128"},
+  {id:19, g:"电抗器与电容器", q:"电容器安装有哪些要求？", a:"支架安装水平允许偏差为3mm/m，支架立柱间距允许偏差为5mm，构件间垫片不得多于1片、厚度不应大于3mm，紧固件全部采用热镀锌制品；三相电容量的差值宜调配到最小，其最大与最小的差值不应超过三相平均电容值的5%；电容器的配置应使其铭牌面向通道一侧，并有顺序编号。", k:"3mm/m、5mm、1片3mm、5%", s:"P128"},
+  {id:20, g:"断路器交接试验", q:"真空断路器和六氟化硫断路器的交接试验内容分别有哪些？", a:"真空断路器：测量绝缘电阻，测量每相导电回路电阻，交流耐压试验，测量分、合闸时间，测量分、合闸同期性，测量合闸时触头弹跳时间，测量分、合闸线圈绝缘电阻及直流电阻，断路器操动机构试验；六氟化硫断路器：测量绝缘电阻，测量每相导电回路电阻，交流耐压试验，测量分、合闸时间，测量分、合闸速度，测量分、合闸线圈绝缘电阻及直流电阻，断路器操动机构试验，断路器内六氟化硫气体含水量。", k:"真空多测触头弹跳时间；SF6多测分合闸速度和气体含水量", s:"P128"},
+  {id:21, g:"配电系统送电与耐压试验", q:"高压设备耐压试验有哪些安全要求？直流耐压试验如何升压和放电？", a:"设备宜单独进行耐压试验，在高压试验设备和高电压引出线周围应设置防护栏并悬挂警示牌；电压等级为10kV时，不设防护栏时的最小安全距离为0.7m；直流耐压试验时，试验电压按每级0.5倍额定电压分阶段升高，每阶段停留1min并记录泄漏电流，试验结束后应对直流试验设备及大电容的被试设备多次放电，放电时间至少1min以上。", k:"10kV不设栏0.7m；每级0.5倍、停留1min、放电≥1min", s:"P129"},
+  {id:22, g:"配电系统送电与耐压试验", q:"配电系统送电试运行的检查顺序和逐级试通电原则是什么？", a:"先进行二次回路通电检查，后再进行一次回路通电检查；按已批准的受电作业指导书，接受电网侧（变压器高压侧）供电，配电系统应按先高压后低压、先干线后支线的原则逐级试通电。", k:"先二次后一次；先高压后低压、先干线后支线", s:"P129"},
+  {id:23, g:"电动机安装", q:"电动机在什么情况下必须进行干燥处理？", a:"1kV及以下电动机使用500~1000V兆欧表测量，绝缘电阻值低于1MΩ/kV的；1kV以上电动机使用2500V摇表，定子绕组绝缘电阻低于1MΩ/kV、转子绕组绝缘电阻低于0.5MΩ/kV，并做吸收比（R60/R15）试验，吸收比小于1.3的；以上两种情况电动机必须进行干燥处理。", k:"1MΩ/kV、转子0.5MΩ/kV、吸收比1.3", s:"P129"},
+  {id:24, g:"电动机安装", q:"电动机干燥时对温度和干燥完毕的判定有何要求？", a:"干燥时温度应缓慢上升，一般每小时的温升控制在5~8℃；铁芯和绕组的最高温度应控制在70~80℃；当电动机绝缘电阻达到规范要求，在同一温度下经5h稳定不变后认定干燥完毕。", k:"5~8℃/h、70~80℃、5h", s:"P130"},
+  {id:25, g:"电动机安装", q:"电动机试运行前和试运行中应检查哪些内容？", a:"试运行前：用500V兆欧表测量电动机绕组绝缘电阻，380V异步电动机的绕组绝缘电阻不应低于0.5MΩ；保护接地线必须连接可靠，接地线（铜芯）截面积不小于4mm²；检查联轴器、电源开关与启动设备、热继电器及脱扣器整定，绕线式异步电动机还应检查滑环和电刷。试运行中：旋转方向不符合要求时，可在电源侧或电动机接线盒内对调任意两根导线；轴承温升不应超过规定值；振动（双振幅值）不应大于标准规定值；第一次启动一般在空载情况下进行，空载运行时间一般为2h，并记录空载电流。", k:"0.5MΩ、4mm²、空载2h", s:"P130"},
+  {id:26, g:"架空线路", q:"水泥杆有哪些外观要求？电杆按用途和受力情况分为哪几种？", a:"水泥杆不应出现纵向裂纹，横向裂纹的宽度不应超过0.1mm、长度不应超过电杆的1/3周长，杆长弯曲值不应超过杆长的1/1000；按电杆用途和受力情况分为耐张杆、转角杆、终端杆、分支杆、跨越杆、直线杆。", k:"0.1mm、1/3周长、1/1000", s:"P131"},
+  {id:27, g:"架空线路", q:"电杆基坑定位和电杆组立的允许偏差有哪些？", a:"直线杆的顺线路方向位移，35kV架空电力线路不应超过设计档距的1%，10kV及以下架空电力线路不应超过3%；卡盘安装深度允许偏差为±50mm，设计无要求时上平面距地面不应小于500mm；分段金属杆焊接后整杆弯曲度不应超过电杆全长的2/1000；单电杆立直后倾斜度允许偏差：10kV以上不应大于杆长的3/1000，10kV及以下不应大于杆顶直径的1/2。", k:"1%、3%、±50mm、500mm、2/1000、3/1000或1/2", s:"P131"},
+  {id:28, g:"架空线路", q:"拉线制作安装有哪些要求？", a:"采用镀锌铁丝制作的拉线不应少于3股，镀锌铁丝直径不应小于4mm，绞合均匀，不应出现抽筋现象；也可采用截面积不小于25mm²的钢绞线制作；拉线制作安装应分为三段，上段拉线绝缘子距地面不应小于2.5m；同一电杆上装设多条拉线时，各拉线的受力应一致。", k:"3股、4mm、25mm²、2.5m", s:"P131"},
+  {id:29, g:"架空线路", q:"导线连接的握着强度和接头数量有哪些规定？", a:"液压握着强度不得小于导线设计使用拉断力的95%；螺栓式耐张线夹的握着强度不得小于90%；钳压管直线连接的握着强度不得小于95%；66kV及以下架空输电线路，在一个档距内每根导线或架空地线上不应超过一个接续管和三个补修管，当张力放线时不应超过两个补修管；110kV架空输电线路在一个档距内不应超过一个接续管和两个补修管。", k:"95%、90%、95%；66kV为1个接续管+3个补修管（张力放线2个）、110kV为1+2", s:"P132"},
+  {id:30, g:"架空线路", q:"架空线路试验包括哪些内容？", a:"测量线路的绝缘电阻应不小于验收规范规定；用红外线测温仪测量导线接头的温度，以检验接头的连接质量；测量杆塔防雷接地线与接地装置的接地电阻值应符合设计规定；检查架空线各相的两侧相位应一致；在额定电压下对空载线路的冲击合闸试验应进行3次。", k:"绝缘、测温、接地电阻、相位、冲击合闸3次", s:"P132"},
+  {id:31, g:"电缆敷设", q:"电缆支架安装有哪些要求？", a:"电缆支架应安装在结构体上，不应安装在轻质墙体上；金属支架全长均应良好接地，全长与接地线不少于2处；支架最下层至地面的距离：电缆夹层非通道处不小于200mm，电缆夹层通道处不小于1400mm，室内机房和活动区域不小于2000mm。", k:"接地2处；200/1400/2000mm", s:"P133"},
+  {id:32, g:"电缆敷设", q:"电缆本体敷设有哪些要求？", a:"电缆切断后应在4h之内进行封头；敷设顺序应从电缆集中点（配电室、控制室）向电缆分散点敷设，先敷设线路长、截面大的电缆，后敷设线路短、截面小的电缆，先敷设电力、动力电缆，后敷设控制、通信电缆；施放时必须每隔1.5~2m放置滑轮一个；用机械牵引敷设电缆时速度一般不超过15m/min；电缆终端头处、接头处、分支处、直线段每隔50~100m处应挂标志牌。", k:"4h封头、1.5~2m滑轮、15m/min、50~100m标志牌", s:"P133"},
+  {id:33, g:"电缆敷设", q:"电缆直埋敷设有哪些要求？", a:"直埋电缆应使用铠装电缆，铠装电缆的金属保护层要可靠接地，接地电阻不得大于10Ω；电缆沟的沟深一般为0.9m，一般电缆埋深不应小于0.7m，穿越农田时不应小于1m；电缆敷设后上面要铺100mm厚的软土或细沙，再盖上混凝土保护板、警示带，覆盖宽度应超过电缆两侧以外各50mm。", k:"10Ω、沟深0.9m、埋深0.7m（农田1m）、铺100mm、各超50mm", s:"P133"},
+  {id:34, g:"母线安装", q:"母线加工有哪些要求？", a:"母线弯曲有立弯、平弯及扭弯三种，弯曲应采用冷弯，不得采用热弯；螺孔间中心距离误差允许为±0.5mm，螺孔直径不应大于螺栓直径1mm；锉磨加工后铜母线不可超过原截面的3%，铝母线不可超过原截面的5%；加工后应在接触面上涂以电力复合脂。", k:"只冷弯；±0.5mm、1mm；铜3%、铝5%", s:"P134"},
+  {id:35, g:"母线安装", q:"母线螺栓连接有哪些要求？", a:"母线平置时螺栓应由下向上穿，在其余情况下螺母应置于维护侧；螺栓连接的母线两侧均应有平垫圈，相邻螺栓垫圈间应有3mm以上的净距，螺母侧应装有弹簧垫圈或锁紧螺母；母线的螺栓连接必须用力矩扳手紧固；铜与铜的连接，在室外、高温且潮湿或对母线有腐蚀性气体的室内必须搪锡，在干燥的室内可直接连接。", k:"由下向上穿、3mm净距、力矩扳手、潮湿处搪锡", s:"P134"},
+  {id:36, g:"母线安装", q:"交流母线的相序排列和相色是如何规定的？", a:"三相交流母线的L1相为黄色、L2相为绿色、L3相为红色，中性线N应为淡蓝色；上下布置时，应由上到下排列为L1、L2、L3相；水平布置时，应由盘后向盘面排列为L1、L2、L3相；交流母线的引下线应从左至右排列为L1、L2、L3相。金属母线超过20m长的直线段、不同基础连接段及设备连接处等部位，应设置补偿装置。", k:"黄绿红、N淡蓝；上下、盘后向盘面、左至右均为L1L2L3；超20m设补偿", s:"P135"},
+  {id:37, g:"防雷接地", q:"接闪器安装有哪些要求？", a:"并列安装的接闪器三相中心应在同一直线上，相间中心距离允许偏差为10mm，铭牌应位于易于观察的同一侧，接闪器安装应垂直；排气通道应通畅，排气通道口不得朝向巡检通道，排出的气体不致引起相间或对地闪络；氧化锌接闪器的接地线应用截面积不小于16mm²的软铜线；管型接闪器与被保护设备的连接线长度不得大于4m。", k:"10mm、16mm²软铜线、4m", s:"P135"},
+  {id:38, g:"防雷接地", q:"接地体安装有哪些要求？", a:"金属接地体采用镀锌角钢、镀锌钢管、铜棒或铜排等金属材料制作，分为垂直接地体和水平接地体；安装时沟的中心线与建筑物的基础距离不得小于2m，沟的深度不得小于0.6m，宽度不得小于0.5m；接地模块顶面埋深不应小于0.6m，接地模块间距不应小于模块长度的3~5倍。", k:"2m、0.6m深、0.5m宽、3~5倍", s:"P135"},
+  {id:39, g:"防雷接地", q:"接地线安装及爆炸和火灾危险环境的接地有哪些要求？", a:"室外接地干线与接地极的连接、接地支线与接地干线的连接应采用焊接，接地干线与支线末端应露出地面0.5m以上；有爆炸性气体环境1区内的所有电气设备以及2区内除照明灯具外的其他电气设备，应采用专门的接地线；接地干线应在爆炸危险区域内不同的方向有不少于两处与接地体连接；爆炸性粉尘环境10区内的所有电气设备应有专门的接地线，11区内的所有电气设备可利用金属管线或金属构件作为接地线（PE），但不得利用输送爆炸危险物质的管道。", k:"焊接、露出0.5m；1区专门、干线不少于两处；10区专门、11区可利用", s:"P136"},
+  {id:40, g:"防雷接地", q:"防静电接地装置安装有哪些要求？", a:"防静电的接地装置可与防感应雷和电气设备的接地装置共同设置；只做防静电的接地装置，每一处接地体的接地电阻应符合设计规定；设备、储罐、管道等的防静电接地线应单独与接地体或接地干线相连，除并列管道外不得互相串联接地；设备、储罐等固定接地端子的连接螺栓不应小于M10，并有防松装置；容量为50m³及以上的储罐，其接地点不应少于两处，且接地点的间距不应大于30m，并应在罐体底部周围对称与接地体相连，接地体应连接成环形的闭合回路。", k:"M10；50m³、不少于两处、间距≤30m", s:"P136"},
+];
+
+const EXAM = [
+  { type:"正向", cardIds:[4, 5],
+    q:"变压器运输时，对充干燥气体运输的气体压力和机械牵引的速度分别有什么要求？",
+    answer:"充干燥气体运输时，油箱内气体压力应保持在0.01~0.03MPa，干燥气体露点必须低于-40℃，始终保持正压力并设置压力表监视；机械牵引时着力点应在变压器重心以下，运输倾斜角不得超过15°，牵引速度不应超过2m/min。",
+    keys:["0.01~0.03MPa", "-40℃", "15°", "2m/min"],
+    need:3 },
+  { type:"正向", cardIds:[11],
+    q:"变压器交接试验中，SF6气体含水量、绕组直流电阻变化和35kV以下变压器电压比偏差的限值分别是多少？",
+    answer:"SF6气体含水量（20℃的体积分数）不宜大于250μL/L；绕组连同套管的直流电阻与同温下产品出厂实测数值比较，相应变化不应大于2%；电压等级35kV以下、电压比小于3的变压器，电压比允许偏差应为±1%。",
+    keys:["250μL/L", "2%", "±1%"],
+    need:2 },
+  { type:"选择", cardIds:[23],
+    q:"1kV及以下电动机使用500~1000V兆欧表测量绝缘电阻，绝缘电阻值低于多少时必须进行干燥处理？",
+    options:["0.5MΩ/kV", "1MΩ/kV", "1.3MΩ/kV", "2MΩ/kV"],
+    correct:1,
+    why:"教材规定：1kV及以下电动机使用500~1000V兆欧表，绝缘电阻值低于1MΩ/kV的必须干燥；1kV以上电动机定子绕组低于1MΩ/kV、转子绕组低于0.5MΩ/kV，吸收比小于1.3的也必须干燥。" },
+  { type:"选择", cardIds:[33],
+    q:"电缆直埋敷设时，一般电缆的埋设深度不应小于多少？",
+    options:["0.5m", "0.7m", "0.9m", "1.2m"],
+    correct:1,
+    why:"直埋电缆沟的沟深一般为0.9m，一般电缆埋深不应小于0.7m，穿越农田时不应小于1m。" },
+  { type:"反向", cardIds:[36],
+    q:"某配电柜内三相交流母线水平布置，施工人员按由盘后向盘面的顺序排成L3、L2、L1，相色依次涂为黄、绿、红。以上做法是否正确？错在哪里，应如何改正？",
+    answer:"不正确。交流母线水平布置时应由盘后向盘面排列为L1、L2、L3相，不能排成L3、L2、L1；相色L1为黄色、L2为绿色、L3为红色（中性线N淡蓝色），与顺序对应。",
+    keys:["不正确", "由盘后向盘面排列为L1、L2、L3", "L1黄、L2绿、L3红"],
+    need:2 },
+  { type:"场景", cardIds:[6, 8],
+    q:"现场吊装一台油浸式电力变压器：起重工把钢丝绳挂在变压器顶盖上部的吊环上起吊整台变压器；随后吊芯检查时，吊索与铅垂线夹角做成45°。指出其中的不当之处并说明正确做法。",
+    answer:"两处不当：①顶盖上部的吊环仅作吊芯检查用，严禁用此吊环吊装整台变压器，钢丝绳必须挂在油箱的吊钩上；②吊芯时吊索与铅垂线的夹角不宜大于30°，且器身不得与箱壁有接触，检查完毕必须用合格的变压器油冲洗。",
+    keys:["顶部吊环仅作吊芯检查用、严禁吊整台变压器", "钢丝绳挂油箱吊钩", "吊索与铅垂线夹角不宜大于30°"],
+    need:2 }
+];
+
+const KEY_STATUS = "erjian_sw_4_3_status";
+const KEY_PASS = "erjian_sw_4_3_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

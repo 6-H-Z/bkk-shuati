@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 4.8 冶炼设备安装技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  :root{
+    --bg:#F2F2F7; --card:#FFFFFF; --label:#000000; --label2:rgba(60,60,67,.6);
+    --label3:rgba(60,60,67,.3); --sep:rgba(60,60,67,.29); --blue:#007AFF;
+    --red:#FF3B30; --green:#34C759; --orange:#FF9500; --yellowBG:#FFF7E0;
+    --fill:rgba(120,120,128,.12); --radius:12px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#000; --card:#1C1C1E; --label:#FFF; --label2:rgba(235,235,245,.6);
+          --label3:rgba(235,235,245,.3); --sep:rgba(84,84,88,.65); --yellowBG:#3A2F12;
+          --fill:rgba(120,120,128,.24)}
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0 auto;padding:8px 16px 108px;max-width:640px;background:var(--bg);color:var(--label);
+       font:17px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .top{display:flex;align-items:center;gap:12px;margin:6px 0 2px}
+  h1{font-size:28px;line-height:1.2;letter-spacing:-.02em;font-weight:700;margin:0;flex:1}
+  #gateBtn{-webkit-appearance:none;border:0;background:transparent;color:var(--blue);
+           font-size:17px;font-weight:400;padding:6px 0 6px 8px;cursor:pointer}
+  #gateBtn.passed{color:var(--green)}
+  .sub{font-size:13px;color:var(--label2);margin:2px 0 16px;letter-spacing:-.01em}
+  .badge{color:var(--green);font-size:13px;margin-left:6px}
+  .bar{display:flex;gap:0;margin:0 0 14px;background:var(--card);border-radius:var(--radius);
+       padding:12px 4px}
+  .bar span{flex:1;text-align:center;font-size:12px;color:var(--label2);letter-spacing:-.01em}
+  .bar span+span{border-left:.5px solid var(--sep)}
+  .bar b{display:block;font-size:22px;font-weight:600;color:var(--label);letter-spacing:-.02em;margin-top:1px}
+  .card{background:var(--card);border-radius:var(--radius);padding:22px 20px 16px;
+        min-height:230px;display:flex;flex-direction:column;cursor:pointer;
+        transition:transform .12s ease,background .12s ease}
+  .card:active{transform:scale(.992)}
+  .tag{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.02em;margin-bottom:12px}
+  .q{font-size:20px;line-height:1.45;font-weight:600;letter-spacing:-.015em;white-space:pre-wrap}
+  .a{margin-top:16px;padding-top:16px;border-top:.5px solid var(--sep);font-size:17px;
+     line-height:1.65;color:var(--label);white-space:pre-wrap;animation:slideIn .22s ease}
+  .kk{margin-top:14px;padding:12px 14px;background:var(--yellowBG);border-radius:10px;
+      font-size:15px;line-height:1.55;color:var(--orange)}
+  .hint{margin-top:14px;font-size:12px;color:var(--label3)}
+  .src{margin-top:auto;padding-top:14px;font-size:12px;color:var(--label3);letter-spacing:-.01em}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);
+        padding:8px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:17px;font-weight:600;border:0;border-radius:12px;
+               background:var(--fill);color:var(--label);cursor:pointer;
+               transition:transform .1s ease,opacity .1s ease}
+  .dock button:active{transform:scale(.97);opacity:.85}
+  #flip{background:var(--blue);color:#fff;flex:1.3}
+  #bad{color:var(--red)}
+  #good{color:var(--green)}
+  .tools{display:flex;margin:14px 0 0;background:var(--fill);border-radius:9px;padding:2px}
+  .tools button{-webkit-appearance:none;flex:1;border:0;background:transparent;color:var(--label);
+                font-size:13px;font-weight:500;padding:6px 4px;border-radius:7px;cursor:pointer;
+                transition:background .15s ease}
+  .tools button.on{background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:600}
+  .tools .nav{display:none}
+  footer{margin-top:14px;font-size:12px;color:var(--label3);line-height:1.7;text-align:center}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:var(--label2);margin:2px 0 10px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:14px 16px;font-size:17px;
+       line-height:1.4;border:0;border-radius:12px;background:var(--card);color:var(--label);cursor:pointer;
+       transition:transform .1s ease}
+  .opt:active{transform:scale(.99)}
+  .opt.ok{background:rgba(52,199,89,.16);color:var(--green);font-weight:600}
+  .opt.no{background:rgba(255,59,48,.14);color:var(--red)}
+  #exInput{width:100%;margin-top:12px;padding:14px;font-size:17px;line-height:1.6;color:var(--label);
+           border:.5px solid var(--sep);border-radius:12px;background:var(--card);
+           font-family:inherit;resize:vertical}
+  #exInput:focus{outline:2px solid var(--blue);outline-offset:-1px}
+  .why{margin-top:12px;font-size:15px;line-height:1.7;color:var(--label2);background:var(--fill);
+       border-radius:12px;padding:14px;white-space:pre-wrap;animation:slideIn .22s ease}
+  .exDock{display:flex;gap:10px;margin-top:14px}
+  .exDock button{flex:1;min-height:50px;font-size:17px;font-weight:600;border:0;border-radius:12px;
+                 background:var(--fill);color:var(--label);cursor:pointer}
+  .exDock button.primary{background:var(--blue);color:#fff}
+  @keyframes slideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>4.8 冶炼设备安装技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P165–175 · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P103–113。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"高炉系统组成", q:"高炉炼铁系统主要由哪几部分组成？", a:"高炉炼铁系统主要由高炉本体、原料系统、送风系统、煤气系统及渣铁系统组成。", k:"本体＋原料、送风、煤气、渣铁四系统", s:"P165"},
+  {id:2, g:"高炉系统组成", q:"高炉本体是怎样的结构？自上而下分为哪几部分、包括哪些主要部件？", a:"高炉是横断面为圆形的炼铁竖炉，自上而下分为炉喉、炉身、炉腰、炉腹、炉缸5部分。高炉本体包括炉体框架、炉壳、冷却设备、炉喉钢砖、炉顶保护板、炉顶装料设备等主要部件。", k:"喉—身—腰—腹—缸（自上而下）", s:"P165"},
+  {id:3, g:"高炉系统组成", q:"高炉原料系统、送风系统、煤气系统、渣铁系统各包括哪些设备？", a:"原料系统设备包括矿槽设备、焦槽设备、中间料仓设备、料车上料设备、上料主皮带机等；送风系统设备包括鼓风设备、热风炉设备、风口装置等；煤气系统设备包括煤气除尘器设备、环缝洗涤塔设备等；渣铁系统设备包括炉前设备、铸铁机、水力冲渣设备等。", k:"原料五件（矿槽、焦槽、料仓、料车、主皮带）；送风三件（鼓风、热风炉、风口）；煤气两件（除尘器、洗涤塔）；渣铁三件（炉前、铸铁机、冲渣）", s:"P165"},
+  {id:4, g:"高炉炉体框架", q:"高炉炉体框架由哪几部分组成？承受什么荷载？钢结构连接方式有哪几种？", a:"高炉炉体框架是布置在炉壳四周、承受炉体各层平台和炉顶设备荷载的钢结构，由炉体下部框架、炉体上部框架和炉顶刚架三部分组成。其钢结构的连接方式有焊接和高强度螺栓连接两种。", k:"下架—上架—顶刚架；焊＋高强螺栓", s:"P166"},
+  {id:5, g:"高炉炉体框架", q:"高炉炉体框架安装的一般程序是什么？", a:"基础检查放线→下部框架柱→框架梁→下部平台梁、板→上部框架柱→柱间支撑→上部平台梁、板→炉顶平台→炉顶框架柱→炉顶框架梁→炉顶悬臂吊车梁。", k:"由下而上、先柱后梁、平台板随后", s:"P166"},
+  {id:6, g:"高炉炉壳", q:"高炉炉壳现场拼装与焊接各有哪些技术要求？", a:"拼装：炉壳采用现场组装成环带吊装，组装应在坚实、稳固的平台、支承凳或胎架上进行，其基础应压实并垫以砾石压平；组装平台用型钢或钢轨做基架，上面铺设钢板，表面的高低差不大于2mm；拼装时不得用点焊的方式连接炉壳，应配置相应的卡具夹紧构件、花篮螺栓等临时措施；宜将临时平台、栏杆、梯子等同时拼装，炉壳组装成单带后应设加固支撑件，单带吊装宜采用专用吊架吊装。焊接：炉壳为厚板压力容器结构，应有相应的焊接工艺评定报告，并据以编制焊接作业指导书；应先焊内侧焊缝再焊外侧焊缝，先焊各带立焊缝、后焊横焊缝；应由多名焊工均布圆周，采用对称方向、多层多道焊、分段退焊的方法焊接；壳体结构件开孔处与管道或短管的焊接，应采用与主体材料成分和性能相同或相近的低氢型焊条。", k:"平台面高低差≤2mm；不得点焊；先内后外、先立后横、对称退焊；开孔处用低氢型焊条", s:"P166"},
+  {id:7, g:"高炉炉壳", q:"高炉炉壳安装程序是什么？可采用哪些安装工艺？框架与炉壳的安装先后如何？", a:"安装程序：炉底钢结构安装→炉底板铺设→炉底板压力灌浆→炉缸段炉壳安装→风口段炉壳安装→炉腹段炉壳安装→炉腰段炉壳安装→炉身段炉壳安装→炉喉直段炉壳安装→炉顶封板段炉壳安装→炉顶法兰安装。安装工艺可采用正装法、倒装法、上部倒装下部正装法、线外拼装整体滑移法等。采用正装法时，炉壳安装与框架安装应同步进行；采用倒装法、上部倒装下部正装法、线外拼装整体滑移法时，框架应先于炉壳的安装。", k:"缸—风口—腹—腰—身—喉—顶封板—法兰；一正三倒（正装同步、其余框架先行）", s:"P166"},
+  {id:8, g:"高炉炉壳", q:"高炉炉底板吊装与焊接的顺序要求是什么？", a:"底板逐块吊装就位，其顺序为从炉中心开始向半径方向延伸，并找正和调整底板上表面水平度。底板应先进行定位焊和塞孔焊，塞孔焊从底板中心向四周辐射施焊；炉底板焊接应先焊横缝再焊纵缝，横向焊缝焊接应从中间向两端延伸，并分段跳焊。", k:"由炉中心向半径延伸；先横后纵、由中间向两端、分段跳焊", s:"P167"},
+  {id:9, g:"高炉冷却设备", q:"高炉冷却设备有哪些？冷却壁安装前的通球试验和压力试验如何规定？碰撞后如何处理？", a:"高炉内部冷却设备主要是冷却壁和冷却板，冷却壁设置在炉壳和炉衬之间，有光面冷却壁和镶砖冷却壁两种。冷却壁设备安装前须进行通球试验，球的材质一般为木球或尼龙球，球径为水管内径的76%±0.2mm。通球试验合格后应进行压力试验，试验压力为工作压力的1.5倍，稳压10min，再将压力降至工作压力，停压30min，以压力不降、无渗漏为合格。冷却壁在现场安装过程中不得碰撞；在吊装过程中发生严重碰撞并留有伤痕时，应单独再次进行水压试验并合格。", k:"球径76%±0.2mm；1.5倍—稳压10min—降至工作压力停压30min", s:"P167"},
+  {id:10, g:"高炉风口装置", q:"高炉风口装置安装前的压力试验、吊装方法和就位后的间隙要求是什么？", a:"带水冷装置的大套、中套及小套，安装前进行压力试验，试验压力为工作压力的1.25倍，稳压10min，再将试验压力降至工作压力，停压30min，以压力不降、无渗漏为合格；安装后应在工作压力下进行通水试验。风口大套、中套及小套，可采用高炉热风环管下的电动单轨吊并辅以链式起重机吊装就位，中套及小套可采用配重平衡法吊装。风口固定装置顶紧后，顶板与大套法兰之间的间距应不小于10.0mm；大套与中套的密合面间隙用0.1mm塞尺检查，塞入深度不应大于接触长度的1/3。", k:"1.25倍（低于冷却壁的1.5倍）；间距≥10.0mm；0.1mm塞尺塞入≤接触长度1/3", s:"P167"},
+  {id:11, g:"转炉炼钢设备", q:"转炉炼钢设备由哪些系统组成？各系统包括哪些设备？", a:"转炉炼钢设备包括原料供应系统，吹炼精炼与出钢系统，供氧系统，烟气净化与煤气回收系统。原料供应系统包括铁水预处理、铁水倒罐站、混铁炉、废钢间、铁合金供应及石灰供应设备；吹炼、精炼与出钢系统包括转炉本体、托圈、倾动装置、出钢、出渣及钢水精炼等设备；供氧系统包括氧枪、氧枪横移（更换）小车、氧枪升降设备及滑道、氧气阀门间设备、副枪系统等设备；烟气净化与煤气回收系统包括烟气冷却设备、煤气回收设备、蒸汽回收设备、烟气除尘及净化设备。", k:"原料—吹炼—供氧—烟气四系统", s:"P167"},
+  {id:12, g:"转炉安装", q:"转炉设备安装程序是什么？", a:"基础交接验收→基准线与基准点设置→坐浆垫板设置→转炉支撑装置安装→托圈与轴承座装配→炉体安装就位→倾动装置安装→炉体附属管道配管→调整试车。", k:"基础→基准→垫板→支撑→托圈→炉体→倾动→配管→试车", s:"P168"},
+  {id:13, g:"转炉安装", q:"转炉安装前基础交接验收应提交哪些文件？基准线如何设置？坐浆垫板有哪些要求？", a:"设备安装前，基础应进行交接验收，土建单位应提交基础混凝土强度试验报告、基础外形各部尺寸检查资料、基础沉降观测记录等文件。依据设计施工图和测量控制网绘制基准线和基准点布置图，确定中心标板和基准点位置，埋设永久中心标板和永久基准点，设定安装基准线；基准线主要有转炉炉体纵、横向中心线，转炉倾动轴承座纵、横向中心线。垫板安设采用坐浆法，垫板组底面积总和应根据设备重量、生产时的荷载、地脚螺栓紧固力、基础混凝土抗压强度及安全系数计算确定；垫板的数量、尺寸及安装位置需按设备厂家给定的技术文件进行配置；在每个地脚螺栓的旁边应设置两组垫板组，垫板组应尽量靠近地脚螺栓和设备主要受力部位。", k:"垫板面积五因素：设备重量、生产荷载、螺栓紧固力、混凝土抗压强度、安全系数；每个地脚螺栓两组垫板", s:"P168"},
+  {id:14, g:"转炉安装", q:"转炉托圈水冷系统的试验要求是什么？托圈吊装前及耳轴轴承装配有何要求？", a:"托圈水冷系统应做水压试验和通水试验，试验压力应为工作压力的1.25倍，应在试验压力下稳压10min，再降至工作压力，停压30min，以压力不降、无渗漏为合格；通水试验进出水应畅通无阻，连续通水时间不应少于24h且无渗漏。托圈吊装前一般应装配好耳轴上的轴承和轴承座，托圈进场后应仔细检查耳轴表面有无损伤，轴承装配前必须清洗干净耳轴表面、轴承座内表面及轴承。轴承与耳轴间为过渡配合，装配时采用温差法，按实测过盈值加装配所需间隙计算轴承加热温度，轴承膨胀量应保证轴承与耳轴顺利装配；热装配结束后，进行轴承附件及轴承座装配。", k:"1.25倍—10min—30min；通水≥24h；轴承与耳轴过渡配合、温差法", s:"P168"},
+  {id:15, g:"转炉安装", q:"转炉炉壳现场组装和安装可采用哪两种方法？各自要点是什么？", a:"炉壳现场组装和安装可采用台车法或滑移法。台车法是在台车上组装炉壳和托圈，运送到安装位置进行安装；台车上设置的组装台架应经强度验算，能承受组装设备重量及组装时产生的冲击。滑移法是在两根滑移梁上将托圈、炉壳和倾动装置组成整体，并滑移到轴承支座上安装；滑移梁根据炉体重量和现场条件设计制作，应有足够的强度和刚度；滑移梁应设置在加料跨炉前平台的主梁上，平台结构应核验，可做适当加固；滑移梁设置的坐标位置及标高应适合炉体滑移和安装要求。", k:"台车法（台架经强度验算）、滑移法（两根滑移梁、平台核验加固）", s:"P168"},
+  {id:16, g:"转炉安装", q:"转炉水冷炉口的试验要求是什么？", a:"水冷炉口应进行水压试验和通水试验，试验压力应为工作压力的1.5倍，在试验压力下稳压10min；再降至工作压力，停压30min，以压力不降、无渗漏为合格；通水试验进出水应畅通无阻，连续通水时间不应少于24h，以无渗漏为合格。", k:"1.5倍（高于托圈水冷的1.25倍）；通水≥24h", s:"P169"},
+  {id:17, g:"转炉倾动装置", q:"转炉倾动装置由哪几部分组成？切向键和扭力杆安装有哪些要求？", a:"倾动装置由电动机、一次减速机、二次减速机、扭力杆装置组成，倾动装置上的两组切向键分别与二次减速机大齿轮及驱动侧耳轴相连接，传动扭矩，使炉体正反转。切向键安装前应经过研磨，用红丹粉检查接触面积不小于80%；切向键的安装采用液氮冷装法，切向键装入后，将减速机调整到水平位置。安装扭力杆支座，确保扭力杆本体水平度保持在0.20/1000以内，同时连接扭力杆与减速机的定位销等部件。", k:"电动机＋一次减速机＋二次减速机＋扭力杆；接触面积≥80%、液氮冷装、扭力杆0.20/1000", s:"P169"},
+  {id:18, g:"转炉倾动装置", q:"炉体及倾动设备调整试车有哪些要求？", a:"倾动装置一次减速器正反向单独运行各不应少于1h，运行应平稳，应无异常振动和噪声，轴承应温升正常。试运行后应检查炉壳、托圈及炉壳与托圈连接装置的焊缝，应无裂纹，螺栓连接应无松动。", k:"正反向各≥1h；查焊缝无裂纹、螺栓无松动", s:"P169"},
+  {id:19, g:"轧机组成与分类", q:"轧钢设备由哪几部分组成？轧机如何分类？", a:"轧钢设备由主机列设备和辅助设备组成。主机列设备由工作机座、传动装置（接轴、齿轮座、减速机、联轴器）及主电机组成；辅助设备包括运输设备（如纵向运输轧材的辊道、垂直方向运输轧件的升降台、横向运输轧件的拉钢机和移钢机），加工设备（如切断轧件的剪切机和锯机、矫直轧件的矫直机、卷取轧件的卷取机），其他精整设备（如翻转件用的翻钢机、回转轧件用的回转台、冷却轧件用的冷床），以及收集、酸洗、打印、包装等工序所用的各种机械设备。轧机分类：按用途可分为开坯轧机、型钢轧机、板带轧机、钢管轧机和特殊轧机（如横轧机、轮箍轧机等）；按轧辊在机座中的布置形式可分为水平轧辊轧机、立式轧辊轧机、水平和立式轧辊组合轧机、倾斜轧辊轧机以及其他轧机五种形式；按轧机布置形式可分为单机架式、多机架顺列式、横列式、连续式、半连续式、串列往复式、布棋式等。", k:"主机列（工作机座＋传动装置＋主电机）＋辅助设备；按用途、按轧辊布置、按布置形式三分类", s:"P169"},
+  {id:20, g:"轧机安装精度", q:"按轧机设备安装精度等级如何划分？各级包含哪些轧机？", a:"按轧机设备安装精度等级可分为Ⅰ、Ⅱ两级。Ⅰ级精度项目包含板带轧机、粗轧与精轧的带材连轧机、平整机、管材连轧机、高速线材轧机、棒材轧机、型材连轧机、中厚板成品轧机等；Ⅱ级精度项目包含开坯机、钢坯轧机、穿孔机、焊管轧机等。", k:"Ⅰ级：板带、带材连轧、平整、管材连轧、高速线材、棒材、型材连轧、中厚板成品；Ⅱ级：开坯、钢坯、穿孔、焊管", s:"P170"},
+  {id:21, g:"轧机机架吊装", q:"轧机机架有什么特点？其吊装方法有哪几种？", a:"轧机机架不仅制造精度高，且为轧钢设备中外形尺寸最大、重量最重的设备，多为超长（高）、超宽、超重件，单片质量60～400t，高度8～16m，宽度3.5～5m。轧机机架吊装方法有桥式起重机吊装法、移动式起重机吊装法、专用起重装置吊装法等。", k:"60～400t、8～16m、3.5～5m；桥式、移动式、专用起重装置", s:"P170"},
+  {id:22, g:"轧机机架吊装", q:"桥式起重机吊装法、移动式起重机吊装法、专用起重装置吊装法各有哪些要点和适用条件？", a:"桥式起重机（行车）吊装法：单机吊装法利用车间内单台行车吊装时，应先校核起重能力和提升高度能否满足要求，并考虑机架运输车的进场路线、进车方向、卸车、起吊位置及吊点的设置；双机抬吊法利用生产车间内两台行车辅助平衡梁共同抬吊机架，需根据机架重量、行车的起重能力、两行车吊钩间距尺寸和提升高度进行设计与验算。移动式起重机吊装法：需根据机架重量及厂房高度选择合适的移动式起重机械，同时应着重考虑吊车的站位处地基承载力能否满足的问题；必要时对地下室进行支撑加固，或对轧机周边的地下室暂不施工、预留吊车作业站位；此法适用于单机架轧机机架的吊装，施工成本相对较高。专用起重装置吊装法：若车间内的行车无法满足大型轧机机架吊装的需求，且受厂房结构限制，车间内无法驶入大型移动式起重设备，可采用横向滑移垂直液压顶升装置、智能液压提升装置或全自动液压顶升装置，完成超重超高轧机机架的安装工作，不受行车及厂房结构影响。", k:"桥式（单机校核、双机抬吊验算）；移动式（看地基承载力，适用单机架）；专用（液压顶升/提升，不受行车及厂房结构影响）", s:"P170"},
+  {id:23, g:"轧机主机列安装", q:"轧机主机列设备安装程序是什么？", a:"基础验收→基准点与基准线设置→垫板安装→轧机底座安装→机架安装→上下横梁安装→轧辊调整装置安装→轧辊平衡装置安装→换辊装置安装→轧机主传动装置安装→设备机体配管→二次灌浆→支撑辊、工作辊安装→试运行。", k:"基础→基准→垫板→底座→机架→横梁→轧辊调整/平衡→换辊→主传动→配管→二次灌浆→轧辊→试运行", s:"P170"},
+  {id:24, g:"轧机主机列安装", q:"轧机基础验收与基准线设置有何要求？垫板安装水平度要求是多少？底座找正以什么为基准、按什么顺序进行？", a:"设备安装前应进行基础的检查验收，设备基础交接资料要齐全；依据设计施工图和测量控制网绘制基准线和基准点布置图，确定中心标板和基准点位置，并应设立永久性基准线和基准点；同时应在主要设备基础周边埋设沉降观测点，定期进行沉降观测，并做好记录。轧机垫板的安装水平度要求达到0.10/1000，可采用坐浆法或流动灌浆法。底座调整以轧制中心线和机架窗口中心线为基准，先找平找正出口侧底座，再以出口侧底座为基准调整入口侧底座。", k:"垫板水平度0.10/1000；先出口侧、后入口侧", s:"P170"},
+  {id:25, g:"轧机主机列安装", q:"单机架轧机底座安装有哪些主要检测项目？测量位置在哪里？入口侧底座间距如何处理？", a:"入口侧的底座安装调整时，两底座间的距离应比设计尺寸放大0.3～0.5mm，以便于轧机机架的安装，机架就位后再将入口侧底座向出口侧靠紧。主要检测项目：两底座标高、两底座纵横向中心线、入口侧和出口侧底座水平度、同一台轧机两底座间水平度、入口侧底座相对轧机中心线平行度、同一台轧机两底座间平行度。调整底座标高和水平度时，应在轧机底座上表面测量；调整底座横向中心线、出口侧底座相对轧机机列中心线平行度及两底座间平行度时，应在底座与机架接触的垂直面加工面上测量。", k:"间距放大0.3～0.5mm；标高/水平度测上表面，中心线/平行度测垂直面加工面", s:"P171"},
+  {id:26, g:"轧机主机列安装", q:"轧机机架安装应检查哪些参数？垂直度、水平度如何测量、允许偏差是多少？", a:"机架安装应检查机架垂直度、水平度、纵横向中心线、机架窗口在水平方向扭斜、两机架窗口中心线的水平偏斜等参数。机架中心线测量时，应以轧机机列中心线和轧制中心线为基准，在机架窗口面和内侧面测量。机架垂直度测量应在机架窗口面和侧面测量，可用激光跟踪仪或全站仪检测，或用吊垂线、内径千分尺、灯光检查，以保证检测的精确度，Ⅰ级精度允许偏差为0.05/1000，Ⅱ级精度允许偏差为0.10/1000。机架水平度测量时，一般选用框式水平仪检测机架窗口底面，沿轧制方向及垂直于轧制方向各测一组数据，Ⅰ级精度允许偏差为0.05/1000，Ⅱ级精度允许偏差为0.10/1000；两机架窗口底面水平度，可用平尺、块规和框式水平仪检查。", k:"垂直度、水平度均为Ⅰ级0.05/1000、Ⅱ级0.10/1000", s:"P171"},
+  {id:27, g:"轧机主机列安装", q:"轧机传动装置最终调整的时机和基准是什么？水平度在哪些面上测量？地脚螺栓如何紧固？", a:"传动装置的最终调整应在轧机基础沉降趋于稳定、轧机机架安装验收后进行；传动装置中心线的调整应以轧制中心线和轧机机列中心线为基准，其标高调整应以轧机底座的实际标高为基准。主减速机纵向水平度（主传动方向）的测量可在两端轴颈或在指定的基准面上或剖分面上；横向水平度的测量应在剖分面上或指定基准面上；齿轮机座标高的测量在齿轮箱上平面或窗口下平面。整体安装的传动电机水平度以转子轴颈为测量面，分体安装的传动电机以转子两轴承座剖分面为水平度测量面，装配后在转子轴颈进行复核。轧机地脚螺栓的紧固通常采用液压螺母拉伸法，应将螺栓紧固力矩值转换为相应的液压值，紧固力应达到设计要求。", k:"沉降稳定＋机架验收后；中心线看轧制/机列中心线，标高看底座实际标高；地脚螺栓用液压螺母拉伸法", s:"P171"},
+  {id:28, g:"轧机辅助设备", q:"换辊装置的安装程序和调整基准是什么？", a:"安装程序：支承辊机内换辊轨道→支承辊换辊油缸→工作辊机内换辊轨道→工作辊换辊装置基础架→工作辊横移台车轨道→横移台车及横移液压缸→工作辊换辊台车轨道及齿条→工作辊换辊台车。调整：以轧机机列中心线为基准调整工作辊换辊轨道纵向中心线、支承辊换辊车滑道纵向中心线；以机架内换辊轨道标高为基准，调整轧机工作辊轨道和支承辊换辊车滑道标高；在轨道面和滑道面上测量水平度；检查换辊轨道（滑道）与机内换辊轨道（滑道）接头处高低差、同一截面两轨道（滑道）上平面高低差；检查液压缸的纵横向中心线和水平度。", k:"先支承辊、后工作辊；以机列中心线和机架内换辊轨道标高为基准", s:"P172"},
+  {id:29, g:"轧机主机列安装", q:"轧机主机列试运行的次数、时间和轴承温度限值是多少？", a:"轧机低速压下装置、高速压下装置往返运转均不应少于5次，高低极限位置准确；主传动电动机空载试运行不应少于0.5h；电动机带动减速机试运行不应少于0.5h；电动机带动减速机、齿轮机座试运行不应少于0.5h；电动机带动减速机、齿轮机座和轧机试运行，按额定转速的25%、50%、75%、100%分别试运行，且不应少于2h。换辊装置及其他设备往返运行均不应少于5次，停止位置应符合设计文件的规定。试运行设备轴承温度应正常，滚动轴承温升不超过40℃，且最高温度不得超过80℃；滑动轴承温升不得超过35℃，且最高温度不得超过70℃。", k:"往返≥5次；0.5h；25/50/75/100%且≥2h；滚动40/80℃、滑动35/70℃", s:"P172"},
+  {id:30, g:"轧机辅助设备", q:"卷取机如何分类、如何划分精度等级？开卷机的水平度、垂直度允许偏差是多少？", a:"卷取机按其结构可分为卷筒式卷取机和无卷筒式卷取机；按用途可分为热带钢卷取机、冷带钢卷取机、小型型钢与线材卷取机。卷取机设备精度等级划分为Ⅰ、Ⅱ级：卷取速度大于10m/s划分为Ⅰ级，如酸连轧机组、酸洗涂层机组、连续退火机组、热镀机组、冷轧重卷横切机组等；卷取速度小于10m/s划分为Ⅱ级，如热连轧地下卷取机。开卷机水平度允许偏差：Ⅰ级为0.05/1000，Ⅱ级为0.10/1000，要求卷筒悬臂端高于驱动端；开卷机卷筒相对机组中心线的垂直度允许偏差：Ⅰ级为0.05/1000，Ⅱ级为0.10/1000，要求卷筒悬臂端背离出料方向侧。", k:"卷取速度10m/s分Ⅰ、Ⅱ级；开卷机0.05/0.10（每1000）且悬臂端偏高、背离出料侧", s:"P172"},
+  {id:31, g:"轧机辅助设备", q:"钢坯剪切机、切头剪（定尺剪）、飞剪机的安装测量基准和允许偏差是什么？", a:"钢坯剪切机换刃装置安装以机架中心线为基准，测量换刃装置轨道中心线，允许偏差为0.3mm；以轧制中心线为基准，测量横移底座上滑道中心线，允许偏差为1.0mm；以机架内换刃轨道为基准，测量换刃轨道面标高和横移底座上滑道面标高，允许偏差为±0.3mm。切头剪、定尺剪以机组中心线为基准，测量左右机架中心线和左右机架内侧面的垂直度，在下刀台面上测量标高和水平度；下刀台、前板及连接梁与左右机架装配结合面应严密，用0.05mm塞尺进行检查，四周75%不入。飞剪机以机组中心线为基准测量底座的纵向中心线，以剪切中心线为基准测量底座的横向中心线，在底座与机架结合面上测量底座的标高和水平度；在曲柄轴承座镗孔内侧面测量操作侧和传动侧机架相对机组中心线的偏移，在上下曲柄轴承座镗孔内侧面测量机架垂直度，测量操作侧和传动侧机架上下曲柄轴承座对应镗孔中心线同轴线。", k:"钢坯剪0.3mm、1.0mm、±0.3mm；结合面0.05mm塞尺四周75%不入", s:"P172"},
+  {id:32, g:"炉窑砌筑交接与程序", q:"工业炉窑按生产过程分为哪两类？砌筑施工应在什么条件下进行？工序交接的技术要求是什么？", a:"工业炉窑按其生产过程可分为动态炉窑和静态炉窑两大类。炉窑的砌筑工程应于炉体骨架结构和有关设备安装完毕，经检查合格并签订交接证明书后，方可进行施工。工序交接的技术要求：重点做好炉子基础、炉体骨架结构和有关设备安装的检查交接工作；炉窑砌筑一般是工业炉窑系统工程中最后一道工序，在工序交接时，对上一工序及时进行质量检查验收并办理工序交接手续。", k:"动态炉窑、静态炉窑；骨架设备装完＋检查合格＋签订交接证明书", s:"P173"},
+  {id:33, g:"炉窑砌筑交接与程序", q:"炉窑砌筑工序交接证明书包括哪些内容？", a:"包括：炉子中心线和控制标高及必要的沉降观测点的测量记录；隐蔽工程的验收合格证明；炉体冷却装置、管道和炉壳的试压记录及焊接严密性试验合格证明；钢结构和炉内轨道等安装位置的主要尺寸复测记录；动态炉窑或炉子的可动部分试运行合格证明；炉内托砖板和锚固件等的位置、尺寸及焊接质量的检查合格证明；上道工序成果的保护要求。", k:"测量记录、隐蔽验收、试压与严密性、尺寸复测、可动部分试运行、托砖板锚固件、成果保护", s:"P173"},
+  {id:34, g:"炉窑砌筑交接与程序", q:"动态炉窑砌筑的前提和施工程序是什么？静态炉窑与它的不同之处有哪些？", a:"动态炉窑砌筑必须在炉窑单机无负荷试运行合格并验收后方可进行。施工程序：从热端向冷端（从低端向高端）→分段作业划线→选砖→配砖→锚固钉或托砖板焊接（若有）→隔热层铺设（若有）→灰浆泥调制（若是湿砌）→分段砌筑→分段修砖及锁砖→膨胀缝预留及填充（若有膨胀缝）。如回转窑砌筑时，自热端向冷端分若干段依次分别进行环向砌筑，湿砌每段长度不大于1m，干砌每段长度不大于2m。静态炉窑的施工程序与动态炉窑的基本相同，不同之处是：不必进行无负荷试运行；砌筑顺序必须自下而上进行；起拱部位应从两侧向中间砌筑，并需采用拱胎压紧固定，锁砖完成后拆除拱胎。", k:"热端→冷端（低→高）；湿砌≤1m、干砌≤2m；静态：免试运行、自下而上、起拱两侧向中间", s:"P173"},
+  {id:35, g:"耐火砖砌筑", q:"炉底和炉墙砌筑有哪些技术要求？", a:"砌筑炉底前应预先找平基础，在最下一层用砖加工找平；砌筑反拱底前，应用样板找准砌筑弧形拱的基面。反拱底应从中心向两侧对称砌筑；非弧形炉底、通道底的最上层砖的长边，应与炉料、金属、渣或气体的流动方向垂直，或成一交角。圆形炉墙应按中心线砌筑，当炉壳的中心线垂直误差和半径误差符合炉内形要求时，可以炉壳为导面进行砌筑。弧形墙应按样板放线砌筑，砌筑时应经常用样板检查墙的几何尺寸；加工后合门砖的宽度不应小于原砖宽度的1/2。圆形炉墙不得有三层重缝或三环通缝，上下两层重缝与相邻两环的通缝不得在同一地点；圆形炉墙的合门砖应均匀分布。砌砖时应用木槌或橡胶锤找正，不应使用铁锤；砌砖中断或返工拆砖时，应做成阶梯形的斜槎。留设膨胀缝的位置应避开受力部位、炉体骨架和砌体中的孔洞，砌体内外层的膨胀缝不应互相贯通，上下层应相互错开。", k:"反拱底由中心向两侧；合门砖≥原砖宽1/2；不得三层重缝或三环通缝；木槌/橡胶锤不用铁锤", s:"P173"},
+  {id:36, g:"耐火砖砌筑", q:"拱和拱顶砌筑、锁砖及拱胎拆除有哪些要求？", a:"拱脚表面应平整，角度应正确；不得用加厚砖缝的方法找平拱脚；拱脚砖应紧靠拱脚梁砌筑。拱和拱顶应错缝砌筑，并应沿纵向缝拉线砌筑，保持砖面平直；拱或拱顶上部找平层的加工砖，可用相应材质的耐火浇注料代替。跨度不同的拱和拱顶宜环砌，且环砌拱和拱顶的砖环应保持平整垂直；拱和拱顶必须从两侧拱脚同时向中心对称砌筑。锁砖应按拱和拱顶的中心线对称均匀分布；锁砖砌入拱和拱顶内的深度宜为砖长的2/3～3/4，拱和拱顶内锁砖砌入深度应一致。跨度大于5m的拱胎在拆除前，应设置测量拱顶下沉的标志；拱胎拆除后，应做好下沉记录。", k:"两侧拱脚→中心对称；锁砖深度2/3～3/4；跨度>5m设下沉标志并记录", s:"P174"},
+  {id:37, g:"耐火浇注料", q:"耐火浇注料的施工程序和施工要求是什么？", a:"施工程序：材料检查验收→施工面清理→锚固钉焊接→模板制作安装→防水剂涂刷→浇注料搅拌→浇注并振捣→拆除模板→膨胀缝预留及填充→成品养护。施工要求：不得随意改变浇注料的配比或随意在搅拌好的浇注料中加水或其他物料；搅拌好的耐火浇注料应在30min内浇注完成；耐火浇注料的浇注应连续进行；整体浇注耐火内衬膨胀缝的设置应按设计规定；耐火浇注料在施工后，应按设计规定的方法和要求养护；浇注衬体表面不应有剥落、裂缝、孔洞等缺陷。", k:"锚固钉→模板→防水剂→搅拌→浇注→拆模→膨胀缝→养护；30min内浇完、连续浇注", s:"P174"},
+  {id:38, g:"耐火浇注料", q:"炉窑砌筑冬期施工对温度、浇注料养护和测温有哪些要求？", a:"砌筑应在供暖环境中进行，工作地点和砌体周围温度均不应低于5℃；耐火砖和预制块在砌筑前应预热至0℃以上；砌筑完毕后，若不能随即烘炉投产时，应采取烘干措施，砌体周围温度不应低于5℃。耐火泥浆、耐火浇注料的搅拌应在暖棚内进行；调制耐火浇注料的水可以加热，加热温度应符合规定。冬期施工耐火浇注料的养护：水泥耐火浇注料可采用蓄热法和加热法养护；黏土、水玻璃、磷酸盐水泥浇注料的养护应采用干热法。室外空气温度、砌体周围温度、加热材料在暖棚内的温度、不定形耐火材料在搅拌、施工和养护时的温度，应每隔4h测量一次；全部测量点应编号，并绘制测温点布置图；测量不定形耐火材料的温度时，测温时间不应少于3min。", k:"环境≥5℃、砖预热≥0℃；水泥浇注料蓄热/加热法，黏土·水玻璃·磷酸盐用干热法；每4h测温、测温≥3min", s:"P174"},
+  {id:39, g:"烘炉", q:"烘炉应在什么条件下进行？烘炉曲线和操作规程包括哪些内容？", a:"烘炉应在机电设备联合试运行及调整合格后进行；耐火浇注料内衬应按规定养护后，方可进行烘炉。烘炉应制定烘炉曲线和操作规程，其主要内容包括烘炉期限、升温速度、恒温时间、最高温度、更换加热系统的温度、烘炉措施、操作规程及应急预案等；烘炉后需降温的炉窑，在烘炉曲线中应注明降温速度。", k:"联合试运行及调整合格＋浇注料养护后；曲线含期限、升温速度、恒温时间、最高温度、更换加热系统温度、措施、规程、预案", s:"P175"},
+  {id:40, g:"烘炉", q:"烘炉过程的技术要求和顺序是什么？", a:"烘炉必须按烘炉曲线进行；烘炉过程中，应测定和测绘实际烘炉曲线；烘炉时应做详细记录。烘炉前应先烘烟囱及烟道。工业炉在投入生产前必须烘干、烘透。", k:"先烘烟囱、烟道；按曲线→测实际曲线→详细记录；投产前烘干烘透", s:"P175"},
+];
+
+const EXAM = [
+  { type:"正向", cardIds:[12],
+    q:"转炉炼钢设备安装的总体程序是什么？",
+    answer:"基础交接验收→基准线与基准点设置→坐浆垫板设置→转炉支撑装置安装→托圈与轴承座装配→炉体安装就位→倾动装置安装→炉体附属管道配管→调整试车。",
+    keys:["基础交接验收→基准线与基准点设置→坐浆垫板设置→转炉支撑装置安装", "托圈与轴承座装配→炉体安装就位", "倾动装置安装→炉体附属管道配管→调整试车"],
+    need:3 },
+  { type:"正向", cardIds:[23],
+    q:"轧机主机列设备的安装程序是什么？",
+    answer:"基础验收→基准点与基准线设置→垫板安装→轧机底座安装→机架安装→上下横梁安装→轧辊调整装置安装→轧辊平衡装置安装→换辊装置安装→轧机主传动装置安装→设备机体配管→二次灌浆→支撑辊、工作辊安装→试运行。",
+    keys:["基础验收→基准点与基准线设置→垫板安装→轧机底座安装→机架安装→上下横梁安装", "轧辊调整装置、轧辊平衡装置、换辊装置、轧机主传动装置安装", "设备机体配管→二次灌浆→支撑辊、工作辊安装→试运行"],
+    need:3 },
+  { type:"选择", cardIds:[9],
+    q:"高炉冷却壁通球试验合格后应进行压力试验，下列做法符合教材要求的是（　）。",
+    options:["A 试验压力为工作压力的1.25倍，稳压10min，再降至工作压力，停压30min", "B 试验压力为工作压力的1.5倍，稳压10min，再降至工作压力，停压30min", "C 试验压力为工作压力的1.5倍，稳压30min，再降至工作压力，停压10min", "D 试验压力为工作压力的2倍，稳压10min，再降至工作压力，停压30min"],
+    correct:1,
+    why:"冷却壁通球试验合格后应进行压力试验，试验压力为工作压力的1.5倍，稳压10min，再将压力降至工作压力，停压30min，以压力不降、无渗漏为合格；1.25倍是风口装置和托圈水冷系统的试验压力，不是冷却壁的。" },
+  { type:"选择", cardIds:[29],
+    q:"轧机主机列设备试运行时，轴承温度的限值是（　）。",
+    options:["A 滚动轴承温升不超过35℃，最高温度不超过70℃", "B 滚动轴承温升不超过40℃，最高温度不超过80℃", "C 滚动轴承温升不超过40℃，最高温度不超过70℃", "D 滑动轴承温升不超过40℃，最高温度不超过80℃"],
+    correct:1,
+    why:"试运行设备轴承温度应正常：滚动轴承温升不超过40℃，且最高温度不得超过80℃；滑动轴承温升不得超过35℃，且最高温度不得超过70℃。选项A、D把滚动与滑动的数值互换或混用。" },
+  { type:"反向", cardIds:[6],
+    q:"某施工单位在高炉炉壳施工中，拼装时用点焊固定炉壳，焊接时先焊外侧焊缝、后焊内侧焊缝，并先焊横焊缝、后焊立焊缝。请指出其中的错误并给出正确做法。",
+    answer:"错误一：用点焊的方式连接炉壳。正确做法：炉壳拼装时不得用点焊的方式连接炉壳，应配置相应的卡具夹紧构件、花篮螺栓等临时措施，保证拼装尺寸允许偏差符合规范要求。错误二：先焊外侧后焊内侧、先焊横缝后焊立缝。正确做法：炉壳应先焊内侧焊缝再焊外侧焊缝，并应先焊各带立焊缝、后焊横焊缝；应由多名焊工均布圆周，采用对称方向、多层多道焊、分段退焊的方法进行焊接。",
+    keys:["不得用点焊连接炉壳，应用卡具夹紧构件、花篮螺栓等临时措施", "先焊内侧焊缝再焊外侧焊缝，先焊各带立焊缝、后焊横焊缝", "多名焊工均布圆周，对称方向、多层多道焊、分段退焊"],
+    need:2 },
+  { type:"场景", cardIds:[22],
+    q:"某轧钢厂安装超重超高轧机机架，车间内行车起重能力无法满足吊装需求，且受厂房结构限制，车间内无法驶入大型移动式起重设备。此时应选用哪种吊装方法？该方法的装置和优点是什么？",
+    answer:"应选用专用起重装置吊装法。可采用横向滑移垂直液压顶升装置、智能液压提升装置或全自动液压顶升装置，完成超重超高轧机机架的安装工作，不受行车及厂房结构影响。",
+    keys:["专用起重装置吊装法", "横向滑移垂直液压顶升装置、智能液压提升装置或全自动液压顶升装置", "不受行车及厂房结构影响"],
+    need:2 }
+];
+
+const KEY_STATUS = "erjian_sw_4_8_status";
+const KEY_PASS = "erjian_sw_4_8_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

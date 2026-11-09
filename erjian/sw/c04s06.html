@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 4.6 石油化工设备安装 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  :root{
+    --bg:#F2F2F7; --card:#FFFFFF; --label:#000000; --label2:rgba(60,60,67,.6);
+    --label3:rgba(60,60,67,.3); --sep:rgba(60,60,67,.29); --blue:#007AFF;
+    --red:#FF3B30; --green:#34C759; --orange:#FF9500; --yellowBG:#FFF7E0;
+    --fill:rgba(120,120,128,.12); --radius:12px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#000; --card:#1C1C1E; --label:#FFF; --label2:rgba(235,235,245,.6);
+          --label3:rgba(235,235,245,.3); --sep:rgba(84,84,88,.65); --yellowBG:#3A2F12;
+          --fill:rgba(120,120,128,.24)}
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0 auto;padding:8px 16px 108px;max-width:640px;background:var(--bg);color:var(--label);
+       font:17px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .top{display:flex;align-items:center;gap:12px;margin:6px 0 2px}
+  h1{font-size:28px;line-height:1.2;letter-spacing:-.02em;font-weight:700;margin:0;flex:1}
+  #gateBtn{-webkit-appearance:none;border:0;background:transparent;color:var(--blue);
+           font-size:17px;font-weight:400;padding:6px 0 6px 8px;cursor:pointer}
+  #gateBtn.passed{color:var(--green)}
+  .sub{font-size:13px;color:var(--label2);margin:2px 0 16px;letter-spacing:-.01em}
+  .badge{color:var(--green);font-size:13px;margin-left:6px}
+  .bar{display:flex;gap:0;margin:0 0 14px;background:var(--card);border-radius:var(--radius);
+       padding:12px 4px}
+  .bar span{flex:1;text-align:center;font-size:12px;color:var(--label2);letter-spacing:-.01em}
+  .bar span+span{border-left:.5px solid var(--sep)}
+  .bar b{display:block;font-size:22px;font-weight:600;color:var(--label);letter-spacing:-.02em;margin-top:1px}
+  .card{background:var(--card);border-radius:var(--radius);padding:22px 20px 16px;
+        min-height:230px;display:flex;flex-direction:column;cursor:pointer;
+        transition:transform .12s ease,background .12s ease}
+  .card:active{transform:scale(.992)}
+  .tag{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.02em;margin-bottom:12px}
+  .q{font-size:20px;line-height:1.45;font-weight:600;letter-spacing:-.015em;white-space:pre-wrap}
+  .a{margin-top:16px;padding-top:16px;border-top:.5px solid var(--sep);font-size:17px;
+     line-height:1.65;color:var(--label);white-space:pre-wrap;animation:slideIn .22s ease}
+  .kk{margin-top:14px;padding:12px 14px;background:var(--yellowBG);border-radius:10px;
+      font-size:15px;line-height:1.55;color:var(--orange)}
+  .hint{margin-top:14px;font-size:12px;color:var(--label3)}
+  .src{margin-top:auto;padding-top:14px;font-size:12px;color:var(--label3);letter-spacing:-.01em}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);
+        padding:8px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:17px;font-weight:600;border:0;border-radius:12px;
+               background:var(--fill);color:var(--label);cursor:pointer;
+               transition:transform .1s ease,opacity .1s ease}
+  .dock button:active{transform:scale(.97);opacity:.85}
+  #flip{background:var(--blue);color:#fff;flex:1.3}
+  #bad{color:var(--red)}
+  #good{color:var(--green)}
+  .tools{display:flex;margin:14px 0 0;background:var(--fill);border-radius:9px;padding:2px}
+  .tools button{-webkit-appearance:none;flex:1;border:0;background:transparent;color:var(--label);
+                font-size:13px;font-weight:500;padding:6px 4px;border-radius:7px;cursor:pointer;
+                transition:background .15s ease}
+  .tools button.on{background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:600}
+  .tools .nav{display:none}
+  footer{margin-top:14px;font-size:12px;color:var(--label3);line-height:1.7;text-align:center}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:var(--label2);margin:2px 0 10px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:14px 16px;font-size:17px;
+       line-height:1.4;border:0;border-radius:12px;background:var(--card);color:var(--label);cursor:pointer;
+       transition:transform .1s ease}
+  .opt:active{transform:scale(.99)}
+  .opt.ok{background:rgba(52,199,89,.16);color:var(--green);font-weight:600}
+  .opt.no{background:rgba(255,59,48,.14);color:var(--red)}
+  #exInput{width:100%;margin-top:12px;padding:14px;font-size:17px;line-height:1.6;color:var(--label);
+           border:.5px solid var(--sep);border-radius:12px;background:var(--card);
+           font-family:inherit;resize:vertical}
+  #exInput:focus{outline:2px solid var(--blue);outline-offset:-1px}
+  .why{margin-top:12px;font-size:15px;line-height:1.7;color:var(--label2);background:var(--fill);
+       border-radius:12px;padding:14px;white-space:pre-wrap;animation:slideIn .22s ease}
+  .exDock{display:flex;gap:10px;margin-top:14px}
+  .exDock button{flex:1;min-height:50px;font-size:17px;font-weight:600;border:0;border-radius:12px;
+                 background:var(--fill);color:var(--label);cursor:pointer}
+  .exDock button.primary{background:var(--blue);color:#fff}
+  @keyframes slideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>4.6 石油化工设备安装</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P151–157 · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P103–113。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"塔器", q:"塔器的结构由哪几部分组成？适用于哪些工艺过程？", a:"塔器为长细圆筒形结构的直立式工艺设备，由筒体、封头（或称头盖）和裙座组成，是专门为某种生产工艺要求而设计、制造的非标准设备；塔器适用于蒸馏、抽提、吸收、精制等工艺过程。", k:"筒封裙；蒸抽吸精", s:"P151"},
+  {id:2, g:"塔器", q:"塔器现场到货状态分为哪几种？为什么会出现分段或分片到货？", a:"分为整体、分段、分片三种。多数塔器在工厂制造、整体运输到现场安装；少数塔器体积（几何尺寸）大，受运输条件限制，只有分段或分片运输到现场组装；还有的为了节约运输成本，制造商直接在现场建设超限厂房进行设备制造。", k:"整、段、片", s:"P151"},
+  {id:3, g:"塔器", q:"塔器到货验收应核查哪些资料和检查参数？", a:"设备随机资料、产品质量证明文件、设备开箱检验记录、塔体外观质量检查的参数都必须符合要求。", k:"", s:"P151"},
+  {id:4, g:"塔器", q:"塔器到货后现场保护有哪些要求？", a:"到货设备应做好保护，设备人孔、管口和其他开口应临时封闭，氮气保护的设备应定期检查氮气压力；不锈钢、钛、镍、锆、铝制设备应与碳钢隔离；铝设备、钛设备、低温设备不得有表面擦伤；设备的方位线标记、重心标记及吊挂点等标记应清晰。", k:"封口、查氮、隔离、防刮、标记清", s:"P151"},
+  {id:5, g:"塔器", q:"塔器整体安装前，基础验收有哪些要求？", a:"复测基础并对其表面进行处理，应符合要求；基础上应清晰地标出标高基准线、中心线；有沉降观测要求的还应设置沉降观测点。", k:"", s:"P152"},
+  {id:6, g:"塔器", q:"塔器设置垫铁有哪些主要要求？", a:"设备每个地脚螺栓近旁至少设置一组垫铁，设置在加强筋下；每组垫铁的块数不宜超过5块，放置平垫铁时厚的宜放在下面、薄的宜放在中间；斜垫铁应成对相向使用，搭接长度不应小于全长的3/4；垫铁组高度宜为30~80mm，平垫铁宜露出10~30mm，斜垫铁宜露出10~50mm；垫铁组伸入设备底座底面的长度应超过设备地脚螺栓的中心；设备调平后每组垫铁均应压紧；卧式带滑动端设备的滑动端预埋板上严禁放置垫铁。", k:"", s:"P152"},
+  {id:7, g:"塔器", q:"整体就位的塔器为什么常在吊装前完成地面施工？主要完成哪些内容？", a:"为了减少高空脚手架作业，降低高空作业风险，提高工作效率，整体就位的塔器一般会在吊装就位前，于施工现场的地面完成梯平台、附塔管线、保温的施工。", k:"", s:"P152"},
+  {id:8, g:"塔器", q:"塔器整体安装的找正、地脚螺栓紧固和垫铁点固有哪些要求？", a:"以塔体任意相邻的方位线作为垂直度找正基准，通过调整垫铁组使塔的标高和垂直度达到要求；分两次对称拧紧地脚螺栓，第一次拧至要求力矩的50%，第二次达到100%要求力矩；用0.25kg的手锤敲击各组垫铁，不应有松动；检查合格后24h内进行垫铁层间点焊。卧式设备的滑动端地脚螺栓宜处于支座长圆孔的中间，位置偏差应偏向补偿温度变化所引起的伸缩方向；设备配管结束后，松动滑动端支座地脚螺栓螺母，使其与支座板面间留有1~3mm间隙，并紧固锁紧螺母。", k:"", s:"P152"},
+  {id:9, g:"塔器", q:"塔器二次灌浆前应做哪些处理？采用什么混凝土？", a:"灌浆前清理基础上的油污、焊药渣等杂物，用水充分浸润基础；采用比基础高一个等级的细石混凝土灌浆至要求高度，充分捣实，面层抹平压光。", k:"", s:"P152"},
+  {id:10, g:"塔器", q:"分段、分片到货塔器的现场组焊有哪两种方式？各有什么要求？", a:"可采用卧式组焊和立式组焊。卧式组焊须在组装场地搭设临时道木支墩或设置滚轮架（托辊）等组装胎具，将各段塔体组对焊接成整体，进行塔内固定件和其他配件安装焊接，并对现场施焊的焊缝进行无损检测和热处理（根据设计文件要求）；立式组焊是在基础上先安装下段，由下至上逐段组对焊接，现场施焊的焊缝的无损检测可在塔器各段全部组焊完成后进行。", k:"", s:"P152"},
+  {id:11, g:"塔器", q:"塔器水压试验对压力表、试验压力和保压时间有什么要求？", a:"在设备最高与最低点且便于观察的位置各设置一块量程相同并经检定合格的压力表；压力表精度等级不低于1.6级，量程不低于1.5倍且不高于3倍试验压力，表盘直径不应小于100mm；试验压力以装设在设备最高处的压力表读数为准；充液后缓慢升至设计压力，确认无泄漏后继续升压至试验压力，保压时间不少于30min，然后将压力降至设计压力，对所有焊接接头和连接部位进行检查，无渗漏、无可见变形、试验过程中无异常响声为合格。", k:"", s:"P152"},
+  {id:12, g:"塔器", q:"塔器气压试验的升压程序和检查方法是什么？", a:"试压方案经审批且现场采取相应安全措施后，才可进行气压试验；缓慢升至规定试验压力的10%，且不超过0.05MPa，保压时间5min；对所有焊缝和连接部位进行初次泄漏检查；初次泄漏检查合格后，继续升压至规定试验压力的50%，观察有无异常现象；如无异常现象，继续按规定试验压力的10%逐级升压，直到试验压力，保压10min后将压力降至设计压力，对所有焊接接头和连接部位进行全面检查。", k:"", s:"P153"},
+  {id:13, g:"塔器", q:"塔器气压试验的合格标准是什么？对高强度塔器还有什么附加检测？", a:"试验过程中用肥皂液检查无漏气、无可见变形、无异常响声为合格；对标准抗拉强度下限值大于或等于540MPa的塔器，泄压后进行表面无损检测抽查未发现裂纹。", k:"", s:"P153"},
+  {id:14, g:"塔器", q:"塔器内件安装有哪些要求？", a:"安装塔盘支持圈、降液板、受液盘、浮阀；填料塔内安装填料的支撑结构应牢固、可靠，支撑结构与塔体焊接的部分，必须在塔器热处理及水压试验前完成；规整填料严格按照设计文件摆放；散堆填料填充体积应符合设计要求。", k:"", s:"P153"},
+  {id:15, g:"塔器", q:"塔器内件安装后的清扫、清洗和封闭有哪些要求？", a:"清扫内部杂物，对无法进行人工清扫的可用压缩空气吹扫，吹扫后必须及时进行干燥处理；技术文件要求在现场进行酸洗、中和的，钝化液的配方按相应规定执行，表面处理后应进行有效保护；设备经吹洗（脱脂）合格后应及时封闭并填写“清理、检查、封闭记录”；检查塔的所有安全附件，必须装配齐全。", k:"", s:"P153"},
+  {id:16, g:"储罐", q:"金属储罐制作前对钢板外观有什么要求？底板如何制作？", a:"制作前对每块钢板进行外观检查，应无重皮、裂纹、夹渣、分层、气孔、折痕等缺陷；钢板的表面锈蚀深度不得超过0.5mm；钢板切割后应将边缘的毛刺和氧化物清除干净，并保持钢板平直。底板制作时根据钢板来料规格，按图纸绘制排板图，按绘制的排板图切割、铺设中幅板；边缘板按放大后的直径先行下料预制，每罐预留两块边缘板待现场铺设时实测调整后再下料。", k:"", s:"P153"},
+  {id:17, g:"储罐", q:"储罐壁板预制对坡口、活动缝和滚制检查有什么要求？", a:"壁板四边坡口切口应光洁、平整，并打磨掉氧化皮；依据设计图纸切割壁板坡口，每圈壁板留两道活动缝，每缝预留长度300mm的余量；滚制壁板时，应用制作好的胎具板压头，保证壁板头的弧度；壁板滚制后应立置在平台上用样板检查，垂直方向上用直线样板检查，其间隙不应大于2mm；水平方向上用弧形样板检查，其间隙不应大于4mm。", k:"", s:"P153"},
+  {id:18, g:"储罐", q:"储罐顶板（瓜皮板）和包边角钢预制有哪些尺寸要求？", a:"罐顶瓜皮板下料时要求两对角线之差的绝对值不大于5mm；筋板应调平调直，按图要求滚弧，筋板间采用搭接连接时，搭接长度为筋板厚度的5倍；成形后瓜皮板用核准的弦长为2m的弧形样板检查，间隙不大于10mm为合格。包边角钢滚弧处理，采用弦长为2m的弧形样板检查，以间隙不大于2mm为合格。", k:"", s:"P153"},
+  {id:19, g:"储罐", q:"金属储罐正装法的施工顺序和适用范围是什么？包括哪些具体方法？", a:"罐底板铺设完成后，罐壁板自下而上依次组装焊接，最后组焊完成顶层壁板、抗风圈及顶端包边角钢等；较适用于大型浮顶罐。包括架设正装法（包括外搭脚手架正装法、内挂脚手架正装法）、水浮正装法等。", k:"外、内、水", s:"P154"},
+  {id:20, g:"储罐", q:"外搭脚手架正装法和内挂脚手架正装法各有什么特点？", a:"外搭脚手架正装法的脚手架随罐壁板升高而逐层搭设，采用吊车吊装壁板，适合于大型和特大型储罐，便于自动焊作业；内挂脚手架正装法采用吊车吊装壁板，每完成一圈壁板的组对，就在壁板内侧沿圆周挂上一圈三脚架，在三脚架上铺设跳板组成环形作业平台，作业人员即可在平台上组对安装上一层壁板；一台储罐施工宜用2~3层作业平台，从下至上交替使用。", k:"", s:"P154"},
+  {id:21, g:"储罐", q:"水浮正装法如何施工？", a:"罐底板、底圈壁板、第二圈罐壁板施工完毕，底圈壁板与底板的大角缝组焊完毕并检验合格后，利用这部分罐体作为水槽；在罐体内组焊浮船，浮船施工完毕并检验合格，利用浮船作为内操作平台；设置浮船导向装置，采用吊车吊装或在浮船上设置吊杆吊装壁板；向罐内充水，使浮船浮升到需要高度，逐圈组装第三圈及以上各圈壁板。", k:"", s:"P154"},
+  {id:22, g:"储罐", q:"金属储罐倒装法的施工顺序和罐顶提升工艺有哪些？", a:"罐底板铺设后，先完成底板边缘板外侧300mm对接焊缝的焊接，并进行无损检测；组装焊接顶层壁板及包边角钢，组装焊接罐顶；采用中心柱组装法、边柱倒装法（有液压顶升、葫芦提升等）、充气顶升法和水浮顶升法等提升工艺提升罐顶；自上而下依次组装焊接每层壁板，直至底层壁板；完成底板中幅板焊接、大角缝焊接，最后完成伸缩缝焊接。", k:"中、边、充、水", s:"P154"},
+  {id:23, g:"储罐", q:"金属拱顶储油罐倒装法施工的基础验收和罐底安装有哪些要求？", a:"复测基础有关数据，基础检验合格，混凝土强度达到设计强度的75%以上，方可进行储罐安装施工。底板铺设前，底面应涂刷沥青防腐漆二道，每板留出边缘50mm不刷；按排板方位图在基础上标出底板、边缘板的位置，底板由中心向外铺设；罐底板任意相邻两个焊接接头之间的距离以及边缘板对接焊缝距底圈罐壁纵焊缝的距离不应小于300mm；底板边缘板外侧300mm的对接焊缝应先行组焊并进行射线探伤检测，焊缝合格后，在罐底板上按罐体半径于罐内侧焊好限位铁。", k:"", s:"P154"},
+  {id:24, g:"储罐", q:"拱顶储油罐顶圈壁板、包边角钢和顶板安装的焊接顺序是什么？", a:"组对顶圈壁板，控制好其椭圆度，完成顶圈壁板纵缝焊接；安装包边角钢，包边角钢本身对接缝须离开壁板纵缝200mm以上；焊接顺序是先焊内侧断续焊，后焊外侧角缝；焊工均匀分布，同向施焊。顶板安装设立临时立柱和中心支撑圈，然后对称吊装瓜皮板；焊接要求先焊内侧焊缝，后焊外侧焊缝；径向长缝宜采用隔缝对称焊法；焊接包边角钢的角缝时，焊工均布且沿同一方向分段退焊。", k:"", s:"P154"},
+  {id:25, g:"储罐", q:"倒装法施工第二圈板（自顶往下）组焊有哪些要求？", a:"按排板图吊装第二圈板；各圈罐壁纵向焊缝宜向同方向错开板长的1/3，且不应小于300mm；组对时留两道活动口用以调整本圈壁板的周长，各用两个3t吊链收紧，其余各立缝先焊外侧。", k:"", s:"P155"},
+  {id:26, g:"储罐", q:"倒装法提升壁板时，提升架、提升工具和胀圈如何设置？", a:"在罐壁板内侧沿周向均匀设置提升架，提升架上设置提升工具（电动葫芦、液压千斤顶）；设置进出罐内的通道；将胀圈与罐壁胀紧；各起吊点同步上升至预定高度。", k:"", s:"P155"},
+  {id:27, g:"储罐", q:"倒装法壁板提升到位后的焊接顺序和活动口处理是什么？", a:"壁板提升到位后，将已经围好的下一圈壁板找平后统一点焊，活动口两侧各留1.5m不焊；焊工进罐内焊接立缝内侧；环缝焊接要求焊工均布，在焊接层次和焊接方向上同步，焊接顺序先外侧后内侧；切除调整焊缝处多余的钢板预留量，完成调整焊缝的焊接和其相连的环缝焊接。循环上述壁板安装工序直至提升最后一圈壁板，罐附件、工艺接管等在升罐过程中，同步进行安装。", k:"", s:"P155"},
+  {id:28, g:"储罐", q:"倒装法储罐底板和大角缝的焊接顺序及方法是什么？", a:"边缘板采用隔缝焊接（此前边缘板外侧300mm左右的对接焊缝已在壁板安装前完成，内侧待边缘板与壁板的角缝焊接后再施焊）；罐底与罐壁连接的角焊缝应先焊内侧环形角缝，再焊外侧环形角缝；焊工对称均匀分布，同一方向进行分段焊接；初层角焊缝采用分段退焊或跳焊法；中幅板焊接时先焊短焊缝、后焊长焊缝，焊前要将长焊缝的定位焊点全部磨去；遵循由罐中心向四周并隔缝对称焊接的原则，分段退焊或跳焊；最后焊工均布，同向施焊，完成中幅板与边缘板的焊接。", k:"", s:"P155"},
+  {id:29, g:"储罐", q:"储罐拱顶焊接的顺序是什么？", a:"先焊内侧断续焊，后焊外部连续焊；先焊环向短缝，再焊径向长缝；由拱顶中心向外分段退焊；包边角钢与顶板的环缝，焊工均布，沿同一方向分段退焊，不得超量焊接。", k:"", s:"P155"},
+  {id:30, g:"储罐", q:"储罐焊缝质量和外观尺寸检验有哪些要求？", a:"熔渣、飞溅清理干净，焊缝表面及热影响区不得有裂纹、气孔、夹渣、弧坑和未焊满等缺陷；罐壁焊缝按设计文件要求的比例进行无损检测；当板厚>12mm时，可采用衍射时差法进行超声检测。罐壁垂直度允许偏差不超过罐壁高的4/1000，且不大于50mm；壁板局部凹凸变形及底圈板的半径允许偏差范围为±13mm；高度偏差≤50mm。", k:"", s:"P155"},
+  {id:31, g:"储罐", q:"储罐罐底、罐壁和罐顶的试验方法分别是什么？", a:"罐底板的所有焊缝采用真空箱试漏法进行严密性试验；罐壁的严密性和强度试验采用注水到设计要求的充水高度，静置48h，罐壁无异常变形，罐壁、罐底各部分焊缝无渗漏，则罐壁的严密性和强度试验合格；罐顶的严密性试验、强度试验和稳定性试验前封闭储罐，通过适当排水或注水的方法，使罐顶处的负压或正压力达到试验所需要的参数值，正压时在罐顶涂以肥皂水检查，无泄漏则罐顶严密性合格，正压和负压试验后立即将罐顶孔开启，使储罐内部与大气相通，恢复到常压，罐顶无异常变形，则罐顶的强度和稳定性合格。", k:"", s:"P155"},
+  {id:32, g:"储罐", q:"储罐焊接变形的机械矫正和火焰加热矫正如何实施？", a:"机械矫正采用龙门架、千斤顶对局部变形处加压，产生与焊接变形相反方向的塑性变形，矫正焊后残余变形；采用锤击法使材料延伸以补偿焊接收缩产生的变形。火焰加热矫正是采取火焰加热急冷的方法消除焊接变形，在高温时材料的热膨胀受到本身的刚性制约，产生局部压缩塑性变形，冷却收缩后抵消了在该部位的伸长变形；火焰加热矫正壁板时，可采用梅花点状加热，以增强矫正效果。", k:"", s:"P156"},
+  {id:33, g:"钢结构", q:"设备钢结构制作包括哪些内容？制作程序是什么？", a:"包括钢结构零件及部件（杆件、节点板、加强筋、支座、螺栓球等）加工和钢构件预制（板材、型材的拼接组装）。制作程序：原材料检验→下料→拼接→零部件加工→部件装配→焊接→除锈→油漆→构件编号验收。", k:"检→下→拼→加→装→焊→锈→漆→验", s:"P156"},
+  {id:34, g:"钢结构", q:"设备钢结构制作对切割面、矫正温度和表面划痕有哪些要求？", a:"钢材切割面应无裂纹、夹渣、分层等缺陷和大于1mm的缺棱，并应全数检查；碳素结构钢在环境温度低于-16℃、低合金结构钢在环境温度低于-12℃时，不应进行冷矫正和冷弯曲；碳素结构钢和低合金结构钢在加热矫正时，加热温度应为700~800℃，最高温度严禁超过900℃，最低温度不得低于600℃；低合金结构钢在加热矫正后应自然冷却；矫正后的钢材表面不应有明显的凹面或损伤，划痕深度不得大于0.5mm，且不应大于该钢材厚度允许负偏差的1/2。", k:"", s:"P156"},
+  {id:35, g:"钢结构", q:"焊接H型钢的翼缘板、腹板拼接有哪些尺寸要求？", a:"焊接H型钢的翼缘板拼接缝和腹板拼接缝的间距，不宜小于200mm；翼缘板拼接长度不应小于600mm；腹板拼接宽度不应小于300mm；H型钢端头到拼接缝的长度不应小于600mm。", k:"", s:"P156"},
+  {id:36, g:"钢结构", q:"设备钢结构安装程序和紧固方式是什么？", a:"钢结构安装程序：构件检查→基础复查→钢柱安装→支撑安装→梁安装→平台板（层板、屋面板）安装→围护结构安装。紧固方式采用普通螺栓、扭剪型高强度螺栓、高强度大六角头螺栓。", k:"检→基→柱→撑→梁→板→围", s:"P156"},
+  {id:37, g:"钢结构安装", q:"高强度螺栓连接处的摩擦面怎么处理？打磨方向、范围和抗滑移系数试验有什么要求？", a:"采用手工砂轮打磨时，打磨方向应与受力方向垂直，且打磨范围不应小于螺栓孔径的4倍；采用生锈处理方法时，安装前应以细钢丝刷垂直于构件受力方向除去摩擦面上的浮锈。钢结构制作和安装单位应分别进行高强度螺栓、连接摩擦面的抗滑移系数试验；当按承压型或张拉型连接进行强度设计时，可不进行摩擦面抗滑移系数试验。", k:"垂直受力方向、≥4倍孔径、两家分别试", s:"P157"},
+  {id:38, g:"钢结构安装", q:"高强度大六角头螺栓、扭剪型高强度螺栓的连接副各由哪些件组成？垫圈方向有什么要求？", a:"高强度大六角头螺栓连接副应由一个螺栓、一个螺母和两个垫圈组成，垫圈的倒角应朝向螺栓头或螺母；扭剪型高强度螺栓连接副应由一个螺栓、一个螺母和一个垫圈组成，安装时螺母带圆台面的一侧应朝向垫圈有倒角的一侧。", k:"大六角=1栓1母2垫圈；扭剪=1栓1母1垫圈", s:"P157"},
+  {id:39, g:"钢结构安装", q:"多节柱、吊车梁、钢网架结构安装时，定位轴线和挠度有什么要求？", a:"多节柱安装时，每节柱的定位轴线应从地面控制轴线直接引上，不得从下层柱的轴线引上，避免造成过大的累积误差；吊车梁和吊车桁架安装就位后不应下挠；钢网架结构总拼完成后及屋面工程完成后应分别测量其挠度值，所测挠度值不应超过相应设计值的1.15倍。", k:"轴线从地面引、梁不下挠、挠度≤1.15倍", s:"P157"},
+  {id:40, g:"钢结构安装", q:"钢结构防火涂料的涂装遍数、涂层厚度有什么要求？", a:"涂料、涂装遍数、涂层厚度均应符合设计要求；薄涂型防火涂料的涂层厚度应符合有关耐火极限的设计要求；厚涂型防火涂料涂层的厚度，80%及以上面积应符合有关耐火极限的设计要求，且最薄处厚度不应低于设计要求的85%。", k:"薄涂按设计；厚涂80%面积、最薄85%", s:"P157"},
+];
+
+const EXAM = [
+  { type:"正向", cardIds:[11],
+    q:"塔器水压试验对压力表的精度等级、量程、表盘直径和保压时间各有什么要求？",
+    answer:"压力表精度等级不低于1.6级；量程不低于1.5倍且不高于3倍试验压力；表盘直径不应小于100mm；升至试验压力后保压时间不少于30min。",
+    keys:["精度不低于1.6级", "量程不低于1.5倍且不高于3倍试验压力", "表盘直径不小于100mm", "保压不少于30min"],
+    need:3 },
+  { type:"正向", cardIds:[22],
+    q:"金属储罐倒装法的壁板组装顺序是什么？可采用哪些罐顶提升工艺？",
+    answer:"先组装焊接顶层壁板及包边角钢、罐顶并提升，再自上而下依次组装焊接每层壁板，直至底层壁板；罐顶提升可采用中心柱组装法、边柱倒装法（液压顶升、葫芦提升等）、充气顶升法、水浮顶升法。",
+    keys:["自上而下逐层组装", "中心柱组装法", "边柱倒装法", "充气顶升法", "水浮顶升法"],
+    need:3 },
+  { type:"选择", cardIds:[6],
+    q:"塔器设置垫铁时，每组垫铁的块数不宜超过多少块？斜垫铁搭接长度不应小于全长的多少？",
+    options:["A. 3块；1/2", "B. 5块；3/4", "C. 5块；1/2", "D. 3块；3/4"],
+    correct:1,
+    why:"每组垫铁的块数不宜超过5块；斜垫铁应成对相向使用，搭接长度不应小于全长的3/4。" },
+  { type:"选择", cardIds:[13],
+    q:"对标准抗拉强度下限值大于或等于540MPa的塔器，气压试验泄压后应进行哪项检测？",
+    options:["A. 对所有焊缝进行磁粉检测", "B. 进行表面无损检测抽查", "C. 对所有焊缝进行射线检测", "D. 进行整体超声测厚"],
+    correct:1,
+    why:"对标准抗拉强度下限值大于或等于540MPa的塔器，泄压后进行表面无损检测抽查，未发现裂纹。" },
+  { type:"反向", cardIds:[19],
+    q:"某储罐安装时，罐底板铺设完成后，罐壁板自下而上依次组装焊接，最后组焊顶层壁板、抗风圈及顶端包边角钢，该方法较适用于大型浮顶罐。这种安装方法是什么？",
+    answer:"正装法。",
+    keys:["正装法", "自下而上", "大型浮顶罐"],
+    need:2 },
+  { type:"场景", cardIds:[8],
+    q:"某塔器整体安装，地脚螺栓分两次对称拧紧，第一次至要求力矩的50%，第二次至100%；用0.25kg手锤敲击各组垫铁无松动，检查合格后第30h进行垫铁层间点焊。指出做法中的不妥之处并改正。",
+    answer:"不妥之处：检查合格后第30h才进行垫铁层间点焊。改正：应在检查合格后24h内进行垫铁层间点焊。",
+    keys:["24h内", "垫铁层间点焊"],
+    need:2 }
+];
+
+const KEY_STATUS = "erjian_sw_4_6_status";
+const KEY_PASS = "erjian_sw_4_6_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

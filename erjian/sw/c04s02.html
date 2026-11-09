@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 4.2 工业管道施工技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  :root{
+    --bg:#F2F2F7; --card:#FFFFFF; --label:#000000; --label2:rgba(60,60,67,.6);
+    --label3:rgba(60,60,67,.3); --sep:rgba(60,60,67,.29); --blue:#007AFF;
+    --red:#FF3B30; --green:#34C759; --orange:#FF9500; --yellowBG:#FFF7E0;
+    --fill:rgba(120,120,128,.12); --radius:12px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#000; --card:#1C1C1E; --label:#FFF; --label2:rgba(235,235,245,.6);
+          --label3:rgba(235,235,245,.3); --sep:rgba(84,84,88,.65); --yellowBG:#3A2F12;
+          --fill:rgba(120,120,128,.24)}
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0 auto;padding:8px 16px 108px;max-width:640px;background:var(--bg);color:var(--label);
+       font:17px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .top{display:flex;align-items:center;gap:12px;margin:6px 0 2px}
+  h1{font-size:28px;line-height:1.2;letter-spacing:-.02em;font-weight:700;margin:0;flex:1}
+  #gateBtn{-webkit-appearance:none;border:0;background:transparent;color:var(--blue);
+           font-size:17px;font-weight:400;padding:6px 0 6px 8px;cursor:pointer}
+  #gateBtn.passed{color:var(--green)}
+  .sub{font-size:13px;color:var(--label2);margin:2px 0 16px;letter-spacing:-.01em}
+  .badge{color:var(--green);font-size:13px;margin-left:6px}
+  .bar{display:flex;gap:0;margin:0 0 14px;background:var(--card);border-radius:var(--radius);
+       padding:12px 4px}
+  .bar span{flex:1;text-align:center;font-size:12px;color:var(--label2);letter-spacing:-.01em}
+  .bar span+span{border-left:.5px solid var(--sep)}
+  .bar b{display:block;font-size:22px;font-weight:600;color:var(--label);letter-spacing:-.02em;margin-top:1px}
+  .card{background:var(--card);border-radius:var(--radius);padding:22px 20px 16px;
+        min-height:230px;display:flex;flex-direction:column;cursor:pointer;
+        transition:transform .12s ease,background .12s ease}
+  .card:active{transform:scale(.992)}
+  .tag{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.02em;margin-bottom:12px}
+  .q{font-size:20px;line-height:1.45;font-weight:600;letter-spacing:-.015em;white-space:pre-wrap}
+  .a{margin-top:16px;padding-top:16px;border-top:.5px solid var(--sep);font-size:17px;
+     line-height:1.65;color:var(--label);white-space:pre-wrap;animation:slideIn .22s ease}
+  .kk{margin-top:14px;padding:12px 14px;background:var(--yellowBG);border-radius:10px;
+      font-size:15px;line-height:1.55;color:var(--orange)}
+  .hint{margin-top:14px;font-size:12px;color:var(--label3)}
+  .src{margin-top:auto;padding-top:14px;font-size:12px;color:var(--label3);letter-spacing:-.01em}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);
+        padding:8px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:17px;font-weight:600;border:0;border-radius:12px;
+               background:var(--fill);color:var(--label);cursor:pointer;
+               transition:transform .1s ease,opacity .1s ease}
+  .dock button:active{transform:scale(.97);opacity:.85}
+  #flip{background:var(--blue);color:#fff;flex:1.3}
+  #bad{color:var(--red)}
+  #good{color:var(--green)}
+  .tools{display:flex;margin:14px 0 0;background:var(--fill);border-radius:9px;padding:2px}
+  .tools button{-webkit-appearance:none;flex:1;border:0;background:transparent;color:var(--label);
+                font-size:13px;font-weight:500;padding:6px 4px;border-radius:7px;cursor:pointer;
+                transition:background .15s ease}
+  .tools button.on{background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:600}
+  .tools .nav{display:none}
+  footer{margin-top:14px;font-size:12px;color:var(--label3);line-height:1.7;text-align:center}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:var(--label2);margin:2px 0 10px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:14px 16px;font-size:17px;
+       line-height:1.4;border:0;border-radius:12px;background:var(--card);color:var(--label);cursor:pointer;
+       transition:transform .1s ease}
+  .opt:active{transform:scale(.99)}
+  .opt.ok{background:rgba(52,199,89,.16);color:var(--green);font-weight:600}
+  .opt.no{background:rgba(255,59,48,.14);color:var(--red)}
+  #exInput{width:100%;margin-top:12px;padding:14px;font-size:17px;line-height:1.6;color:var(--label);
+           border:.5px solid var(--sep);border-radius:12px;background:var(--card);
+           font-family:inherit;resize:vertical}
+  #exInput:focus{outline:2px solid var(--blue);outline-offset:-1px}
+  .why{margin-top:12px;font-size:15px;line-height:1.7;color:var(--label2);background:var(--fill);
+       border-radius:12px;padding:14px;white-space:pre-wrap;animation:slideIn .22s ease}
+  .exDock{display:flex;gap:10px;margin-top:14px}
+  .exDock button{flex:1;min-height:50px;font-size:17px;font-weight:600;border:0;border-radius:12px;
+                 background:var(--fill);color:var(--label);cursor:pointer}
+  .exDock button.primary{background:var(--blue);color:#fff}
+  @keyframes slideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>4.2 工业管道施工技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P114–122 · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P103–113。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"管道分类", q:"工业管道按设计压力可分为哪几类？", a:"真空管道、低压管道、中压管道、高压管道和超高压管道。", k:"真、低、中、高、超高压", s:"P114"},
+  {id:2, g:"管道分类", q:"工业管道分级（分类）的主要参数是什么？", a:"设计压力。工业管道输送介质的压力范围很广，设计压力是工业管道分级的主要参数。", k:"", s:"P114"},
+  {id:3, g:"管道分类", q:"按设计压力分类，真空、低压、中压、高压、超高压管道的压力范围各是多少（MPa，表压）？", a:"真空管道 P<0；低压管道 0≤P≤1.6；中压管道 1.6<P≤10；高压管道 10<P≤100；超高压管道 P>100。", k:"0—1.6—10—100 四个分界", s:"P115"},
+  {id:4, g:"管道分类", q:"工业管道按输送介质的设计温度分为哪几类？各类温度范围是多少？", a:"低温管道 t≤-40℃；常温管道 -40<t≤120℃；中温管道 120<t≤450℃；高温管道 t>450℃。", k:"-40 / 120 / 450 三个分界", s:"P115"},
+  {id:5, g:"施工程序", q:"工业管道的施工程序是什么？", a:"测量定位→支架制作安装→管道加工（预制）、安装→管道试验→防腐绝热→管道吹扫、清洗→系统调试及试运行→竣工验收。", k:"测位→支架→加工安装→试验→防腐绝热→吹洗→调试→验收", s:"P115"},
+  {id:6, g:"识别标识", q:"工业管道基本识别色分几类？水、水蒸气、空气、气体、酸或碱、可燃液体、其他液体、氧分别是什么颜色？", a:"共分八类：水是艳绿色，水蒸气是大红色，空气是淡灰色，气体是中黄色，酸或碱是紫色，可燃液体是棕色，其他液体是黑色，氧是淡蓝色。", k:"水绿、汽红、空灰、气黄；酸碱紫、燃棕、其他黑、氧淡蓝", s:"P115"},
+  {id:7, g:"识别标识", q:"管内物质属危险化学品时，危险标识应如何涂色？", a:"在管道基本标识色的标识上或附近涂150mm宽黄色，在黄色两侧各涂25mm宽黑色的色环或色带。", k:"150 宽黄，两侧各 25 黑", s:"P115"},
+  {id:8, g:"安装前检验", q:"管子、管件的产品质量证明文件包括哪些？实行监督检验的管道元件还应提供什么？", a:"包括产品合格证和质量证明书，质量证明文件应盖有制造单位质量检验章；实行监督检验的管道元件，还应提供特种设备检验检测机构出具的监督检验证书。", k:"", s:"P116"},
+  {id:9, g:"安装前检验", q:"管道元件及材料外观质量不允许存在哪些缺陷？", a:"裂纹、凹陷、孔洞、砂眼、重皮、焊缝外观不良、严重锈蚀和局部残损等不允许缺陷。", k:"", s:"P116"},
+  {id:10, g:"安装前检验", q:"哪些材料的管道组成件应采用光谱分析或其他方法对材质进行复查？", a:"铬钼合金钢、含镍低温钢、镍及镍合金钢、不锈钢、钛及钛合金材料的管道组成件，并应做好标识。", k:"", s:"P116"},
+  {id:11, g:"阀门检验", q:"阀门壳体压力试验和密封试验的介质、压力倍数、最短试验时间和试验温度是多少？", a:"以洁净水为介质；壳体试验压力为阀门在20℃时最大允许工作压力的1.5倍，密封试验为1.1倍；试验持续时间不得少于5min；无特殊规定时试验温度为5~40℃，低于5℃时应采取升温措施。", k:"壳 1.5、密 1.1、5min、5~40℃", s:"P116"},
+  {id:12, g:"阀门检验", q:"公称压力小于1.0MPa且公称尺寸大于或等于600mm的闸阀，壳体压力试验和闸板密封试验怎么做？", a:"壳体压力试验可按管道系统的试验压力与系统一并进行试压；闸板的密封试验可用色印等方法对密封面进行检查，结合面上的色印应连续。", k:"", s:"P116"},
+  {id:13, g:"管道加工", q:"碳素钢、合金钢、不锈钢、有色金属、镀锌钢管各宜采用什么切割方法？", a:"碳素钢、合金钢宜采用机械方法切割，也可用火焰或等离子弧方法切割；不锈钢、有色金属应采用机械或等离子弧方法切割；镀锌钢管宜采用钢锯或机械方法切割。", k:"", s:"P117"},
+  {id:14, g:"管道加工", q:"夹套管的内管焊缝检测、内管试压和外管试验有哪些要求？", a:"内管焊缝应进行100%射线检测，并应经试压合格后再封入外管；夹套管加工完毕后，外管部分应进行压力试验；夹套管弯管的外管组焊应在内管制作完毕并经无损检测合格后进行。", k:"", s:"P117"},
+  {id:15, g:"支吊架安装", q:"有热位移管道的吊点和导向、滑动支架偏移量如何确定？", a:"有热位移的管道，吊点应于位移的相反方向偏置，设计文件无规定时按位移值的1/2偏位安装；导向或滑动支架的安装位置应从支承面中心向位移反方向偏移，设计文件无规定时偏移量应为位移值的1/2。两根有热位移的管道不得使用同一吊杆。", k:"反方向、1/2 偏位", s:"P117"},
+  {id:16, g:"支吊架安装", q:"固定支架安装有哪些规定？", a:"固定支架应按设计文件要求或标准图安装，并应在补偿器预拉伸或预压缩之前固定；没有补偿装置的冷、热管道直管段上，不得同时安装2个及以上的固定支架。", k:"", s:"P117"},
+  {id:17, g:"管道连接", q:"法兰连接时密封垫片、螺栓孔和螺栓的安装要求是什么？", a:"法兰密封面及密封垫片不得有划痕、斑点等缺陷；大直径密封垫片需要拼接时，应采用斜口搭接或迷宫式拼接，不得采用平口对接；法兰螺栓孔应跨中布置；应使用同一规格螺栓，安装方向应一致，螺栓应对称紧固。", k:"", s:"P117"},
+  {id:18, g:"管道连接", q:"管道与大型设备或动设备连接有哪些要求？", a:"应在设备安装定位并紧固地脚螺栓后进行；无论焊接还是法兰连接，连接时都不应使动设备承受附加外力；管道与动设备最终连接时，应在联轴器上架设百分表监视动设备的位移；管道试压、吹扫和清洗合格后，应对该管道与机器的接口进行复位检验。", k:"", s:"P118"},
+  {id:19, g:"管道连接", q:"防腐衬里管道安装有什么特殊要求？", a:"应采用软质或半硬质垫片；当需要调整安装长度误差时，宜采用更换同材质垫片厚度的方法；安装时不得施焊、加热、碰撞或敲打。", k:"", s:"P118"},
+  {id:20, g:"管道安装", q:"埋地管道安装、防腐层施工与回填的先后顺序是什么？", a:"应在支承地基或基础检验合格后进行；埋地管道防腐层的施工应在管道安装前进行，焊缝部位未经试压合格不得防腐；应进行防腐层检测和严密性试验，并按隐蔽工程验收，合格后方可回填土。", k:"", s:"P118"},
+  {id:21, g:"伴热管及夹套管", q:"伴热管的安装位置、固定和隔离有什么要求？", a:"伴热管应与主管平行安装，并能自行排液；水平伴热管宜安装在主管的下方一侧或两侧，或靠近支架的侧面，铅垂伴热管应均匀分布在主管周围；不得将伴热管直接点焊在主管上，对不允许与主管直接接触的应设置隔离垫；伴热管经过主管法兰、阀门时，应设置可拆卸的连接件。", k:"", s:"P118"},
+  {id:22, g:"阀门安装", q:"阀门与管道采用法兰、螺纹、焊接及非金属管电熔、热熔连接时，阀门各应处于什么状态？", a:"以法兰或螺纹方式连接时，阀门应在关闭状态下安装；以焊接方式连接时，阀门应在开启状态下安装，对接焊缝底层应采用氩弧焊并对阀门采取防变形措施；非金属管道采用电熔连接或热熔连接时，接头附近的阀门应处于开启状态。", k:"", s:"P118"},
+  {id:23, g:"静电接地", q:"有静电接地要求的管道，法兰或螺纹接头间电阻值超过多少时应设导线跨接？接地引线宜采用什么形式？", a:"每对法兰或螺纹接头间电阻值超过0.03Ω时应设导线跨接；静电接地引线宜采用焊接形式。", k:"0.03Ω 跨接", s:"P119"},
+  {id:24, g:"管道试验", q:"管道试验主要有哪几种类型？", a:"压力试验、泄漏性试验和真空度试验。", k:"压力、泄漏、真空三种", s:"P119"},
+  {id:25, g:"管道试验", q:"管道试验前，管道的防腐、绝热和待检部位有什么规定？", a:"管道的防腐和绝热在试验前可部分完成或不完成，但焊缝和管道的待检部位在试验前不得进行防腐、绝热。", k:"", s:"P119"},
+  {id:26, g:"管道试验", q:"压力试验用压力表的精度、满刻度值、数量及安装位置有何要求？", a:"压力表已经校验并在检验周期内，精度不得低于1.6级，表的满刻度值应为被测最大压力的1.5~3倍，压力表不得少于2块；其中至少1块安装于液位最高点，且以安装于液位最高点的压力表读数为准。", k:"1.6 级、1.5~3 倍、2 块、最高点读数为准", s:"P119"},
+  {id:27, g:"管道试验", q:"压力试验的介质应如何选用？", a:"压力试验应以液体为试验介质；当管道的设计压力小于或等于0.6MPa时，也可采用气体为试验介质，但应采取可靠、有效的安全措施；脆性材料严禁使用气体进行压力试验。", k:"", s:"P119"},
+  {id:28, g:"压力试验", q:"管道液压试验对用水和环境温度有什么要求？", a:"应使用洁净水；对不锈钢管、镍及镍合金管道，或对连有不锈钢管、镍及镍合金管道或设备的管道，水中氯离子含量不得超过25×10⁻⁶；水压试验时环境温度不宜低于5℃，低于5℃时应采取防冻措施。", k:"", s:"P120"},
+  {id:29, g:"压力试验", q:"管道液压试验的试验压力如何确定？", a:"承受内压的地上钢管道及有色金属管道，试验压力应为设计压力的1.5倍；埋地钢管道的试验压力应为设计压力的1.5倍，且不得低于0.4MPa。", k:"1.5 倍、埋地不低于 0.4MPa", s:"P120"},
+  {id:30, g:"压力试验", q:"管道设计温度高于试验温度时，液压试验压力如何计算？比值过大时怎么处理？", a:"P_T=1.5P[σ]T/[σ]t（[σ]T为试验温度下管材许用应力，[σ]t为设计温度下管材许用应力）；当比值[σ]T/[σ]t大于6.5时应取6.5，并应校核管道在试验压力条件下的应力，试验压力在试验温度下产生超过管材屈服强度的应力时，应将试验压力降至不超过管材屈服强度的应力。", k:"", s:"P120"},
+  {id:31, g:"压力试验", q:"管道与设备作为一个系统进行试验时，试验压力如何确定？", a:"管道试验压力等于或小于设备试验压力时，按管道的试验压力进行试验；管道试验压力大于设备试验压力并无法将管道与设备隔开，且设备试验压力大于管道试验压力的77%时，经设计单位或建设单位同意，可按设备的试验压力进行试验。", k:"设备压力 > 管道压力 77% 时可从设备", s:"P120"},
+  {id:32, g:"压力试验", q:"压力试验的替代必须取得谁的同意？什么情况下可用气压试验代替液压试验？", a:"替代试验必须取得建设单位和设计单位的同意；当管道设计压力大于0.6MPa，设计和建设单位认为液压试验不切实际时（如管道系统设计未考虑充水载荷、生产中不允许残留微量水渍等），可按设计要求和施工技术标准的规定以气压试验代替液压试验。", k:"", s:"P120"},
+  {id:33, g:"压力试验", q:"管道液压试验的升压、稳压和检查程序是什么？", a:"应缓慢升压，待达到试验压力后稳压10min，再将试验压力降至设计压力，稳压30min，检查压力表有无压降、管道所有部位有无渗漏和变形。", k:"试验压力稳压 10min → 设计压力稳压 30min", s:"P121"},
+  {id:34, g:"压力试验", q:"管道气压试验的试验压力是多少？对介质和压力泄放装置有什么要求？", a:"承受内压钢管及有色金属管道的试验压力应为设计压力的1.15倍，真空管道的试验压力应为0.2MPa；试验介质应采用干燥洁净的空气、氮气或其他不易燃和无毒的气体；应装设压力泄放装置，其设定压力不得高于试验压力的1.1倍。", k:"气 1.15 倍、真空 0.2MPa、泄放 1.1 倍", s:"P121"},
+  {id:35, g:"管道试验", q:"泄漏性试验适用于哪些管道？试验介质、试验压力和检查方法是什么？", a:"输送极度和高度危害介质以及可燃介质的管道必须进行泄漏性试验；应在压力试验合格后进行，试验介质宜采用空气；泄漏性试验压力为设计压力；应逐级缓慢升压，达到试验压力停压10min后，采用涂刷中性发泡剂或显色剂、气体分子感测仪等方法巡回检查所有密封点应无泄漏。", k:"", s:"P121"},
+  {id:36, g:"管道试验", q:"管道真空度试验的时长和增压率限值是多少？", a:"真空系统在压力试验合格后，还应按设计文件规定进行24h的真空度试验，增压率不应大于5%。", k:"24h、5%", s:"P121"},
+  {id:37, g:"管道吹扫与清洗", q:"管道吹扫与清洗方法应根据什么确定？不同管径、不同介质各应采用什么方法？", a:"应根据管道的使用要求、工作介质、系统回路、现场条件及管道内表面的脏污程度确定：公称直径大于或等于600mm的液体或气体管道宜采用人工清理；公称直径小于600mm的液体管道宜采用水冲洗；公称直径小于600mm的气体管道宜采用压缩空气吹扫；蒸汽管道应采用蒸汽吹扫，非热力管道不得采用蒸汽吹扫。", k:"≥600 人工、<600 水冲或气吹、蒸汽管专用蒸汽", s:"P122"},
+  {id:38, g:"管道吹扫与清洗", q:"管道吹扫与清洗前，系统内的仪表、阀门等管道组成件应如何处理？", a:"应将系统内的仪表、孔板、喷嘴、滤网、节流阀、调节阀、电磁阀、安全阀、止回阀等管道组成件暂时拆除，并以模拟体或临时短管替代，待吹扫、清洗合格后重新复位；以焊接形式连接的上述阀门、仪表等部件，应采取流经旁路或拆卸阀头及阀座加保护套等保护措施后再吹扫与清洗。", k:"", s:"P122"},
+  {id:39, g:"管道吹扫与清洗", q:"管道吹扫与清洗的顺序是什么？吹出的脏物有什么限制？", a:"应按主管、支管、疏排管依次进行；吹洗出的脏物不得进入已经吹扫与清洗合格的管道。", k:"主管→支管→疏排管", s:"P122"},
+  {id:40, g:"管道吹扫与清洗", q:"水冲洗的用水、流速、压力、排放管截面积和合格标准是什么？", a:"应使用洁净水，冲洗不锈钢、镍及镍合金钢管道时水中氯离子含量不得超过25×10⁻⁶；流速不得低于1.5m/s，冲洗压力不得超过管道的设计压力；排放管的截面积不应小于被冲洗管截面积的60%，排水时不得形成负压；应连续进行，设计无规定时排出口的水色和透明度应与入口处目测一致，合格后及时将管内积水排净并吹干。", k:"", s:"P122"},
+];
+
+const EXAM = [
+  { type:"正向", cardIds:[11],
+    q:"阀门安装前应进行壳体压力试验和密封试验，这两项试验的试验压力分别如何确定？试验时间和试验温度有何要求？",
+    answer:"壳体试验压力为阀门在20℃时最大允许工作压力的1.5倍，密封试验为阀门在20℃时最大允许工作压力的1.1倍；试验持续时间不得少于5min；无特殊规定时试验温度为5~40℃，低于5℃时应采取升温措施。试验不合格者不得使用。",
+    keys:["1.5倍", "1.1倍", "20℃最大允许工作压力", "5min", "5~40℃"],
+    need:3 },
+  { type:"正向", cardIds:[36],
+    q:"真空系统在压力试验合格后还应进行什么试验？试验时间和合格标准是什么？",
+    answer:"还应按设计文件规定进行24h的真空度试验，增压率不应大于5%。",
+    keys:["24h", "真空度试验", "增压率", "5%"],
+    need:2 },
+  { type:"选择", cardIds:[26],
+    q:"关于管道压力试验用压力表的要求，下列说法正确的是？",
+    options:["A 精度不得低于1.0级，满刻度值应为被测最大压力的1.5~3倍，不少于2块", "B 精度不得低于1.6级，满刻度值应为被测最大压力的1.5~3倍，不少于2块，至少1块安装于液位最高点", "C 精度不得低于1.6级，满刻度值应为被测最大压力的1.0~1.5倍，不少于1块", "D 精度不得低于2.5级，满刻度值应为被测最大压力的2~3倍，不少于2块"],
+    correct:1,
+    why:"教材要求：压力表已校验并在检验周期内，精度不得低于1.6级，满刻度值为被测最大压力的1.5~3倍，压力表不得少于2块，其中至少1块安装于液位最高点，并以该表读数为准。A项精度错，C项量程与数量错，D项精度与量程错。" },
+  { type:"选择", cardIds:[37],
+    q:"关于管道吹扫与清洗方法的选择，下列说法正确的是？",
+    options:["A 公称直径大于或等于600mm的液体或气体管道，宜采用人工清理", "B 公称直径小于600mm的液体管道宜采用压缩空气吹扫", "C 蒸汽管道宜采用水冲洗", "D 非热力管道可采用蒸汽吹扫"],
+    correct:0,
+    why:"教材规定：≥600mm的液体或气体管道宜人工清理；<600mm的液体管道宜水冲洗；<600mm的气体管道宜压缩空气吹扫；蒸汽管道应采用蒸汽吹扫，非热力管道不得采用蒸汽吹扫。故B、C、D均错。" },
+  { type:"反向", cardIds:[7],
+    q:"某工地对输送危险化学品的管道做危险标识：在基本识别色的标识上涂100mm宽黄色，黄色两侧各涂20mm宽黑色色环。请指出错误并改正。",
+    answer:"两处尺寸均错。应涂150mm宽黄色，在黄色两侧各涂25mm宽黑色的色环或色带；标识位置在管道基本标识色的标识上或附近。",
+    keys:["150mm宽黄色", "25mm宽黑色", "色环或色带"],
+    need:2 },
+  { type:"场景", cardIds:[22],
+    q:"某工业管道工程安装DN200不锈钢阀门，阀门与管道采用焊接连接。施工人员先将阀门关闭，再用手工电弧焊打底焊接。请指出不妥之处并改正。",
+    answer:"不妥：焊接连接时阀门处于关闭状态、对接焊缝底层采用手工电弧焊。改正：以焊接方式连接时，阀门应在开启状态下安装；对接焊缝底层应采用氩弧焊，并对阀门采取防变形措施。",
+    keys:["阀门应在开启状态", "氩弧焊", "防变形措施"],
+    need:2 }
+];
+
+const KEY_STATUS = "erjian_sw_4_2_status";
+const KEY_PASS = "erjian_sw_4_2_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

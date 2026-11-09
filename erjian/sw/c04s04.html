@@ -1,0 +1,501 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>二建机电 · 4.4 自动化仪表工程安装技术 知识卡</title>
+<style>
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  :root{
+    --bg:#F2F2F7; --card:#FFFFFF; --label:#000000; --label2:rgba(60,60,67,.6);
+    --label3:rgba(60,60,67,.3); --sep:rgba(60,60,67,.29); --blue:#007AFF;
+    --red:#FF3B30; --green:#34C759; --orange:#FF9500; --yellowBG:#FFF7E0;
+    --fill:rgba(120,120,128,.12); --radius:12px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{--bg:#000; --card:#1C1C1E; --label:#FFF; --label2:rgba(235,235,245,.6);
+          --label3:rgba(235,235,245,.3); --sep:rgba(84,84,88,.65); --yellowBG:#3A2F12;
+          --fill:rgba(120,120,128,.24)}
+  }
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0 auto;padding:8px 16px 108px;max-width:640px;background:var(--bg);color:var(--label);
+       font:17px/1.5 -apple-system,BlinkMacSystemFont,"SF Pro Text","PingFang SC","Microsoft YaHei",sans-serif;
+       -webkit-font-smoothing:antialiased}
+  .top{display:flex;align-items:center;gap:12px;margin:6px 0 2px}
+  h1{font-size:28px;line-height:1.2;letter-spacing:-.02em;font-weight:700;margin:0;flex:1}
+  #gateBtn{-webkit-appearance:none;border:0;background:transparent;color:var(--blue);
+           font-size:17px;font-weight:400;padding:6px 0 6px 8px;cursor:pointer}
+  #gateBtn.passed{color:var(--green)}
+  .sub{font-size:13px;color:var(--label2);margin:2px 0 16px;letter-spacing:-.01em}
+  .badge{color:var(--green);font-size:13px;margin-left:6px}
+  .bar{display:flex;gap:0;margin:0 0 14px;background:var(--card);border-radius:var(--radius);
+       padding:12px 4px}
+  .bar span{flex:1;text-align:center;font-size:12px;color:var(--label2);letter-spacing:-.01em}
+  .bar span+span{border-left:.5px solid var(--sep)}
+  .bar b{display:block;font-size:22px;font-weight:600;color:var(--label);letter-spacing:-.02em;margin-top:1px}
+  .card{background:var(--card);border-radius:var(--radius);padding:22px 20px 16px;
+        min-height:230px;display:flex;flex-direction:column;cursor:pointer;
+        transition:transform .12s ease,background .12s ease}
+  .card:active{transform:scale(.992)}
+  .tag{font-size:12px;font-weight:600;color:var(--blue);letter-spacing:.02em;margin-bottom:12px}
+  .q{font-size:20px;line-height:1.45;font-weight:600;letter-spacing:-.015em;white-space:pre-wrap}
+  .a{margin-top:16px;padding-top:16px;border-top:.5px solid var(--sep);font-size:17px;
+     line-height:1.65;color:var(--label);white-space:pre-wrap;animation:slideIn .22s ease}
+  .kk{margin-top:14px;padding:12px 14px;background:var(--yellowBG);border-radius:10px;
+      font-size:15px;line-height:1.55;color:var(--orange)}
+  .hint{margin-top:14px;font-size:12px;color:var(--label3)}
+  .src{margin-top:auto;padding-top:14px;font-size:12px;color:var(--label3);letter-spacing:-.01em}
+  .dock{position:fixed;left:0;right:0;bottom:0;background:var(--bg);
+        padding:8px 16px calc(10px + env(safe-area-inset-bottom));display:flex;gap:10px;
+        max-width:640px;margin:0 auto;z-index:9}
+  .dock button{flex:1;min-height:50px;font-size:17px;font-weight:600;border:0;border-radius:12px;
+               background:var(--fill);color:var(--label);cursor:pointer;
+               transition:transform .1s ease,opacity .1s ease}
+  .dock button:active{transform:scale(.97);opacity:.85}
+  #flip{background:var(--blue);color:#fff;flex:1.3}
+  #bad{color:var(--red)}
+  #good{color:var(--green)}
+  .tools{display:flex;margin:14px 0 0;background:var(--fill);border-radius:9px;padding:2px}
+  .tools button{-webkit-appearance:none;flex:1;border:0;background:transparent;color:var(--label);
+                font-size:13px;font-weight:500;padding:6px 4px;border-radius:7px;cursor:pointer;
+                transition:background .15s ease}
+  .tools button.on{background:var(--card);box-shadow:0 1px 3px rgba(0,0,0,.12);font-weight:600}
+  .tools .nav{display:none}
+  footer{margin-top:14px;font-size:12px;color:var(--label3);line-height:1.7;text-align:center}
+  #exam{display:none}
+  #exam.on{display:block}
+  #study.off{display:none}
+  .exTop{display:flex;justify-content:space-between;font-size:13px;color:var(--label2);margin:2px 0 10px}
+  .opt{display:block;width:100%;text-align:left;margin-top:8px;padding:14px 16px;font-size:17px;
+       line-height:1.4;border:0;border-radius:12px;background:var(--card);color:var(--label);cursor:pointer;
+       transition:transform .1s ease}
+  .opt:active{transform:scale(.99)}
+  .opt.ok{background:rgba(52,199,89,.16);color:var(--green);font-weight:600}
+  .opt.no{background:rgba(255,59,48,.14);color:var(--red)}
+  #exInput{width:100%;margin-top:12px;padding:14px;font-size:17px;line-height:1.6;color:var(--label);
+           border:.5px solid var(--sep);border-radius:12px;background:var(--card);
+           font-family:inherit;resize:vertical}
+  #exInput:focus{outline:2px solid var(--blue);outline-offset:-1px}
+  .why{margin-top:12px;font-size:15px;line-height:1.7;color:var(--label2);background:var(--fill);
+       border-radius:12px;padding:14px;white-space:pre-wrap;animation:slideIn .22s ease}
+  .exDock{display:flex;gap:10px;margin-top:14px}
+  .exDock button{flex:1;min-height:50px;font-size:17px;font-weight:600;border:0;border-radius:12px;
+                 background:var(--fill);color:var(--label);cursor:pointer}
+  .exDock button.primary{background:var(--blue);color:#fff}
+  @keyframes slideIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <h1>4.4 自动化仪表工程安装技术</h1>
+  <button id="gateBtn">验收</button>
+</div>
+<p class="sub">2027 版教材 P136–142 · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+
+<div id="study">
+  <div class="bar">
+    <span>新卡<b id="nNew">0</b></span>
+    <span>记住了<b id="nGood">0</b></span>
+    <span>没记住<b id="nBad">0</b></span>
+  </div>
+
+  <div class="card" id="card">
+    <div class="tag" id="tag">—</div>
+    <div class="q" id="q">加载中…</div>
+    <div class="a" id="a" hidden></div>
+    <div class="kk" id="kk" hidden></div>
+    <div class="hint" id="hint">点卡片任意位置翻面</div>
+    <div class="src" id="src"></div>
+  </div>
+
+  <div class="tools">
+    <button data-mode="all" class="on">全部</button>
+    <button data-mode="shuffle">随机</button>
+    <button data-mode="review">只练没记住</button>
+    <button class="nav" id="prev">← 上一张</button>
+  </div>
+
+  <footer>
+    内容出处：2027 版《机电工程管理与实务》P103–113。<br>
+    口诀只是提取的钥匙，数字和阈值仍需逐字记准。
+  </footer>
+</div>
+
+<div id="exam">
+  <div class="exTop"><span id="exPos">第 1 / 6 题</span><span id="exScore">已对 0</span></div>
+  <div class="card" style="cursor:default">
+    <div class="tag" id="exTag">—</div>
+    <div class="q" id="exQ"></div>
+    <div id="exOpts"></div>
+    <div class="why" id="exWhy" hidden></div>
+  </div>
+  <div class="exDock" id="exDock"></div>
+</div>
+
+<div class="dock" id="dock">
+  <button id="bad">没记住</button>
+  <button id="flip">翻面</button>
+  <button id="good">记住了</button>
+</div>
+
+<script>
+const CARDS = [
+  {id:1, g:"安装原则与程序", q:"自动化仪表施工应遵循哪些原则？", a:"先土建后安装；先地下后地上；先安装设备再配管布线；先两端后中间。", k:"土建→地下→设备→两端", s:"P136"},
+  {id:2, g:"安装原则与程序", q:"自动化仪表设备安装应遵循什么顺序？", a:"仪表设备安装应遵循的原则：先里后外；先高后低；先重后轻。", k:"里外、高低、重轻", s:"P136"},
+  {id:3, g:"安装原则与程序", q:"仪表调校应遵循哪些原则？", a:"先取证后校验；先单校后联校；先单回路后复杂回路；先单点后网络。", k:"证→校、单→联、简→繁、点→网", s:"P136"},
+  {id:4, g:"安装原则与程序", q:"自动化仪表安装的一般施工程序是什么？", a:"取源部件安装→仪表设备单体校验、安装→仪表线路安装→仪表管道安装→脱脂→仪表系统试验→工程交接验收。", k:"源→表→线→管→脱脂→试验→验收", s:"P136"},
+  {id:5, g:"交接验收", q:"仪表工程具备交接验收条件和提交竣工资料的前提是什么？", a:"仪表工程的回路试验和系统试验进行完毕后，系统方可以投入运行；仪表工程连续48h投入运行正常后，具备交接验收条件，此时编制并提交仪表工程竣工资料。", k:"试验完→投运→连续48h正常→交验", s:"P137"},
+  {id:6, g:"取源部件", q:"取源部件安装对开孔与焊接的时机有什么规定？", a:"取源部件的安装，应在工艺设备制造或工艺管道预制、安装的同时进行；安装取源部件的开孔与焊接必须在工艺管道或设备的防腐、衬里、吹扫和压力试验前进行。", k:"防腐、衬里、吹扫、试压之前", s:"P137"},
+  {id:7, g:"取源部件", q:"温度取源部件的安装位置和与管道的相对位置有何要求？", a:"位置要选在介质温度变化灵敏和具有代表性的地方，不宜选在阀门等阻力部件的附近和介质流束呈现死角处以及振动较大的地方；与管道垂直安装时，取源部件轴线应与管道轴线垂直相交；在管道拐弯处安装时宜逆着物料流向，轴线应与管道轴线相重合；与管道呈倾斜角度安装时宜逆着物料流向，轴线应与管道轴线相交。", k:"灵敏有代表性、避阀门死角振动、逆流向", s:"P137"},
+  {id:8, g:"取源部件", q:"压力取源部件的安装位置有何要求？与温度取源部件在同一管段时如何布置？", a:"安装位置应选在被测物料流束稳定的位置；压力取源部件与温度取源部件在同一管段上时，压力取源部件应安装在温度取源部件的上游侧。", k:"流束稳定、压力在上游", s:"P137"},
+  {id:9, g:"取源部件", q:"在水平和倾斜的管道上测量气体、液体、蒸汽压力时，取压点方位如何确定？", a:"测量气体压力时，取压点的方位在管道的上半部；测量液体压力时，取压点的方位在管道的下半部与管道水平中心线成0°~45°夹角的范围内；测量蒸汽压力时，取压点的方位在管道的上半部，或者下半部与管道水平中心线成0°~45°夹角的范围内。", k:"气上、液下45°、汽上下均可", s:"P138"},
+  {id:10, g:"取源部件", q:"流量取源部件安装有哪些一般要求？", a:"在上、下游直管段的最小长度范围内，不得设置其他取源部件或检测元件；直管段内表面应清洁，无凹坑和凸出物；采用均压环取压时，取压孔应在同一截面上均匀设置，且上、下游取压孔的数量应相等。", k:"直管段内不设他件、内壁清洁、均压环孔等量均布", s:"P138"},
+  {id:11, g:"取源部件", q:"节流装置在水平和倾斜的管道上时，取压口方位如何设置？", a:"测量气体流量时，取压口应在管道的上半部；测量液体流量时，取压口应在管道的下半部与管道水平中心线成0°~45°夹角的范围内；测量蒸汽时，取压口应在管道的上半部与管道水平中心线成0°~45°夹角的范围内。", k:"气上、液下45°、汽上45°", s:"P138"},
+  {id:12, g:"取源部件", q:"物位取源部件的安装位置应如何选择？", a:"物位取源部件的安装位置应选在物位变化灵敏，且不使检测元件受到物料冲击的地方。", k:"变化灵敏、不受冲击", s:"P138"},
+  {id:13, g:"取源部件", q:"分析取源部件的安装位置和取样点周围有何要求？", a:"应安装在压力稳定、能灵敏反映真实成分变化和取得具有代表性的分析样品的位置；取样点的周围不应有层流、涡流、空气渗入、死角、物料堵塞或非生产过程的化学反应；在水平和倾斜的管道上安装时，其安装方位的要求与安装压力取源部件的取压点要求相同。", k:"压力稳、有代表性、无层流涡流死角", s:"P138"},
+  {id:14, g:"仪表设备安装", q:"现场仪表的安装位置应符合哪些要求？", a:"光线充足，操作和维护方便；仪表的中心距操作地面的高度宜为1.2~1.5m；显示仪表应安装在便于观察示值的位置。", k:"光足、中心高1.2~1.5m、便于观察", s:"P138"},
+  {id:15, g:"仪表设备安装", q:"仪表不应安装在哪些位置？检测元件应安装在何处？", a:"仪表不应安装在有振动、潮湿、易受机械损伤、有强电磁场干扰、高温、温度剧烈变化和有腐蚀性气体的位置；检测元件应安装在能真实反映输入变量的位置。", k:"振动、潮湿、机械伤、强磁、高温、温度剧变、腐蚀", s:"P139"},
+  {id:16, g:"仪表设备安装", q:"直接安装在管道上的仪表、仪表接线箱及现场总线仪表线路的连接各有什么规定？", a:"直接安装在管道上的仪表，宜在管道吹扫后安装；当必须与管道同时安装时，在管道吹扫前应将仪表拆下；直接安装在设备或管道上的仪表安装完毕后应进行压力试验；仪表接线箱（盒）应采取密封措施，引入口不宜朝上；现场总线仪表线路的连接应为并联方式。", k:"吹扫后装、装完试压、箱口不朝上、总线并联", s:"P139"},
+  {id:17, g:"仪表设备安装", q:"核辐射式仪表安装有哪些特殊要求？", a:"安装前应编制具体的安装方案；安装中的安全防护措施应符合国家现行有关放射性同位素工作卫生防护标准的规定；在安装现场应有明显的警戒标识。", k:"先编方案、符合防护标准、设警戒标识", s:"P139"},
+  {id:18, g:"仪表设备安装", q:"仪表柜（盘、箱）安装有哪些要求？", a:"型钢底座应在地面施工完成前安装找正，其上表面宜高出地面，并应进行防腐处理；仪表柜（盘、操作台）之间及柜（盘、操作台）内各设备构件之间的连接应牢固，安装用的紧固件应为防锈材料，安装固定不应采用焊接方式；不锈钢材质的接线箱固定时，不得与碳钢材料直接接触。", k:"底座高出地面防腐、紧固件防锈、不焊接、不锈钢避碳钢", s:"P139"},
+  {id:19, g:"仪表设备安装", q:"温度检测仪表安装有哪些要求？", a:"测温元件安装在易受被测物料强烈冲击的位置，应采取防弯曲措施；压力式温度计的温包必须全部浸入被测对象中；在多粉尘的部位安装测温元件，应采取防止磨损的措施；表面温度计的感温面与被测对象表面应紧密接触，并应固定牢固。", k:"防弯、温包全浸、防磨、感温面贴紧", s:"P139"},
+  {id:20, g:"仪表设备安装", q:"测量低压和测量高压的压力表安装有何不同要求？", a:"现场安装的压力表，不应固定在强振动的设备或管道上；测量低压的压力表或变送器的安装高度，宜与取压点的高度一致；测量高压的压力表安装在操作岗位附近时，宜距操作面1.8m以上，或在仪表正面加保护罩。", k:"低压同取压点高度、高压1.8m以上或加保护罩", s:"P139"},
+  {id:21, g:"仪表设备安装", q:"流量检测仪表的节流件安装方向和孔板、喷嘴排泄孔位置有何要求？", a:"节流件必须在管道吹洗后安装；安装方向应使流体从节流件的上游端面流向下游端面，孔板的锐边或喷嘴的曲面侧迎着被测流体的流向；在水平和倾斜的管道上安装的孔板或喷嘴，当排泄孔流体为液体时，排泄孔的位置应在管道的正上方，当流体为气体或蒸汽时，应在管道的正下方。", k:"吹洗后装、锐边迎流、液上气下", s:"P139"},
+  {id:22, g:"仪表设备安装", q:"质量流量计、电磁流量计和超声波流量计安装各有什么要求？", a:"质量流量计应安装于被测流体完全充满的水平管道上，在垂直管道中的流向应自下而上，测量气体时箱体管应置于管道上方，测量液体时箱体管应置于管道下方；电磁流量计外壳、被测流体和管道连接法兰之间应连接为等电位，并应接地；超声波流量计安装时，对于水平管道，换能器的位置应在与水平直线成45°夹角的范围内，被测管道内壁不应有影响测量精度的结垢层或涂层。", k:"质量满管、电磁等电位接地、超声45°", s:"P140"},
+  {id:23, g:"仪表设备安装", q:"物位检测仪表安装有哪些要求？", a:"浮筒液位计的安装应使浮筒呈垂直状态，处于浮筒中心正常操作液位或分界液位的高度；用差压计或差压变送器测量液位时，仪表安装高度不应高于下部取压口；超声波物位计不应安装在进料口的上方，传感器宜垂直于物料表面，在信号波束角内不应有遮挡物，物料的最高物位不应进入仪表的盲区；雷达物位计不应安装在进料口的上方，传感器应垂直于物料表面。", k:"浮筒垂直、差压不高于下取压口、超声雷达避进料口", s:"P140"},
+  {id:24, g:"仪表设备安装", q:"可燃气体检测器和有毒气体检测器的安装位置如何确定？", a:"安装位置应根据所检测气体的密度确定：其密度大于空气时，检测器应安装在距地面200~300mm处；其密度小于空气时，检测器应安装在泄漏区域的上方。", k:"重气贴地200~300mm、轻气装上方", s:"P140"},
+  {id:25, g:"仪表线路安装", q:"仪表线路敷设对环境温度和与其他设备、管道的间距有哪些要求？", a:"线路周围环境温度超过65℃时，应采取隔热措施；附近有火源时，应采取防火措施；线路与绝热的设备及管道绝热层之间的距离应大于或等于200mm，与其他设备和管道之间的距离应大于或等于150mm。", k:"65℃隔热、绝热层200、其他150", s:"P140"},
+  {id:26, g:"仪表线路安装", q:"仪表线路不得或不宜敷设在哪些位置？进入室外盘、柜、箱有何要求？", a:"线路不得敷设在易受机械损伤、腐蚀性物质排放、潮湿、强磁场和强静电场干扰的位置；不宜敷设在高温设备和管道上方，也不宜敷设在具有腐蚀性液体的设备和管道下方；线路进入室外的盘、柜、箱时，宜从底部进入，并应有防水密封措施。", k:"避机械伤、腐蚀、潮湿、强场；上避高温、下避腐蚀液", s:"P140"},
+  {id:27, g:"仪表线路安装", q:"电缆导管安装有哪些要求？", a:"在粉尘、蒸汽、腐蚀性或潮湿气体区域敷设电缆导管时，其两端管口应密封；电缆导管与检测元件或现场仪表之间，宜用金属挠性管连接，并应设有防水弯。", k:"两端封口、金属挠性管、防水弯", s:"P140"},
+  {id:28, g:"仪表线路安装", q:"电缆敷设的接头和光缆敷设各有哪些要求？", a:"电缆不应有中间接头，当需要中间接头时，应在接线箱或接线盒内接线，接头宜采用压接；当采用焊接时，应采用无腐蚀性焊药；补偿导线应采用压接；同轴电缆和高频电缆应采用专用接头。在光纤连接前和光纤连接后均应对光纤进行测试；光缆的弯曲半径不应小于光缆外径的15倍；光纤连接应采用专用设备进行熔接。", k:"接头进盒压接、无腐蚀焊药、光纤前后测试、弯曲15倍", s:"P141"},
+  {id:29, g:"仪表线路安装", q:"仪表信号线路与强磁场、强静电场设备的净距离及不同用途线路的导管有何规定？", a:"明敷设的仪表信号线路与具有强磁场和强静电场的电气设备之间的净距离宜大于1.5m；当采用屏蔽电缆或穿金属导管以及在金属槽式桥架内敷设时，宜大于0.8m；仪表信号线路、仪表供电线路、安全联锁线路、补偿导线、本质安全型仪表线路和其他特殊仪表线路，应分别采用各自的电缆导管。", k:"裸敷1.5m、屏蔽0.8m、一线管一线", s:"P141"},
+  {id:30, g:"仪表管道安装", q:"仪表管道埋地敷设及穿墙、过楼板安装有哪些要求？", a:"仪表管道埋地敷设时，必须经试压合格和防腐处理后再埋入；直接埋地的管道连接必须采用焊接，在穿过道路、沟道及进出地面处应设置保护套管；在穿墙和过楼板处应加装保护套管或保护罩，管道接头不应在保护套管或保护罩内。", k:"先试压防腐、埋地全焊、穿路加套管、接头不入套", s:"P141"},
+  {id:31, g:"仪表管道安装", q:"测量管道和气动信号管道安装有哪些要求？", a:"测量管道与高温设备、管道连接时，应采取热膨胀补偿措施；测量压差的正压管和负压管应安装在环境温度相同的位置；气动信号管道应采用紫铜管、不锈钢管或聚乙烯、尼龙管；气动信号管道不宜设置中间接头，当有中间接头时，应采用卡套式中间接头。", k:"热膨胀补偿、正负压管同温、卡套式接头", s:"P141"},
+  {id:32, g:"仪表管道安装", q:"气源管道和液压管道安装有哪些要求？", a:"气源管道采用镀锌钢管时，应采用螺纹连接；供气管道宜架空敷设，不宜在地表面或埋地敷设；气源系统安装完毕后应进行吹扫；油压管道不应平行敷设在高温设备和管道的上方，与热表面绝缘层的距离应大于150mm；贮液箱的安装位置应低于回液集管，并设置呼吸阀。", k:"镀锌螺纹、架空、吹扫；油压避高温150mm、贮液箱低于回液集管", s:"P141"},
+  {id:33, g:"校准与试验", q:"用于仪表校准和试验的标准仪器仪表应符合什么要求？", a:"应具备有效的计量检定合格证明；其基本误差的绝对值不宜超过被校准仪表基本误差绝对值的1/3；在选择试验用的标准仪器仪表时，至少应保证其准确度比被校准仪表高一个等级。", k:"有检定证明、误差1/3、准确度高一级", s:"P141"},
+  {id:34, g:"校准与试验", q:"压力、差压变送器和浮筒式液位计的校准有哪些要求？", a:"压力、差压变送器除应进行输入输出特性试验和校准外，其准确度应符合设计文件的规定，输入输出信号范围和类型应与铭牌标识、设计文件规定一致，并应与显示仪表配套，还应按设计文件和使用要求进行零点、量程调整和零点迁移量调整；浮筒式液位计可采用干校法或湿校法校准，干校法挂重量的确定、湿校法试验介质密度的换算，均应符合产品设计使用状态的要求；储罐液位计、料面计可在安装完成后直接模拟物位进行校准。", k:"特性校准、零点量程、零点迁移；浮筒干校/湿校", s:"P142"},
+  {id:35, g:"校准与试验", q:"仪表电源设备的试验有哪些要求？", a:"电源设备的带电部分与金属外壳之间的绝缘电阻，当采用500V兆欧表测量时，不应小于5MΩ；不间断电源应进行自动切换性能试验。", k:"500V兆欧表、不小于5MΩ、UPS自动切换", s:"P142"},
+  {id:36, g:"校准与试验", q:"综合控制系统的试验在什么时机进行？试验项目包括哪些？", a:"综合控制系统在回路试验和系统试验前，应在控制室内对系统本身进行试验；试验项目应包括组成系统的各操作站、工程师站、控制器、个人计算机和管理计算机、总线和通信网络等设备的硬件和软件的有关功能试验。", k:"先室内系统自试、再回路和系统试验", s:"P142"},
+  {id:37, g:"校准与试验", q:"控制回路试验和检测回路试验分别如何进行？", a:"控制回路试验中，通过控制器或操作站的输出向执行器发送控制信号，检查执行器的全行程动作方向和位置应正确，执行器带有定位器时应同时试验；检测回路试验中，在检测回路的信号输入端输入模拟被测变量的标准信号，回路的显示仪表部分的示值误差不应超过回路内各单台仪表允许基本误差平方和的平方根值。", k:"控制回路查执行器全行程、检测回路按误差平方和开方", s:"P142"},
+  {id:38, g:"校准与试验", q:"系统试验中对报警整定、联锁及程序控制系统有哪些要求？", a:"系统中有报警信号的仪表设备，包括各种检测报警开关、仪表的报警输出部件和接点，应根据设计文件规定的设定值进行整定；联锁点多、程序复杂的系统，可先分项、分段进行试验，再进行整体检查试验；程序控制系统的试验应按程序设计的步骤逐步进行检查试验，其条件判定、逻辑关系、动作时间和输出状态等均应符合设计文件规定；系统试验中应与相关的专业配合，共同确认程序运行和联锁保护条件及功能的正确性，并对试验过程中相关设备和装置的运行状态和安全防护采取必要措施。", k:"报警按设定值整定、复杂联锁先分项分段、程序按步骤", s:"P142"},
+];
+
+const EXAM = [
+  { type:"正向", cardIds:[4],
+    q:"自动化仪表安装的一般施工程序是什么？",
+    answer:"取源部件安装→仪表设备单体校验、安装→仪表线路安装→仪表管道安装→脱脂→仪表系统试验→工程交接验收。",
+    keys:["取源部件安装", "仪表设备单体校验、安装", "仪表线路安装", "仪表管道安装", "脱脂", "仪表系统试验", "工程交接验收"],
+    need:5 },
+  { type:"正向", cardIds:[3],
+    q:"仪表调校应遵循哪些原则？",
+    answer:"先取证后校验；先单校后联校；先单回路后复杂回路；先单点后网络。",
+    keys:["先取证后校验", "先单校后联校", "先单回路后复杂回路", "先单点后网络"],
+    need:3 },
+  { type:"选择", cardIds:[20],
+    q:"测量高压的压力表安装在操作岗位附近时，宜距操作面多少以上（或在仪表正面加保护罩）？",
+    options:["A. 1.2m", "B. 1.5m", "C. 1.8m", "D. 2.0m"],
+    correct:2,
+    why:"教材规定测量高压的压力表安装在操作岗位附近时，宜距操作面1.8m以上，或在仪表正面加保护罩；1.2~1.5m是现场仪表中心距操作地面的高度，2.0m无此规定。" },
+  { type:"选择", cardIds:[28],
+    q:"光缆的弯曲半径不应小于光缆外径的多少倍？",
+    options:["A. 5倍", "B. 10倍", "C. 15倍", "D. 20倍"],
+    correct:2,
+    why:"光缆的弯曲半径不应小于光缆外径的15倍；光纤连接前和连接后均应测试，光纤连接应采用专用设备熔接。" },
+  { type:"反向", cardIds:[18],
+    q:"下列关于自动化仪表安装的说法，错误的是（　）。",
+    answer:"错误说法：仪表柜（盘、箱）可采用焊接方式固定。正确要求是安装固定不应采用焊接方式；柜（盘、操作台）之间及柜内各设备构件之间连接应牢固，安装用紧固件应为防锈材料，型钢底座上表面宜高出地面并应防腐；不锈钢材质的接线箱固定时不得与碳钢材料直接接触。",
+    keys:["安装固定不应采用焊接方式", "紧固件应为防锈材料", "不锈钢接线箱不得与碳钢直接接触"],
+    need:2 },
+  { type:"场景", cardIds:[6],
+    q:"某工艺管道已完成防腐、吹扫和压力试验，施工班组此时才在管道上开孔并焊接取源部件。请指出做法的不妥之处，并写出正确做法。",
+    answer:"不妥之处：取源部件的开孔与焊接在防腐、吹扫和压力试验之后才进行。正确做法：取源部件的安装应在工艺设备制造或工艺管道预制、安装的同时进行；安装取源部件的开孔与焊接必须在工艺管道或设备的防腐、衬里、吹扫和压力试验前进行；取源部件安装完毕后，应与设备和管道同时进行压力试验。",
+    keys:["开孔与焊接必须在防腐、衬里、吹扫和压力试验前进行", "取源部件与工艺管道预制、安装同时进行", "安装完毕后与设备和管道同时进行压力试验"],
+    need:2 }
+];
+
+const KEY_STATUS = "erjian_sw_4_4_status";
+const KEY_PASS = "erjian_sw_4_4_pass";
+
+let status = {};
+try { status = JSON.parse(localStorage.getItem(KEY_STATUS) || "{}"); } catch (e) { status = {}; }
+let passInfo = null;
+try { passInfo = JSON.parse(localStorage.getItem(KEY_PASS) || "null"); } catch (e) { passInfo = null; }
+
+let mode = "all";
+let queue = CARDS.map(c => c.id);
+let pos = 0;
+
+const el = id => document.getElementById(id);
+
+function buildQueue() {
+  let ids = CARDS.map(c => c.id);
+  if (mode === "review") ids = ids.filter(id => status[id] === 0);
+  if (mode === "shuffle") ids = ids.sort(() => Math.random() - 0.5);
+  queue = ids;
+  pos = 0;
+}
+
+function renderBadge() {
+  if (passInfo && passInfo.pass) {
+    el("passBadge").innerHTML = '<span class="badge">已通关 ' + passInfo.date + '</span>';
+    el("gateBtn").classList.add("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "已通关";
+  } else {
+    el("passBadge").textContent = "";
+    el("gateBtn").classList.remove("passed");
+    if (!el("exam").classList.contains("on")) el("gateBtn").textContent = "验收";
+  }
+}
+
+function render() {
+  const good = CARDS.filter(c => status[c.id] === 1).length;
+  const bad = CARDS.filter(c => status[c.id] === 0).length;
+  el("total").textContent = CARDS.length;
+  el("nNew").textContent = CARDS.length - good - bad;
+  el("nGood").textContent = good;
+  el("nBad").textContent = bad;
+
+  if (!queue.length) {
+    el("tag").textContent = "没有卡";
+    el("q").textContent = "这一组是空的 —— 换「全部」或「随机」。";
+    el("a").hidden = true; el("kk").hidden = true;
+    el("hint").textContent = ""; el("src").textContent = "";
+    return;
+  }
+  if (pos < 0) pos = queue.length - 1;
+  if (pos >= queue.length) pos = 0;
+
+  const c = CARDS.find(x => x.id === queue[pos]);
+  el("tag").textContent = c.g;
+  el("q").textContent = c.q;
+  el("a").textContent = c.a;
+  el("a").hidden = true;
+  el("kk").textContent = c.k ? "口诀：" + c.k : "";
+  el("kk").hidden = true;
+  el("hint").textContent = "点卡片任意位置翻面";
+  el("src").textContent = "出处：" + c.s + "　（第 " + (pos + 1) + " / " + queue.length + " 张）";
+  el("flip").textContent = "翻面";
+  window.scrollTo(0, 0);
+}
+
+function toggle() {
+  if (!queue.length) return;
+  const show = el("a").hidden;
+  el("a").hidden = !show;
+  el("kk").hidden = !show || !el("kk").textContent;
+  el("flip").textContent = show ? "收起" : "翻面";
+  el("hint").textContent = show ? "" : "点卡片任意位置翻面";
+}
+
+function next(step) {
+  if (!queue.length) return;
+  pos = (pos + step + queue.length) % queue.length;
+  render();
+}
+
+function mark(v) {
+  if (!queue.length) return;
+  status[queue[pos]] = v;
+  try { localStorage.setItem(KEY_STATUS, JSON.stringify(status)); } catch (e) {}
+  pos = (pos + 1) % queue.length;
+  render();
+}
+
+let ex = { i:0, score:0, answered:false, wrongCards:[] };
+
+function startExam() {
+  ex = { i:0, score:0, answered:false, wrongCards:[] };
+  el("study").classList.add("off");
+  el("exam").classList.add("on");
+  el("dock").style.display = "none";
+  el("gateBtn").textContent = "退出验收";
+  renderExam();
+  window.scrollTo(0, 0);
+}
+
+function exitExam() {
+  el("study").classList.remove("off");
+  el("exam").classList.remove("on");
+  el("dock").style.display = "flex";
+  renderBadge();
+  render();
+}
+
+function renderExam() {
+  const q = EXAM[ex.i];
+  el("exPos").textContent = "第 " + (ex.i + 1) + " / " + EXAM.length + " 题";
+  el("exScore").textContent = "已对 " + ex.score;
+  el("exTag").textContent = q.type;
+  el("exQ").textContent = q.q;
+  el("exOpts").innerHTML = "";
+  el("exWhy").hidden = true;
+  el("exWhy").textContent = "";
+  ex.answered = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+
+  if (q.options) {
+    q.options.forEach((opt, idx) => {
+      const b = document.createElement("button");
+      b.className = "opt";
+      b.textContent = String.fromCharCode(65 + idx) + ". " + opt;
+      b.onclick = () => answerChoice(idx);
+      el("exOpts").appendChild(b);
+    });
+    const skip = document.createElement("button");
+    skip.textContent = "不会";
+    skip.onclick = () => answerChoice(-1);
+    dock.appendChild(skip);
+  } else {
+    const ta = document.createElement("textarea");
+    ta.id = "exInput";
+    ta.rows = 4;
+    ta.placeholder = "用你自己的话写下来，写完点「提交」——空着提交也算没答。";
+    el("exOpts").appendChild(ta);
+    const sub = document.createElement("button");
+    sub.className = "primary";
+    sub.textContent = "提交答案";
+    sub.onclick = () => gradeOpen(q, ta.value);
+    dock.appendChild(sub);
+  }
+}
+
+function norm(s) {
+  return (s || "").toLowerCase().replace(/\s+/g, "").replace(/％/g, "%");
+}
+
+function gradeOpen(q, input) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const t = norm(input);
+  const keys = q.keys || [];
+  const hits = keys.filter(k => t.includes(norm(k)));
+  const miss = keys.filter(k => !t.includes(norm(k)));
+  const need = q.need || keys.length;
+  const pass = hits.length >= need;
+
+  let txt = "命中 " + hits.length + " / " + keys.length + " 个关键词（需要 " + need + " 个）\n";
+  if (hits.length) txt += "✅ 命中：" + hits.join("、") + "\n";
+  if (miss.length) txt += "❌ 漏掉：" + miss.join("、") + "\n";
+  txt += "\n—— 参考答案 ——\n" + q.answer;
+
+  el("exWhy").textContent = txt;
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(pass);
+  dock.appendChild(nextBtn);
+}
+
+function answerChoice(idx) {
+  if (ex.answered) return;
+  ex.answered = true;
+  const q = EXAM[ex.i];
+  const opts = el("exOpts").querySelectorAll(".opt");
+  opts.forEach((b, i) => {
+    b.disabled = true;
+    if (i === q.correct) b.classList.add("ok");
+    if (i === idx && idx !== q.correct) b.classList.add("no");
+  });
+  el("exWhy").textContent = q.why || q.answer || "";
+  el("exWhy").hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const nextBtn = document.createElement("button");
+  nextBtn.className = "primary";
+  nextBtn.textContent = ex.i === EXAM.length - 1 ? "看结果" : "下一题";
+  nextBtn.onclick = () => finishQuestion(idx === q.correct);
+  dock.appendChild(nextBtn);
+}
+
+function finishQuestion(right) {
+  if (right) ex.score++;
+  else ex.wrongCards = ex.wrongCards.concat(EXAM[ex.i].cardIds || []);
+  ex.i++;
+  if (ex.i >= EXAM.length) showResult();
+  else renderExam();
+}
+
+function showResult() {
+  const total = EXAM.length;
+  const pass = ex.score === total;
+  el("exPos").textContent = "验收结束";
+  el("exScore").textContent = "";
+  el("exTag").textContent = pass ? "通关" : "未通过";
+  el("exQ").textContent = "";
+  el("exOpts").innerHTML = "";
+
+  const uniq = [...new Set(ex.wrongCards)].sort((a, b) => a - b);
+  let txt = "答对 " + ex.score + " / " + total + " 题\n";
+  if (pass) {
+    const d = new Date();
+    const ds = (d.getMonth() + 1) + "-" + String(d.getDate()).padStart(2, "0");
+    passInfo = { pass:true, date:ds, score:ex.score };
+    try { localStorage.setItem(KEY_PASS, JSON.stringify(passInfo)); } catch (e) {}
+    txt += "\n✅ 本节通关。7 天后再验一次。\n\n";
+    txt += "额外一道人工关：拿张白纸，3 分钟写出这节结构，拍照发给教练。";
+  } else {
+    txt += "\n❌ 没过。错题对应的卡：卡 " + uniq.join("、卡 ") + "\n\n";
+    txt += "回卡片区按编号核对，重点看这几张。";
+  }
+
+  const why = el("exWhy");
+  why.textContent = txt;
+  why.hidden = false;
+
+  const dock = el("exDock");
+  dock.innerHTML = "";
+  const again = document.createElement("button");
+  again.textContent = pass ? "再验一次" : "重来";
+  again.onclick = () => startExam();
+  const back = document.createElement("button");
+  back.className = "primary";
+  back.textContent = "回卡片";
+  back.onclick = () => exitExam();
+  dock.appendChild(again);
+  dock.appendChild(back);
+  renderBadge();
+}
+
+el("card").addEventListener("click", toggle);
+el("flip").onclick = e => { e.stopPropagation(); toggle(); };
+el("good").onclick = () => mark(1);
+el("bad").onclick = () => mark(0);
+el("prev").onclick = () => next(-1);
+el("gateBtn").onclick = () => {
+  if (el("exam").classList.contains("on")) exitExam(); else startExam();
+};
+
+document.querySelectorAll(".tools button[data-mode]").forEach(b => {
+  b.onclick = () => {
+    document.querySelectorAll(".tools button[data-mode]").forEach(x => x.classList.remove("on"));
+    b.classList.add("on");
+    mode = b.dataset.mode;
+    buildQueue();
+    render();
+  };
+});
+
+let x0 = null;
+el("card").addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+el("card").addEventListener("touchend", e => {
+  if (x0 === null) return;
+  const dx = e.changedTouches[0].clientX - x0;
+  if (Math.abs(dx) > 60) next(dx < 0 ? 1 : -1);
+  x0 = null;
+});
+
+buildQueue();
+render();
+renderBadge();
+</script>
+</body>
+</html>

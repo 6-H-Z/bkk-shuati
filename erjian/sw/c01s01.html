@@ -28,6 +28,10 @@
   #gateBtn.passed{color:var(--green)}
   .sub{font-size:13px;color:var(--label2);margin:2px 0 16px;letter-spacing:-.01em}
   .badge{color:var(--green);font-size:13px;margin-left:6px}
+  .back{display:block;font-size:15px;color:var(--blue);text-decoration:none;padding:2px 0 6px}
+  .split{display:block;margin:0 0 14px;padding:10px 13px;background:var(--card);
+         border-radius:var(--radius);font-size:13.5px;line-height:1.45;color:var(--blue);
+         text-decoration:none;letter-spacing:-.01em}
   .bar{display:flex;gap:0;margin:0 0 14px;background:var(--card);border-radius:var(--radius);
        padding:12px 4px}
   .bar span{flex:1;text-align:center;font-size:12px;color:var(--label2);letter-spacing:-.01em}
@@ -88,11 +92,13 @@
 </head>
 <body>
 
+<a class="back" href="index.html">‹ 目录</a>
 <div class="top">
   <h1>1.1 金属材料</h1>
   <button id="gateBtn">验收</button>
 </div>
-<p class="sub">2027 版教材 P1–4 · 共 <span id="total">0</span> 张 <span id="passBadge"></span></p>
+<p class="sub">2027 版教材 P1–4 · 共 <span id="total">0</span> 张 <span id="passBadge"></span> · 本节分两页</p>
+<a class="split" href="c01s01b.html">本节还有后半 → 非金属材料与电气材料（P5–12，39 张）</a>
 
 <div id="study">
   <div class="bar">
